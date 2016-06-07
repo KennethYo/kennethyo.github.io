@@ -7,16 +7,13 @@
 
     
 
-    <title>Android获取运营商 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <title>Android | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="Kenneth Yo">
-    
-    <meta name="description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：
-这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Android获取运营商"/>
+    
     <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
 
     
@@ -194,55 +191,30 @@
 
     <main>
         <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">當前位置（分類目錄）</span>
-        
-            
-
+        <span class="breadcrumb">當前位置（標籤）</span>
         
 
+        
+            <a class="breadcrumb" href="/tags/Android/">Android</a>
         
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
-                
-    
-        <h1>Android获取运营商</h1>
-    
 
 
-            </div>
-            <time class="pink-link-context" datetime="2015-05-08T08:01:00.000Z"><a href="/2015/05/08/Android获取运营商/">2015-05-08</a></time>
-
-            
-
-            <div class="toc pink-link-context hide-on-med-and-down">
-    
-</div>
-
-
-            <div class="entry pink-link-context">
-                <p>今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：</p>
-<p><img src="/android/_image/2015-05-08/tmp2db23fc0.png" alt=""><br>这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。<br>我这里解决的方案是通过设备的MCC/MNC代码来判断。<br>首先，我们要了解MCC/MNC是什么，请看<a href="http://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%A0%81" target="_blank" rel="external">WIKI百科</a>。通过阅读，我们能够知道，只要对比MCC/MNC编码，就能知道具体是什么运营商了。<br>其次，就是具体代码了，如下：</p>
-<div class="codehilite"><pre><span class="cm">/<em>*</em></span><br><span class="cm">      返回运营商 需要加入权限 &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot;/&gt; &lt;BR&gt;</span><br><span class="cm">     <em> </em></span><br><span class="cm">      @return 1,代表中国移动，2，代表中国联通，3，代表中国电信，0，代表未知</span><br><span class="cm">     <em> @author youzc@yiche.com</em></span><br><span class="cm">     /</span><br> <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getOperators</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span><br>        <span class="c1">// 移动设备网络代码（英语：Mobile Network Code，MNC）是与移动设备国家代码（Mobile Country Code，MCC）（也称为“MCC /</span><br>        <span class="c1">// MNC”）相结合, 例如46000，前三位是MCC，后两位是MNC 获取手机服务商信息</span><br>        <span class="kt">int</span> <span class="n">OperatorsName</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span><br>        <span class="n">String</span> <span class="n">IMSI</span> <span class="o">=</span>  <span class="o">(</span><span class="n">TelephonyManager</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">TELEPHONY_SERVICE</span><span class="o">).</span><span class="na">getSubscriberId</span><span class="o">();</span><br>        <span class="c1">// IMSI号前面3位460是国家，紧接着后面2位00 运营商代码</span><br>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">IMSI</span><span class="o">);</span><br>        <span class="k">if</span> <span class="o">(</span><span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46000&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46002&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46007&quot;</span><span class="o">))</span> <span class="o">{</span><br>            <span class="n">OperatorsName</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span><br>        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46001&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46006&quot;</span><span class="o">))</span> <span class="o">{</span><br>            <span class="n">OperatorsName</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span><br>        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46003&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">IMSI</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;46005&quot;</span><span class="o">))</span> <span class="o">{</span><br>            <span class="n">OperatorsName</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span><br>        <span class="o">}</span><br>        <span class="k">return</span> <span class="n">OperatorsName</span><span class="o">;</span><br>    <span class="o">}</span><br></pre></div>
-
-<p>通过客户端本地比对MCC/MNC确定运营商这种方式，本身我是不赞同的，我认为把MCC/MNC上送到服务器，由服务器判断这才是最优方案。因为应用打好包分发出去，代码就是死的，未来不可以扩展比对，但是服务器是可以动态的，随时配置比对的MCC/MNC编码。</p>
-
-            </div>
-        </div>
+    <div class="collection mt-0">
+        
+            <a href="/2015/08/09/高仿SinaWeibo新浪微博发布页面话题效果/" class="collection-item grey-text text-darken-1">
+                <time datetime="2015-08-09T15:59:00.000Z">2015-08-09</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                高仿SinaWeibo新浪微博发布页面话题效果
+            </a>
+        
     </div>
-</article>
-
-
-
-
 
 
 </div>
