@@ -1,0 +1,974 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>[原]React-Native Android 学习笔记——2，自定义 logger | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <meta name="author" content="Kenneth Yo">
+    
+    <meta name="description" content="通过上一篇《 React-Native Android 学习笔记——1，配置环境》下载了AwesomeProject项目并运行了 demo。如下图： 
+ 
+应该和你运行起来的相同，但是除了Welcome to React Native的颜色。
+一，index.android.js 文件demo 默认">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="[原]React-Native Android 学习笔记——2，自定义 logger"/>
+    <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">在北京敲键盘的呼伦贝尔人</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">你的大名</p>
+                        <p class="desc">Web前端/iOS/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>[原]React-Native Android 学习笔记——2，自定义 logger</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2016-03-23T08:35:48.000Z"><a href="/2016/03/23/原-React-Native-Android-学习笔记——2，自定义-logger/">2016-03-23</a></time>
+
+            
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一，index-android-js-文件"><span class="section table-of-contents-text">一，index.android.js 文件</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="external">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图： </p>
+<p><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"> </p>
+<p>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
+<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：</p>
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ */&lt;/span&gt;
+&lt;span class=&quot;hljs-pi&quot;&gt;&apos;use strict&apos;&lt;/span&gt;;
+import React, {
+  AppRegistry,
+  Component,
+  StyleSheet,
+  Text,
+  View,
+} from &lt;span class=&quot;hljs-string&quot;&gt;&apos;react-native&apos;&lt;/span&gt;;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; AwesomeProject extends Component {
+  render() {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; (
+      &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.container}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.welcome}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          Welcome to React Native!
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.instructions}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          To get started, edit index.android.js
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.instructions}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          Shake or press menu button for dev menu
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;View&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &apos;center&apos;,
+    alignItems: &apos;center&apos;,
+    backgroundColor: &apos;#F5FCFF&apos;,
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: &apos;center&apos;,
+    margin: 10,
+    color:&apos;red&apos;
+  },
+  instructions: {
+    textAlign: &apos;center&apos;,
+    color: &apos;#333333&apos;,
+    marginBottom: 5,
+  },
+});
+
+AppRegistry.registerComponent(&apos;AwesomeProject&apos;, () =&amp;gt; AwesomeProject);
+&lt;/span&gt;`&lt;/pre&gt;
+
+可以看到我在 welcome 的 style 中设置了`color:&apos;red&apos;`，让我的`Welcome to React Native`变成红色字体的。如下：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`welcome: {
+  fontSize: &lt;span class=&quot;hljs-number&quot;&gt;20&lt;/span&gt;,
+  textAlign: &lt;span class=&quot;hljs-string&quot;&gt;&apos;center&apos;&lt;/span&gt;,
+  margin: &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;,
+  color:&lt;span class=&quot;hljs-string&quot;&gt;&apos;red&apos;&lt;/span&gt;
+},`&lt;/pre&gt;
+
+下面我们来熟悉一下`index.android.js`这个文件里面的 js 代码都是干什么的。
+
+`&apos;use strict&apos;`是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章[《Javascript 严格模式详解》](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`import React, {
+  AppRegistry,
+  Component,
+  StyleSheet,
+  Text,
+  View,
+} from &lt;span class=&quot;hljs-string&quot;&gt;&apos;react-native&apos;&lt;/span&gt;;`&lt;/pre&gt;
+
+这段代码类似 java 的 import，把需要引用的 module 引入。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;AwesomeProject&lt;/span&gt; &lt;span class=&quot;hljs-inheritance&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Component&lt;/span&gt; {&lt;/span&gt;
+  render() {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; (
+      &amp;lt;View style={styles.&lt;span class=&quot;hljs-keyword&quot;&gt;container&lt;/span&gt;}&amp;gt;
+        &amp;lt;Text style={styles.welcome}&amp;gt;
+          Welcome to React Native!
+        &amp;lt;/Text&amp;gt;
+        &amp;lt;Text style={styles.instructions}&amp;gt;
+          To get started, &lt;span class=&quot;hljs-keyword&quot;&gt;edit&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;.android.js
+        &amp;lt;/Text&amp;gt;
+        &amp;lt;Text style={styles.instructions}&amp;gt;
+          Shake or press menu button &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; dev menu
+        &amp;lt;/Text&amp;gt;
+      &amp;lt;/View&amp;gt;
+    );
+  }
+}`&lt;/pre&gt;
+
+这段代码是渲染当前注册界面的布局，`render`方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;const&lt;/span&gt; styles = StyleSheet.create({
+  container: {
+    flex: &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;,
+    justifyContent: &lt;span class=&quot;hljs-string&quot;&gt;&apos;center&apos;&lt;/span&gt;,
+    alignItems: &lt;span class=&quot;hljs-string&quot;&gt;&apos;center&apos;&lt;/span&gt;,
+    backgroundColor: &lt;span class=&quot;hljs-string&quot;&gt;&apos;#F5FCFF&apos;&lt;/span&gt;,
+  },
+  welcome: {
+    fontSize: &lt;span class=&quot;hljs-number&quot;&gt;20&lt;/span&gt;,
+    textAlign: &lt;span class=&quot;hljs-string&quot;&gt;&apos;center&apos;&lt;/span&gt;,
+    margin: &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;,
+    color:&lt;span class=&quot;hljs-string&quot;&gt;&apos;red&apos;&lt;/span&gt;
+  },
+  instructions: {
+    textAlign: &lt;span class=&quot;hljs-string&quot;&gt;&apos;center&apos;&lt;/span&gt;,
+    color: &lt;span class=&quot;hljs-string&quot;&gt;&apos;#333333&apos;&lt;/span&gt;,
+    marginBottom: &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;,
+  },
+});`&lt;/pre&gt;
+
+标签的具体规范可以看这里[Text](http://facebook.github.io/react-native/docs/text.html#content)，[View](http://facebook.github.io/react-native/docs/view.html#content)。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`AppRegistry.registerComponent(&lt;span class=&quot;hljs-string&quot;&gt;&apos;AwesomeProject&apos;&lt;/span&gt;, () =&amp;gt; AwesomeProject);`&lt;/pre&gt;
+
+上面这段代码把我们 js 文件中的 class `AwesomeProject`和我们 Android 项目中 `Activity`中`getMainComponentName() { return &quot;AwesomeProject&quot;; }`的 Activity关联起来。
+
+## 二，显示一个 Toast
+
+React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在`../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js`中。 
+
+我们来看 ToastAndroid 的源码：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-comment&quot;&gt;/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ToastAndroid
+ */&lt;/span&gt;
+&lt;span class=&quot;hljs-pi&quot;&gt;
+&apos;use strict&apos;&lt;/span&gt;;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; RCTToastAndroid = &lt;span class=&quot;hljs-built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&apos;NativeModules&apos;&lt;/span&gt;).ToastAndroid;
+
+&lt;span class=&quot;hljs-comment&quot;&gt;/**
+ * This exposes the native ToastAndroid module as a JS module. This has a function &apos;show&apos;
+ * which takes the following parameters:
+ *
+ * 1\. String message: A string with the text to toast
+ * 2\. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG
+ */&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; ToastAndroid = {
+
+  SHORT: RCTToastAndroid.SHORT,
+  LONG: RCTToastAndroid.LONG,
+
+  show: &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(
+    message: string,
+    duration: number
+  )&lt;/span&gt;: &lt;span class=&quot;hljs-title&quot;&gt;void&lt;/span&gt; {&lt;/span&gt;
+    RCTToastAndroid.show(message, duration);
+  },
+
+};
+
+module.exports = ToastAndroid;
+`&lt;/pre&gt;
+
+我们可以直接在引包当中加入ToastAndroid。如下：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`import React, {
+  AppRegistry,
+  Component,
+  StyleSheet,
+  Text,
+  ToastAndroid,
+  View,
+} from &lt;span class=&quot;hljs-string&quot;&gt;&apos;react-native&apos;&lt;/span&gt;;`&lt;/pre&gt;
+
+下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码`ToastAndroid.show(&apos;Awesome&apos;, ToastAndroid.SHORT);`，下面来摇摆手机调出开发菜单，点击`Reload JS`。就会弹出Toast。 
+
+我们来分析一下`ToastAndroid.android.js`这个 module。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; RCTToastAndroid = &lt;span class=&quot;hljs-built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&apos;NativeModules&apos;&lt;/span&gt;).ToastAndroid;`&lt;/pre&gt;
+
+这里是`require`是加载`NativeModules`模块，并把 `ToastAndroid` 赋值给 `RCTToastAndroid`。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; ToastAndroid = {
+
+  SHORT: RCTToastAndroid.SHORT,
+  LONG: RCTToastAndroid.LONG,
+
+  show: &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(
+    message: string,
+    duration: number
+  )&lt;/span&gt;: &lt;span class=&quot;hljs-title&quot;&gt;void&lt;/span&gt; {&lt;/span&gt;
+    RCTToastAndroid.show(message, duration);
+  },
+
+};`&lt;/pre&gt;
+
+这段代码，创建一个对象赋值给`ToastAndroid`，对象内分别设置了`Toast`的 `SHORT`，`LONG`和`show`方法。 
+
+`module.exports = ToastAndroid;`这里把`ToastAndroid`作为当前这个 Module 导出，提供给外部使用。 
+
+那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 `ToastModule`，代码如下：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;ToastModule&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;ReactContextBaseJavaModule&lt;/span&gt; {&lt;/span&gt;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String DURATION_SHORT_KEY = &lt;span class=&quot;hljs-string&quot;&gt;&quot;SHORT&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String DURATION_LONG_KEY = &lt;span class=&quot;hljs-string&quot;&gt;&quot;LONG&quot;&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;ToastModule&lt;/span&gt;(ReactApplicationContext reactContext) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;super&lt;/span&gt;(reactContext);
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;hljs-title&quot;&gt;getName&lt;/span&gt;() {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;ToastAndroid&quot;&lt;/span&gt;;
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Map&amp;lt;String, Object&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;getConstants&lt;/span&gt;() {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Map&amp;lt;String, Object&amp;gt; constants = MapBuilder.newHashMap();
+    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);
+    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; constants;
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@ReactMethod&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;show&lt;/span&gt;(String message, &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; duration) {
+    Toast.makeText(getReactApplicationContext(), message, duration).show();
+  }
+}`&lt;/pre&gt;
+
+这里`getName()`方法的返回值对应 JS 中的`var RCTToastAndroid = require(&apos;NativeModules&apos;).ToastAndroid;`结尾处的`ToastAndroid`，正如 js 里的请求手机本地的 modules ，对应到类里的`getName()`返回值。 
+
+`getConstants()`方法负责把类中的常量映射到 JS 中去。 
+
+`show(String message, int duration)`方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。
+
+## 三，自定义 Logger
+
+这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;LoggerModule&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;ReactContextBaseJavaModule&lt;/span&gt; {&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String MODULE_NAME = &lt;span class=&quot;hljs-string&quot;&gt;&quot;Logger&quot;&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String TAG_KEY = &lt;span class=&quot;hljs-string&quot;&gt;&quot;TAG&quot;&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String TAG_VALUE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;LoggerModule&quot;&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;LoggerModule&lt;/span&gt;(ReactApplicationContext reactContext) {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;super&lt;/span&gt;(reactContext);
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Nullable&lt;/span&gt;
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Map&amp;lt;String, Object&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;getConstants&lt;/span&gt;() {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Map&amp;lt;String, Object&amp;gt; constants = MapBuilder.newHashMap();
+        constants.put(TAG_KEY, TAG_VALUE);
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; constants;
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;hljs-title&quot;&gt;getName&lt;/span&gt;() {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; MODULE_NAME;
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@ReactMethod&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;i&lt;/span&gt;(String tag, String msg) {
+        Log.i(tag, msg);
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@ReactMethod&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;d&lt;/span&gt;(String tag, String msg) {
+        Log.d(tag, msg);
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@ReactMethod&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;w&lt;/span&gt;(String tag, String msg) {
+        Log.w(tag, msg);
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@ReactMethod&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;e&lt;/span&gt;(String tag, String msg) {
+        Log.e(tag, msg);
+    }
+}`&lt;/pre&gt;
+
+这里我把常量`TAG`返回给 JS 调用，Module 命名为`Logger`，并且把 info，debug，warn，error 等 Log 方法加上`@ReactMethod`注释，提供给 JS调用。 
+
+这里还没有结束，我们还需要实现一个类，去注册我们自己写的 `LoggerModule`。具体代码如下：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;AppReactPackage&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;ReactPackage&lt;/span&gt; {&lt;/span&gt;
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;NativeModule&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;createNativeModules&lt;/span&gt;(ReactApplicationContext reactContext) {
+        List&amp;lt;NativeModule&amp;gt; modules = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;();
+        modules.add(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; LoggerModule(reactContext));
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; modules;
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;Class&amp;lt;? extends JavaScriptModule&amp;gt;&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;createJSModules&lt;/span&gt;() {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; Collections.emptyList();
+    }
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;ViewManager&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;createViewManagers&lt;/span&gt;(ReactApplicationContext reactContext) {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; Collections.emptyList();
+    }
+}`&lt;/pre&gt;
+
+然后，把这个 AppReactPackage 注册到 Activity。如下：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;ReactActivity&lt;/span&gt; {&lt;/span&gt;
+
+    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     * Returns the name of the main component registered from JavaScript.
+     * This is used to schedule rendering of the component.
+     */&lt;/span&gt;
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;protected&lt;/span&gt; String &lt;span class=&quot;hljs-title&quot;&gt;getMainComponentName&lt;/span&gt;() {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;AwesomeProject&quot;&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     * Returns whether dev mode should be enabled.
+     * This enables e.g. the dev menu.
+     */&lt;/span&gt;
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getUseDeveloperSupport&lt;/span&gt;() {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; BuildConfig.DEBUG;
+    }
+
+    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     * A list of packages used by the app. If the app uses additional views
+     * or modules besides the default ones, add more packages here.
+     */&lt;/span&gt;
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;protected&lt;/span&gt; List&amp;lt;ReactPackage&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;getPackages&lt;/span&gt;() {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; Arrays.&amp;lt;ReactPackage&amp;gt;asList(
+                &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; MainReactPackage(),
+                &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; AppReactPackage()
+        );
+    }
+}`&lt;/pre&gt;
+
+java 代码到这里就结束了。 
+
+下面，我们在`index.android.js`的同级目录创建一个 js 文件`log.js`。里面内容：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-pi&quot;&gt;&apos;use strict&apos;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; RCTLogger = &lt;span class=&quot;hljs-built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&apos;NativeModules&apos;&lt;/span&gt;).Logger;&lt;span class=&quot;hljs-comment&quot;&gt;//加载本地 modules，Module#getName()&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; LogAndroid = {
+  &lt;span class=&quot;hljs-comment&quot;&gt;//添加定义的常量 Module#getConstants()&lt;/span&gt;
+  TAG: RCTLogger.TAG,
+  &lt;span class=&quot;hljs-comment&quot;&gt;//添加的方法 Module#d()&lt;/span&gt;
+  d: &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(tag: string,msg: string)&lt;/span&gt;:&lt;span class=&quot;hljs-title&quot;&gt;void&lt;/span&gt;{&lt;/span&gt;
+    RCTLogger.d(tag,msg);
+  },
+
+  i: &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(tag: string,msg: string)&lt;/span&gt;:&lt;span class=&quot;hljs-title&quot;&gt;void&lt;/span&gt;{&lt;/span&gt;
+    RCTLogger.i(tag,msg);
+  },
+
+  w: &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(tag: string,msg: string)&lt;/span&gt;:&lt;span class=&quot;hljs-title&quot;&gt;void&lt;/span&gt;{&lt;/span&gt;
+    RCTLogger.w(tag,msg);
+  },
+
+  e: &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(tag: string,msg: string)&lt;/span&gt;:&lt;span class=&quot;hljs-title&quot;&gt;void&lt;/span&gt;{&lt;/span&gt;
+    RCTLogger.e(tag,msg);
+  }
+}
+
+module.exports = LogAndroid;&lt;span class=&quot;hljs-comment&quot;&gt;//module 导出&lt;/span&gt;`&lt;/pre&gt;
+
+这里不用多说了，无非就是创建一个 LogAndroid 对象获取 `LoggerModule`java 类中的常量，方法等，并且导出。 
+
+下面我贴出完整的`index.android.js`，里面显示如何引用：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-comment&quot;&gt;/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ */&lt;/span&gt;
+&lt;span class=&quot;hljs-pi&quot;&gt;&apos;use strict&apos;&lt;/span&gt;;
+import React, {
+  AppRegistry,
+  Component,
+  StyleSheet,
+  Text,
+  ToastAndroid,
+  View,
+} from &lt;span class=&quot;hljs-string&quot;&gt;&apos;react-native&apos;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; LogAndroid = &lt;span class=&quot;hljs-built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&apos;./log&apos;&lt;/span&gt;);
+
+LogAndroid.i(LogAndroid.TAG,&lt;span class=&quot;hljs-string&quot;&gt;&quot;Awesome&quot;&lt;/span&gt;);
+LogAndroid.d(LogAndroid.TAG,&lt;span class=&quot;hljs-string&quot;&gt;&quot;Awesome&quot;&lt;/span&gt;);
+LogAndroid.w(LogAndroid.TAG,&lt;span class=&quot;hljs-string&quot;&gt;&quot;Awesome&quot;&lt;/span&gt;);
+LogAndroid.e(LogAndroid.TAG,&lt;span class=&quot;hljs-string&quot;&gt;&quot;Awesome&quot;&lt;/span&gt;);
+
+ToastAndroid.show(&lt;span class=&quot;hljs-string&quot;&gt;&apos;Awesome&apos;&lt;/span&gt;, ToastAndroid.SHORT);
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; AwesomeProject extends Component {
+  render() {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; (
+      &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.container}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.welcome}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          Welcome to React Native!
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.instructions}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          To get started, edit index.android.js
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;{styles.instructions}&lt;/span&gt;&amp;gt;&lt;/span&gt;
+          Shake or press menu button for dev menu
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;Text&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;View&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &apos;center&apos;,
+    alignItems: &apos;center&apos;,
+    backgroundColor: &apos;#F5FCFF&apos;,
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: &apos;center&apos;,
+    margin: 10,
+    color:&apos;red&apos;
+  },
+  instructions: {
+    textAlign: &apos;center&apos;,
+    color: &apos;#333333&apos;,
+    marginBottom: 5,
+  },
+});
+
+AppRegistry.registerComponent(&apos;AwesomeProject&apos;, () =&amp;gt; AwesomeProject);&lt;/span&gt;
+</code></pre><p>重新编译并运行你的 app，看看 logcat 打印出了日志吗？</p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2016/3/23 16:35:48 [原文链接](http://blog.csdn.net/kennethyo/article/details/50964432)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：50 评论：1 [查看评论](http://blog.csdn.net/kennethyo/article/details/50964432#comments)
+&lt;/div&gt;
+</code></pre>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/1956184117" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
