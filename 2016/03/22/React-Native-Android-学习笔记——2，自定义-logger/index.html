@@ -1,0 +1,575 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>React-Native Android 学习笔记——2，自定义 logger | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <meta name="author" content="Kenneth Yo">
+    
+    <meta name="description" content="通过上一篇《 React-Native Android 学习笔记——1，配置环境》下载了AwesomeProject项目并运行了 demo。如下图：
+
+应该和你运行起来的相同，但是除了Welcome to React Native的颜色。
+一，index.android.js 文件demo 默认展示">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="React-Native Android 学习笔记——2，自定义 logger"/>
+    <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">在北京敲键盘的呼伦贝尔人</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            Home
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            Archives
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            Reading
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            About
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            Search
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">你的大名</p>
+                        <p class="desc">Web前端/iOS/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    Home
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    Archives
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    Categories
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    Reading
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    About
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    Search
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">Search</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>React-Native Android 学习笔记——2，自定义 logger</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2016-03-22T11:52:00.000Z"><a href="/2016/03/22/React-Native-Android-学习笔记——2，自定义-logger/">2016-03-22</a></time>
+
+            
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一，index-android-js-文件"><span class="section table-of-contents-text">一，index.android.js 文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二，显示一个-Toast"><span class="section table-of-contents-text">二，显示一个 Toast</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#三，自定义-Logger"><span class="section table-of-contents-text">三，自定义 Logger</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="external">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：</p>
+<p><img src="/android/_image/2016-03-22/device-2016-03-22-185815.png" alt=""></p>
+<p>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
+<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：</p>
+<div class="codehilite"><pre><span class="cm">/<em>*</em></span><br><span class="cm">  Sample React Native App</span><br><span class="cm"> <em> <a href="https://github.com/facebook/react-native" target="_blank" rel="external">https://github.com/facebook/react-native</a></em></span><br><span class="cm"> /</span><br><span class="s1">&#39;use strict&#39;</span><span class="p">;</span><br><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><br>  <span class="nx">AppRegistry</span><span class="p">,</span><br>  <span class="nx">Component</span><span class="p">,</span><br>  <span class="nx">StyleSheet</span><span class="p">,</span><br>  <span class="nx">Text</span><span class="p">,</span><br>  <span class="nx">View</span><span class="p">,</span><br><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-native&#39;</span><span class="p">;</span><br><br><span class="kr">class</span> <span class="nx">AwesomeProject</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span><br>  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span><br>    <span class="k">return</span> <span class="p">(</span><br>      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">welcome</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">React</span> <span class="nx">Native</span><span class="o">!</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">instructions</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">To</span> <span class="nx">get</span> <span class="nx">started</span><span class="p">,</span> <span class="nx">edit</span> <span class="nx">index</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">js</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">instructions</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">Shake</span> <span class="nx">or</span> <span class="nx">press</span> <span class="nx">menu</span> <span class="nx">button</span> <span class="k">for</span> <span class="nx">dev</span> <span class="nx">menu</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>      <span class="o">&lt;</span><span class="err">/View&gt;</span><br>    <span class="p">);</span><br>  <span class="p">}</span><br><span class="p">}</span><br><br><span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><br>  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span><br>    <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#F5FCFF&#39;</span><span class="p">,</span><br>  <span class="p">},</span><br>  <span class="nx">welcome</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span><br>    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">margin</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span><br>    <span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><br>  <span class="p">},</span><br>  <span class="nx">instructions</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span><br>    <span class="nx">marginBottom</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span><br>  <span class="p">},</span><br><span class="p">});</span><br><br><span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;AwesomeProject&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">AwesomeProject</span><span class="p">);</span><br></pre></div>
+
+<p>可以看到我在 welcome 的 style 中设置了<code>color:&amp;#39;red&amp;#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：</p>
+<div class="codehilite"><pre><span class="nx">welcome</span><span class="o">:</span> <span class="p">{</span><br>  <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span><br>  <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>  <span class="nx">margin</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span><br>  <span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><br><span class="p">},</span><br></pre></div>
+
+<p>下面我们来熟悉一下<code>index.android.js</code>这个文件里面的 js 代码都是干什么的。</p>
+<p><code>&amp;#39;use strict&amp;#39;</code>是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="external">《Javascript 严格模式详解》</a>。</p>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><br>  <span class="nx">AppRegistry</span><span class="p">,</span><br>  <span class="nx">Component</span><span class="p">,</span><br>  <span class="nx">StyleSheet</span><span class="p">,</span><br>  <span class="nx">Text</span><span class="p">,</span><br>  <span class="nx">View</span><span class="p">,</span><br><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-native&#39;</span><span class="p">;</span><br></pre></div>
+
+<p>这段代码类似 java 的 import，把需要引用的 module 引入。</p>
+<div class="codehilite"><pre><span class="kr">class</span> <span class="nx">AwesomeProject</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span><br>  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span><br>    <span class="k">return</span> <span class="p">(</span><br>      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">welcome</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">React</span> <span class="nx">Native</span><span class="o">!</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">instructions</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">To</span> <span class="nx">get</span> <span class="nx">started</span><span class="p">,</span> <span class="nx">edit</span> <span class="nx">index</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">js</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">instructions</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">Shake</span> <span class="nx">or</span> <span class="nx">press</span> <span class="nx">menu</span> <span class="nx">button</span> <span class="k">for</span> <span class="nx">dev</span> <span class="nx">menu</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>      <span class="o">&lt;</span><span class="err">/View&gt;</span><br>    <span class="p">);</span><br>  <span class="p">}</span><br><span class="p">}</span><br></pre></div>
+
+<p>这段代码是渲染当前注册界面的布局，<code>render</code>方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。</p>
+<div class="codehilite"><pre><span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><br>  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span><br>    <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#F5FCFF&#39;</span><span class="p">,</span><br>  <span class="p">},</span><br>  <span class="nx">welcome</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span><br>    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">margin</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span><br>    <span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><br>  <span class="p">},</span><br>  <span class="nx">instructions</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span><br>    <span class="nx">marginBottom</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span><br>  <span class="p">},</span><br><span class="p">});</span><br></pre></div>
+
+<p>标签的具体规范可以看这里<a href="http://facebook.github.io/react-native/docs/text.html#content" target="_blank" rel="external">Text</a>，<a href="http://facebook.github.io/react-native/docs/view.html#content" target="_blank" rel="external">View</a>。</p>
+<div class="codehilite"><pre><span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;AwesomeProject&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">AwesomeProject</span><span class="p">);</span><br></pre></div>
+
+<p>上面这段代码把我们 js 文件中的 class <code>AwesomeProject</code>和我们 Android 项目中 <code>Activity</code>中<code>getMainComponentName() { return &amp;quot;AwesomeProject&amp;quot;; }</code>的 Activity关联起来。</p>
+<h2 id="二，显示一个-Toast"><a href="#二，显示一个-Toast" class="headerlink" title="二，显示一个 Toast"></a>二，显示一个 Toast</h2><p>React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在<code>../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js</code>中。<br>我们来看 ToastAndroid 的源码：</p>
+<div class="codehilite"><pre><span class="cm">/<strong></strong></span><br><span class="cm"> <em> Copyright (c) 2015-present, Facebook, Inc.</em></span><br><span class="cm">  All rights reserved.</span><br><span class="cm"> <em></em></span><br><span class="cm">  This source code is licensed under the BSD-style license found in the</span><br><span class="cm"> <em> LICENSE file in the root directory of this source tree. An additional grant</em></span><br><span class="cm">  of patent rights can be found in the PATENTS file in the same directory.</span><br><span class="cm"> <em></em></span><br><span class="cm">  @providesModule ToastAndroid</span><br><span class="cm"> */</span><br><br><span class="s1">&#39;use strict&#39;</span><span class="p">;</span><br><br><span class="kd">var</span> <span class="nx">RCTToastAndroid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;NativeModules&#39;</span><span class="p">).</span><span class="nx">ToastAndroid</span><span class="p">;</span><br><br><span class="cm">/</span><br><span class="cm"> <em> This exposes the native ToastAndroid module as a JS module. This has a function &#39;show&#39;</em></span><br><span class="cm">  which takes the following parameters:</span><br><span class="cm"> <em></em></span><br><span class="cm">  1. String message: A string with the text to toast</span><br><span class="cm"> <em> 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG</em></span><br><span class="cm"> /</span><br><br><span class="kd">var</span> <span class="nx">ToastAndroid</span> <span class="o">=</span> <span class="p">{</span><br><br>  <span class="nx">SHORT</span><span class="o">:</span> <span class="nx">RCTToastAndroid</span><span class="p">.</span><span class="nx">SHORT</span><span class="p">,</span><br>  <span class="nx">LONG</span><span class="o">:</span> <span class="nx">RCTToastAndroid</span><span class="p">.</span><span class="nx">LONG</span><span class="p">,</span><br><br>  <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><br>    <span class="nx">message</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span><br>    <span class="nx">duration</span><span class="o">:</span> <span class="nx">number</span><br>  <span class="p">)</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span><br>    <span class="nx">RCTToastAndroid</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">duration</span><span class="p">);</span><br>  <span class="p">},</span><br><br><span class="p">};</span><br><br><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">ToastAndroid</span><span class="p">;</span><br></pre></div>
+
+<p>我们可以直接在引包当中加入ToastAndroid。如下：</p>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><br>  <span class="nx">AppRegistry</span><span class="p">,</span><br>  <span class="nx">Component</span><span class="p">,</span><br>  <span class="nx">StyleSheet</span><span class="p">,</span><br>  <span class="nx">Text</span><span class="p">,</span><br>  <span class="nx">ToastAndroid</span><span class="p">,</span><br>  <span class="nx">View</span><span class="p">,</span><br><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-native&#39;</span><span class="p">;</span><br></pre></div>
+
+<p>下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码<code>ToastAndroid.show(&amp;#39;Awesome&amp;#39;, ToastAndroid.SHORT);</code>，下面来摇摆手机调出开发菜单，点击<code>Reload JS</code>。就会弹出Toast。<br>我们来分析一下<code>ToastAndroid.android.js</code>这个 module。</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">RCTToastAndroid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;NativeModules&#39;</span><span class="p">).</span><span class="nx">ToastAndroid</span><span class="p">;</span><br></pre></div>
+
+<p>这里是<code>require</code>是加载<code>NativeModules</code>模块，并把 <code>ToastAndroid</code> 赋值给 <code>RCTToastAndroid</code>。</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">ToastAndroid</span> <span class="o">=</span> <span class="p">{</span><br><br>  <span class="nx">SHORT</span><span class="o">:</span> <span class="nx">RCTToastAndroid</span><span class="p">.</span><span class="nx">SHORT</span><span class="p">,</span><br>  <span class="nx">LONG</span><span class="o">:</span> <span class="nx">RCTToastAndroid</span><span class="p">.</span><span class="nx">LONG</span><span class="p">,</span><br><br>  <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><br>    <span class="nx">message</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span><br>    <span class="nx">duration</span><span class="o">:</span> <span class="nx">number</span><br>  <span class="p">)</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span><br>    <span class="nx">RCTToastAndroid</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">duration</span><span class="p">);</span><br>  <span class="p">},</span><br><br><span class="p">};</span><br></pre></div>
+
+<p>这段代码，创建一个对象赋值给<code>ToastAndroid</code>，对象内分别设置了<code>Toast</code>的 <code>SHORT</code>，<code>LONG</code>和<code>show</code>方法。<br><code>module.exports = ToastAndroid;</code>这里把<code>ToastAndroid</code>作为当前这个 Module 导出，提供给外部使用。<br>那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 <code>ToastModule</code>，代码如下：</p>
+<div class="codehilite"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToastModule</span> <span class="kd">extends</span> <span class="n">ReactContextBaseJavaModule</span> <span class="o">{</span><br><br>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DURATION_SHORT_KEY</span> <span class="o">=</span> <span class="s">&quot;SHORT&quot;</span><span class="o">;</span><br>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DURATION_LONG_KEY</span> <span class="o">=</span> <span class="s">&quot;LONG&quot;</span><span class="o">;</span><br><br>  <span class="kd">public</span> <span class="nf">ToastModule</span><span class="o">(</span><span class="n">ReactApplicationContext</span> <span class="n">reactContext</span><span class="o">)</span> <span class="o">{</span><br>    <span class="kd">super</span><span class="o">(</span><span class="n">reactContext</span><span class="o">);</span><br>  <span class="o">}</span><br><br>  <span class="nd">@Override</span><br>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span><br>    <span class="k">return</span> <span class="s">&quot;ToastAndroid&quot;</span><span class="o">;</span><br>  <span class="o">}</span><br><br>  <span class="nd">@Override</span><br>  <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">getConstants</span><span class="o">()</span> <span class="o">{</span><br>    <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">constants</span> <span class="o">=</span> <span class="n">MapBuilder</span><span class="o">.</span><span class="na">newHashMap</span><span class="o">();</span><br>    <span class="n">constants</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">DURATION_SHORT_KEY</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">);</span><br>    <span class="n">constants</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">DURATION_LONG_KEY</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">);</span><br>    <span class="k">return</span> <span class="n">constants</span><span class="o">;</span><br>  <span class="o">}</span><br><br>  <span class="nd">@ReactMethod</span><br>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">,</span> <span class="kt">int</span> <span class="n">duration</span><span class="o">)</span> <span class="o">{</span><br>    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getReactApplicationContext</span><span class="o">(),</span> <span class="n">message</span><span class="o">,</span> <span class="n">duration</span><span class="o">).</span><span class="na">show</span><span class="o">();</span><br>  <span class="o">}</span><br><span class="o">}</span><br></pre></div>
+
+<p>这里<code>getName()</code>方法的返回值对应 JS 中的<code>var RCTToastAndroid = require(&amp;#39;NativeModules&amp;#39;).ToastAndroid;</code>结尾处的<code>ToastAndroid</code>，正如 js 里的请求手机本地的 modules ，对应到类里的<code>getName()</code>返回值。<br><code>getConstants()</code>方法负责把类中的常量映射到 JS 中去。<br><code>show(String message, int duration)</code>方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。</p>
+<h2 id="三，自定义-Logger"><a href="#三，自定义-Logger" class="headerlink" title="三，自定义 Logger"></a>三，自定义 Logger</h2><p>这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。</p>
+<div class="codehilite"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoggerModule</span> <span class="kd">extends</span> <span class="n">ReactContextBaseJavaModule</span> <span class="o">{</span><br>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MODULE_NAME</span> <span class="o">=</span> <span class="s">&quot;Logger&quot;</span><span class="o">;</span><br><br>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG_KEY</span> <span class="o">=</span> <span class="s">&quot;TAG&quot;</span><span class="o">;</span><br>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG_VALUE</span> <span class="o">=</span> <span class="s">&quot;LoggerModule&quot;</span><span class="o">;</span><br><br>    <span class="kd">public</span> <span class="nf">LoggerModule</span><span class="o">(</span><span class="n">ReactApplicationContext</span> <span class="n">reactContext</span><span class="o">)</span> <span class="o">{</span><br>        <span class="kd">super</span><span class="o">(</span><span class="n">reactContext</span><span class="o">);</span><br>    <span class="o">}</span><br><br>    <span class="nd">@Nullable</span><br>    <span class="nd">@Override</span><br>    <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">getConstants</span><span class="o">()</span> <span class="o">{</span><br>        <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">constants</span> <span class="o">=</span> <span class="n">MapBuilder</span><span class="o">.</span><span class="na">newHashMap</span><span class="o">();</span><br>        <span class="n">constants</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">TAG_KEY</span><span class="o">,</span> <span class="n">TAG_VALUE</span><span class="o">);</span><br>        <span class="k">return</span> <span class="n">constants</span><span class="o">;</span><br>    <span class="o">}</span><br><br>    <span class="nd">@Override</span><br>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span><br>        <span class="k">return</span> <span class="n">MODULE_NAME</span><span class="o">;</span><br>    <span class="o">}</span><br><br>    <span class="nd">@ReactMethod</span><br>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">i</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span><br>        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">tag</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span><br>    <span class="o">}</span><br><br>    <span class="nd">@ReactMethod</span><br>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">d</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span><br>        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">tag</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span><br>    <span class="o">}</span><br><br>    <span class="nd">@ReactMethod</span><br>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">w</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span><br>        <span class="n">Log</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">tag</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span><br>    <span class="o">}</span><br><br>    <span class="nd">@ReactMethod</span><br>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">e</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span><br>        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">tag</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span><br>    <span class="o">}</span><br><span class="o">}</span><br></pre></div>
+
+<p>这里我把常量<code>TAG</code>返回给 JS 调用，Module 命名为<code>Logger</code>，并且把 info，debug，warn，error 等 Log 方法加上<code>@ReactMethod</code>注释，提供给 JS调用。<br>这里还没有结束，我们还需要实现一个类，去注册我们自己写的 <code>LoggerModule</code>。具体代码如下：</p>
+<div class="codehilite"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppReactPackage</span> <span class="kd">implements</span> <span class="n">ReactPackage</span> <span class="o">{</span><br>    <span class="nd">@Override</span><br>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">NativeModule</span><span class="o">&gt;</span> <span class="nf">createNativeModules</span><span class="o">(</span><span class="n">ReactApplicationContext</span> <span class="n">reactContext</span><span class="o">)</span> <span class="o">{</span><br>        <span class="n">List</span><span class="o">&lt;</span><span class="n">NativeModule</span><span class="o">&gt;</span> <span class="n">modules</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span><br>        <span class="n">modules</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">LoggerModule</span><span class="o">(</span><span class="n">reactContext</span><span class="o">));</span><br>        <span class="k">return</span> <span class="n">modules</span><span class="o">;</span><br>    <span class="o">}</span><br><br>    <span class="nd">@Override</span><br>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">JavaScriptModule</span><span class="o">&gt;&gt;</span> <span class="nf">createJSModules</span><span class="o">()</span> <span class="o">{</span><br>        <span class="k">return</span> <span class="n">Collections</span><span class="o">.</span><span class="na">emptyList</span><span class="o">();</span><br>    <span class="o">}</span><br><br>    <span class="nd">@Override</span><br>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ViewManager</span><span class="o">&gt;</span> <span class="nf">createViewManagers</span><span class="o">(</span><span class="n">ReactApplicationContext</span> <span class="n">reactContext</span><span class="o">)</span> <span class="o">{</span><br>        <span class="k">return</span> <span class="n">Collections</span><span class="o">.</span><span class="na">emptyList</span><span class="o">();</span><br>    <span class="o">}</span><br><span class="o">}</span><br></pre></div>
+
+<p>然后，把这个 AppReactPackage 注册到 Activity。如下：</p>
+<div class="codehilite"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">ReactActivity</span> <span class="o">{</span><br><br>    <span class="cm">/<strong></strong></span><br><span class="cm">     <em> Returns the name of the main component registered from JavaScript.</em></span><br><span class="cm">      This is used to schedule rendering of the component.</span><br><span class="cm">     */</span><br>    <span class="nd">@Override</span><br>    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">getMainComponentName</span><span class="o">()</span> <span class="o">{</span><br>        <span class="k">return</span> <span class="s">&quot;AwesomeProject&quot;</span><span class="o">;</span><br>    <span class="o">}</span><br><br>    <span class="cm">/</span><br><span class="cm">     <em> Returns whether dev mode should be enabled.</em></span><br><span class="cm">      This enables e.g. the dev menu.</span><br><span class="cm">     <em>/</em></span><br>    <span class="nd">@Override</span><br>    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">getUseDeveloperSupport</span><span class="o">()</span> <span class="o">{</span><br>        <span class="k">return</span> <span class="n">BuildConfig</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">;</span><br>    <span class="o">}</span><br><br>    <span class="cm">/**</span><br><span class="cm">      A list of packages used by the app. If the app uses additional views</span><br><span class="cm">     <em> or modules besides the default ones, add more packages here.</em></span><br><span class="cm">     /</span><br>    <span class="nd">@Override</span><br>    <span class="kd">protected</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ReactPackage</span><span class="o">&gt;</span> <span class="nf">getPackages</span><span class="o">()</span> <span class="o">{</span><br>        <span class="k">return</span> <span class="n">Arrays</span><span class="o">.&lt;</span><span class="n">ReactPackage</span><span class="o">&gt;</span><span class="n">asList</span><span class="o">(</span><br>                <span class="k">new</span> <span class="n">MainReactPackage</span><span class="o">(),</span><br>                <span class="k">new</span> <span class="n">AppReactPackage</span><span class="o">()</span><br>        <span class="o">);</span><br>    <span class="o">}</span><br><span class="o">}</span><br></pre></div>
+
+<p>java 代码到这里就结束了。<br>下面，我们在<code>index.android.js</code>的同级目录创建一个 js 文件<code>log.js</code>。里面内容：</p>
+<div class="codehilite"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span><br><span class="kd">var</span> <span class="nx">RCTLogger</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;NativeModules&#39;</span><span class="p">).</span><span class="nx">Logger</span><span class="p">;</span><span class="c1">//加载本地 modules，Module#getName()</span><br><br><span class="kd">var</span> <span class="nx">LogAndroid</span> <span class="o">=</span> <span class="p">{</span><br>  <span class="c1">//添加定义的常量 Module#getConstants()</span><br>  <span class="nx">TAG</span><span class="o">:</span> <span class="nx">RCTLogger</span><span class="p">.</span><span class="nx">TAG</span><span class="p">,</span><br>  <span class="c1">//添加的方法 Module#d()</span><br>  <span class="nx">d</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span><span class="nx">msg</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="k">void</span><span class="p">{</span><br>    <span class="nx">RCTLogger</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span><span class="nx">msg</span><span class="p">);</span><br>  <span class="p">},</span><br><br>  <span class="nx">i</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span><span class="nx">msg</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="k">void</span><span class="p">{</span><br>    <span class="nx">RCTLogger</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span><span class="nx">msg</span><span class="p">);</span><br>  <span class="p">},</span><br><br>  <span class="nx">w</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span><span class="nx">msg</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="k">void</span><span class="p">{</span><br>    <span class="nx">RCTLogger</span><span class="p">.</span><span class="nx">w</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span><span class="nx">msg</span><span class="p">);</span><br>  <span class="p">},</span><br><br>  <span class="nx">e</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span><span class="nx">msg</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="k">void</span><span class="p">{</span><br>    <span class="nx">RCTLogger</span><span class="p">.</span><span class="nx">e</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span><span class="nx">msg</span><span class="p">);</span><br>  <span class="p">}</span><br><span class="p">}</span><br><br><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">LogAndroid</span><span class="p">;</span><span class="c1">//module 导出</span><br></pre></div>
+
+<p>这里不用多说了，无非就是创建一个 LogAndroid 对象获取 <code>LoggerModule</code>java 类中的常量，方法等，并且导出。<br>下面我贴出完整的<code>index.android.js</code>，里面显示如何引用：</p>
+<div class="codehilite"><pre><span class="cm">/<em>*</em></span><br><span class="cm">  Sample React Native App</span><br><span class="cm"> <em> <a href="https://github.com/facebook/react-native" target="_blank" rel="external">https://github.com/facebook/react-native</a></em></span><br><span class="cm"> /</span><br><span class="s1">&#39;use strict&#39;</span><span class="p">;</span><br><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><br>  <span class="nx">AppRegistry</span><span class="p">,</span><br>  <span class="nx">Component</span><span class="p">,</span><br>  <span class="nx">StyleSheet</span><span class="p">,</span><br>  <span class="nx">Text</span><span class="p">,</span><br>  <span class="nx">ToastAndroid</span><span class="p">,</span><br>  <span class="nx">View</span><span class="p">,</span><br><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-native&#39;</span><span class="p">;</span><br><span class="kd">var</span> <span class="nx">LogAndroid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./log&#39;</span><span class="p">);</span><br><br><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">TAG</span><span class="p">,</span><span class="s2">&quot;Awesome&quot;</span><span class="p">);</span><br><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">TAG</span><span class="p">,</span><span class="s2">&quot;Awesome&quot;</span><span class="p">);</span><br><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">w</span><span class="p">(</span><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">TAG</span><span class="p">,</span><span class="s2">&quot;Awesome&quot;</span><span class="p">);</span><br><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">e</span><span class="p">(</span><span class="nx">LogAndroid</span><span class="p">.</span><span class="nx">TAG</span><span class="p">,</span><span class="s2">&quot;Awesome&quot;</span><span class="p">);</span><br><br><span class="nx">ToastAndroid</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="s1">&#39;Awesome&#39;</span><span class="p">,</span> <span class="nx">ToastAndroid</span><span class="p">.</span><span class="nx">SHORT</span><span class="p">);</span><br><br><span class="kr">class</span> <span class="nx">AwesomeProject</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span><br>  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span><br>    <span class="k">return</span> <span class="p">(</span><br>      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">welcome</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">React</span> <span class="nx">Native</span><span class="o">!</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">instructions</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">To</span> <span class="nx">get</span> <span class="nx">started</span><span class="p">,</span> <span class="nx">edit</span> <span class="nx">index</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">js</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">instructions</span><span class="p">}</span><span class="o">&gt;</span><br>          <span class="nx">Shake</span> <span class="nx">or</span> <span class="nx">press</span> <span class="nx">menu</span> <span class="nx">button</span> <span class="k">for</span> <span class="nx">dev</span> <span class="nx">menu</span><br>        <span class="o">&lt;</span><span class="err">/Text&gt;</span><br>      <span class="o">&lt;</span><span class="err">/View&gt;</span><br>    <span class="p">);</span><br>  <span class="p">}</span><br><span class="p">}</span><br><br><span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><br>  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span><br>    <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#F5FCFF&#39;</span><span class="p">,</span><br>  <span class="p">},</span><br>  <span class="nx">welcome</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span><br>    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">margin</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span><br>    <span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><br>  <span class="p">},</span><br>  <span class="nx">instructions</span><span class="o">:</span> <span class="p">{</span><br>    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span><br>    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span><br>    <span class="nx">marginBottom</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span><br>  <span class="p">},</span><br><span class="p">});</span><br><br><span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;AwesomeProject&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">AwesomeProject</span><span class="p">);</span><br></pre></div>
+
+<p>重新编译并运行你的 app，看看 logcat 打印出了日志吗？</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="Return to top"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">Social</h5>
+                
+                    <a class="social-link" href="http://weibo.com/1956184117" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">Links</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">Blog powered by <a href="https://hexo.io">Hexo</a> | Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

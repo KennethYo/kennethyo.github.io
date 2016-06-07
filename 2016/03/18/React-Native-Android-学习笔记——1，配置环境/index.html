@@ -7,13 +7,15 @@
 
     
 
-    <title>My New Post | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <title>React-Native Android 学习笔记——1，配置环境 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="Kenneth Yo">
+    
+    <meta name="description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="My New Post"/>
+    <meta property="og:title" content="React-Native Android 学习笔记——1，配置环境"/>
     <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
 
     
@@ -211,22 +213,51 @@
             <div class="article-title">
                 
     
-        <h1>My New Post</h1>
+        <h1>React-Native Android 学习笔记——1，配置环境</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2016-06-07T05:47:46.000Z"><a href="/2016/06/07/My-New-Post/">2016-06-07</a></time>
+            <time class="pink-link-context" datetime="2016-03-18T07:31:00.000Z"><a href="/2016/03/18/React-Native-Android-学习笔记——1，配置环境/">2016-03-18</a></time>
 
             
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一，设备与环境"><span class="section table-of-contents-text">一，设备与环境</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1，一台-mac"><span class="section table-of-contents-text">1，一台 mac</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2，安装软件包管理器-Homebrew-中文"><span class="section table-of-contents-text">2，安装软件包管理器 Homebrew(中文)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3，安装-wget-或者-curl"><span class="section table-of-contents-text">3，安装 wget 或者 curl</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#4，安装-nvm-node版本管理器"><span class="section table-of-contents-text">4，安装 nvm (node版本管理器)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#5，Android-SDK"><span class="section table-of-contents-text">5，Android SDK</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二，安装和初始react-native-demo"><span class="section table-of-contents-text">二，安装和初始react-native demo</span></a></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                
+                <h2 id="一，设备与环境"><a href="#一，设备与环境" class="headerlink" title="一，设备与环境"></a>一，设备与环境</h2><h3 id="1，一台-mac"><a href="#1，一台-mac" class="headerlink" title="1，一台 mac"></a>1，一台 mac</h3><h3 id="2，安装软件包管理器-Homebrew-中文"><a href="#2，安装软件包管理器-Homebrew-中文" class="headerlink" title="2，安装软件包管理器 Homebrew(中文)"></a>2，安装软件包管理器 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew(中文)</a></h3><p>终端里输入<code>/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;</code>进行安装。</p>
+<h3 id="3，安装-wget-或者-curl"><a href="#3，安装-wget-或者-curl" class="headerlink" title="3，安装 wget 或者 curl"></a>3，安装 <a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="external">wget</a> 或者 <a href="https://zh.wikipedia.org/wiki/CURL" target="_blank" rel="external">curl</a></h3><p>wget，终端里输入<code>brew install wget</code>进行安装。<br>curl，终端里输入<code>brew install curl</code>进行安装。</p>
+<h3 id="4，安装-nvm-node版本管理器"><a href="#4，安装-nvm-node版本管理器" class="headerlink" title="4，安装 nvm (node版本管理器)"></a>4，安装 <a href="https://github.com/creationix/nvm#installation" target="_blank" rel="external">nvm</a> (node版本管理器)</h3><p>如果安装了 wget，终端输入<code>wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</code>进行安装 nvm。</p>
+<p>如果安装了 curl，终端输入<code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bashÂ</code>进行安装 nvm。</p>
+<h3 id="5，Android-SDK"><a href="#5，Android-SDK" class="headerlink" title="5，Android SDK"></a>5，Android SDK</h3><p>这个不用多说了，相信大家都会的。顺便把 Android SDK 配置到环境变量。</p>
+<p>如果你没有 Android SDK，也可以通过终端输入<code>brew install android-sdk</code>。</p>
+<h2 id="二，安装和初始react-native-demo"><a href="#二，安装和初始react-native-demo" class="headerlink" title="二，安装和初始react-native demo"></a>二，安装和初始react-native demo</h2><p>终端输入<code>npm install -g react-native-cli</code>安装 react-native。</p>
+<p>如果显示<code>EACCES: permission denied</code>，用超级权限再次执行一下上面的指令。反正我是没遇到。</p>
+<p>进入到你要创建 demo 的目录，终端输入<code>cd 你得文件路径</code>.<br>终端输入<code>react-native init AwesomeProject</code>，初始 AwesomeProject 。</p>
+<p>终端输入<code>cd AwesomeProject</code>。</p>
+<p>终端输入<code>react-native run-android</code>可以直接运行 node 服务并编译运行 Android 项目，直至安装到手机。</p>
+<p>如果界面报错提示如下：</p>
+<pre><code>Unable to download JS bundle
+com.facebook.react.devsupport.DebugServerException: Could not connect to development server.
+
+URL: http://localhost:8081/index.android.bundle?platform=android&amp;amp;dev=true&amp;amp;hot=false
+
+Try the following to fix the issue:
+• Ensure that the packager server is running
+• Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run &apos;adb devices&apos; to see a list of connected devices
+• If you&apos;re on a physical device connected to the same machine, run &apos;adb reverse tcp:8081 tcp:8081&apos; to forward requests from your device
+• If your device is on the same Wi-Fi network, set &apos;Debug server host &amp;amp; port for device&apos; in &apos;Dev settings&apos; to your machine&apos;s IP address and the port of the local dev server - e.g. 10.0.1.1:8081
+at com.facebook.react.devsupport.DevServerHelper$1.onFailure(DevServerHelper.java:203)
+at com.squareup.okhttp.Call$AsyncCall.execute(Call.java:175)
+at com.squareup.okhttp.internal.NamedRunnable.run(NamedRunnable.java:33)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+at java.lang.Thread.run(Thread.java:818)
+</code></pre><p>一般在终端输入<code>adb reverse tcp:8081 tcp:8081</code>即可解决，其他请详细看 log。</p>
+
             </div>
         </div>
     </div>
