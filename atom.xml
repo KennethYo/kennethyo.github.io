@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-08T02:43:29.000Z</updated>
+  <updated>2016-06-08T06:46:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/03/23/%E5%8E%9F-React-Native-Android-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%942%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89-logger/"/>
     <id>http://yoursite.com/2016/03/23/原-React-Native-Android-学习笔记——2，自定义-logger/</id>
     <published>2016-03-23T08:35:48.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:29.000Z</updated>
     
     <content type="html">&lt;p&gt;通过上一篇&lt;a href=&quot;http://blog.csdn.net/kennethyo/article/details/50923909&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《 React-Native Android 学习笔记——1，配置环境》&lt;/a&gt;下载了AwesomeProject项目并运行了 demo。如下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20160322185844293&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
@@ -484,6 +484,8 @@ AppRegistry.registerComponent(&amp;apos;AwesomeProject&amp;apos;, () =&amp;amp;g
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -496,7 +498,7 @@ AppRegistry.registerComponent(&amp;apos;AwesomeProject&amp;apos;, () =&amp;amp;g
     <link href="http://yoursite.com/2016/03/18/%E5%8E%9F-React-Native-Android-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%941%EF%BC%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/"/>
     <id>http://yoursite.com/2016/03/18/原-React-Native-Android-学习笔记——1，配置环境/</id>
     <published>2016-03-18T07:30:43.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:25.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;一，设备与环境&quot;&gt;&lt;a href=&quot;#一，设备与环境&quot; class=&quot;headerlink&quot; title=&quot;一，设备与环境&quot;&gt;&lt;/a&gt;一，设备与环境&lt;/h2&gt;&lt;h3 id=&quot;1，一台-mac&quot;&gt;&lt;a href=&quot;#1，一台-mac&quot; class=&quot;headerlink&quot; title=&quot;1，一台 mac&quot;&gt;&lt;/a&gt;1，一台 mac&lt;/h3&gt;&lt;h3 id=&quot;2，安装软件包管理器-Homebrew-中文&quot;&gt;&lt;a href=&quot;#2，安装软件包管理器-Homebrew-中文&quot; class=&quot;headerlink&quot; title=&quot;2，安装软件包管理器 Homebrew(中文)&quot;&gt;&lt;/a&gt;2，安装软件包管理器 &lt;a href=&quot;http://brew.sh/index_zh-cn.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Homebrew(中文)&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;终端里输入&lt;code&gt;/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/code&gt;进行安装。&lt;/p&gt;
 &lt;h3 id=&quot;3，安装-wget-或者-curl&quot;&gt;&lt;a href=&quot;#3，安装-wget-或者-curl&quot; class=&quot;headerlink&quot; title=&quot;3，安装 wget 或者 curl&quot;&gt;&lt;/a&gt;3，安装 &lt;a href=&quot;https://zh.wikipedia.org/wiki/Wget&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;wget&lt;/a&gt; 或者 &lt;a href=&quot;https://zh.wikipedia.org/wiki/CURL&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;curl&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;wget，终端里输入&lt;code&gt;brew install wget&lt;/code&gt;进行安装。&lt;/p&gt;
@@ -543,6 +545,8 @@ at java.lang.Thread.run(Thread.java:&amp;lt;span class=&amp;quot;hljs-number&amp
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -555,7 +559,7 @@ at java.lang.Thread.run(Thread.java:&amp;lt;span class=&amp;quot;hljs-number&amp
     <link href="http://yoursite.com/2015/12/03/%E5%8E%9F-Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93%EF%BC%8C%E5%AD%97%E6%9B%BF%E6%8D%A2%E4%B8%BA%E5%9B%BE%E7%89%87/"/>
     <id>http://yoursite.com/2015/12/03/原-Android-自定义字体，字替换为图片/</id>
     <published>2015-12-03T05:54:59.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:59.000Z</updated>
     
     <content type="html">&lt;p&gt;不久前开发的版本中有这样一个需求，根据服务器返回的分数，显示分数，各位可能觉得这有什么呢？那么请看下图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20151203113652497&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
@@ -759,6 +763,8 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -771,7 +777,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
     <link href="http://yoursite.com/2015/10/16/%E5%8E%9F-Android-%E7%BF%BB%E8%BD%AC%E5%8A%A8%E7%94%BB-Rotate3dAnimation-%E6%95%88%E6%9E%9C/"/>
     <id>http://yoursite.com/2015/10/16/原-Android-翻转动画-Rotate3dAnimation-效果/</id>
     <published>2015-10-16T09:05:57.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:49.000Z</updated>
     
     <content type="html">&lt;p&gt;十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~&lt;/p&gt;
 &lt;hr&gt;
@@ -891,6 +897,8 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -903,7 +911,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
     <link href="http://yoursite.com/2015/09/29/%E5%8E%9F-Android-%E5%8F%AF%E6%8B%96%E6%8B%BD-GridView-%E5%B9%B6%E4%B8%94%E5%AE%9E%E6%97%B6%E5%88%87%E6%8D%A2%E5%92%8C%E6%8B%96%E5%8A%A8%E5%88%B0%E4%B8%8B%E9%83%A8%E5%88%A0%E9%99%A4/"/>
     <id>http://yoursite.com/2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/</id>
     <published>2015-09-29T07:22:08.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:52.000Z</updated>
     
     <content type="html">&lt;p&gt;最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150929150020321&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
@@ -938,6 +946,8 @@ mWindowManager.addView(mDragLayout, mWindowLayoutParams);
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -950,7 +960,7 @@ mWindowManager.addView(mDragLayout, mWindowLayoutParams);
     <link href="http://yoursite.com/2015/08/10/%E5%8E%9F-%E9%AB%98%E4%BB%BFSinaWeibo%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%8F%91%E5%B8%83%E9%A1%B5%E9%9D%A2%E8%AF%9D%E9%A2%98%E6%95%88%E6%9E%9C/"/>
     <id>http://yoursite.com/2015/08/10/原-高仿SinaWeibo新浪微博发布页面话题效果/</id>
     <published>2015-08-09T16:06:33.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:33.000Z</updated>
     
     <content type="html">&lt;p&gt;最近做了一个仿新浪微博话题效果的功能,网上搜索了几个效果,都存在一定问题,最终借鉴别人的思路,完成这一套效果.&lt;/p&gt;
 &lt;p&gt;首先,我们拆分逻辑以及开发顺序.&lt;/p&gt;
@@ -1115,6 +1125,8 @@ mWindowManager.addView(mDragLayout, mWindowLayoutParams);
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1125,7 +1137,7 @@ mWindowManager.addView(mDragLayout, mWindowLayoutParams);
     <link href="http://yoursite.com/2015/05/25/%E8%AF%91-%E4%BB%8B%E7%BB%8DMVP-Model-View-Presenter%E5%9C%A8Android%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
     <id>http://yoursite.com/2015/05/25/译-介绍MVP-Model-View-Presenter在Android中的应用/</id>
     <published>2015-05-25T05:47:35.000Z</published>
-    <updated>2016-06-08T02:39:24.000Z</updated>
+    <updated>2016-06-08T06:44:39.000Z</updated>
     
     <content type="html">&lt;p&gt;这篇文章是我学习MVP模式时翻译的，原文是&lt;a href=&quot;http://konmik.github.io/author/konstantin-mikheev.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Konstantin Mikheev&lt;/a&gt;所写，&lt;a href=&quot;http://konmik.github.io/introduction-to-model-view-presenter-on-android.html?utm_source=Android+Weekly&amp;amp;utm_campaign=5589504b56-Android_Weekly_148&amp;amp;utm_medium=email&amp;amp;utm_term=0_4eb677ad19-5589504b56-337835113&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。&lt;/p&gt;
@@ -1582,6 +1594,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1594,7 +1608,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2015/05/08/%E5%8E%9F-Android%E8%8E%B7%E5%8F%96%E8%BF%90%E8%90%A5%E5%95%86/"/>
     <id>http://yoursite.com/2015/05/08/原-Android获取运营商/</id>
     <published>2015-05-08T08:40:08.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:04.000Z</updated>
     
     <content type="html">&lt;p&gt;今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150508163804803&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
@@ -1640,6 +1654,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1650,7 +1666,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/"/>
     <id>http://yoursite.com/2015/04/22/原-WebView填坑——小功能篇/</id>
     <published>2015-04-22T08:31:06.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:36.000Z</updated>
     
     <content type="html">&lt;p&gt;这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。&lt;/p&gt;
 &lt;h3 id=&quot;Webview中上传文件&quot;&gt;&lt;a href=&quot;#Webview中上传文件&quot; class=&quot;headerlink&quot; title=&quot;Webview中上传文件&quot;&gt;&lt;/a&gt;Webview中上传文件&lt;/h3&gt;&lt;p&gt;这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。&lt;/p&gt;
@@ -1761,6 +1777,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1771,7 +1789,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2015/01/25/%E5%8E%9F-Android%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%A6%82%E4%BD%95%E6%B3%A1%E8%AE%BE%E8%AE%A1%E5%A6%B9%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%8C%E6%8F%A1dp%E5%92%8Cpx%E6%89%8D%E5%8F%AF%E4%BB%A5/"/>
     <id>http://yoursite.com/2015/01/25/原-Android程序猿如何泡设计妹之快速掌握dp和px才可以/</id>
     <published>2015-01-25T14:44:22.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:08.000Z</updated>
     
     <content type="html">&lt;p&gt;相信很多Android程序猿已经对身边的设计妹垂涎三尺了，那么如何博得设计妹的好感呢，学好这篇文章就可以了。&lt;/p&gt;
 &lt;p&gt;程序猿与UI设计妹讨论设计稿和切图的时候，经常会因为dp和px的问题搞的不愉快，这里可以分析出两个原因：&lt;/p&gt;
@@ -1811,6 +1829,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1821,7 +1841,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2014/12/28/%E5%8E%9F-CardView%E5%88%9D%E7%BA%A7%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2014/12/28/原-CardView初级使用/</id>
     <published>2014-12-28T06:08:54.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:12.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;CardView&lt;/code&gt;发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里&lt;a href=&quot;http://kennethyo.farbox.com/post/android/recyclerviewchu-ji-shi-yong#main&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。&lt;/p&gt;
@@ -1852,6 +1872,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1864,7 +1886,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2014/11/10/%E5%8E%9F-RecyclerView%E5%88%9D%E7%BA%A7%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2014/11/10/原-RecyclerView初级使用/</id>
     <published>2014-11-10T07:18:15.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:32.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;span style=&quot;font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144&quot;&gt;&lt;span style=&quot;white-space:pre-wrap; background-color:rgb(247,247,249)&quot;&gt;（转载请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;RecyclerView&lt;/code&gt;是Android在v7包中包含了一个新的widget，&lt;code&gt;RecyclerView&lt;/code&gt;是一个&lt;code&gt;ListView&lt;/code&gt;进阶版，但不继承与&lt;code&gt;AdapterView&lt;/code&gt;，相比&lt;code&gt;ListView&lt;/code&gt;，&lt;code&gt;RecyclerView&lt;/code&gt;更加灵活和先进。&lt;/p&gt;
@@ -1915,6 +1937,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1925,7 +1949,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2014/11/04/%E5%8E%9F-Palette%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2014/11/04/原-Palette的使用/</id>
     <published>2014-11-04T08:19:53.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:20.000Z</updated>
     
     <content type="html">&lt;p&gt;（转载，请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -1963,6 +1987,8 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -1973,7 +1999,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     <link href="http://yoursite.com/2014/10/24/%E5%8E%9F-LayoutInflater-inflate%E8%AF%A6%E8%A7%A3/"/>
     <id>http://yoursite.com/2014/10/24/原-LayoutInflater-inflate详解/</id>
     <published>2014-10-24T08:27:08.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:46:16.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;介绍常见inflate方法&quot;&gt;&lt;a href=&quot;#介绍常见inflate方法&quot; class=&quot;headerlink&quot; title=&quot;介绍常见inflate方法&quot;&gt;&lt;/a&gt;介绍常见inflate方法&lt;/h2&gt;&lt;p&gt;在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种：&lt;/p&gt;
 &lt;pre code_snippet_id=&quot;495633&quot; snippet_file_name=&quot;blog_20141024_1_2164263&quot; name=&quot;code&quot; class=&quot;java&quot;&gt;//1,通过系统服务获取布局加载器
@@ -2120,6 +2146,8 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -2130,7 +2158,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     <link href="http://yoursite.com/2014/08/22/%E5%8E%9F-Android-API%EF%BC%8C%E7%89%88%E6%9C%AC%E5%AF%B9%E7%85%A7/"/>
     <id>http://yoursite.com/2014/08/22/原-Android-API，版本对照/</id>
     <published>2014-08-22T02:51:53.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:56.000Z</updated>
     
     <content type="html">&lt;div class=&quot;para&quot; style=&quot;font-family:Arial; font-size:14px; line-height:26px&quot;&gt;&lt;br&gt;&lt;br&gt;###&lt;br&gt;&lt;br&gt;### &lt;strong&gt;API等级1： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.0&amp;nbsp;&lt;br&gt;&lt;br&gt;API等级2： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.1 Petit Four &amp;nbsp;花式小蛋糕&lt;br&gt;&lt;br&gt;API等级3： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕&lt;br&gt;&lt;br&gt;API等级4： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.6 Donut &amp;nbsp;甜甜圈&lt;br&gt;&lt;br&gt;API等级5： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.0 Éclair &amp;nbsp; 松饼&lt;br&gt;&lt;br&gt;API等级6： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.0.1 Éclair &amp;nbsp;松饼&lt;br&gt;&lt;br&gt;API等级7： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.1 Éclair &amp;nbsp; 松饼&lt;br&gt;&lt;br&gt;API等级8： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.2 - 2.2.3 Froyo &amp;nbsp;冻酸奶&lt;br&gt;&lt;br&gt;API等级9： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.3 - 2.3.2 Gingerbread &amp;nbsp;姜饼&lt;br&gt;&lt;br&gt;API等级10：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.3.3-2.3.7 Gingerbread &amp;nbsp; 姜饼&lt;br&gt;&lt;br&gt;API等级11：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.0 Honeycomb 蜂巢&lt;br&gt;&lt;br&gt;API等级12：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.1 Honeycomb 蜂巢&lt;br&gt;&lt;br&gt;API等级13：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.2 Honeycomb 蜂巢&lt;br&gt;&lt;br&gt;API等级14：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.0 - 4.0.2 Ice Cream Sandwich &amp;nbsp;冰激凌三明治&lt;br&gt;&lt;br&gt;API等级15：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.0.3 - 4.0.4 Ice Cream Sandwich &amp;nbsp;冰激凌三明治&lt;br&gt;&lt;br&gt;API等级16：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.1 Jelly Bean &amp;nbsp;糖豆&lt;br&gt;&lt;br&gt;API等级17：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.2 Jelly Bean &amp;nbsp;糖豆&lt;br&gt;&lt;br&gt;API等级18：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.3 Jelly Bean &amp;nbsp;糖豆&lt;br&gt;&lt;br&gt;API等级19：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.4 KitKat &amp;nbsp;奇巧巧克力棒&lt;br&gt;&lt;br&gt;API等级20：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android L&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;
 
@@ -2148,6 +2176,8 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -2158,7 +2188,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     <link href="http://yoursite.com/2014/06/23/%E8%AF%91-Android%E6%96%87%E6%9C%AC%E7%9A%84%E6%B5%8B%E9%87%8F%E5%92%8C%E7%BB%98%E5%88%B6/"/>
     <id>http://yoursite.com/2014/06/23/译-Android文本的测量和绘制/</id>
     <published>2014-06-23T03:20:50.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:05.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;翻译与&lt;a href=&quot;http://chris.banes.me/#blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chris Banes的博客&lt;/a&gt;&amp;nbsp; &amp;nbsp;&lt;a href=&quot;http://chris.banes.me/2014/03/27/measuring-text/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文地址&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -2275,6 +2305,8 @@ canvas.drawText(mText, // Text to display
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -2285,7 +2317,7 @@ canvas.drawText(mText, // Text to display
     <link href="http://yoursite.com/2014/05/08/%E5%8E%9F-%E8%87%AA%E5%AE%9A%E4%B9%89TextView%E5%AE%9E%E7%8E%B0%E5%86%85%E5%AE%B9%E7%9A%84%E6%97%8B%E8%BD%AC%E5%92%8C%E5%81%8F%E7%A7%BB/"/>
     <id>http://yoursite.com/2014/05/08/原-自定义TextView实现内容的旋转和偏移/</id>
     <published>2014-05-08T06:10:00.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:45.000Z</updated>
     
     <content type="html">&lt;p&gt;在一些设计上，设计师会要求我们的文字以45度显示，或者135度显示（如下图“抽奖”），可是android本身并没有提供TextView在布局文件中实现旋转的标签，这时候就需要我们去自定义TextView，并且重写onDraw（）方法实现效果。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140508114640671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -2437,6 +2469,8 @@ public class RotateTextView extends TextView {
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -2447,7 +2481,7 @@ public class RotateTextView extends TextView {
     <link href="http://yoursite.com/2014/04/23/%E5%8E%9F-%E5%8D%9A%E4%B8%BB%E6%AF%95%E4%B8%9A%E4%BB%A5%E6%9D%A5%E6%80%BB%E7%BB%93%E7%9A%84android%E7%BB%8F%E9%AA%8C%EF%BC%8C%E6%83%B3%E8%B5%B7%E6%9D%A5%E4%BB%80%E4%B9%88%E5%B0%B1%E5%8A%A0%E7%82%B9/"/>
     <id>http://yoursite.com/2014/04/23/原-博主毕业以来总结的android经验，想起来什么就加点/</id>
     <published>2014-04-23T05:41:35.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:41.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;span style=&quot;orphans:2; widows:2&quot;&gt;&lt;/span&gt;&lt;/h2&gt;&lt;h2 id=&quot;1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果&quot;&gt;&lt;a href=&quot;#1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果&quot; class=&quot;headerlink&quot; title=&quot;1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果&quot;&gt;&lt;/a&gt;&lt;span style=&quot;font-size:18px&quot;&gt;1，&lt;/span&gt;&lt;span style=&quot;font-size:14px; font-family:Tahoma&quot;&gt;api10以下尽量用padding,margin很多的时候会有bug，显示不出效果&lt;/span&gt;&lt;/h2&gt;&lt;div&gt;&lt;span style=&quot;font-size:14px; font-family:Tahoma&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;
 
@@ -2488,6 +2522,8 @@ public class RotateTextView extends TextView {
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -2498,7 +2534,7 @@ public class RotateTextView extends TextView {
     <link href="http://yoursite.com/2014/02/11/%E5%8E%9F-%E7%94%A8Fragment%E6%9D%A5%E4%BB%A3%E6%9B%BF%E8%BF%87%E6%9C%9F%E7%9A%84Tabhost%E5%92%8CActivityGroup/"/>
     <id>http://yoursite.com/2014/02/11/原-用Fragment来代替过期的Tabhost和ActivityGroup/</id>
     <published>2014-02-11T05:24:14.000Z</published>
-    <updated>2016-06-08T02:43:29.000Z</updated>
+    <updated>2016-06-08T06:45:37.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&lt;/span&gt;我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&lt;/span&gt;最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期）&lt;/p&gt;
@@ -2666,6 +2702,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
     
     </summary>
     
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
@@ -2676,7 +2714,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
     <link href="http://yoursite.com/2014/02/10/%E8%BD%AC-Google-Java%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/"/>
     <id>http://yoursite.com/2014/02/10/转-Google-Java编程风格指南/</id>
     <published>2014-02-10T03:51:27.000Z</published>
-    <updated>2016-06-08T02:43:24.000Z</updated>
+    <updated>2016-06-08T06:45:18.000Z</updated>
     
     <content type="html">&lt;div style=&quot;color:rgb(51,51,51); font-family:&#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; font-size:13px; line-height:23px&quot;&gt;&lt;br&gt;作者：Hawstein&lt;br&gt;&lt;br&gt;出处：&lt;a href=&quot;http://hawstein.com/posts/google-java-style.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hawstein.com/posts/google-java-style.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;声明：本文采用以下协议进行授权：&amp;nbsp;&lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&lt;/a&gt;&amp;nbsp;，转载请注明作者及出处。&lt;br&gt;&lt;br&gt;&lt;/div&gt;
 
@@ -3147,6 +3185,8 @@ return &amp;apos;\ufeff&amp;apos; &amp;amp;#43; content; // byte order mark     
       &lt;div style=&quot;color:rgb(51,51,51); font-family:&#39;Helvetica Neue&#39;,Helvetica,Arial,sans-serif; font-size:13px; line-height:23px&quot;&gt;&lt;br&gt;作者：Hawstein&lt;
     
     </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
