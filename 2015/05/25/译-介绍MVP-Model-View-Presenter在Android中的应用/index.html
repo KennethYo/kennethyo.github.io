@@ -10,11 +10,11 @@
     <title>[译]介绍MVP Model-View-Presenter在Android中的应用 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="Kenneth Yo">
     
-    <meta name="description" content="这篇文章是我学习MVP模式时翻译的，原文是Konstantin Mikheev所写，传送门。 
-因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。 
+    <meta name="description" content="这篇文章是我学习MVP模式时翻译的，原文是Konstantin Mikheev所写，传送门。
+因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。
 转载请注明出处:http://blog.csdn.net/kennethyo
 
-这篇文章我会通过一个最简单的例子去一步步介绍MVP">
+这篇文章我会通过一个最简单的例子去一步步介绍MVP模式">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -55,7 +55,7 @@
                         <a class="menu-home " href="/" >
                             <i class="fa fa-home "></i>
                             
-                            首頁
+                            Home
                         </a>
                     </li>
                 
@@ -63,7 +63,7 @@
                         <a class="menu-archive " href="/archives" >
                             <i class="fa fa-archive "></i>
                             
-                            彙整
+                            Archives
                         </a>
                     </li>
                 
@@ -71,7 +71,7 @@
                         <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
                             <i class="fa fa-bookmark "></i>
                             
-                            分類
+                            Categories
                         </a>
                     </li>
                 
@@ -79,7 +79,7 @@
                         <a class="menu-reading " href="/reading" >
                             <i class="fa fa-book "></i>
                             
-                            讀書
+                            Reading
                         </a>
                     </li>
                 
@@ -87,7 +87,7 @@
                         <a class="menu-about " href="/about" >
                             <i class="fa fa-user "></i>
                             
-                            關於
+                            About
                         </a>
                     </li>
                 
@@ -95,7 +95,7 @@
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
-                            搜尋
+                            Search
                         </a>
                     </li>
                 
@@ -106,12 +106,12 @@
         <li class="side-user">
             <div class="row">
                 <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                    <img class="avatar-image circle responsive-img" src="http://tva3.sinaimg.cn/crop.0.164.768.768.180/792a0844jw8etn392skjuj20lc0sgn2i.jpg" alt="User Avatar">
                 </div>
                 <div class="info col s8 valign-wrapper no-padding">
                     <div class="valign">
-                        <p class="name">你的大名</p>
-                        <p class="desc">Web前端/iOS/技术宅</p>
+                        <p class="name">鸿雁</p>
+                        <p class="desc"> Android/Wower</p>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                 <a class="waves-effect menu-home " href="/" >
                     <i class="fa fa-home "></i>
                     
-                    首頁
+                    Home
                 </a>
             </li>
         
@@ -131,7 +131,7 @@
                 <a class="waves-effect menu-archive " href="/archives" >
                     <i class="fa fa-archive "></i>
                     
-                    彙整
+                    Archives
                 </a>
             </li>
         
@@ -139,7 +139,7 @@
                 <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
                     <i class="fa fa-bookmark "></i>
                     
-                    分類
+                    Categories
                 </a>
             </li>
         
@@ -147,7 +147,7 @@
                 <a class="waves-effect menu-reading " href="/reading" >
                     <i class="fa fa-book "></i>
                     
-                    讀書
+                    Reading
                 </a>
             </li>
         
@@ -155,7 +155,7 @@
                 <a class="waves-effect menu-about " href="/about" >
                     <i class="fa fa-user "></i>
                     
-                    關於
+                    About
                 </a>
             </li>
         
@@ -163,7 +163,7 @@
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
-                    搜尋
+                    Search
                 </a>
             </li>
         
@@ -185,7 +185,7 @@
     <div class="row">
         <div class="input-field col s12">
               <input id="search-input" type="text">
-              <label for="search-input">搜尋</label>
+              <label for="search-input">Search</label>
         </div>
 
     </div>
@@ -199,7 +199,7 @@
         <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">當前位置（分類目錄）</span>
+        <span class="breadcrumb">Current page(Categories)</span>
         
             
 
@@ -222,18 +222,26 @@
 
 
             </div>
-            <time class="pink-link-context" datetime="2015-05-25T05:47:35.000Z"><a href="/2015/05/25/译-介绍MVP-Model-View-Presenter在Android中的应用/">2015-05-25</a></time>
+            <time class="indigo-link-context" datetime="2015-05-25T05:47:35.000Z"><a href="/2015/05/25/译-介绍MVP-Model-View-Presenter在Android中的应用/">2015-05-25</a></time>
 
             
+    <div class="tags-row">
+        
+            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+        
+            <a href="/tags/MVP/" class="chip green accent-4">MVP</a>
+        
+    </div>
 
-            <div class="toc pink-link-context hide-on-med-and-down">
+
+            <div class="toc indigo-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#简单？怎么才能从中获益呢？"><span class="section table-of-contents-text">简单？怎么才能从中获益呢？</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#什么是MVP"><span class="section table-of-contents-text">什么是MVP</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#在Android中，为什么是MVP"><span class="section table-of-contents-text">在Android中，为什么是MVP</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#原因1：保持简单傻瓜"><span class="section table-of-contents-text">原因1：保持简单傻瓜</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#使用不可变数据结构的复杂关系数据库项目"><span class="section table-of-contents-text">使用不可变数据结构的复杂关系数据库项目</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#结尾"><span class="section table-of-contents-text">结尾</span></a></li></ol>
 </div>
 
 
-            <div class="entry pink-link-context">
-                <p>这篇文章是我学习MVP模式时翻译的，原文是<a href="http://konmik.github.io/author/konstantin-mikheev.html" target="_blank" rel="external">Konstantin Mikheev</a>所写，<a href="http://konmik.github.io/introduction-to-model-view-presenter-on-android.html?utm_source=Android+Weekly&amp;utm_campaign=5589504b56-Android_Weekly_148&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-5589504b56-337835113" target="_blank" rel="external">传送门</a>。 </p>
-<p>因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。 </p>
+            <div class="entry indigo-link-context">
+                <p>这篇文章是我学习MVP模式时翻译的，原文是<a href="http://konmik.github.io/author/konstantin-mikheev.html" target="_blank" rel="external">Konstantin Mikheev</a>所写，<a href="http://konmik.github.io/introduction-to-model-view-presenter-on-android.html?utm_source=Android+Weekly&amp;utm_campaign=5589504b56-Android_Weekly_148&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-5589504b56-337835113" target="_blank" rel="external">传送门</a>。</p>
+<p>因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。</p>
 <p>转载请注明出处:<a href="http://blog.csdn.net/kennethyo" target="_blank" rel="external">http://blog.csdn.net/kennethyo</a></p>
 <hr>
 <p>这篇文章我会通过一个最简单的例子去一步步介绍MVP模式在Android中的最佳实践。同时我也会介绍一个使MVP模式在Android开发中变简单的library。</p>
@@ -242,13 +250,10 @@
 <p><strong>Presenter</strong>层提供View层和Model层的数据进行联系。Presenter层也可以控制后台Task。</p>
 <p>在Android中，MVP模式可以把后台线程从Activitys/Views/Fragments中脱离出来，使它们在大部分生命周期事件中更加独立。这样的应用变得更加简单，整个程序的稳定性提升了10倍不止，应用代码变得更加少，代码可维护性变得更加友善，开发者的生命变得更加开心。</p>
 <h2 id="在Android中，为什么是MVP"><a href="#在Android中，为什么是MVP" class="headerlink" title="在Android中，为什么是MVP"></a>在Android中，为什么是MVP</h2><h3 id="原因1：保持简单傻瓜"><a href="#原因1：保持简单傻瓜" class="headerlink" title="原因1：保持简单傻瓜"></a>原因1：保持简单傻瓜</h3><p>如果你还没读过这篇文章，请读一遍：<a href="https://people.apache.org/~fhanik/kiss.html" target="_blank" rel="external">The Kiss Principle</a></p>
-<pre><code>·大多数Android程序仅仅使用了View-Model模式。
-·程序员需要参与View的复杂性，而不是解决业务。
-`&lt;/pre&gt;
-
-在应用中你仅仅使用Model-View，最后会落得“一切连接这一切”的状态。
-
-![这里写图片描述](http://img.blog.csdn.net/20150525132155795)
+<p>大多数Android程序仅仅使用了View-Model模式。</p>
+<p>程序员需要参与View的复杂性，而不是解决业务。</p>
+<p>在应用中你仅仅使用Model-View，最后会落得“一切连接这一切”的状态。</p>
+<pre><code>![这里写图片描述](http://img.blog.csdn.net/20150525132155795)
 
 如果这个示例图看起来不是那么复杂，那么想想每个View可能随时消失和随时出现。别忘了保存和恢复view的状态。为临时View attache 几个后台任务，蛋糕准备好了！
 
@@ -279,7 +284,7 @@
 
 ![这里写图片描述](http://img.blog.csdn.net/20150525133414325)
 
-**Case 1:**当用户旋转屏幕，改变语言设置， attache 一个外部显示器，等情况，通常Configuration会发生变化。更多关于[Configuration] 
+**Case 1:**当用户旋转屏幕，改变语言设置， attache 一个外部显示器，等情况，通常Configuration会发生变化。更多关于[Configuration]
 
 ([http://developer.android.com/reference/android/R.attr.html#configChanges](http://developer.android.com/reference/android/R.attr.html#configChanges))请阅读链接。
 
@@ -287,13 +292,13 @@
 
 **Case 3:**没有足够的内存和应用进入后台，process会restart。
 
-**最后** 
+**最后**
 
 现在你可以看到，Fragment当中设置setRetainInstance(true)在这里是没用帮助的，我们只需要设置save/restore就可以。因此，我们可以简单的去除Fragment的setRetainInstance方法，来限制问题的数量。
 
 ![这里写图片描述](http://img.blog.csdn.net/20150525133504401)
 
-|Activity, View, Fragment, DialogFragment Static variables and threads | save/restore no change | save/restore reset | 
+|Activity, View, Fragment, DialogFragment Static variables and threads | save/restore no change | save/restore reset |
 
 现在看起来爽多了。我们在应用任何情况下，只需要写两段代码就可以完成restore：
 
@@ -723,12 +728,12 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
 </div>
 
         <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large pink">
+    <a class="btn-floating btn-large green">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
     <ul>
-      <li><a class="btn-return-top btn-floating waves-effect green" title="回到頂部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+      <li><a class="btn-return-top btn-floating waves-effect blue" title="Return to top"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
     </ul>
   </div>
 
@@ -739,7 +744,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
         <div class="row">
             
             <div class="social-group col m3 s12">
-                <h5 class="white-text">社交</h5>
+                <h5 class="white-text">Social</h5>
                 
                     <a class="social-link" href="http://weibo.com/304526030" target="_blank">
                         <i class="fa fa-2x fa-weibo"></i>
@@ -758,7 +763,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
 
             
             <div class="col m9 s12">
-                <h5 class="white-text">友情連結</h5>
+                <h5 class="white-text">Links</h5>
                 
                     <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
                 
@@ -770,10 +775,10 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
     </div>
     
 
-    <div class="footer-copyright pink-link-context">
+    <div class="footer-copyright indigo-link-context">
         <div class="container">
             © 2016 example.com, All rights reserved.
-            <p class="right" style="margin-top: 0;">本站使用 <a href="https://hexo.io">Hexo</a> 建置 | 主題 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+            <p class="right" style="margin-top: 0;">Blog powered by <a href="https://hexo.io">Hexo</a> | Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
         </div>
     </div>
 </footer>
@@ -851,7 +856,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
             $('li.tab a').hover(function() {
                 $(this).toggleClass('text-lighten-4');
             });
-            $('.indicator').addClass('pink lighten-2');
+            $('.indicator').addClass('green lighten-2');
 
             
             // 添加new标签
@@ -930,7 +935,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
                             if (isMatch) {
                                 keywords.forEach(function(keyword) {
                                     var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
                                 });
 
                                 str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
@@ -952,7 +957,7 @@ Fragment？是的，Fragment有时候会违反正常的控制流。他们太复�
                                     // highlight all keywords
                                     keywords.forEach(function(keyword) {
                                         var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
                                     });
 
                                     str += "<p class=\"search-result\">..." + match_content + "...</p>"

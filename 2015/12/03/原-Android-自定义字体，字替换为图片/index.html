@@ -10,15 +10,15 @@
     <title>[原]Android 自定义字体，字替换为图片 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="Kenneth Yo">
     
-    <meta name="description" content="不久前开发的版本中有这样一个需求，根据服务器返回的分数，显示分数，各位可能觉得这有什么呢？那么请看下图。 
- 
- 
- 
+    <meta name="description" content="不久前开发的版本中有这样一个需求，根据服务器返回的分数，显示分数，各位可能觉得这有什么呢？那么请看下图。
+
+
+
 
 没错，这就是我们的需求。
 
 思路一，添加字体库，通过设置 TextView，在初始化的时候设置我们的字体。例如：
-TextView textView = (TextView) f">
+TextView textView = (TextView) findV">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -59,7 +59,7 @@ TextView textView = (TextView) f">
                         <a class="menu-home " href="/" >
                             <i class="fa fa-home "></i>
                             
-                            首頁
+                            Home
                         </a>
                     </li>
                 
@@ -67,7 +67,7 @@ TextView textView = (TextView) f">
                         <a class="menu-archive " href="/archives" >
                             <i class="fa fa-archive "></i>
                             
-                            彙整
+                            Archives
                         </a>
                     </li>
                 
@@ -75,7 +75,7 @@ TextView textView = (TextView) f">
                         <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
                             <i class="fa fa-bookmark "></i>
                             
-                            分類
+                            Categories
                         </a>
                     </li>
                 
@@ -83,7 +83,7 @@ TextView textView = (TextView) f">
                         <a class="menu-reading " href="/reading" >
                             <i class="fa fa-book "></i>
                             
-                            讀書
+                            Reading
                         </a>
                     </li>
                 
@@ -91,7 +91,7 @@ TextView textView = (TextView) f">
                         <a class="menu-about " href="/about" >
                             <i class="fa fa-user "></i>
                             
-                            關於
+                            About
                         </a>
                     </li>
                 
@@ -99,7 +99,7 @@ TextView textView = (TextView) f">
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
-                            搜尋
+                            Search
                         </a>
                     </li>
                 
@@ -110,12 +110,12 @@ TextView textView = (TextView) f">
         <li class="side-user">
             <div class="row">
                 <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                    <img class="avatar-image circle responsive-img" src="http://tva3.sinaimg.cn/crop.0.164.768.768.180/792a0844jw8etn392skjuj20lc0sgn2i.jpg" alt="User Avatar">
                 </div>
                 <div class="info col s8 valign-wrapper no-padding">
                     <div class="valign">
-                        <p class="name">你的大名</p>
-                        <p class="desc">Web前端/iOS/技术宅</p>
+                        <p class="name">鸿雁</p>
+                        <p class="desc"> Android/Wower</p>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@ TextView textView = (TextView) f">
                 <a class="waves-effect menu-home " href="/" >
                     <i class="fa fa-home "></i>
                     
-                    首頁
+                    Home
                 </a>
             </li>
         
@@ -135,7 +135,7 @@ TextView textView = (TextView) f">
                 <a class="waves-effect menu-archive " href="/archives" >
                     <i class="fa fa-archive "></i>
                     
-                    彙整
+                    Archives
                 </a>
             </li>
         
@@ -143,7 +143,7 @@ TextView textView = (TextView) f">
                 <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
                     <i class="fa fa-bookmark "></i>
                     
-                    分類
+                    Categories
                 </a>
             </li>
         
@@ -151,7 +151,7 @@ TextView textView = (TextView) f">
                 <a class="waves-effect menu-reading " href="/reading" >
                     <i class="fa fa-book "></i>
                     
-                    讀書
+                    Reading
                 </a>
             </li>
         
@@ -159,7 +159,7 @@ TextView textView = (TextView) f">
                 <a class="waves-effect menu-about " href="/about" >
                     <i class="fa fa-user "></i>
                     
-                    關於
+                    About
                 </a>
             </li>
         
@@ -167,7 +167,7 @@ TextView textView = (TextView) f">
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
-                    搜尋
+                    Search
                 </a>
             </li>
         
@@ -189,7 +189,7 @@ TextView textView = (TextView) f">
     <div class="row">
         <div class="input-field col s12">
               <input id="search-input" type="text">
-              <label for="search-input">搜尋</label>
+              <label for="search-input">Search</label>
         </div>
 
     </div>
@@ -203,7 +203,7 @@ TextView textView = (TextView) f">
         <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">當前位置（分類目錄）</span>
+        <span class="breadcrumb">Current page(Categories)</span>
         
             
 
@@ -226,20 +226,28 @@ TextView textView = (TextView) f">
 
 
             </div>
-            <time class="pink-link-context" datetime="2015-12-03T05:54:59.000Z"><a href="/2015/12/03/原-Android-自定义字体，字替换为图片/">2015-12-03</a></time>
+            <time class="indigo-link-context" datetime="2015-12-03T05:54:59.000Z"><a href="/2015/12/03/原-Android-自定义字体，字替换为图片/">2015-12-03</a></time>
 
             
+    <div class="tags-row">
+        
+            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+        
+            <a href="/tags/View/" class="chip green accent-4">View</a>
+        
+    </div>
 
-            <div class="toc pink-link-context hide-on-med-and-down">
+
+            <div class="toc indigo-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#思路一，"><span class="section table-of-contents-text">思路一，</span></a></li></ol>
 </div>
 
 
-            <div class="entry pink-link-context">
-                <p>不久前开发的版本中有这样一个需求，根据服务器返回的分数，显示分数，各位可能觉得这有什么呢？那么请看下图。 </p>
-<p><img src="http://img.blog.csdn.net/20151203113652497" alt="这里写图片描述"> </p>
-<p><img src="http://img.blog.csdn.net/20151203113712189" alt="这里写图片描述"> </p>
-<p><img src="http://img.blog.csdn.net/20151203113725790" alt="这里写图片描述"> </p>
+            <div class="entry indigo-link-context">
+                <p>不久前开发的版本中有这样一个需求，根据服务器返回的分数，显示分数，各位可能觉得这有什么呢？那么请看下图。</p>
+<p><img src="http://img.blog.csdn.net/20151203113652497" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20151203113712189" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20151203113725790" alt="这里写图片描述"></p>
 <p><img src="http://img.blog.csdn.net/20151203113742294" alt="这里写图片描述"></p>
 <p>没错，这就是我们的需求。</p>
 <hr>
@@ -420,7 +428,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
         &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; mDrawableRef.get();
     }
 }
-</code></pre><p>其实原理很简单，并不复杂。 </p>
+</code></pre><p>其实原理很简单，并不复杂。</p>
 <p><a href="https://github.com/KennethYo/ScanNeedleDemo" target="_blank" rel="external">demo代码地址</a></p>
 <pre><code>&lt;div&gt;
     作者：zh08070005 发表于2015/12/3 13:54:59 [原文链接](http://blog.csdn.net/kennethyo/article/details/50158497)
@@ -469,12 +477,12 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
 </div>
 
         <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large pink">
+    <a class="btn-floating btn-large green">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
     <ul>
-      <li><a class="btn-return-top btn-floating waves-effect green" title="回到頂部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+      <li><a class="btn-return-top btn-floating waves-effect blue" title="Return to top"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
     </ul>
   </div>
 
@@ -485,7 +493,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
         <div class="row">
             
             <div class="social-group col m3 s12">
-                <h5 class="white-text">社交</h5>
+                <h5 class="white-text">Social</h5>
                 
                     <a class="social-link" href="http://weibo.com/304526030" target="_blank">
                         <i class="fa fa-2x fa-weibo"></i>
@@ -504,7 +512,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
 
             
             <div class="col m9 s12">
-                <h5 class="white-text">友情連結</h5>
+                <h5 class="white-text">Links</h5>
                 
                     <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
                 
@@ -516,10 +524,10 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
     </div>
     
 
-    <div class="footer-copyright pink-link-context">
+    <div class="footer-copyright indigo-link-context">
         <div class="container">
             © 2016 example.com, All rights reserved.
-            <p class="right" style="margin-top: 0;">本站使用 <a href="https://hexo.io">Hexo</a> 建置 | 主題 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+            <p class="right" style="margin-top: 0;">Blog powered by <a href="https://hexo.io">Hexo</a> | Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
         </div>
     </div>
 </footer>
@@ -597,7 +605,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
             $('li.tab a').hover(function() {
                 $(this).toggleClass('text-lighten-4');
             });
-            $('.indicator').addClass('pink lighten-2');
+            $('.indicator').addClass('green lighten-2');
 
             
             // 添加new标签
@@ -676,7 +684,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
                             if (isMatch) {
                                 keywords.forEach(function(keyword) {
                                     var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
                                 });
 
                                 str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
@@ -698,7 +706,7 @@ FontsSpan 继承于DynamicDrawableSpan，主要实现替换字符为 drawable。
                                     // highlight all keywords
                                     keywords.forEach(function(keyword) {
                                         var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
                                     });
 
                                     str += "<p class=\"search-result\">..." + match_content + "...</p>"
