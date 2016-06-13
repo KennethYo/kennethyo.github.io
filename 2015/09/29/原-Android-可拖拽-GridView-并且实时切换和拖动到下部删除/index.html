@@ -11,8 +11,7 @@
     <meta name="author" content="鸿雁">
     
     <meta name="description" content="最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。
-
-拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客http://blog.csdn.net/">
+拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客http://blog.csdn.net/x">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -258,30 +257,14 @@
 
 
             <div class="entry indigo-link-context">
-                <p>最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。</p>
-<p><img src="http://img.blog.csdn.net/20150929150020321" alt="这里写图片描述"></p>
-<p>拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客<a href="http://blog.csdn.net/xiaanming/article/details/17718579" target="_blank" rel="external">http://blog.csdn.net/xiaanming/article/details/17718579</a>。</p>
+                <p>最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。<br><img src="http://img.blog.csdn.net/20150929150020321" alt="这里写图片描述"></p>
+<p>拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客<a href="http://blog.csdn.net/xiaanming/article/details/17718579。" target="_blank" rel="external">http://blog.csdn.net/xiaanming/article/details/17718579。</a></p>
 <p>我的需求当中，多了一个拖动到底部区域缩小并且删除。</p>
 <p>考虑到从 GridView 中拖动一个 item 到另一个 View 中，并且删除，只在 GridView 当中进行绘制被拖动的 item 肯定是达不到进入另一个 view 的效果，即使做起来也是相当麻烦的。</p>
 <p>我们可以在 GridView 和删除区域的上一层 View 当中进行绘制，但是看到<a href="http://blog.csdn.net/xiaanming/article/details/17718579" target="_blank" rel="external">拖动效果博客</a>当中是直接注册在了 Window 上，这更加减少了工作量，直接在 GridView 当中判断如果用户拖动的坐标y 轴大于了 GridView 的高度，就可以进行缩小动画了。</p>
-<p>但是这里要注意的是，注册在 window 上的 View 不能直接在其最外层的  Layout 上进行动画，所以我对ImageView 进行了包裹，并且是对 ImageView 进行动画。</p>
-<pre><code>mDragImageView = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; ImageView(getContext());
-mDragImageView.setImageBitmap(bitmap);
-mDragImageView.setBackgroundResource(R.drawable.bg_shadow);
+<p>但是这里要注意的是，注册在 window 上的 View 不能直接在其最外层的  Layout 上进行动画，所以我对ImageView 进行了包裹，并且是对 ImageView 进行动画。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mDragImageView = <span class="keyword">new</span> ImageView(getContext());</span><br><span class="line">      mDragImageView.setImageBitmap(bitmap);</span><br><span class="line">mDragImageView.setBackgroundResource(R.drawable.bg_shadow);</span><br><span class="line"></span><br><span class="line">      mDragLayout = <span class="keyword">new</span> FrameLayout(getContext());</span><br><span class="line">      mDragLayout.addView(mDragImageView);</span><br><span class="line"></span><br><span class="line">      mWindowManager.addView(mDragLayout, mWindowLayoutParams);</span><br></pre></td></tr></table></figure></p>
+<p>有了拖动效果实现的代码，其他都很简单，具体请参照代码，<br><a href="https://github.com/KennethYo/DragViewAndDelete" target="_blank" rel="external">代码地址</a>，其中里面的一些自定义标签都是我需求中自定义的，可以自行修改。</p>
 
-mDragLayout = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; FrameLayout(getContext());
-mDragLayout.addView(mDragImageView);
-
-mWindowManager.addView(mDragLayout, mWindowLayoutParams);
-</code></pre><p>有了拖动效果实现的代码，其他都很简单，具体请参照代码，</p>
-<p><a href="https://github.com/KennethYo/DragViewAndDelete" target="_blank" rel="external">代码地址</a>，其中里面的一些自定义标签都是我需求中自定义的，可以自行修改。</p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2015/9/29 15:22:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/48807167)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：276 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/48807167#comments)
-&lt;/div&gt;
-</code></pre>
             </div>
         </div>
     </div>
