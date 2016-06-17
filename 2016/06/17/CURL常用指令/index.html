@@ -7,13 +7,19 @@
 
     
 
-    <title>归档：2014/2 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <title>CURL常用指令 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="鸿雁">
+    
+    <meta name="description" content="一，查看网页源代码curl www.bitauto.com
+保存网页curl -o demo.txt www.bitauto.com
+二，自动跳转curl -L www.bitauto.com
+三，显示头信息curl -i www.bitauto.com
+四，显示通信过程curl -v www.bi">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="CURL常用指令"/>
     <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
 
     
@@ -215,46 +221,106 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（归档）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Web/">Web</a>
+
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>CURL常用指令</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="indigo-link-context" datetime="2016-06-17T07:20:50.000Z"><a href="/2016/06/17/CURL常用指令/">2016-06-17</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/Web/" class="chip green accent-4">Web</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2014
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2014/02/11/原-用Fragment来代替过期的Tabhost和ActivityGroup/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2014-02-11T05:24:14.000Z">2014-02-11</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                [原]用Fragment来代替过期的Tabhost和ActivityGroup
-                            </a>
-                        
-                            <a href="/2014/02/10/转-Google-Java编程风格指南/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2014-02-10T03:51:27.000Z">2014-02-10</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                [转]Google Java编程风格指南
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/curl/" class="chip green accent-4">curl</a>
         
-    </ul>
+    </div>
+
+
+            <div class="toc indigo-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一，查看网页源代码"><span class="section table-of-contents-text">一，查看网页源代码</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#保存网页"><span class="section table-of-contents-text">保存网页</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#二，自动跳转"><span class="section table-of-contents-text">二，自动跳转</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#三，显示头信息"><span class="section table-of-contents-text">三，显示头信息</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#四，显示通信过程"><span class="section table-of-contents-text">四，显示通信过程</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#更多详细信息"><span class="section table-of-contents-text">##### 更多详细信息</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#五，发送表单信息"><span class="section table-of-contents-text">五，发送表单信息</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#GET"><span class="section table-of-contents-text">GET</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#POST"><span class="section table-of-contents-text">POST</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#DELETE"><span class="section table-of-contents-text">DELETE</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#六，上传文件"><span class="section table-of-contents-text">六，上传文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#七，Referer-字段"><span class="section table-of-contents-text">七，Referer 字段</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#九，User-Agent-字段"><span class="section table-of-contents-text">九，User Agent 字段</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十，Cookie"><span class="section table-of-contents-text">十，Cookie</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#保存-cookie-到文件夹"><span class="section table-of-contents-text">保存 cookie 到文件夹</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#使用文件的-cookie"><span class="section table-of-contents-text">使用文件的 cookie</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十一，增加头信息"><span class="section table-of-contents-text">十一，增加头信息</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十二，HTTP-认证"><span class="section table-of-contents-text">十二，HTTP 认证</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#参考资料"><span class="section table-of-contents-text">参考资料</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#1，curl网站开发指南"><span class="section table-of-contents-text">1，curl网站开发指南</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+</div>
+
+
+            <div class="entry indigo-link-context">
+                <h1 id="一，查看网页源代码"><a href="#一，查看网页源代码" class="headerlink" title="一，查看网页源代码"></a>一，查看网页源代码</h1><p>curl www.bitauto.com</p>
+<h5 id="保存网页"><a href="#保存网页" class="headerlink" title="保存网页"></a>保存网页</h5><p>curl -o demo.txt www.bitauto.com</p>
+<h1 id="二，自动跳转"><a href="#二，自动跳转" class="headerlink" title="二，自动跳转"></a>二，自动跳转</h1><p>curl -L www.bitauto.com</p>
+<h1 id="三，显示头信息"><a href="#三，显示头信息" class="headerlink" title="三，显示头信息"></a>三，显示头信息</h1><p>curl -i www.bitauto.com</p>
+<h1 id="四，显示通信过程"><a href="#四，显示通信过程" class="headerlink" title="四，显示通信过程"></a>四，显示通信过程</h1><p>curl -v www.bitauto.com</p>
+<h5 id="更多详细信息"><a href="#更多详细信息" class="headerlink" title="##### 更多详细信息"></a>##### 更多详细信息</h5><p>curl –trace demo.txt www.bitauto.com<br>curl –trace–ascii demo.txt www.bitauto.com</p>
+<h1 id="五，发送表单信息"><a href="#五，发送表单信息" class="headerlink" title="五，发送表单信息"></a>五，发送表单信息</h1><h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><p>curl www.bitauto.com/?data=xxx</p>
+<h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><p>curl -X POST –data “data=xxx” www.bitauto.com<br>curl -X POST –data-urlencode “data=hello world” www.bitauto.com</p>
+<h5 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h5><p>curl -X DELETE www.bitauto.com</p>
+<h1 id="六，上传文件"><a href="#六，上传文件" class="headerlink" title="六，上传文件"></a>六，上传文件</h1><p>curl –form uplaod=@demo.txt –form press=OK www.bitauto.com</p>
+<h1 id="七，Referer-字段"><a href="#七，Referer-字段" class="headerlink" title="七，Referer 字段"></a>七，Referer 字段</h1><p>curl –referer www.bitauto.com www.bitauto.com</p>
+<h1 id="九，User-Agent-字段"><a href="#九，User-Agent-字段" class="headerlink" title="九，User Agent 字段"></a>九，User Agent 字段</h1><p>curl –user-agent “user-agent” www.bitauto.com</p>
+<h1 id="十，Cookie"><a href="#十，Cookie" class="headerlink" title="十，Cookie"></a>十，Cookie</h1><p>curl –cookie  “name=demo” www.bitauto.com</p>
+<h5 id="保存-cookie-到文件夹"><a href="#保存-cookie-到文件夹" class="headerlink" title="保存 cookie 到文件夹"></a>保存 cookie 到文件夹</h5><p>curl -c filename www.bitauto.com </p>
+<h5 id="使用文件的-cookie"><a href="#使用文件的-cookie" class="headerlink" title="使用文件的 cookie"></a>使用文件的 cookie</h5><p>curl -b filename www.bitauto.com</p>
+<h1 id="十一，增加头信息"><a href="#十一，增加头信息" class="headerlink" title="十一，增加头信息"></a>十一，增加头信息</h1><p>curl –header “Content-Type:application/json” www.bitauto.com</p>
+<h1 id="十二，HTTP-认证"><a href="#十二，HTTP-认证" class="headerlink" title="十二，HTTP 认证"></a>十二，HTTP 认证</h1><p>curl –user name:password www.bitauto.com</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><h5 id="1，curl网站开发指南"><a href="#1，curl网站开发指南" class="headerlink" title="1，curl网站开发指南"></a>1，<a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="external">curl网站开发指南</a></h5>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/06/17/CURL常用指令/" data-title="CURL常用指令" data-url="http://yoursite.com/2016/06/17/CURL常用指令/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'kennethyo'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
