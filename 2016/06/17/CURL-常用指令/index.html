@@ -7,16 +7,18 @@
 
     
 
-    <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <title>CURL常用指令 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="鸿雁">
     
-    <meta name="description" content="最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。
-拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客http://blog.csdn.net/x">
+    <meta name="description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com
+二，自动跳转curl -L www.bitauto.com
+三，显示头信息curl -i www.bitauto.com
+四，显示通信过程curl -v www.bit">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除"/>
+    <meta property="og:title" content="CURL常用指令"/>
     <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
 
     
@@ -225,7 +227,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/Android/">Android</a>
+    <a class="breadcrumb" href="/categories/Web/">Web</a>
 
 
         
@@ -242,36 +244,40 @@
             <div class="article-title">
                 
     
-        <h1>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除</h1>
+        <h1>CURL常用指令</h1>
     
 
 
             </div>
-            <time class="indigo-link-context" datetime="2015-09-29T07:22:08.000Z"><a href="/2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/">2015-09-29</a></time>
+            <time class="indigo-link-context" datetime="2016-06-17T03:48:12.000Z"><a href="/2016/06/17/CURL-常用指令/">2016-06-17</a></time>
 
             
     <div class="tags-row">
         
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+            <a href="/tags/Web/" class="chip green accent-4">Web</a>
         
-            <a href="/tags/View/" class="chip green accent-4">View</a>
+            <a href="/tags/CURL/" class="chip green accent-4">CURL</a>
         
     </div>
 
 
             <div class="toc indigo-link-context hide-on-med-and-down">
-    
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一，查看网页源代码"><span class="section table-of-contents-text">一，查看网页源代码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#二，自动跳转"><span class="section table-of-contents-text">二，自动跳转</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#三，显示头信息"><span class="section table-of-contents-text">三，显示头信息</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#四，显示通信过程"><span class="section table-of-contents-text">四，显示通信过程</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#五，发送表单信息"><span class="section table-of-contents-text">五，发送表单信息</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#六，上传文件"><span class="section table-of-contents-text">六，上传文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#七，Referer-字段"><span class="section table-of-contents-text">七，Referer 字段</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#九，User-Agent-字段"><span class="section table-of-contents-text">九，User Agent 字段</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十，Cookie"><span class="section table-of-contents-text">十，Cookie</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十一，增加头信息"><span class="section table-of-contents-text">十一，增加头信息</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十二，HTTP-认证"><span class="section table-of-contents-text">十二，HTTP 认证</span></a></li></ol>
 </div>
 
 
             <div class="entry indigo-link-context">
-                <p>最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。<br><img src="http://img.blog.csdn.net/20150929150020321" alt="这里写图片描述"></p>
-<p>拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客<a href="http://blog.csdn.net/xiaanming/article/details/17718579。" target="_blank" rel="external">http://blog.csdn.net/xiaanming/article/details/17718579。</a></p>
-<p>我的需求当中，多了一个拖动到底部区域缩小并且删除。</p>
-<p>考虑到从 GridView 中拖动一个 item 到另一个 View 中，并且删除，只在 GridView 当中进行绘制被拖动的 item 肯定是达不到进入另一个 view 的效果，即使做起来也是相当麻烦的。</p>
-<p>我们可以在 GridView 和删除区域的上一层 View 当中进行绘制，但是看到<a href="http://blog.csdn.net/xiaanming/article/details/17718579" target="_blank" rel="external">拖动效果博客</a>当中是直接注册在了 Window 上，这更加减少了工作量，直接在 GridView 当中判断如果用户拖动的坐标y 轴大于了 GridView 的高度，就可以进行缩小动画了。</p>
-<p>但是这里要注意的是，注册在 window 上的 View 不能直接在其最外层的  Layout 上进行动画，所以我对ImageView 进行了包裹，并且是对 ImageView 进行动画。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mDragImageView = <span class="keyword">new</span> ImageView(getContext());</span><br><span class="line">      mDragImageView.setImageBitmap(bitmap);</span><br><span class="line">mDragImageView.setBackgroundResource(R.drawable.bg_shadow);</span><br><span class="line"></span><br><span class="line">      mDragLayout = <span class="keyword">new</span> FrameLayout(getContext());</span><br><span class="line">      mDragLayout.addView(mDragImageView);</span><br><span class="line"></span><br><span class="line">      mWindowManager.addView(mDragLayout, mWindowLayoutParams);</span><br></pre></td></tr></table></figure></p>
-<p>有了拖动效果实现的代码，其他都很简单，具体请参照代码，<br><a href="https://github.com/KennethYo/DragViewAndDelete" target="_blank" rel="external">代码地址</a>，其中里面的一些自定义标签都是我需求中自定义的，可以自行修改。</p>
+                <h1 id="一，查看网页源代码"><a href="#一，查看网页源代码" class="headerlink" title="一，查看网页源代码"></a>一，查看网页源代码</h1><p><code>curl www.bitauto.com</code><br>保存网页<br><code>curl -o demo.txt www.bitauto.com</code></p>
+<h1 id="二，自动跳转"><a href="#二，自动跳转" class="headerlink" title="二，自动跳转"></a>二，自动跳转</h1><p><code>curl -L www.bitauto.com</code></p>
+<h1 id="三，显示头信息"><a href="#三，显示头信息" class="headerlink" title="三，显示头信息"></a>三，显示头信息</h1><p><code>curl -i www.bitauto.com</code></p>
+<h1 id="四，显示通信过程"><a href="#四，显示通信过程" class="headerlink" title="四，显示通信过程"></a>四，显示通信过程</h1><p><code>curl -v www.bitauto.com</code><br>更多详细信息<br><code>curl --trace demo.txt www.bitauto.com</code><br><code>curl --trace--ascii demo.txt www.bitauto.com</code></p>
+<h1 id="五，发送表单信息"><a href="#五，发送表单信息" class="headerlink" title="五，发送表单信息"></a>五，发送表单信息</h1><p>GET<br><code>curl www.bitauto.com/?data=xxx</code><br>POST<br><code>curl -X POST --data &quot;data=xxx&quot; www.bitauto.com</code><br><code>curl -X POST --data-urlencode &quot;data=hello world&quot; www.bitauto.com</code><br>DELETE<br><code>curl -X DELETE www.bitauto.com</code></p>
+<h1 id="六，上传文件"><a href="#六，上传文件" class="headerlink" title="六，上传文件"></a>六，上传文件</h1><p><code>curl --form uplaod=@demo.txt --form press=OK www.bitauto.com</code></p>
+<h1 id="七，Referer-字段"><a href="#七，Referer-字段" class="headerlink" title="七，Referer 字段"></a>七，Referer 字段</h1><p><code>curl --referer www.bitauto.com www.bitauto.com</code></p>
+<h1 id="九，User-Agent-字段"><a href="#九，User-Agent-字段" class="headerlink" title="九，User Agent 字段"></a>九，User Agent 字段</h1><p><code>curl --user-agent &quot;user-agent&quot; www.bitauto.com</code></p>
+<h1 id="十，Cookie"><a href="#十，Cookie" class="headerlink" title="十，Cookie"></a>十，Cookie</h1><p><code>curl --cookie  &quot;name=demo&quot; www.bitauto.com</code><br>保存 cookie 到文件夹<br><code>curl -c filename www.bitauto.com</code><br>使用文件的 cookie<br><code>curl -b filename www.bitauto.com</code></p>
+<h1 id="十一，增加头信息"><a href="#十一，增加头信息" class="headerlink" title="十一，增加头信息"></a>十一，增加头信息</h1><p><code>curl --header &quot;Content-Type:application/json&quot; www.bitauto.com</code></p>
+<h1 id="十二，HTTP-认证"><a href="#十二，HTTP-认证" class="headerlink" title="十二，HTTP 认证"></a>十二，HTTP 认证</h1><p><code>curl --user name:password www.bitauto.com</code></p>
 
             </div>
         </div>
@@ -285,7 +291,7 @@
         <div class="card">
             <div class="card-content">
                 <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/" data-title="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除" data-url="http://yoursite.com/2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/"></div>
+                <div class="ds-thread" data-thread-key="2016/06/17/CURL-常用指令/" data-title="CURL常用指令" data-url="http://yoursite.com/2016/06/17/CURL-常用指令/"></div>
 
                 <script type="text/javascript">
                     console.log(document.querySelector('.ds-thread'));

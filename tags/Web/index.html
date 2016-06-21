@@ -7,16 +7,13 @@
 
     
 
-    <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <title>Web | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
     <meta name="author" content="鸿雁">
-    
-    <meta name="description" content="最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。
-拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客http://blog.csdn.net/x">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除"/>
+    
     <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
 
     
@@ -218,96 +215,36 @@
 
     <main>
         <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（分类目录）</span>
-        
-            
-    
-    
-    <a class="breadcrumb" href="/categories/Android/">Android</a>
-
-
+        <span class="breadcrumb">当前位置（标签）</span>
         
 
+        
+            <a class="breadcrumb" href="/tags/Web/">Web</a>
         
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
-                
-    
-        <h1>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除</h1>
-    
 
 
-            </div>
-            <time class="indigo-link-context" datetime="2015-09-29T07:22:08.000Z"><a href="/2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/">2015-09-29</a></time>
-
-            
-    <div class="tags-row">
+    <div class="collection mt-0">
         
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+            <a href="/2016/06/27/CURL常用指令/" class="collection-item grey-text text-darken-1">
+                <time datetime="2016-06-27T03:51:47.000Z">2016-06-27</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                CURL常用指令
+            </a>
         
-            <a href="/tags/View/" class="chip green accent-4">View</a>
+            <a href="/2016/06/17/CURL-常用指令/" class="collection-item grey-text text-darken-1">
+                <time datetime="2016-06-17T03:48:12.000Z">2016-06-17</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                CURL常用指令
+            </a>
         
     </div>
-
-
-            <div class="toc indigo-link-context hide-on-med-and-down">
-    
-</div>
-
-
-            <div class="entry indigo-link-context">
-                <p>最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。<br><img src="http://img.blog.csdn.net/20150929150020321" alt="这里写图片描述"></p>
-<p>拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客<a href="http://blog.csdn.net/xiaanming/article/details/17718579。" target="_blank" rel="external">http://blog.csdn.net/xiaanming/article/details/17718579。</a></p>
-<p>我的需求当中，多了一个拖动到底部区域缩小并且删除。</p>
-<p>考虑到从 GridView 中拖动一个 item 到另一个 View 中，并且删除，只在 GridView 当中进行绘制被拖动的 item 肯定是达不到进入另一个 view 的效果，即使做起来也是相当麻烦的。</p>
-<p>我们可以在 GridView 和删除区域的上一层 View 当中进行绘制，但是看到<a href="http://blog.csdn.net/xiaanming/article/details/17718579" target="_blank" rel="external">拖动效果博客</a>当中是直接注册在了 Window 上，这更加减少了工作量，直接在 GridView 当中判断如果用户拖动的坐标y 轴大于了 GridView 的高度，就可以进行缩小动画了。</p>
-<p>但是这里要注意的是，注册在 window 上的 View 不能直接在其最外层的  Layout 上进行动画，所以我对ImageView 进行了包裹，并且是对 ImageView 进行动画。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mDragImageView = <span class="keyword">new</span> ImageView(getContext());</span><br><span class="line">      mDragImageView.setImageBitmap(bitmap);</span><br><span class="line">mDragImageView.setBackgroundResource(R.drawable.bg_shadow);</span><br><span class="line"></span><br><span class="line">      mDragLayout = <span class="keyword">new</span> FrameLayout(getContext());</span><br><span class="line">      mDragLayout.addView(mDragImageView);</span><br><span class="line"></span><br><span class="line">      mWindowManager.addView(mDragLayout, mWindowLayoutParams);</span><br></pre></td></tr></table></figure></p>
-<p>有了拖动效果实现的代码，其他都很简单，具体请参照代码，<br><a href="https://github.com/KennethYo/DragViewAndDelete" target="_blank" rel="external">代码地址</a>，其中里面的一些自定义标签都是我需求中自定义的，可以自行修改。</p>
-
-            </div>
-        </div>
-    </div>
-</article>
-
-
-
-
-    <section id="comment">
-        <div class="card">
-            <div class="card-content">
-                <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/" data-title="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除" data-url="http://yoursite.com/2015/09/29/原-Android-可拖拽-GridView-并且实时切换和拖动到下部删除/"></div>
-
-                <script type="text/javascript">
-                    console.log(document.querySelector('.ds-thread'));
-                    var duoshuoQuery = {
-                        short_name: 'kennethyo'
-                    };
-                    (function() {
-                        var ds = document.createElement('script');
-                        ds.type = 'text/javascript';
-                        ds.async = true;
-                        ds.src = (document.location.protocol == 'https:'
-                            ? 'https:'
-                            : 'http:') + '//static.duoshuo.com/embed.js';
-                        ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-                    })();
-                </script>
-                <!-- Duoshuo Comment END -->
-            </div>
-        </div>
-    </section>
-
 
 
 </div>
