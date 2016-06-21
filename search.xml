@@ -4,23 +4,6 @@
   
     
     <entry>
-      <title><![CDATA[CURL常用指令]]></title>
-      <url>http://yoursite.com/2016/06/27/CURL%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<h1 id="一，查看网页源代码"><a href="#一，查看网页源代码" class="headerlink" title="一，查看网页源代码"></a>一，查看网页源代码</h1><p><code>curl www.bitauto.com</code><br>保存网页<br><code>curl -o demo.txt www.bitauto.com</code></p>
-<h1 id="二，自动跳转"><a href="#二，自动跳转" class="headerlink" title="二，自动跳转"></a>二，自动跳转</h1><p><code>curl -L www.bitauto.com</code></p>
-<h1 id="三，显示头信息"><a href="#三，显示头信息" class="headerlink" title="三，显示头信息"></a>三，显示头信息</h1><p><code>curl -i www.bitauto.com</code></p>
-<h1 id="四，显示通信过程"><a href="#四，显示通信过程" class="headerlink" title="四，显示通信过程"></a>四，显示通信过程</h1><p><code>curl -v www.bitauto.com</code><br>更多详细信息<br><code>curl --trace demo.txt www.bitauto.com</code><br><code>curl --trace--ascii demo.txt www.bitauto.com</code></p>
-<h1 id="五，发送表单信息"><a href="#五，发送表单信息" class="headerlink" title="五，发送表单信息"></a>五，发送表单信息</h1><p>GET<br><code>curl www.bitauto.com/?data=xxx</code><br>POST<br><code>curl -X POST --data &quot;data=xxx&quot; www.bitauto.com</code><br><code>curl -X POST --data-urlencode &quot;data=hello world&quot; www.bitauto.com</code><br>DELETE<br><code>curl -X DELETE www.bitauto.com</code></p>
-<h1 id="六，上传文件"><a href="#六，上传文件" class="headerlink" title="六，上传文件"></a>六，上传文件</h1><p><code>curl --form uplaod=@demo.txt --form press=OK www.bitauto.com</code></p>
-<h1 id="七，Referer-字段"><a href="#七，Referer-字段" class="headerlink" title="七，Referer 字段"></a>七，Referer 字段</h1><p><code>curl --referer www.bitauto.com www.bitauto.com</code></p>
-<h1 id="九，User-Agent-字段"><a href="#九，User-Agent-字段" class="headerlink" title="九，User Agent 字段"></a>九，User Agent 字段</h1><p><code>curl --user-agent &quot;user-agent&quot; www.bitauto.com</code></p>
-<h1 id="十，Cookie"><a href="#十，Cookie" class="headerlink" title="十，Cookie"></a>十，Cookie</h1><p><code>curl --cookie  &quot;name=demo&quot; www.bitauto.com</code><br>保存 cookie 到文件夹<br><code>curl -c filename www.bitauto.com</code><br>使用文件的 cookie<br><code>curl -b filename www.bitauto.com</code></p>
-<h1 id="十一，增加头信息"><a href="#十一，增加头信息" class="headerlink" title="十一，增加头信息"></a>十一，增加头信息</h1><p><code>curl --header &quot;Content-Type:application/json&quot; www.bitauto.com</code></p>
-<h1 id="十二，HTTP-认证"><a href="#十二，HTTP-认证" class="headerlink" title="十二，HTTP 认证"></a>十二，HTTP 认证</h1><p><code>curl --user name:password www.bitauto.com</code></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Mac 下反编译 apk]]></title>
       <url>http://yoursite.com/2016/06/21/Mac-%E4%B8%8B%E5%8F%8D%E7%BC%96%E8%AF%91-apk-4/</url>
       <content type="html"><![CDATA[<h1 id="1，环境准备"><a href="#1，环境准备" class="headerlink" title="1，环境准备"></a>1，环境准备</h1><p><code>brew install apktool</code><br><code>brew install dex2jar</code><br><code>jd-gui</code></p>
