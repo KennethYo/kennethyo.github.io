@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-17T07:20:50.000Z</updated>
+  <updated>2016-06-21T03:41:32.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,44 +16,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CURL常用指令</title>
-    <link href="http://yoursite.com/2016/06/17/CURL%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-    <id>http://yoursite.com/2016/06/17/CURL常用指令/</id>
-    <published>2016-06-17T07:20:50.000Z</published>
-    <updated>2016-06-17T07:20:50.000Z</updated>
+    <title>Mac 下反编译 apk</title>
+    <link href="http://yoursite.com/2016/06/21/Mac-%E4%B8%8B%E5%8F%8D%E7%BC%96%E8%AF%91-apk-4/"/>
+    <id>http://yoursite.com/2016/06/21/Mac-下反编译-apk-4/</id>
+    <published>2016-06-21T03:34:24.000Z</published>
+    <updated>2016-06-21T03:41:32.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;一，查看网页源代码&quot;&gt;&lt;a href=&quot;#一，查看网页源代码&quot; class=&quot;headerlink&quot; title=&quot;一，查看网页源代码&quot;&gt;&lt;/a&gt;一，查看网页源代码&lt;/h1&gt;&lt;p&gt;curl www.bitauto.com&lt;/p&gt;
-&lt;h5 id=&quot;保存网页&quot;&gt;&lt;a href=&quot;#保存网页&quot; class=&quot;headerlink&quot; title=&quot;保存网页&quot;&gt;&lt;/a&gt;保存网页&lt;/h5&gt;&lt;p&gt;curl -o demo.txt www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;二，自动跳转&quot;&gt;&lt;a href=&quot;#二，自动跳转&quot; class=&quot;headerlink&quot; title=&quot;二，自动跳转&quot;&gt;&lt;/a&gt;二，自动跳转&lt;/h1&gt;&lt;p&gt;curl -L www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;三，显示头信息&quot;&gt;&lt;a href=&quot;#三，显示头信息&quot; class=&quot;headerlink&quot; title=&quot;三，显示头信息&quot;&gt;&lt;/a&gt;三，显示头信息&lt;/h1&gt;&lt;p&gt;curl -i www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;四，显示通信过程&quot;&gt;&lt;a href=&quot;#四，显示通信过程&quot; class=&quot;headerlink&quot; title=&quot;四，显示通信过程&quot;&gt;&lt;/a&gt;四，显示通信过程&lt;/h1&gt;&lt;p&gt;curl -v www.bitauto.com&lt;/p&gt;
-&lt;h5 id=&quot;更多详细信息&quot;&gt;&lt;a href=&quot;#更多详细信息&quot; class=&quot;headerlink&quot; title=&quot;##### 更多详细信息&quot;&gt;&lt;/a&gt;##### 更多详细信息&lt;/h5&gt;&lt;p&gt;curl –trace demo.txt www.bitauto.com&lt;br&gt;curl –trace–ascii demo.txt www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;五，发送表单信息&quot;&gt;&lt;a href=&quot;#五，发送表单信息&quot; class=&quot;headerlink&quot; title=&quot;五，发送表单信息&quot;&gt;&lt;/a&gt;五，发送表单信息&lt;/h1&gt;&lt;h5 id=&quot;GET&quot;&gt;&lt;a href=&quot;#GET&quot; class=&quot;headerlink&quot; title=&quot;GET&quot;&gt;&lt;/a&gt;GET&lt;/h5&gt;&lt;p&gt;curl www.bitauto.com/?data=xxx&lt;/p&gt;
-&lt;h5 id=&quot;POST&quot;&gt;&lt;a href=&quot;#POST&quot; class=&quot;headerlink&quot; title=&quot;POST&quot;&gt;&lt;/a&gt;POST&lt;/h5&gt;&lt;p&gt;curl -X POST –data “data=xxx” www.bitauto.com&lt;br&gt;curl -X POST –data-urlencode “data=hello world” www.bitauto.com&lt;/p&gt;
-&lt;h5 id=&quot;DELETE&quot;&gt;&lt;a href=&quot;#DELETE&quot; class=&quot;headerlink&quot; title=&quot;DELETE&quot;&gt;&lt;/a&gt;DELETE&lt;/h5&gt;&lt;p&gt;curl -X DELETE www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;六，上传文件&quot;&gt;&lt;a href=&quot;#六，上传文件&quot; class=&quot;headerlink&quot; title=&quot;六，上传文件&quot;&gt;&lt;/a&gt;六，上传文件&lt;/h1&gt;&lt;p&gt;curl –form uplaod=@demo.txt –form press=OK www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;七，Referer-字段&quot;&gt;&lt;a href=&quot;#七，Referer-字段&quot; class=&quot;headerlink&quot; title=&quot;七，Referer 字段&quot;&gt;&lt;/a&gt;七，Referer 字段&lt;/h1&gt;&lt;p&gt;curl –referer www.bitauto.com www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;九，User-Agent-字段&quot;&gt;&lt;a href=&quot;#九，User-Agent-字段&quot; class=&quot;headerlink&quot; title=&quot;九，User Agent 字段&quot;&gt;&lt;/a&gt;九，User Agent 字段&lt;/h1&gt;&lt;p&gt;curl –user-agent “user-agent” www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;十，Cookie&quot;&gt;&lt;a href=&quot;#十，Cookie&quot; class=&quot;headerlink&quot; title=&quot;十，Cookie&quot;&gt;&lt;/a&gt;十，Cookie&lt;/h1&gt;&lt;p&gt;curl –cookie  “name=demo” www.bitauto.com&lt;/p&gt;
-&lt;h5 id=&quot;保存-cookie-到文件夹&quot;&gt;&lt;a href=&quot;#保存-cookie-到文件夹&quot; class=&quot;headerlink&quot; title=&quot;保存 cookie 到文件夹&quot;&gt;&lt;/a&gt;保存 cookie 到文件夹&lt;/h5&gt;&lt;p&gt;curl -c filename www.bitauto.com &lt;/p&gt;
-&lt;h5 id=&quot;使用文件的-cookie&quot;&gt;&lt;a href=&quot;#使用文件的-cookie&quot; class=&quot;headerlink&quot; title=&quot;使用文件的 cookie&quot;&gt;&lt;/a&gt;使用文件的 cookie&lt;/h5&gt;&lt;p&gt;curl -b filename www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;十一，增加头信息&quot;&gt;&lt;a href=&quot;#十一，增加头信息&quot; class=&quot;headerlink&quot; title=&quot;十一，增加头信息&quot;&gt;&lt;/a&gt;十一，增加头信息&lt;/h1&gt;&lt;p&gt;curl –header “Content-Type:application/json” www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;十二，HTTP-认证&quot;&gt;&lt;a href=&quot;#十二，HTTP-认证&quot; class=&quot;headerlink&quot; title=&quot;十二，HTTP 认证&quot;&gt;&lt;/a&gt;十二，HTTP 认证&lt;/h1&gt;&lt;p&gt;curl –user name:password www.bitauto.com&lt;/p&gt;
-&lt;h1 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h1&gt;&lt;h5 id=&quot;1，curl网站开发指南&quot;&gt;&lt;a href=&quot;#1，curl网站开发指南&quot; class=&quot;headerlink&quot; title=&quot;1，curl网站开发指南&quot;&gt;&lt;/a&gt;1，&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/09/curl.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;curl网站开发指南&lt;/a&gt;&lt;/h5&gt;</content>
+    <content type="html">&lt;h1 id=&quot;1，环境准备&quot;&gt;&lt;a href=&quot;#1，环境准备&quot; class=&quot;headerlink&quot; title=&quot;1，环境准备&quot;&gt;&lt;/a&gt;1，环境准备&lt;/h1&gt;&lt;p&gt;&lt;code&gt;brew install apktool&lt;/code&gt;&lt;br&gt;&lt;code&gt;brew install dex2jar&lt;/code&gt;&lt;br&gt;&lt;code&gt;jd-gui&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;2，反编译-代码&quot;&gt;&lt;a href=&quot;#2，反编译-代码&quot; class=&quot;headerlink&quot; title=&quot;2，反编译 代码&quot;&gt;&lt;/a&gt;2，反编译 代码&lt;/h1&gt;&lt;p&gt;解压 apk 拿到 dex 文件&lt;br&gt;执行 &lt;code&gt;d2j-dex2jar classes.dex&lt;/code&gt; 获取到 jar 文件，拖进 jd-gui 就可以了&lt;/p&gt;
+&lt;h1 id=&quot;3，反编译资源文件&quot;&gt;&lt;a href=&quot;#3，反编译资源文件&quot; class=&quot;headerlink&quot; title=&quot;3，反编译资源文件&quot;&gt;&lt;/a&gt;3，反编译资源文件&lt;/h1&gt;&lt;p&gt;执行 &lt;code&gt;apktool  d *.apk&lt;/code&gt;&lt;br&gt;-f  如果目标文件存在，删除存在&lt;br&gt;-o 指定目标文件夹名字&lt;br&gt;-s 不反编译 dex 文件&lt;br&gt;-r 不反编译资源文件&lt;/p&gt;
+&lt;h1 id=&quot;4，重新打包&quot;&gt;&lt;a href=&quot;#4，重新打包&quot; class=&quot;headerlink&quot; title=&quot;4，重新打包&quot;&gt;&lt;/a&gt;4，重新打包&lt;/h1&gt;&lt;p&gt;&lt;code&gt;apktool b *.apk -o new.apk&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;5，签名-需要-java-环境变量&quot;&gt;&lt;a href=&quot;#5，签名-需要-java-环境变量&quot; class=&quot;headerlink&quot; title=&quot;5，签名(需要 java 环境变量)&quot;&gt;&lt;/a&gt;5，签名(需要 java 环境变量)&lt;/h1&gt;&lt;p&gt;&lt;code&gt;jarsigner  -verbose   -sigalg SHA1withRSA -digestalg SHA1 -keystore 签名文件 -storepass 签名密码 待签名 apk 签名的别名&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;6，对齐操作（程序运行的更快）&quot;&gt;&lt;a href=&quot;#6，对齐操作（程序运行的更快）&quot; class=&quot;headerlink&quot; title=&quot;6，对齐操作（程序运行的更快）&quot;&gt;&lt;/a&gt;6，对齐操作（程序运行的更快）&lt;/h1&gt;&lt;p&gt;&lt;code&gt;zipalign 4 *.apk *_aligned.apk&lt;/code&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;一，查看网页源代码&quot;&gt;&lt;a href=&quot;#一，查看网页源代码&quot; class=&quot;headerlink&quot; title=&quot;一，查看网页源代码&quot;&gt;&lt;/a&gt;一，查看网页源代码&lt;/h1&gt;&lt;p&gt;curl www.bitauto.com&lt;/p&gt;
-&lt;h5 id=&quot;保存网页&quot;&gt;&lt;a 
+      &lt;h1 id=&quot;1，环境准备&quot;&gt;&lt;a href=&quot;#1，环境准备&quot; class=&quot;headerlink&quot; title=&quot;1，环境准备&quot;&gt;&lt;/a&gt;1，环境准备&lt;/h1&gt;&lt;p&gt;&lt;code&gt;brew install apktool&lt;/code&gt;&lt;br&gt;&lt;code&gt;brew instal
     
     </summary>
     
-      <category term="Web" scheme="http://yoursite.com/categories/Web/"/>
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
-      <category term="Web" scheme="http://yoursite.com/tags/Web/"/>
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
-      <category term="curl" scheme="http://yoursite.com/tags/curl/"/>
+      <category term="反编译" scheme="http://yoursite.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+      <category term="brew" scheme="http://yoursite.com/tags/brew/"/>
     
   </entry>
   
