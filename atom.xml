@@ -414,7 +414,7 @@
     <link href="http://yoursite.com/2015/08/10/%E5%8E%9F-%E9%AB%98%E4%BB%BFSinaWeibo%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%8F%91%E5%B8%83%E9%A1%B5%E9%9D%A2%E8%AF%9D%E9%A2%98%E6%95%88%E6%9E%9C/"/>
     <id>http://yoursite.com/2015/08/10/原-高仿SinaWeibo新浪微博发布页面话题效果/</id>
     <published>2015-08-09T16:06:33.000Z</published>
-    <updated>2016-06-13T14:53:16.000Z</updated>
+    <updated>2016-07-11T03:09:18.000Z</updated>
     
     <content type="html">&lt;p&gt;最近做了一个仿新浪微博话题效果的功能,网上搜索了几个效果,都存在一定问题,最终借鉴别人的思路,完成这一套效果.&lt;/p&gt;
 &lt;p&gt;首先,我们拆分逻辑以及开发顺序.&lt;/p&gt;
@@ -438,7 +438,7 @@
 &lt;p&gt;最终还是有点小遗憾没有完成.当拷贝一段已经变色的话题,再粘贴到文本后,无法删除掉拷贝进来文本的变色效果,尝试调用&lt;code&gt;Editable.clearSpans()&lt;/code&gt;去除全部 span 也无法实现,并且这个方法会导致直接卡死.后来直接使用&lt;code&gt;EditText.setText()&lt;/code&gt;控制文本,确实达到了效果,但是当输入法是类似 mx4默认输入法效果时(效果大概是,输入的拼音直接显示在 EditText 里面,点击被选汉字,替换掉拼音),会把输入的拼音放入到文本里,所以上面的代码,我一般是直接操作 Editable.&lt;/p&gt;
 &lt;p&gt;如果有更好的方法或者修复了上面的小遗憾,请留言指教.&lt;/p&gt;
 &lt;p&gt;Demo 地址：&lt;a href=&quot;https://github.com/KennethYo/SinaTopic&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/KennethYo/SinaTopic&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;转载请注明出处:&lt;a href=&quot;http://www.kennethyo.me/post/android/2015-08-09&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me/post/android/2015-08-09&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;转载请注明出处:&lt;a href=&quot;http://www.kennethyo.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">

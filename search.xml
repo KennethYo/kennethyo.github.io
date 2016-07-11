@@ -266,7 +266,7 @@
 <p>最终还是有点小遗憾没有完成.当拷贝一段已经变色的话题,再粘贴到文本后,无法删除掉拷贝进来文本的变色效果,尝试调用<code>Editable.clearSpans()</code>去除全部 span 也无法实现,并且这个方法会导致直接卡死.后来直接使用<code>EditText.setText()</code>控制文本,确实达到了效果,但是当输入法是类似 mx4默认输入法效果时(效果大概是,输入的拼音直接显示在 EditText 里面,点击被选汉字,替换掉拼音),会把输入的拼音放入到文本里,所以上面的代码,我一般是直接操作 Editable.</p>
 <p>如果有更好的方法或者修复了上面的小遗憾,请留言指教.</p>
 <p>Demo 地址：<a href="https://github.com/KennethYo/SinaTopic" target="_blank" rel="external">https://github.com/KennethYo/SinaTopic</a></p>
-<p>转载请注明出处:<a href="http://www.kennethyo.me/post/android/2015-08-09" target="_blank" rel="external">http://www.kennethyo.me/post/android/2015-08-09</a></p>
+<p>转载请注明出处:<a href="http://www.kennethyo.me" target="_blank" rel="external">http://www.kennethyo.me</a></p>
 ]]></content>
     </entry>
     
