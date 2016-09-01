@@ -3,10 +3,73 @@
 
 
     
+  <url>
+    <loc>www.kennethyo.me/2015/09/29/2015-09-29/</loc>
+    <lastmod>2016-09-01T06:39:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除</title>
+        <pubTime>2015-09-29T07:22:08.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>View</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
-    <loc>www.kennethyo.me/2015/08/10/%E5%8E%9F-%E9%AB%98%E4%BB%BFSinaWeibo%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%8F%91%E5%B8%83%E9%A1%B5%E9%9D%A2%E8%AF%9D%E9%A2%98%E6%95%88%E6%9E%9C/</loc>
-    <lastmod>2016-07-11T03:09:18.000Z</lastmod>
+    <loc>www.kennethyo.me/2015/05/25/2015-05-25/</loc>
+    <lastmod>2016-09-01T06:39:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>[译]介绍MVP Model-View-Presenter在Android中的应用</title>
+        <pubTime>2015-05-25T05:47:35.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>MVP</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2015/05/08/2015-05-08/</loc>
+    <lastmod>2016-09-01T06:39:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]Android获取运营商</title>
+        <pubTime>2015-05-08T08:40:08.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2015/08/10/2015-08-10/</loc>
+    <lastmod>2016-09-01T06:38:45.000Z</lastmod>
     <data>
         <display>
         <title>[原]高仿SinaWeibo新浪微博发布页面话题效果</title>
@@ -25,8 +88,142 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2016/07/06/TextUtils%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
-    <lastmod>2016-07-11T02:59:54.000Z</lastmod>
+    <loc>www.kennethyo.me/2015/10/16/2015-10-16/</loc>
+    <lastmod>2016-09-01T06:38:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]Android 翻转动画 Rotate3dAnimation 效果</title>
+        <pubTime>2015-10-16T09:05:57.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Animation</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2015/12/03/2015-12-03/</loc>
+    <lastmod>2016-09-01T06:38:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]Android 自定义字体，字替换为图片</title>
+        <pubTime>2015-12-03T05:54:59.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>View</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2016/03/18/2016-03-18/</loc>
+    <lastmod>2016-09-01T06:37:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]React-Native Android 学习笔记——1，配置环境</title>
+        <pubTime>2016-03-18T07:30:43.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>React-Native</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2016/03/23/2016-03-23/</loc>
+    <lastmod>2016-09-01T06:37:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]React-Native Android 学习笔记——2，自定义 logger</title>
+        <pubTime>2016-03-23T08:35:48.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>React-Native</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2016/06/17/2016-06-17/</loc>
+    <lastmod>2016-09-01T06:37:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>CURL常用指令</title>
+        <pubTime>2016-06-17T03:48:12.000Z</pubTime>
+        
+        <tag>Web</tag>
+         
+        <tag>CURL</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web" url="http://yoursite.com/categories/Web/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2016/06/21/2016-06-21/</loc>
+    <lastmod>2016-09-01T06:36:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac 下反编译 apk</title>
+        <pubTime>2016-06-21T03:34:24.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>反编译</tag>
+         
+        <tag>brew</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2016/07/06/2016-07-06/</loc>
+    <lastmod>2016-09-01T06:36:36.000Z</lastmod>
     <data>
         <display>
         <title>TextUtils方法介绍</title>
@@ -53,190 +250,12 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2016/06/17/CURL-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</loc>
-    <lastmod>2016-06-21T03:51:19.000Z</lastmod>
+    <loc>www.kennethyo.me/2015/01/25/2015-01-25/</loc>
+    <lastmod>2016-09-01T06:35:53.000Z</lastmod>
     <data>
         <display>
-        <title>CURL常用指令</title>
-        <pubTime>2016-06-17T03:48:12.000Z</pubTime>
-        
-        <tag>Web</tag>
-         
-        <tag>CURL</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web" url="http://yoursite.com/categories/Web/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2016/06/21/Mac-%E4%B8%8B%E5%8F%8D%E7%BC%96%E8%AF%91-apk-4/</loc>
-    <lastmod>2016-06-21T03:41:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>Mac 下反编译 apk</title>
-        <pubTime>2016-06-21T03:34:24.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>反编译</tag>
-         
-        <tag>brew</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2015/05/25/%E8%AF%91-%E4%BB%8B%E7%BB%8DMVP-Model-View-Presenter%E5%9C%A8Android%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2016-06-13T14:55:38.000Z</lastmod>
-    <data>
-        <display>
-        <title>[译]介绍MVP Model-View-Presenter在Android中的应用</title>
-        <pubTime>2015-05-25T05:47:35.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>MVP</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2015/09/29/%E5%8E%9F-Android-%E5%8F%AF%E6%8B%96%E6%8B%BD-GridView-%E5%B9%B6%E4%B8%94%E5%AE%9E%E6%97%B6%E5%88%87%E6%8D%A2%E5%92%8C%E6%8B%96%E5%8A%A8%E5%88%B0%E4%B8%8B%E9%83%A8%E5%88%A0%E9%99%A4/</loc>
-    <lastmod>2016-06-13T14:50:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除</title>
-        <pubTime>2015-09-29T07:22:08.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>View</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2015/10/16/%E5%8E%9F-Android-%E7%BF%BB%E8%BD%AC%E5%8A%A8%E7%94%BB-Rotate3dAnimation-%E6%95%88%E6%9E%9C/</loc>
-    <lastmod>2016-06-13T14:49:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]Android 翻转动画 Rotate3dAnimation 效果</title>
-        <pubTime>2015-10-16T09:05:57.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Animation</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2015/12/03/%E5%8E%9F-Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93%EF%BC%8C%E5%AD%97%E6%9B%BF%E6%8D%A2%E4%B8%BA%E5%9B%BE%E7%89%87/</loc>
-    <lastmod>2016-06-13T14:48:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]Android 自定义字体，字替换为图片</title>
-        <pubTime>2015-12-03T05:54:59.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>View</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2016/03/18/%E5%8E%9F-React-Native-Android-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%941%EF%BC%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2016-06-13T14:47:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]React-Native Android 学习笔记——1，配置环境</title>
-        <pubTime>2016-03-18T07:30:43.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>React-Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2016/03/23/%E5%8E%9F-React-Native-Android-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%942%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89-logger/</loc>
-    <lastmod>2016-06-13T14:44:30.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]React-Native Android 学习笔记——2，自定义 logger</title>
-        <pubTime>2016-03-23T08:35:48.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>React-Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/05/08/%E5%8E%9F-%E8%87%AA%E5%AE%9A%E4%B9%89TextView%E5%AE%9E%E7%8E%B0%E5%86%85%E5%AE%B9%E7%9A%84%E6%97%8B%E8%BD%AC%E5%92%8C%E5%81%8F%E7%A7%BB/</loc>
-    <lastmod>2016-06-13T14:38:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]自定义TextView实现内容的旋转和偏移</title>
-        <pubTime>2014-05-08T06:10:00.000Z</pubTime>
+        <title>[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以</title>
+        <pubTime>2015-01-25T14:44:22.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -251,128 +270,8 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2014/04/23/%E5%8E%9F-%E5%8D%9A%E4%B8%BB%E6%AF%95%E4%B8%9A%E4%BB%A5%E6%9D%A5%E6%80%BB%E7%BB%93%E7%9A%84android%E7%BB%8F%E9%AA%8C%EF%BC%8C%E6%83%B3%E8%B5%B7%E6%9D%A5%E4%BB%80%E4%B9%88%E5%B0%B1%E5%8A%A0%E7%82%B9/</loc>
-    <lastmod>2016-06-13T14:16:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]博主毕业以来总结的android经验，想起来什么就加点</title>
-        <pubTime>2014-04-23T05:41:35.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/02/10/%E8%BD%AC-Google-Java%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2016-06-08T06:48:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>[转]Google Java编程风格指南</title>
-        <pubTime>2014-02-10T03:51:27.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://yoursite.com/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/</loc>
-    <lastmod>2016-06-08T06:46:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]WebView填坑——小功能篇</title>
-        <pubTime>2015-04-22T08:31:06.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/11/10/%E5%8E%9F-RecyclerView%E5%88%9D%E7%BA%A7%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2016-06-08T06:46:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]RecyclerView初级使用</title>
-        <pubTime>2014-11-10T07:18:15.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/11/04/%E5%8E%9F-Palette%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2016-06-08T06:46:20.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]Palette的使用</title>
-        <pubTime>2014-11-04T08:19:53.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/10/24/%E5%8E%9F-LayoutInflater-inflate%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2016-06-08T06:46:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]LayoutInflater.inflate详解</title>
-        <pubTime>2014-10-24T08:27:08.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/12/28/%E5%8E%9F-CardView%E5%88%9D%E7%BA%A7%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2016-06-08T06:46:12.000Z</lastmod>
+    <loc>www.kennethyo.me/2014/12/28/2014-12-28/</loc>
+    <lastmod>2016-09-01T06:35:27.000Z</lastmod>
     <data>
         <display>
         <title>[原]CardView初级使用</title>
@@ -393,12 +292,12 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2015/01/25/%E5%8E%9F-Android%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%A6%82%E4%BD%95%E6%B3%A1%E8%AE%BE%E8%AE%A1%E5%A6%B9%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%8C%E6%8F%A1dp%E5%92%8Cpx%E6%89%8D%E5%8F%AF%E4%BB%A5/</loc>
-    <lastmod>2016-06-08T06:46:08.000Z</lastmod>
+    <loc>www.kennethyo.me/2014/11/10/2014-11-10/</loc>
+    <lastmod>2016-09-01T06:35:08.000Z</lastmod>
     <data>
         <display>
-        <title>[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以</title>
-        <pubTime>2015-01-25T14:44:22.000Z</pubTime>
+        <title>[原]RecyclerView初级使用</title>
+        <pubTime>2014-11-10T07:18:15.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -413,12 +312,12 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2015/05/08/%E5%8E%9F-Android%E8%8E%B7%E5%8F%96%E8%BF%90%E8%90%A5%E5%95%86/</loc>
-    <lastmod>2016-06-08T06:46:04.000Z</lastmod>
+    <loc>www.kennethyo.me/2014/11/04/2014-11-04/</loc>
+    <lastmod>2016-09-01T06:34:47.000Z</lastmod>
     <data>
         <display>
-        <title>[原]Android获取运营商</title>
-        <pubTime>2015-05-08T08:40:08.000Z</pubTime>
+        <title>[原]Palette的使用</title>
+        <pubTime>2014-11-04T08:19:53.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -433,8 +332,28 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2014/08/22/%E5%8E%9F-Android-API%EF%BC%8C%E7%89%88%E6%9C%AC%E5%AF%B9%E7%85%A7/</loc>
-    <lastmod>2016-06-08T06:45:56.000Z</lastmod>
+    <loc>www.kennethyo.me/2014/10/24/2014-10-24/</loc>
+    <lastmod>2016-09-01T06:34:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]LayoutInflater.inflate详解</title>
+        <pubTime>2014-10-24T08:27:08.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2014/08/22/2014-08-22/</loc>
+    <lastmod>2016-09-01T06:34:00.000Z</lastmod>
     <data>
         <display>
         <title>[原]Android API，版本对照</title>
@@ -453,8 +372,68 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2014/02/11/%E5%8E%9F-%E7%94%A8Fragment%E6%9D%A5%E4%BB%A3%E6%9B%BF%E8%BF%87%E6%9C%9F%E7%9A%84Tabhost%E5%92%8CActivityGroup/</loc>
-    <lastmod>2016-06-08T06:45:37.000Z</lastmod>
+    <loc>www.kennethyo.me/2014/06/23/20140623/</loc>
+    <lastmod>2016-09-01T06:33:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>[译]Android文本的测量和绘制</title>
+        <pubTime>2014-06-23T03:20:50.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2014/05/08/20140508/</loc>
+    <lastmod>2016-09-01T06:32:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]自定义TextView实现内容的旋转和偏移</title>
+        <pubTime>2014-05-08T06:10:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2014/04/23/20140423/</loc>
+    <lastmod>2016-09-01T06:32:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]博主毕业以来总结的android经验，想起来什么就加点</title>
+        <pubTime>2014-04-23T05:41:35.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2014/02/11/20140211/</loc>
+    <lastmod>2016-09-01T06:32:05.000Z</lastmod>
     <data>
         <display>
         <title>[原]用Fragment来代替过期的Tabhost和ActivityGroup</title>
@@ -473,12 +452,33 @@
 
     
   <url>
-    <loc>www.kennethyo.me/2014/06/23/%E8%AF%91-Android%E6%96%87%E6%9C%AC%E7%9A%84%E6%B5%8B%E9%87%8F%E5%92%8C%E7%BB%98%E5%88%B6/</loc>
-    <lastmod>2016-06-08T06:45:05.000Z</lastmod>
+    <loc>www.kennethyo.me/2014/02/10/20160901/</loc>
+    <lastmod>2016-09-01T06:31:02.000Z</lastmod>
     <data>
         <display>
-        <title>[译]Android文本的测量和绘制</title>
-        <pubTime>2014-06-23T03:20:50.000Z</pubTime>
+        <title>[转]Google Java编程风格指南</title>
+        <pubTime>2014-02-10T03:51:27.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://yoursite.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/</loc>
+    <lastmod>2016-06-08T06:46:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]WebView填坑——小功能篇</title>
+        <pubTime>2015-04-22T08:31:06.000Z</pubTime>
         
         <tag>Android</tag>
          

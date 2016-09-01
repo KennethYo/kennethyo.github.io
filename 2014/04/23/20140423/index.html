@@ -1,0 +1,597 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>[原]博主毕业以来总结的android经验，想起来什么就加点 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <meta name="author" content="鸿雁">
+    
+    <meta name="description" content="1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果2，混淆，最好不要混淆实体类，用到反射的时候会报错1234-keep public class com.bocop.commons.bean.**-keepclasseswithmembers class com.">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="[原]博主毕业以来总结的android经验，想起来什么就加点"/>
+    <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">在北京敲键盘的呼伦贝尔人</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://tva3.sinaimg.cn/crop.0.164.768.768.180/792a0844jw8etn392skjuj20lc0sgn2i.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">鸿雁</p>
+                        <p class="desc"> Android/Wower</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Web/">
+                    Web <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Android/">
+                    Android <span class="right">21 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Android/">Android</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>[原]博主毕业以来总结的android经验，想起来什么就加点</h1>
+    
+
+
+            </div>
+            <time class="indigo-link-context" datetime="2014-04-23T05:41:35.000Z"><a href="/2014/04/23/20140423/">2014-04-23</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+        
+    </div>
+
+
+            <div class="toc indigo-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果"><span class="section table-of-contents-text">1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2，混淆，最好不要混淆实体类，用到反射的时候会报错"><span class="section table-of-contents-text">2，混淆，最好不要混淆实体类，用到反射的时候会报错</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3，非常好用的收键盘方式，适用fragment"><span class="section table-of-contents-text">3，非常好用的收键盘方式，适用fragment</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4，EditText不获取焦点不获取光标的方法"><span class="section table-of-contents-text">4，EditText不获取焦点不获取光标的方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5，如何实现在Tabhost中的activity-overridePendingTransition-切换效果"><span class="section table-of-contents-text">5，如何实现在Tabhost中的activity overridePendingTransition()切换效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#6，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板"><span class="section table-of-contents-text">6，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#7，当listview含有Header时，在onItemClick事件中请这样获取ItemObject"><span class="section table-of-contents-text">7，当listview含有Header时，在onItemClick事件中请这样获取ItemObject</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#8，在做自定义view的时候，避免不了各种画图，画图就会用到各种对float的运算，这里做运算的时候要长个心。"><span class="section table-of-contents-text">8，在做自定义view的时候，避免不了各种画图，画图就会用到各种对float的运算，这里做运算的时候要长个心。</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#9，主动关闭Alert-Dialog-builder，可以借助builder-create-，返回的对象为AlertDialog。"><span class="section table-of-contents-text">9，主动关闭Alert.Dialog.builder，可以借助builder.create()，返回的对象为AlertDialog。</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#10，BitmapFactory-decodeStream-InputStream-is-Rect-outPadding-Options-opts-返回null的问题"><span class="section table-of-contents-text">10，BitmapFactory().decodeStream(InputStream is,Rect outPadding,Options opts)返回null的问题</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#11，启动三星系统相机导致打开相机的Activity，会被destroy，导致nullpointexception。"><span class="section table-of-contents-text">11，启动三星系统相机导致打开相机的Activity，会被destroy，导致nullpointexception。</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#12，listview有一个setEmptyView的方法，当adapter等于null或者item等0的时候会显示你设置的布局。"><span class="section table-of-contents-text">12，listview有一个setEmptyView的方法，当adapter等于null或者item等0的时候会显示你设置的布局。</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#13-验证是否有合适的activity会响应这个intent，需要执行queryIntentActivities来获取到能够接收这个intent的所有activity的list。如果返回的List"><span class="section table-of-contents-text">13, 验证是否有合适的activity会响应这个intent，需要执行queryIntentActivities来获取到能够接收这个intent的所有activity的list。如果返回的List</span></a></li></ol>
+</div>
+
+
+            <div class="entry indigo-link-context">
+                <h2 id="1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果"><a href="#1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果" class="headerlink" title="1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果"></a>1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果</h2><h2 id="2，混淆，最好不要混淆实体类，用到反射的时候会报错"><a href="#2，混淆，最好不要混淆实体类，用到反射的时候会报错" class="headerlink" title="2，混淆，最好不要混淆实体类，用到反射的时候会报错"></a>2，混淆，最好不要混淆实体类，用到反射的时候会报错</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">bocop</span>.<span class="title">commons</span>.<span class="title">bean</span>.**</span><br><span class="line">-<span class="title">keepclasseswithmembers</span> <span class="title">class</span> <span class="title">com</span>.<span class="title">bocop</span>.<span class="title">commons</span>.<span class="title">bean</span>.** </span>&#123;</span><br><span class="line">    *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3，非常好用的收键盘方式，适用fragment"><a href="#3，非常好用的收键盘方式，适用fragment" class="headerlink" title="3，非常好用的收键盘方式，适用fragment"></a>3，非常好用的收键盘方式，适用fragment</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);</span><br></pre></td></tr></table></figure>
+<p>收键盘代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (getActivity().getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) &#123;</span><br><span class="line">	<span class="keyword">if</span> (getActivity().getCurrentFocus() != <span class="keyword">null</span>)</span><br><span class="line">		imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4，EditText不获取焦点不获取光标的方法"><a href="#4，EditText不获取焦点不获取光标的方法" class="headerlink" title="4，EditText不获取焦点不获取光标的方法"></a>4，EditText不获取焦点不获取光标的方法</h2><p>在EditText的包裹空间加入2个属性即可<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:focusable</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">android:focusableInTouchMode</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">EditText</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/et_phone"</span></span><br><span class="line">            <span class="attr">style</span>=<span class="string">"@style/text_black_default_bg"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">            <span class="attr">android:inputType</span>=<span class="string">"phone"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="5，如何实现在Tabhost中的activity-overridePendingTransition-切换效果"><a href="#5，如何实现在Tabhost中的activity-overridePendingTransition-切换效果" class="headerlink" title="5，如何实现在Tabhost中的activity overridePendingTransition()切换效果"></a>5，如何实现在Tabhost中的activity overridePendingTransition()切换效果</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnimCommon</span> </span>&#123;<span class="comment">//维护页面切换效果工具类</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> in = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> out = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		in = a ;</span><br><span class="line">		out = b;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123;</span><br><span class="line">		in = <span class="number">0</span>;</span><br><span class="line">		out = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在tabhost的onPause周期实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">super</span>.overridePendingTransition(AnimCommon.in, AnimCommon.out);</span><br><span class="line">	AnimCommon.clear();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">super</span>.onPause();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在activity中startActivity或者finish的实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent= <span class="keyword">new</span> Intent(<span class="keyword">this</span>, *.class);</span><br><span class="line">AnimCommon.set(R.anim.push_left_in, R.anim.push_left_out);</span><br><span class="line"><span class="keyword">this</span>.startActivity(intent);</span><br></pre></td></tr></table></figure></p>
+<h2 id="6，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板"><a href="#6，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板" class="headerlink" title="6，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板"></a>6，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板</h2><h3 id="7，当listview含有Header时，在onItemClick事件中请这样获取ItemObject"><a href="#7，当listview含有Header时，在onItemClick事件中请这样获取ItemObject" class="headerlink" title="7，当listview含有Header时，在onItemClick事件中请这样获取ItemObject"></a>7，当listview含有Header时，在onItemClick事件中请这样获取ItemObject</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object obj = parent.getAdapter().getItem(position);</span><br></pre></td></tr></table></figure>
+<p> 先判空，再强转为需要的对象。这样就可以避免手动在onItemClick中（positon-header数量）了。</p>
+<h3 id="8，在做自定义view的时候，避免不了各种画图，画图就会用到各种对float的运算，这里做运算的时候要长个心。"><a href="#8，在做自定义view的时候，避免不了各种画图，画图就会用到各种对float的运算，这里做运算的时候要长个心。" class="headerlink" title="8，在做自定义view的时候，避免不了各种画图，画图就会用到各种对float的运算，这里做运算的时候要长个心。"></a>8，在做自定义view的时候，避免不了各种画图，画图就会用到各种对float的运算，这里做运算的时候要长个心。</h3><h3 id="9，主动关闭Alert-Dialog-builder，可以借助builder-create-，返回的对象为AlertDialog。"><a href="#9，主动关闭Alert-Dialog-builder，可以借助builder-create-，返回的对象为AlertDialog。" class="headerlink" title="9，主动关闭Alert.Dialog.builder，可以借助builder.create()，返回的对象为AlertDialog。"></a>9，主动关闭Alert.Dialog.builder，可以借助builder.create()，返回的对象为AlertDialog。</h3><p>这里还要说一下，builder本身是没有dismiss()和cancel()方法的.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.Builder alertDialog = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</span><br><span class="line">		alertDialog.setView(upload_menu);</span><br><span class="line">		alert = alertDialog.create();</span><br><span class="line">		alert.show();</span><br><span class="line"></span><br><span class="line">		alert.dismiss();</span><br></pre></td></tr></table></figure></p>
+<h3 id="10，BitmapFactory-decodeStream-InputStream-is-Rect-outPadding-Options-opts-返回null的问题"><a href="#10，BitmapFactory-decodeStream-InputStream-is-Rect-outPadding-Options-opts-返回null的问题" class="headerlink" title="10，BitmapFactory().decodeStream(InputStream is,Rect outPadding,Options opts)返回null的问题"></a>10，BitmapFactory().decodeStream(InputStream is,Rect outPadding,Options opts)返回null的问题</h3><p>很多人会遇到这样的情况，通过上面的方法返回null的问题，如下代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">		options.inJustDecodeBounds = <span class="keyword">true</span>;</span><br><span class="line">		InputStream openInputStream = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			openInputStream = getContentResolver().openInputStream(mPicUri);</span><br><span class="line">			Bitmap bm = BitmapFactory.decodeStream(</span><br><span class="line">					openInputStream, <span class="keyword">null</span>,</span><br><span class="line">					options);</span><br><span class="line">			options.inJustDecodeBounds = <span class="keyword">false</span>;</span><br><span class="line">			<span class="keyword">int</span> be = (<span class="keyword">int</span>) (options.outHeight / (<span class="keyword">float</span>) <span class="number">200</span>);</span><br><span class="line">			<span class="keyword">if</span> (be &lt;= <span class="number">0</span>)</span><br><span class="line">				be = <span class="number">1</span>;</span><br><span class="line">			options.inSampleSize = be;</span><br><span class="line">			openInputStream = getContentResolver().openInputStream(mPicUri);</span><br><span class="line">			bm = BitmapFactory.decodeStream(openInputStream, <span class="keyword">null</span>,</span><br><span class="line">					options);</span><br><span class="line">			Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">			mPicBitamp = Bitmap.createBitmap(bm, <span class="number">0</span>, <span class="number">0</span>, bm.getWidth() - <span class="number">10</span>,</span><br><span class="line">					bm.getHeight() - <span class="number">10</span>, matrix, <span class="keyword">true</span>);</span><br><span class="line">			bm.recycle();</span><br><span class="line">			showPic(mPicBitamp);</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="keyword">null</span>!=openInputStream)&#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					openInputStream.close();</span><br><span class="line">					openInputStream=<span class="keyword">null</span>;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是因为我们在两个Bitmap.decodeStream()方法中用了同一支流进行了处理，这里需要我们分别给两只不同的流，如下代码达到效果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">		options.inJustDecodeBounds = <span class="keyword">true</span>;</span><br><span class="line">		InputStream openInputStream1 = <span class="keyword">null</span>;</span><br><span class="line">		InputStream openInputStream2 = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			openInputStream1 = getContentResolver().openInputStream(mPicUri);</span><br><span class="line">			Bitmap bm = BitmapFactory.decodeStream(</span><br><span class="line">					openInputStream1, <span class="keyword">null</span>,</span><br><span class="line">					options);</span><br><span class="line">			options.inJustDecodeBounds = <span class="keyword">false</span>;</span><br><span class="line">			<span class="keyword">int</span> be = (<span class="keyword">int</span>) (options.outHeight / (<span class="keyword">float</span>) <span class="number">200</span>);</span><br><span class="line">			<span class="keyword">if</span> (be &lt;= <span class="number">0</span>)</span><br><span class="line">				be = <span class="number">1</span>;</span><br><span class="line">			options.inSampleSize = be;</span><br><span class="line"></span><br><span class="line">			openInputStream2 = getContentResolver().openInputStream(mPicUri);</span><br><span class="line"></span><br><span class="line">			bm = BitmapFactory.decodeStream(openInputStream2, <span class="keyword">null</span>,</span><br><span class="line">					options);</span><br><span class="line">			Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">			mPicBitamp = Bitmap.createBitmap(bm, <span class="number">0</span>, <span class="number">0</span>, bm.getWidth() - <span class="number">10</span>,</span><br><span class="line">					bm.getHeight() - <span class="number">10</span>, matrix, <span class="keyword">true</span>);</span><br><span class="line">			bm.recycle();</span><br><span class="line">			showPic(mPicBitamp);</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			closeInputStream(openInputStream1);</span><br><span class="line">			closeInputStream(openInputStream2);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="11，启动三星系统相机导致打开相机的Activity，会被destroy，导致nullpointexception。"><a href="#11，启动三星系统相机导致打开相机的Activity，会被destroy，导致nullpointexception。" class="headerlink" title="11，启动三星系统相机导致打开相机的Activity，会被destroy，导致nullpointexception。"></a>11，启动三星系统相机导致打开相机的Activity，会被destroy，导致nullpointexception。</h2><p>发生这个问题可能大家已经分析到了，三星相机会根据用户横持或竖持设备进行旋转，这样就会导致我们开启系统相机的Activity进行销毁重构。我的解决办法是在清单文件里注册android:configChanges=”keyboardHidden|orientation|screenSize”，如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span><br><span class="line">            <span class="attr">android:name</span>=<span class="string">".view.WantQuestionsActivity"</span></span><br><span class="line">            <span class="attr">android:screenOrientation</span>=<span class="string">"portrait"</span></span><br><span class="line">            <span class="attr">android:configChanges</span>=<span class="string">"keyboardHidden|orientation|screenSize"</span></span><br><span class="line">            <span class="attr">android:windowSoftInputMode</span>=<span class="string">"adjustResize"</span> &gt;</span></span><br><span class="line">       		 <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>并且在开启的Activity代码中重写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</span><br><span class="line">	Configuration configuration =<span class="keyword">new</span> Configuration(newConfig);</span><br><span class="line">	configuration.orientation =Configuration.ORIENTATION_PORTRAIT;</span><br><span class="line">	newConfig.setTo(configuration);</span><br><span class="line">	<span class="keyword">super</span>.onConfigurationChanged(newConfig);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其时到这里还会有一个问题就是照片旋转了，这里就不贴代码了，相信大家旋转照片网上能搜索一大把的。</p>
+<h2 id="12，listview有一个setEmptyView的方法，当adapter等于null或者item等0的时候会显示你设置的布局。"><a href="#12，listview有一个setEmptyView的方法，当adapter等于null或者item等0的时候会显示你设置的布局。" class="headerlink" title="12，listview有一个setEmptyView的方法，当adapter等于null或者item等0的时候会显示你设置的布局。"></a>12，listview有一个setEmptyView的方法，当adapter等于null或者item等0的时候会显示你设置的布局。</h2><h2 id="13-验证是否有合适的activity会响应这个intent，需要执行queryIntentActivities来获取到能够接收这个intent的所有activity的list。如果返回的List"><a href="#13-验证是否有合适的activity会响应这个intent，需要执行queryIntentActivities来获取到能够接收这个intent的所有activity的list。如果返回的List" class="headerlink" title="13, 验证是否有合适的activity会响应这个intent，需要执行queryIntentActivities来获取到能够接收这个intent的所有activity的list。如果返回的List"></a>13, 验证是否有合适的activity会响应这个intent，需要执行<a href="http://developer.android.com/reference/android/content/pm/PackageManager.html#queryIntentActivities(android.content.Intent, int" target="_blank" rel="external"><code>queryIntentActivities</code></a>来获取到能够接收这个intent的所有activity的list。如果返回的<a href="http://developer.android.com/reference/java/util/List.html" target="_blank" rel="external">List</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PackageManager packageManager = getPackageManager();</span><br><span class="line">List&lt;ResolveInfo&gt; activities = packageManager.queryIntentActivities(intent, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">boolean</span> isIntentSafe = activities.size() &gt; <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>如果<code>isIntentSafe</code>是<code>true</code>,那么至少有一个app可以响应这个intent。如果是<code>false</code>则说明没有app可以handle这个intent。</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2014/04/23/20140423/" data-title="[原]博主毕业以来总结的android经验，想起来什么就加点" data-url="http://yoursite.com/2014/04/23/20140423/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'kennethyo'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect blue" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/304526030" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/kennethyo" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright indigo-link-context">
+        <div class="container">
+            © 2016 kennethyo.me, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('green lighten-2');
+
+            
+            // 添加new标签
+            $('').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=56699390" charset="UTF-8"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

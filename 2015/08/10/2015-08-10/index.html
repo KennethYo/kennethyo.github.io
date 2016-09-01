@@ -1,0 +1,610 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>[原]高仿SinaWeibo新浪微博发布页面话题效果 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <meta name="author" content="鸿雁">
+    
+    <meta name="description" content="最近做了一个仿新浪微博话题效果的功能,网上搜索了几个效果,都存在一定问题,最终借鉴别人的思路,完成这一套效果.
+首先,我们拆分逻辑以及开发顺序.
+
+1,实现话题变色效果2,实现插入话题效果3,实现话题选中删除效果4,实现点击话题,光标在话题之后
+
+下面我们就一步一步实现效果.
+
+一,实现话题变色实现">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="[原]高仿SinaWeibo新浪微博发布页面话题效果"/>
+    <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">在北京敲键盘的呼伦贝尔人</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://tva3.sinaimg.cn/crop.0.164.768.768.180/792a0844jw8etn392skjuj20lc0sgn2i.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">鸿雁</p>
+                        <p class="desc"> Android/Wower</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Web/">
+                    Web <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Android/">
+                    Android <span class="right">21 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Android/">Android</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>[原]高仿SinaWeibo新浪微博发布页面话题效果</h1>
+    
+
+
+            </div>
+            <time class="indigo-link-context" datetime="2015-08-09T16:06:33.000Z"><a href="/2015/08/10/2015-08-10/">2015-08-10</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+        
+    </div>
+
+
+            <div class="toc indigo-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-6"><a class="section table-of-contents-link" href="#1-实现话题变色效果"><span class="section table-of-contents-text">1,实现话题变色效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-6"><a class="section table-of-contents-link" href="#2-实现插入话题效果"><span class="section table-of-contents-text">2,实现插入话题效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-6"><a class="section table-of-contents-link" href="#3-实现话题选中删除效果"><span class="section table-of-contents-text">3,实现话题选中删除效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-6"><a class="section table-of-contents-link" href="#4-实现点击话题-光标在话题之后"><span class="section table-of-contents-text">4,实现点击话题,光标在话题之后</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一-实现话题变色"><span class="section table-of-contents-text">一,实现话题变色</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#利用正则表达式获取全部话题"><span class="section table-of-contents-text">利用正则表达式获取全部话题:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#通过正则表达式匹配出的话题集合-遍历出每个话题的-startIndex-位置-后来发现Matcher方法是有获取-index-的方法-并且通过EditText-getText-方法获取的Editable直接对文本进行操作"><span class="section table-of-contents-text">通过正则表达式匹配出的话题集合,遍历出每个话题的 startIndex 位置(后来发现Matcher方法是有获取 index 的方法),并且通过EditText.getText()方法获取的Editable直接对文本进行操作:</span></a></li></ol></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二-实现插入话题效果"><span class="section table-of-contents-text">二,实现插入话题效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#三-实现话题选中删除效果"><span class="section table-of-contents-text">三,实现话题选中删除效果</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#四-实现点击话题-光标在话题之后"><span class="section table-of-contents-text">四,实现点击话题,光标在话题之后</span></a>
+</div>
+
+
+            <div class="entry indigo-link-context">
+                <p>最近做了一个仿新浪微博话题效果的功能,网上搜索了几个效果,都存在一定问题,最终借鉴别人的思路,完成这一套效果.</p>
+<p>首先,我们拆分逻辑以及开发顺序.</p>
+<blockquote>
+<h6 id="1-实现话题变色效果"><a href="#1-实现话题变色效果" class="headerlink" title="1,实现话题变色效果"></a>1,实现话题变色效果</h6><h6 id="2-实现插入话题效果"><a href="#2-实现插入话题效果" class="headerlink" title="2,实现插入话题效果"></a>2,实现插入话题效果</h6><h6 id="3-实现话题选中删除效果"><a href="#3-实现话题选中删除效果" class="headerlink" title="3,实现话题选中删除效果"></a>3,实现话题选中删除效果</h6><h6 id="4-实现点击话题-光标在话题之后"><a href="#4-实现点击话题-光标在话题之后" class="headerlink" title="4,实现点击话题,光标在话题之后"></a>4,实现点击话题,光标在话题之后</h6></blockquote>
+<p><img src="http://img.blog.csdn.net/20150809173121271" alt="这里写图片描述"></p>
+<p>下面我们就一步一步实现效果.</p>
+<hr>
+<h2 id="一-实现话题变色"><a href="#一-实现话题变色" class="headerlink" title="一,实现话题变色"></a>一,实现话题变色</h2><p>实现逻辑主要是通过<code>EditText</code>的<code>addTextChangedListener()</code>来进行监听文本变动,通过正则表达式来匹配出文本中的话题.</p>
+<h5 id="利用正则表达式获取全部话题"><a href="#利用正则表达式获取全部话题" class="headerlink" title="利用正则表达式获取全部话题:"></a>利用正则表达式获取全部话题:</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正则表达式,一定要和服务器以及 iOS 端统一</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String topicRegex = <span class="string">"#([^#]+?)#"</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;String&gt; <span class="title">findTopic</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Pattern p = Pattern.compile(topicRegex);</span><br><span class="line">        Matcher m = p.matcher(s);</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (m.find()) &#123;</span><br><span class="line">            list.add(m.group());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="通过正则表达式匹配出的话题集合-遍历出每个话题的-startIndex-位置-后来发现Matcher方法是有获取-index-的方法-并且通过EditText-getText-方法获取的Editable直接对文本进行操作"><a href="#通过正则表达式匹配出的话题集合-遍历出每个话题的-startIndex-位置-后来发现Matcher方法是有获取-index-的方法-并且通过EditText-getText-方法获取的Editable直接对文本进行操作" class="headerlink" title="通过正则表达式匹配出的话题集合,遍历出每个话题的 startIndex 位置(后来发现Matcher方法是有获取 index 的方法),并且通过EditText.getText()方法获取的Editable直接对文本进行操作:"></a>通过正则表达式匹配出的话题集合,遍历出每个话题的 startIndex 位置(后来发现<code>Matcher</code>方法是有获取 index 的方法),并且通过<code>EditText.getText()</code>方法获取的<code>Editable</code>直接对文本进行操作:</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">        Log.i(<span class="string">"MainActivity"</span>, <span class="string">"onTextChanged"</span>);</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(s)) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//1,查找话题</span></span><br><span class="line">        String content = s.toString();</span><br><span class="line">        mTopicList.clear();</span><br><span class="line">        mTopicList.addAll(findTopic(s.toString()));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2,为查找出的变色</span></span><br><span class="line">        <span class="comment">//首先要为editable,去除之前设置的colorSpan</span></span><br><span class="line">        Editable editable = mEditText.getText();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mColorSpans.size(); i++) &#123;</span><br><span class="line">            editable.removeSpan(mColorSpans.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">        mColorSpans.clear();</span><br><span class="line">        <span class="comment">//为editable,中的话题加入colorSpan</span></span><br><span class="line">        <span class="keyword">int</span> findPos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> size = mTopicList.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;<span class="comment">//便利话题</span></span><br><span class="line">            String topic = mTopicList.get(i);</span><br><span class="line">            findPos = content.indexOf(topic, findPos);</span><br><span class="line">            <span class="keyword">if</span> (findPos != -<span class="number">1</span>) &#123;</span><br><span class="line">                ForegroundColorSpan colorSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.BLUE);</span><br><span class="line">                editable.setSpan(colorSpan, findPos, findPos = findPos + topic.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">                mColorSpans.add(colorSpan);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="二-实现插入话题效果"><a href="#二-实现插入话题效果" class="headerlink" title="二,实现插入话题效果"></a>二,实现插入话题效果</h2><p>新浪微博的插入话题效果,是开启一个新的页面,点击一个话题后,插入光标所在的位置.这里我用一个按钮模仿了这个动作.要注意的是,要记录插入之前光标的位置,并且在插入话题后,把光标放置在话题之后:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (v.getId() == R.id.button) &#123;</span><br><span class="line">            <span class="comment">//插入话题</span></span><br><span class="line">            <span class="keyword">int</span> selectionStart = mEditText.getSelectionStart();</span><br><span class="line">			<span class="comment">//下面这些操作也可以直接替换为操作 EditText 的Editable实现,下面的代码 review 后看起来由点蠢,直接调用 insert 方法比较巧妙</span></span><br><span class="line">            String content = mEditText.getText().toString();</span><br><span class="line"></span><br><span class="line">            String firstStr = content.substring(<span class="number">0</span>, selectionStart);</span><br><span class="line">            String secondStr = content.substring(selectionStart, content.length());</span><br><span class="line"></span><br><span class="line">            String insertTopic = <span class="string">"#这是一个插入的话题#"</span>;</span><br><span class="line">            mEditText.setText(firstStr + insertTopic + secondStr);</span><br><span class="line">            mEditText.setSelection(selectionStart + insertTopic.length());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="三-实现话题选中删除效果"><a href="#三-实现话题选中删除效果" class="headerlink" title="三,实现话题选中删除效果"></a>三,实现话题选中删除效果</h2><p>这里也是要时时判断光标所在的位置,当光标出现在话题之后,再次点击删除,就截获为选中话题效果,实现起来也是很简单的.</p>
+<p>但是要注意的是,我们不能利用 activity 里面的<code>onKeyDown()</code>和<code>onKeyUp()</code>两个回调,通过 log 发现文本变动和按键点击的回调顺序为<code>beforeTextChanged-&gt;onTextChanged-&gt;afterTextChanged-&gt;onKeyDown-&gt;onKeyUp</code>.</p>
+<p>这也说明了如果通过 拦截<code>onKeyDown()</code>和<code>onKeyUp()</code>两个回调时,文本是已经删除之后的文本,并能有效的达到我们要实现的目的,那么有没有是文本改变之前就能截取到按键的方法呢?</p>
+<p>其实我们可以通过监听<code>EditText</code>的<code>setOnKeyListener()</code>方法来监听按键(<code>onKey-&gt;beforeTextChanged-&gt;onTextChanged-&gt;afterTextChanged-&gt;onKeyDown-&gt;onKeyUp</code>):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View v, <span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line">        Log.i(<span class="string">"MainActivity"</span>, <span class="string">"onKey"</span>);</span><br><span class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_DEL &amp;&amp; event.getAction() == KeyEvent.ACTION_DOWN &amp;&amp; mCheckBox2.isChecked()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> selectionStart = mEditText.getSelectionStart();</span><br><span class="line">            <span class="keyword">int</span> selectionEnd = mEditText.getSelectionEnd();</span><br><span class="line">			<span class="comment">//如果光标起始和结束在同一位置,说明是选中效果,直接返回 false 交给系统执行删除动作</span></span><br><span class="line">            <span class="keyword">if</span> (selectionStart != selectionEnd) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Editable editable = mEditText.getText();</span><br><span class="line">            String content = editable.toString();</span><br><span class="line">            <span class="keyword">int</span> lastPos = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> size = mTopicList.size();</span><br><span class="line">            <span class="comment">//遍历判断光标的位置</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                String topic = mTopicList.get(i);</span><br><span class="line">                lastPos = content.indexOf(topic, lastPos);</span><br><span class="line">                <span class="keyword">if</span> (lastPos != -<span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (selectionStart != <span class="number">0</span> &amp;&amp; selectionStart &gt;= lastPos &amp;&amp; selectionStart &lt;= (lastPos + topic.length())) &#123;</span><br><span class="line">                        <span class="comment">//选中话题</span></span><br><span class="line">                        mEditText.setSelection(lastPos, lastPos + topic.length());</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                lastPos += topic.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四-实现点击话题-光标在话题之后"><a href="#四-实现点击话题-光标在话题之后" class="headerlink" title="四,实现点击话题,光标在话题之后"></a>四,实现点击话题,光标在话题之后</h2><p>逻辑处理就是监听<code>EditText</code>的点击事件,处理光标所在位置,如果在位置在话题内,立即放置在话题的后面,逻辑比较简单,直接上代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (v.getId() == R.id.editText &amp;&amp; mCheckBox1.isChecked()) &#123;</span><br><span class="line">            <span class="keyword">int</span> selectionStart = mEditText.getSelectionStart();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> lastPos = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> size = mTopicList.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                String topic = mTopicList.get(i);</span><br><span class="line">                lastPos = mEditText.getText().toString().indexOf(topic, lastPos);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (lastPos != -<span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (selectionStart &gt;= lastPos &amp;&amp; selectionStart &lt;= (lastPos + topic.length())) &#123;</span><br><span class="line">                        <span class="comment">//在这position 区间就移动光标</span></span><br><span class="line">                        mEditText.setSelection(lastPos + topic.length());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                lastPos = lastPos + topic.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>最终还是有点小遗憾没有完成.当拷贝一段已经变色的话题,再粘贴到文本后,无法删除掉拷贝进来文本的变色效果,尝试调用<code>Editable.clearSpans()</code>去除全部 span 也无法实现,并且这个方法会导致直接卡死.后来直接使用<code>EditText.setText()</code>控制文本,确实达到了效果,但是当输入法是类似 mx4默认输入法效果时(效果大概是,输入的拼音直接显示在 EditText 里面,点击被选汉字,替换掉拼音),会把输入的拼音放入到文本里,所以上面的代码,我一般是直接操作 Editable.</p>
+<p>如果有更好的方法或者修复了上面的小遗憾,请留言指教.</p>
+<p>Demo 地址：<a href="https://github.com/KennethYo/SinaTopic" target="_blank" rel="external">https://github.com/KennethYo/SinaTopic</a></p>
+<p>转载请注明出处:<a href="http://www.kennethyo.me" target="_blank" rel="external">http://www.kennethyo.me</a></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2015/08/10/2015-08-10/" data-title="[原]高仿SinaWeibo新浪微博发布页面话题效果" data-url="http://yoursite.com/2015/08/10/2015-08-10/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'kennethyo'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect blue" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/304526030" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/kennethyo" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright indigo-link-context">
+        <div class="container">
+            © 2016 kennethyo.me, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('green lighten-2');
+
+            
+            // 添加new标签
+            $('').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=56699390" charset="UTF-8"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
