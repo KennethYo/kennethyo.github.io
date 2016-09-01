@@ -4,6 +4,35 @@
 
     
   <url>
+    <loc>www.kennethyo.me/2016/09/01/untitled-1472722428873/</loc>
+    <lastmod>2016-09-01T09:39:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>自建私有 Maven 仓库</title>
+        <pubTime>2016-09-01T09:33:48.000Z</pubTime>
+        
+        <tag>Nexus</tag>
+         
+        <tag>maven</tag>
+         
+        <tag>jcenter</tag>
+         
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yoursite.com/categories/Android/"/>
+          
+             
+              <breadCrumb title="Docker" url="http://yoursite.com/categories/Android/Docker/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>www.kennethyo.me/2015/09/29/2015-09-29/</loc>
     <lastmod>2016-09-01T06:39:45.000Z</lastmod>
     <data>

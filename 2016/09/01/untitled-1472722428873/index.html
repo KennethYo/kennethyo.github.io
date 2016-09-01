@@ -1,0 +1,638 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>自建私有 Maven 仓库 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
+    <meta name="author" content="鸿雁">
+    
+    <meta name="description" content="项目组从2015年上半年全面切换到 AndroidStudio 进行开发，随着这1年多业务逻辑和代码逻辑的增长，导致项目  LibraryModule 由最初的3个增长到如今的8个。
+代码量的增加必然导致编译的变慢，AndroidStudio 在编译项目时会先编译 LibraryModule 生成 ">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="自建私有 Maven 仓库"/>
+    <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">在北京敲键盘的呼伦贝尔人</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://tva3.sinaimg.cn/crop.0.164.768.768.180/792a0844jw8etn392skjuj20lc0sgn2i.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">鸿雁</p>
+                        <p class="desc"> Android/Wower</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Android/">
+                    Android <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Android/Docker/">
+                    Docker <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Web/">
+                    Web <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Android/">Android</a><a class="breadcrumb" href="/categories/Android/Docker/">Docker</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>自建私有 Maven 仓库</h1>
+    
+
+
+            </div>
+            <time class="indigo-link-context" datetime="2016-09-01T09:33:48.000Z"><a href="/2016/09/01/untitled-1472722428873/">2016-09-01</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Nexus/" class="chip green accent-4">Nexus</a>
+        
+            <a href="/tags/maven/" class="chip green accent-4">maven</a>
+        
+            <a href="/tags/jcenter/" class="chip green accent-4">jcenter</a>
+        
+            <a href="/tags/Docker/" class="chip green accent-4">Docker</a>
+        
+    </div>
+
+
+            <div class="toc indigo-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一，安装-Docker-并运行-Nexus"><span class="section table-of-contents-text">一，安装 Docker 并运行 Nexus</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#二，Nexus-使用"><span class="section table-of-contents-text">二，Nexus 使用</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1，创建一个私有仓库"><span class="section table-of-contents-text">1，创建一个私有仓库</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2，代理仓库"><span class="section table-of-contents-text">2，代理仓库</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#三，Android-Studio-中上传-Library-Module-到私有-maven"><span class="section table-of-contents-text">三，Android Studio 中上传 Library Module 到私有 maven</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1，上传到-Maven"><span class="section table-of-contents-text">1，上传到 Maven</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2，引用私有-Maven"><span class="section table-of-contents-text">2，引用私有 Maven</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry indigo-link-context">
+                <p>项目组从2015年上半年全面切换到 AndroidStudio 进行开发，随着这1年多业务逻辑和代码逻辑的增长，导致项目  LibraryModule 由最初的3个增长到如今的8个。</p>
+<p>代码量的增加必然导致编译的变慢，AndroidStudio 在编译项目时会先编译 LibraryModule 生成 aar 包，之后这些 aar 包会和 APPModule 进行集成编译，最终生成 APK。这个编译过程，第一次在5.0及以上手机安装，经常会出现6分钟以上的编译时间，5.0以下手机也有3分钟左右的编译时间，这些时间严重影响了工作效率！</p>
+<p>考虑到 LibraryModule 是长期不会修改的代码，如果发布成 aar 加入到项目里，就可以节省下每次 Module 编译的时间。</p>
+<p>如果能够像 compile 第三方 Library 那样引用我们的 Library ，岂不是又降低 Module 的耦合，又单独对 Library 增加了版本控制。第三方 Library  基本都是把 aar 发布到中央 Maven 对外提供引用，而我们的 Library 作为公司的商业项目，是不可能发布到中央 Maven 对外提供引用的，这就要求我们需要有自己的 Maven 服务。</p>
+<p>私有 Maven 还会产生另一个好处，就是代理中央 Maven 仓库。例如，我们新加入了一个第三方库，导致每个人的 IDE 都需要从中央 Maven pull 库，而中国 GFW 的存在，导致中央 Maven 极其不稳定，经常 time out ，有了代理 Maven，只要代理 maven pull 一次库，每个人就不必从中央 Maven pull库了。</p>
+<p>这里我们是用 Docker 作为容器，在里面搭建的 Sonatype Nexus 私有 Maven 仓库。使用 Docker 的好处是可以把环境独立出来不会和服务器其他服务产生冲突，卸载也简单。</p>
+<h1 id="一，安装-Docker-并运行-Nexus"><a href="#一，安装-Docker-并运行-Nexus" class="headerlink" title="一，安装 Docker 并运行 Nexus"></a>一，安装 Docker 并运行 Nexus</h1><p>1，下载 并安装 Docker，<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">传送门</a></p>
+<p>2，在 Terminal 中输入<code>docker -v</code>，如果显示版本号，说明安装后环境是没有问题的，如下是我显示的版本号：<br><code>Docker version 1.12.0, build 8eab29e</code></p>
+<p>3，在 Terminal 输入<code>docker pull sonatype/nexus</code>进行下载 nexus 镜像。<br>下载过程中，会显示下载进度。如果比较慢或者超时，请在 Docker 里设置 mirror。如下图，我配置了灵雀加速和阿里云加速。</p>
+<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e4dnn8xcj20l40u60w6.jpg" alt="这里写图片描述"><br>灵雀加速：<a href="http://houchaohann.m.alauda.cn" target="_blank" rel="external">http://houchaohann.m.alauda.cn</a><br>阿里云加速：<a href="https://3wky8dz8.mirror.aliyuncs.com" target="_blank" rel="external">https://3wky8dz8.mirror.aliyuncs.com</a> </p>
+<p>下载成功后显示如下图：<br><img src="http://ww4.sinaimg.cn/large/72f96cbajw1f7e4gjbjvbj20g306kjs1.jpg" alt=""></p>
+<p>4，在 Terminal 中输入<code>docker run -d -p 8081:8081 --name  yiche sonatype/nexus:oss</code>来创建一个名叫 yiche 的容器，占用端口8081。</p>
+<p><img src="http://ww3.sinaimg.cn/large/72f96cbajw1f7e4kafrkcj20lw01bdg3.jpg" alt="这里写图片描述"></p>
+<p>5，在 Terminal 中输入<code>docker ps -a</code>查看容器</p>
+<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e4quvlv0j20q401sglu.jpg" alt="这里写图片描述"></p>
+<p>6，浏览器里输入<a href="http://localhost:8081/" target="_blank" rel="external">http://localhost:8081/</a>，如果显示如下界面，证明 Nexus 搭建成功。</p>
+<p><img src="http://ww4.sinaimg.cn/large/72f96cbajw1f7e4x3tmhej21kw0zkk21.jpg" alt="这里写图片描述"></p>
+<p>7，一些常用指令：<br><code>docker start yiche</code>开始运行yiche 容器<br><code>docker restart yiche</code>c运 重新行yiche容器<br><code>docker stop yiche</code>停止运行yiche容器<br><code>docker rm yiche</code>删除yiche容器</p>
+<h1 id="二，Nexus-使用"><a href="#二，Nexus-使用" class="headerlink" title="二，Nexus 使用"></a>二，Nexus 使用</h1><p>点击右上角<code>login</code>登录，默认账户<code>admin</code>，默认密码<code>admin123</code> 。</p>
+<p>点击左侧栏目的<code>Repositories</code>，显示Nexus 默认已经有的仓库，如下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e5tldqexj21kw0zkwrs.jpg" alt="这里写图片描述"></p>
+<h2 id="1，创建一个私有仓库"><a href="#1，创建一个私有仓库" class="headerlink" title="1，创建一个私有仓库"></a>1，创建一个私有仓库</h2><p>1，点击<code>add</code>，选择<code>Hosted Repository</code></p>
+<p>2，在下方输入<code>Repository ID</code>和<code>Repository Name</code>，这里我分别输入的是<code>demo</code>和<code>Demo</code>，这里可以换成你自己的。</p>
+<p>3，部署策略<code>Deployment Policy</code>选择为<code>Allow Redeploy</code>允许重新部署。</p>
+<p>4，点击<code>save</code>保存，在上方列表中就会显示完成的仓库信息，最后一列<code>Repository Path</code>就是仓库的地址。</p>
+<p>如下图：<br><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e625xn92j21kw0zkdsb.jpg" alt="这里写图片描述"></p>
+<p>注：如果在<code>Repository Policy</code>选择<code>snapshot</code>，仓库就是快照版仓库。</p>
+<h2 id="2，代理仓库"><a href="#2，代理仓库" class="headerlink" title="2，代理仓库"></a>2，代理仓库</h2><p>这里我是代理的 jcenter，因为这是 Android  Studio 的默认仓库。</p>
+<p>1，点击<code>add</code>，选择<code>Proxy Repository</code></p>
+<p>2，在下方输入<code>Repository ID</code>和<code>Repository Name</code>，这里我分别输入的是<code>jcenter</code>和<code>Jcenter</code>，因为代理的就是 jcenter 哈。</p>
+<p>3，在<code>Remote Storage Location</code>输入代理仓库的仓库地址<code>http://jcenter.bintray.com/</code>。</p>
+<p>4，点击<code>save</code>保存，在上方列表中就会显示完成的仓库信息，最后一列<code>Repository Path</code>就是仓库的地址。</p>
+<p>如下图：<br><img src="http://ww3.sinaimg.cn/large/72f96cbajw1f7e6iqpczrj21kw0zktlr.jpg" alt="这里写图片描述"></p>
+<p>其实在我们项目里并没有新创建一个仓库，而是直接用的默认<code>Release</code>和<code>Snapshot</code>。</p>
+<p><img src="http://ww2.sinaimg.cn/large/72f96cbajw1f7e6n006u5j21ji02sgn0.jpg" alt="这里写图片描述"></p>
+<h1 id="三，Android-Studio-中上传-Library-Module-到私有-maven"><a href="#三，Android-Studio-中上传-Library-Module-到私有-maven" class="headerlink" title="三，Android Studio 中上传 Library Module 到私有 maven"></a>三，Android Studio 中上传 Library Module 到私有 maven</h1><h2 id="1，上传到-Maven"><a href="#1，上传到-Maven" class="headerlink" title="1，上传到 Maven"></a>1，上传到 Maven</h2><p>因为，Module比较多，我在项目根目录里写了一个 gradle 文件<code>gradle_mvn_push.gradle</code>来上传。代码如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line"><span class="comment">//release 地址</span></span><br><span class="line"><span class="keyword">def</span> RELEASE_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line"><span class="comment">//snapshots 地址</span></span><br><span class="line"><span class="keyword">def</span> SNAPSHOT_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line"><span class="comment">//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址</span></span><br><span class="line"><span class="keyword">def</span> REPOSITORY_URL = VERSION_NAME.endsWith(<span class="string">"-SNAPSHOT"</span>) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;</span><br><span class="line"></span><br><span class="line">logger.info(<span class="string">"groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n"</span>, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)</span><br><span class="line"></span><br><span class="line">afterEvaluate &#123; project -&gt;</span><br><span class="line">    uploadArchives &#123;</span><br><span class="line">        repositories.mavenDeployer &#123;</span><br><span class="line">            pom.groupId = GROUP</span><br><span class="line">            pom.artifactId = POM_ARTIFACT_ID</span><br><span class="line">            pom.version = VERSION_NAME</span><br><span class="line">            repository(<span class="string">url:</span> REPOSITORY_URL) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> NEXUS_USERNAME, <span class="string">password:</span> NEXUS_PASSWORD)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task androidSourcesJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">        classifier = <span class="string">'sources'</span></span><br><span class="line">        from android.sourceSets.main.java.sourceFiles</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    artifacts &#123;</span><br><span class="line">        archives androidSourcesJar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在你要上传 module 的<code>build.gradle</code> 文件引入。<br>如下图是我们换肤 Module 的 <code>build.gradle</code>：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.library'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion Integer.valueOf(COMPILE_SDK_VERSION)</span><br><span class="line">    buildToolsVersion BUILD_TOOLS_VERSION</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        minSdkVersion MIN_SDK_VERSION</span><br><span class="line">        targetSdkVersion TARGET_SDK_VERSION</span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>])</span><br><span class="line">    compile SUPPORT_APPCOMPAT_V7</span><br><span class="line">    compile SUPPORT_CARDVIEW_V7</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ext.GROUP=<span class="string">"com.yiche"</span></span><br><span class="line">ext.VERSION_NAME=<span class="string">"1.1.0-SNAPSHOT"</span></span><br><span class="line">ext.POM_ARTIFACT_ID=<span class="string">"changeskin"</span></span><br><span class="line"></span><br><span class="line">apply <span class="string">from:</span> <span class="string">"$&#123;project.rootDir&#125;/gradle_mvn_push.gradle"</span></span><br></pre></td></tr></table></figure></p>
+<p>这里请关注下面的代码，<code>GROUP</code>，<code>VERSION_NAME</code>，<code>POM_ARTIFACT_ID</code>和最后一行引入我们前面写的<code>gradle_mvn_push.gradle</code>。</p>
+<p><code>GROUP</code>一般代表了你的组织名称，例如我的<code>com.yiche</code><br><code>POM_ARTIFACT_ID</code>Library 的简称。<br><code>VERSION_NAME</code>版本号，如果有<code>-SNAPSHOT</code>表示是快照版。</p>
+<p>上面这三个也就组成了我们平常看见的引依赖 <code>com.yiche:changeskin:1.1.0-SNAPSHOT</code></p>
+<h2 id="2，引用私有-Maven"><a href="#2，引用私有-Maven" class="headerlink" title="2，引用私有 Maven"></a>2，引用私有 Maven</h2><p>下面就直接上一段代码吧，这是项目根目录的<code>build.gradle</code>里面修改了 maven 仓库的地址。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.1.3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line"><span class="comment">//        jcenter()</span></span><br><span class="line">        <span class="comment">// 私有 release 地址</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 私有 snapshot 地址</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//jcenter 代理</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/jcenter/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// maven 代理</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/central/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(<span class="string">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好的，到这里就算结束了，后面这部分写的比较少，有问题留言啦。</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/09/01/untitled-1472722428873/" data-title="自建私有 Maven 仓库" data-url="http://yoursite.com/2016/09/01/untitled-1472722428873/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'kennethyo'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect blue" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/304526030" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/kennethyo" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright indigo-link-context">
+        <div class="container">
+            © 2016 kennethyo.me, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('green lighten-2');
+
+            
+            // 添加new标签
+            $('').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=56699390" charset="UTF-8"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
