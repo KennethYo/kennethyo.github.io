@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>在北京敲键盘的呼伦贝尔人</title>
-  <subtitle>骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>

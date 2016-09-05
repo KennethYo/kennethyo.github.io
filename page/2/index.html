@@ -1,841 +1,2434 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    
 
-    <title>第 2 页 | 骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</title>
-    <meta name="author" content="鸿雁">
-    
-    
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-    <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人"/>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    
-    <meta property="og:image" content="undefined"/>
-    
 
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/lib/materialize.min.css">
-    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
     
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在北京敲键盘的呼伦贝尔人" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在北京敲键盘的呼伦贝尔人">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人">
+<meta property="og:description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在北京敲键盘的呼伦贝尔人">
+<meta name="twitter:description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
+
+  <title> 在北京敲键盘的呼伦贝尔人 </title>
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-<body>
-    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+  
 
-    <nav class="indigo">
-    <div class="nav-wrapper">
-        <a href="#" data-activates="main-menu" class="button-collapse">
-            <i class="fa fa-navicon"></i>
-        </a>
-        <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">在北京敲键盘的呼伦贝尔人</a>
-            <ul class="right hide-on-med-and-down">
-                
-                    <li>
-                        <a class="menu-home " href="/" >
-                            <i class="fa fa-home "></i>
-                            
-                            首页
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-archive " href="/archives" >
-                            <i class="fa fa-archive "></i>
-                            
-                            归档
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
-                            <i class="fa fa-bookmark "></i>
-                            
-                            分类
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-book "></i>
-                            
-                            读书
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-about " href="/about" >
-                            <i class="fa fa-user "></i>
-                            
-                            关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-search modal-trigger " href="#search" >
-                            <i class="fa fa-search "></i>
-                            
-                            搜索
-                        </a>
-                    </li>
-                
-            </ul>
-            <div>
-    <ul class="side-nav indigo darken-1" id="main-menu">
-        
-        <li class="side-user">
-            <div class="row">
-                <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="http://tva3.sinaimg.cn/crop.0.164.768.768.180/792a0844jw8etn392skjuj20lc0sgn2i.jpg" alt="User Avatar">
-                </div>
-                <div class="info col s8 valign-wrapper no-padding">
-                    <div class="valign">
-                        <p class="name">鸿雁</p>
-                        <p class="desc"> Android/Wower</p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        
 
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-home " href="/" >
-                    <i class="fa fa-home "></i>
-                    
-                    首页
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-archive " href="/archives" >
-                    <i class="fa fa-archive "></i>
-                    
-                    归档
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
-                    <i class="fa fa-bookmark "></i>
-                    
-                    分类
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-book "></i>
-                    
-                    读书
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-about " href="/about" >
-                    <i class="fa fa-user "></i>
-                    
-                    关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-search modal-trigger " href="#search" >
-                    <i class="fa fa-search "></i>
-                    
-                    搜索
-                </a>
-            </li>
-        
-    </ul>
 
-    <ul class="side-nav indigo darken-1" id="category-menu">
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?43804a414ded326ad1bf418b37cf73bb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
     
+  
 
-            
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Android/">
-                    Android <span class="right">22 篇</span></a>
-                </a>
-            </li>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
 
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/Android/Docker/">
-                    Docker <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Web/">
-                    Web <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Java/">
-                    Java <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-    </ul>
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">在北京敲键盘的呼伦贝尔人</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
 </div>
 
-        </div>
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
     </div>
+  
 </nav>
 
-<div id="search" class="modal search-modal">
-    <div class="row">
-        <div class="input-field col s12">
-              <input id="search-input" type="text">
-              <label for="search-input">搜索</label>
-        </div>
+ </div>
+    </header>
 
-    </div>
-    <div id="search-result" class="search-result col s12">
-
-    </div>
-</div>
-
-
-    <main>
-        
-
-
-
-<div id="article-list" class="container main-container">
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2015/05/25/2015-05-25/">[译]介绍MVP Model-View-Presenter在Android中的应用</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2015-05-25T05:47:35.000Z"><a href="/2015/05/25/2015-05-25/">2015-05-25</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
-            <a href="/tags/MVP/" class="chip green accent-4">MVP</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
             
-        </div>
-</article>
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2015/05/08/2015-05-08/">[原]Android获取运营商</a></h1>
-    
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/25/2015-05-25/" itemprop="url">
+                  [译]介绍MVP Model-View-Presenter在Android中的应用
+                </a>
+              
+            
+          </h1>
+        
 
-                </div>
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-25T13:47:35+08:00" content="2015-05-25">
+              2015-05-25
+            </time>
+          </span>
 
-                <time class="indigo-link-context" datetime="2015-05-08T08:40:08.000Z"><a href="/2015/05/08/2015-05-08/">2015-05-08</a></time>
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
 
                 
-    <div class="tags-row">
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/25/2015-05-25/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/25/2015-05-25/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+          
+            <p>这篇文章是我学习MVP模式时翻译的，原文是<a href="http://konmik.github.io/author/konstantin-mikheev.html" target="_blank" rel="external">Konstantin Mikheev</a>所写，<a href="http://konmik.github.io/introduction-to-model-view-presenter-on-android.html?utm_source=Android+Weekly&amp;utm_campaign=5589504b56-Android_Weekly_148&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-5589504b56-337835113" target="_blank" rel="external">传送门</a>。<br>因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。<br>转载请注明出处:<a href="http://blog.csdn.net/kennethyo" target="_blank" rel="external">http://blog.csdn.net/kennethyo</a></p>
+<hr>
+<p>这篇文章我会通过一个最简单的例子去一步步介绍MVP模式在Android中的最佳实践。同时我也会介绍一个使MVP模式在Android开发中变简单的library。</p>
+<h1 id="简单？怎么才能从中获益呢？"><a href="#简单？怎么才能从中获益呢？" class="headerlink" title="简单？怎么才能从中获益呢？"></a>简单？怎么才能从中获益呢？</h1><h2 id="什么是MVP"><a href="#什么是MVP" class="headerlink" title="什么是MVP"></a>什么是MVP</h2><p><strong>View</strong>层是用来显示数据和相应数据操作的。在Android中，它可能是Activity，Fragment，View或者Dialog。</p>
+<p><strong>Model</strong>层是数据访问层，例如数据库API或者远程服务器访问API。</p>
+<p><strong>Presenter</strong>层提供View层和Model层的数据进行联系。Presenter层也可以控制后台Task。</p>
+<p>在Android中，MVP模式可以把后台线程从Activitys/Views/Fragments中脱离出来，使它们在大部分生命周期事件中更加独立。这样的应用变得更加简单，整个程序的稳定性提升了10倍不止，应用代码变得更加少，代码可维护性变得更加友善，开发者的生命变得更加开心。</p>
+<h2 id="在Android中，为什么是MVP"><a href="#在Android中，为什么是MVP" class="headerlink" title="在Android中，为什么是MVP"></a>在Android中，为什么是MVP</h2><h3 id="原因1：保持简单傻瓜"><a href="#原因1：保持简单傻瓜" class="headerlink" title="原因1：保持简单傻瓜"></a>原因1：保持简单傻瓜</h3><p>如果你还没读过这篇文章，请读一遍：<a href="https://people.apache.org/~fhanik/kiss.html" target="_blank" rel="external">The Kiss Principle</a></p>
+<pre><code>·大多数Android程序仅仅使用了View-Model模式。
+·程序员需要参与View的复杂性，而不是解决业务。
+</code></pre><p>在应用中你仅仅使用Model-View，最后会落得“一切连接这一切”的状态。</p>
+<p><img src="http://img.blog.csdn.net/20150525132155795" alt="这里写图片描述"></p>
+<p>如果这个示例图看起来不是那么复杂，那么想想每个View可能随时消失和随时出现。别忘了保存和恢复view的状态。为临时View attache 几个后台任务，蛋糕准备好了！</p>
+<p>另一种“一切连接着一切”就是上帝对象。</p>
+<p><img src="http://img.blog.csdn.net/20150525132227292" alt="这里写图片描述"></p>
+<p>上地对象太过于复杂；代码块不能被重复利用，测试或方便的debug和重构。</p>
+<h4 id="使用MVP模式"><a href="#使用MVP模式" class="headerlink" title="使用MVP模式"></a>使用MVP模式</h4><p><img src="http://img.blog.csdn.net/20150525132427577" alt="这里写图片描述"></p>
+<pre><code>·复杂的任务被分解成简单的任务，并且容易解决。
+·更小的对象，更少的bug，更简单debug。
+·可测试。
+</code></pre><h3 id="原因2：后台任务"><a href="#原因2：后台任务" class="headerlink" title="原因2：后台任务"></a>原因2：后台任务</h3><p>无论何时，你写Activity，Fragment或者自定义View，你可以把所有方法与后台任务的外部或者静态类联系起来。这样，你的后台任务将不会和一个Activity联系，不会造成内存泄露和不用Activity来消费。我叫这样的对象为“Presenter”。</p>
+<p>有那么几种处理后台线程的方法，但都是不可靠的，不过MVP是可靠的。</p>
+<h4 id="为什么MVP可以"><a href="#为什么MVP可以" class="headerlink" title="为什么MVP可以"></a>为什么MVP可以</h4><p>通过这个视图，显示了不同的应用控件，在发生configuration发生改变或者内存溢出的时候发生了什么。每一个Android开发者都应该知道这个视图，然而这样一个视图并不是每个开发都知道。</p>
+<p><img src="http://img.blog.csdn.net/20150525133414325" alt="这里写图片描述"></p>
+<p><strong>Case 1:</strong>当用户旋转屏幕，改变语言设置， attache 一个外部显示器，等情况，通常Configuration会发生变化。更多关于[Configuration]<br>(<a href="http://developer.android.com/reference/android/R.attr.html#configChanges)请阅读链接。" target="_blank" rel="external">http://developer.android.com/reference/android/R.attr.html#configChanges)请阅读链接。</a></p>
+<p><strong>Case 2:</strong>当用户在开发者设置里面选择了“Don’t keep activities”或者其他Activity到最顶层，Activity会发生restart。</p>
+<p><strong>Case 3:</strong>没有足够的内存和应用进入后台，process会restart。</p>
+<p><strong>最后</strong><br>现在你可以看到，Fragment当中设置setRetainInstance(true)在这里是没用帮助的，我们只需要设置save/restore就可以。因此，我们可以简单的去除Fragment的setRetainInstance方法，来限制问题的数量。</p>
+<p><img src="http://img.blog.csdn.net/20150525133504401" alt="这里写图片描述"></p>
+<p>|Activity, View, Fragment, DialogFragment Static variables and threads | save/restore no change | save/restore reset |<br>现在看起来爽多了。我们在应用任何情况下，只需要写两段代码就可以完成restore：</p>
+<pre><code>·Activity，View，Fragment，DialogFragment的save/restore。
+·线程restart，restart后台请求。
+</code></pre><p>第一部分，是Android API提供的方法。第二部分是Presenter层的工作。Presenter只要记住那些请求需要被执行，如果一个进程执行期间restart，Presenter将会重新执行它们。</p>
+<h2 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h2><p>这个例子将加载服务器上得数据来显示一些items。如果出现错误将显示一个toast。</p>
+<p>我推荐使用<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a>来构建Presenter，因为这个Library控制数据流很简单。</p>
+<p>我也要感谢创建<a href="http://www.icndb.com/" target="_blank" rel="external">The Internet Chuck Norris Database</a>的人，我把它用在了我例子当中。</p>
+<h2 id="没用MVP的例子00："><a href="#没用MVP的例子00：" class="headerlink" title="没用MVP的例子00："></a>没用MVP的<a href="https://github.com/konmik/MVPExamples/tree/master/example00" target="_blank" rel="external">例子00</a>：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_NAME = <span class="string">"Chuck Norris"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayAdapter&lt;ServerAPI.Item&gt; adapter;</span><br><span class="line">    <span class="keyword">private</span> Subscription subscription;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        ListView listView = (ListView)findViewById(R.id.listView);</span><br><span class="line">        listView.setAdapter(adapter = <span class="keyword">new</span> ArrayAdapter&lt;&gt;(<span class="keyword">this</span>, R.layout.item));</span><br><span class="line">        requestItems(DEFAULT_NAME);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        unsubscribe();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestItems</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        unsubscribe();</span><br><span class="line">        subscription = App.getServerAPI()</span><br><span class="line">            .getItems(name.split(<span class="string">"\\s+"</span>)[<span class="number">0</span>], name.split(<span class="string">"\\s+"</span>)[<span class="number">1</span>])</span><br><span class="line">            .delay(<span class="number">1</span>, TimeUnit.SECONDS)</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .subscribe(<span class="keyword">new</span> Action1&lt;ServerAPI.Response&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(ServerAPI.Response response)</span> </span>&#123;</span><br><span class="line">                    onItemsNext(response.items);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="keyword">new</span> Action1&lt;Throwable&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Throwable error)</span> </span>&#123;</span><br><span class="line">                    onItemsError(error);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemsNext</span><span class="params">(ServerAPI.Item[] items)</span> </span>&#123;</span><br><span class="line">        adapter.clear();</span><br><span class="line">        adapter.addAll(items);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemsError</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>, throwable.getMessage(), Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">unsubscribe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (subscription != <span class="keyword">null</span>) &#123;</span><br><span class="line">            subscription.unsubscribe();</span><br><span class="line">            subscription = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个有经验的开发会发现这个例子是有一些缺陷的：</p>
+<pre><code>·每次翻转屏幕都会重新请求一次——每次翻转屏幕用户都会看一会儿空白界面。
+·如果用户经常翻转屏幕，就会导致内存泄露——每个回调都会保持对MainActivity的引用，并且request运行的时候会把MainActivity保持在内存中。这绝对有可能导致因为内存溢出而应用crash，或者应用运行明显缓慢。
+</code></pre><h2 id="使用MVP的例子01"><a href="#使用MVP的例子01" class="headerlink" title="使用MVP的例子01"></a>使用MVP的<a href="https://github.com/konmik/MVPExamples/tree/master/example01" target="_blank" rel="external">例子01</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainPresenter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_NAME = <span class="string">"Chuck Norris"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ServerAPI.Item[] items;</span><br><span class="line">    <span class="keyword">private</span> Throwable error;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MainActivity view;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainPresenter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        App.getServerAPI()</span><br><span class="line">            .getItems(DEFAULT_NAME.split(<span class="string">"\\s+"</span>)[<span class="number">0</span>], DEFAULT_NAME.split(<span class="string">"\\s+"</span>)[<span class="number">1</span>])</span><br><span class="line">            .delay(<span class="number">1</span>, TimeUnit.SECONDS)</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .subscribe(<span class="keyword">new</span> Action1&lt;ServerAPI.Response&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(ServerAPI.Response response)</span> </span>&#123;</span><br><span class="line">                    items = response.items;</span><br><span class="line">                    publish();<span class="comment">//onNext</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="keyword">new</span> Action1&lt;Throwable&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                    error = throwable;</span><br><span class="line">                    publish();<span class="comment">//onError</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTakeView</span><span class="params">(MainActivity view)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.view = view;</span><br><span class="line">        publish();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">publish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (items != <span class="keyword">null</span>)</span><br><span class="line">                view.onItemsNext(items);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (error != <span class="keyword">null</span>)</span><br><span class="line">                view.onItemsError(error);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从技术角度讲：MainPresenter有三个线程事件：onNext，onError，onTakeview。通过<code>publish()</code>方法，onNext或者onError事件会发布到MainActivity实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayAdapter&lt;ServerAPI.Item&gt; adapter;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MainPresenter presenter;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        ListView listView = (ListView)findViewById(R.id.listView);</span><br><span class="line">        listView.setAdapter(adapter = <span class="keyword">new</span> ArrayAdapter&lt;&gt;(<span class="keyword">this</span>, R.layout.item));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (presenter == <span class="keyword">null</span>)</span><br><span class="line">            presenter = <span class="keyword">new</span> MainPresenter();</span><br><span class="line">        presenter.onTakeView(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        presenter.onTakeView(<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span> (isFinishing())</span><br><span class="line">            presenter = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemsNext</span><span class="params">(ServerAPI.Item[] items)</span> </span>&#123;</span><br><span class="line">        adapter.clear();</span><br><span class="line">        adapter.addAll(items);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemsError</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>, throwable.getMessage(), Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MainActivity 创建 MainPresenter，并且保持MainPresenter在onCreate和onDestory周期之外。MainActivity用一个静态变量引用MainPresenter，当由于OOM导致线程重启，MainActivity会检查MainPresenter是否还存在，如果不存在就去创建它。</p>
+<p>是的，检查和使用静态变量起来有那么点臃肿，但是稍后我会给大家看如何写的更加优雅。：）</p>
+<p>主要思想：</p>
+<pre><code>·例子应用不会在每次用户翻转屏幕的时候重新请求。
+·如果线程被重启，再次加载数据。
+·当MainActivity被销毁后，MainPresenter不会保持应用
+</code></pre><p>MainActivity实例，这样当旋转屏幕的时候就不会内存泄露，而且也没有取消请求。</p>
+<p>##Nucleus</p>
+<p>Nuleus 是我创建的一个library，灵感来自于<a href="https://github.com/square/mortar" target="_blank" rel="external">Mortar</a>library和<a href="https://people.apache.org/~fhanik/kiss.html" target="_blank" rel="external">Keep It Stupid Simple</a>这篇文章。</p>
+<p>下面是功能列表：</p>
+<pre><code>·支持在View/Fragment/Activity状态Bundle中save/restore Presenter的状态。Presenter能够存储请求参数到重新启动。
+
+·提供一个工具，通过一行代码可以把请求结果和错误放到正确的view当中去，因此无需再写`！=null`来检查。
+
+·一个Presenter可以被多个view实例引用。如果Presenter实例使用[Dagger]，就不能被多个view引用。
+
+·通过一行代码就可以把Presenter和view进行绑定。
+
+·提供view的基类：NucleusView, NucleusFragment, NucleusSupportFragment, NucleusActivity。你也可以从他们当中copy代码到任何类当中来利用Nucleus的Presenters。
+
+·Presenter在线程重启之后能够自动restart。在`onDestroy`自动取消注册RxJava。
+
+·最后，要保持简单明了，让每一个开发者都能够看懂。这里通过大约180行代码来驱动Presenter，230行RxJava代码来支持。
+</code></pre><h2 id="使用Nuleus的例子02"><a href="#使用Nuleus的例子02" class="headerlink" title="使用Nuleus的例子02"></a>使用<a href="https://github.com/konmik/nucleus" target="_blank" rel="external">Nuleus</a>的<a href="https://github.com/konmik/MVPExamples/tree/master/example02" target="_blank" rel="external">例子02</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainPresenter</span> <span class="keyword">extends</span> <span class="title">RxPresenter</span>&lt;<span class="title">MainActivity</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_NAME = <span class="string">"Chuck Norris"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedState);</span><br><span class="line"></span><br><span class="line">        App.getServerAPI()</span><br><span class="line">            .getItems(DEFAULT_NAME.split(<span class="string">"\\s+"</span>)[<span class="number">0</span>], DEFAULT_NAME.split(<span class="string">"\\s+"</span>)[<span class="number">1</span>])</span><br><span class="line">            .delay(<span class="number">1</span>, TimeUnit.SECONDS)</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .compose(<span class="keyword">this</span>.&lt;ServerAPI.Response&gt;deliverLatestCache())</span><br><span class="line">            .subscribe(<span class="keyword">new</span> Action1&lt;ServerAPI.Response&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(ServerAPI.Response response)</span> </span>&#123;</span><br><span class="line">                    getView().onItemsNext(response.items);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="keyword">new</span> Action1&lt;Throwable&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                    getView().onItemsError(throwable);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPresenter</span>(MainPresenter.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">NucleusActivity</span>&lt;<span class="title">MainPresenter</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayAdapter&lt;ServerAPI.Item&gt; adapter;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        ListView listView = (ListView)findViewById(R.id.listView);</span><br><span class="line">        listView.setAdapter(adapter = <span class="keyword">new</span> ArrayAdapter&lt;&gt;(<span class="keyword">this</span>, R.layout.item));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemsNext</span><span class="params">(ServerAPI.Item[] items)</span> </span>&#123;</span><br><span class="line">        adapter.clear();</span><br><span class="line">        adapter.addAll(items);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemsError</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>, throwable.getMessage(), Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正如你看到的，这个例子明显比前一个例子短，并且简洁。Nucleus用来创建，销毁，保存Presenter， attache 或 detached一个view到Presenter，并且把请求结果自动发送到被 attache 的View当中。</p>
+<p><code>MainPresenter</code>的代码比较少是因为通过<code>deliverLatestCache()</code>操作，期延迟了数据和错误，直到view是可用的，才会把数据和错误送到view里。它把数据缓存到内存中，这样当configuration改变的时候，数据还是可用的。</p>
+<p><code>MainActivity</code>的代码比较少是因为Presenter的创建由<code>NucleusActivity</code>来管理。所有你需要绑定presenter的类，只需要在类上声明<code>@RequiresPresenter(MainPresenter.class)</code>注释。</p>
+<p>警告！注释！在Android世界中，如果你使用注释，这是一个很好的做法，这不会降低性能。我已Galaxy S（2010的设备）作为基准测试，处理注释只会花去0.3ms。这种注视只会发生在view中，所以我认为注释是对系统性能没有消耗的。</p>
+<p>##更多例子</p>
+<p>这是一个参数持久性的<a href="https://github.com/konmik/nucleus/tree/master/nucleus-example" target="_blank" rel="external">例子</a>。<a href="https://github.com/konmik/nucleus/tree/master/nucleus-example-with-tests" target="_blank" rel="external">测试列子</a>。</p>
+<h2 id="deliverLatestCache-方法"><a href="#deliverLatestCache-方法" class="headerlink" title="deliverLatestCache()方法"></a><code>deliverLatestCache()</code>方法</h2><p>这是RxPresenter的一个方法，它有三种版本：</p>
+<p>·<code>deliver()</code>延迟onNext，onError和onComplete到view变成可用的才会释放。当你做一次请求的时候可以使用它，例如登录到web service。<a href="http://konmik.github.io/nucleus/nucleus/presenter/RxPresenter.html#deliver(" target="_blank" rel="external">Javadoc</a>)</p>
+<p>·<code>deliverLatest()</code>如果有一个新的onNext可用，将会抛弃老的onNext。如果你有数据需要更新，这将不会积累没有必要的数据。<a href="http://konmik.github.io/nucleus/nucleus/presenter/RxPresenter.html#deliverLatest(" target="_blank" rel="external">Javadoc</a>)</p>
+<p>·<code>deliverLastestCache()</code>和<code>deliverLatest()</code>比较相似，它保存最后一次数据在内存中，当另一个view变成可用的（例如：configuration 改变），它将重新发送数据到view。如果你不想save/restore请求结果到你的view中（返回结果比较大或者不方便存储到Bundle中），这个方法将允许你去做出更好的用户体验。<a href="http://konmik.github.io/nucleus/nucleus/presenter/RxPresenter.html#deliverLatestCache(" target="_blank" rel="external">Javadoc</a>)</p>
+<h2 id="Presenter的生命周期"><a href="#Presenter的生命周期" class="headerlink" title="Presenter的生命周期"></a>Presenter的生命周期</h2><p>Presenter的生命周期与Android的控件相比，明显少一些。</p>
+<p>·<code>void onCreate(Bundle savedState)</code> - 当Presenter被创建的时候会被调用。<a href="http://konmik.github.io/nucleus/nucleus/presenter/Presenter.html#onCreate(android.os.Bundle" target="_blank" rel="external">Javadoc</a>)</p>
+<p>·<code>void onDestroy()</code> - 离开view的时候会被调用。<a href="http://konmik.github.io/nucleus/nucleus/presenter/Presenter.html#onDestroy(" target="_blank" rel="external">Javadoc</a>)</p>
+<p>·<code>void onSave(Bundle state)</code> - 当View的<code>onSaveInstanceState</code>被调用时会调用，保持Presenter的状态。<a href="http://konmik.github.io/nucleus/nucleus/presenter/Presenter.html#onTakeView(ViewType" target="_blank" rel="external">Javadoc</a>)</p>
+<p>·<code>void onTakeView(ViewType view)</code> -在Activity或者Fragment调用<code>onResume()</code>，或者在<code>android.view.View#onAttachedToWindow()</code>期间。 <a href="http://konmik.github.io/attachenucleus/nucleus/presenter/Presenter.html#onTakeView(ViewType" target="_blank" rel="external">Javadoc</a>)</p>
+<p>·<code>void onDropView()</code> - Activity或者Fragment调用<code>onPause()</code>，或者在<code>android.view.View#onDetachedFromWindow()</code>期间。<a href="http://konmik.github.io/nucleus/nucleus/presenter/Presenter.html#onDropView(" target="_blank" rel="external">Javadoc</a>)</p>
+<h2 id="View回收和View栈"><a href="#View回收和View栈" class="headerlink" title="View回收和View栈"></a>View回收和View栈</h2><p>通常你的view（Fragment和自定义view）在与用户的交互下随机 attache 和 detached。每次view被 detached的时候不去销毁Presenter，这可能是一个好主意。你可以任何时间 detached和 attache view，presenter会比这些动作活的更持久，继续后台的工作。</p>
+<p>联想到view的回收，有个问题：fragment无法知道是否因为配置改变或者被弹出栈被 detached。</p>
+<p>Nucleus的意见是：销毁presenter只能发生在view的<code>onDetachedFromWindow()/onDestroy()</code>并且activity是finish的。所以，如果你销毁view是在正常的activity生命周期，你可发出信号来通知presenter也应该被销毁。这里有两个方法可以用<code>NucleusLayout.destroyPresenter()</code>和<code>NucleusFragment.destroyPresenter()</code>。</p>
+<p>举个例子，下面是我在我的项目里面如何管理Fragment <code>pop()</code>操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fragment = fragmentManager.findFragmentById(R.id.fragmentStackContainer);</span><br><span class="line">   fragmentManager.popBackStackImmediate();</span><br><span class="line">   <span class="keyword">if</span> (fragment <span class="keyword">instanceof</span> NucleusFragment)</span><br><span class="line">       ((NucleusFragment)fragment).destroyPresenter();</span><br></pre></td></tr></table></figure>
+<p>你可以对replace Fragment做类似的操作。压栈操作的时候也可以。</p>
+<p>每次view从Activity detached的时候，你可以决定去销毁presenter来避免这个问题，但是你也将在view被detach的时候失去后台任务。</p>
+<p>因此，view回收这部分，完全取决于你。也许，我会找到更好的解决方案，如果你知道，请告诉我。</p>
+<h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="把你的请求参数放在Presenter里"><a href="#把你的请求参数放在Presenter里" class="headerlink" title="把你的请求参数放在Presenter里"></a>把你的请求参数放在Presenter里</h2><p>这个规则很简单：主要是为了管理请求。所以view自己不应该掌控和重启请求。从View的角度来看，后台任务，永远不会消失，不需要任何回调也会返回一个结果或错误。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainPresenter</span> <span class="keyword">extends</span> <span class="title">RxPresenter</span>&lt;<span class="title">MainActivity</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name = DEFAULT_NAME;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedState);</span><br><span class="line">        <span class="keyword">if</span> (savedState != <span class="keyword">null</span>)</span><br><span class="line">            name = savedState.getString(NAME_KEY);</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSave</span><span class="params">(@NonNull Bundle state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onSave(state);</span><br><span class="line">        state.putString(NAME_KEY, name);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我建议使用<a href="https://github.com/frankiesardo/icepick" target="_blank" rel="external">Icepick</a>library。无需使用注解，就可以减少代码量，并且简化应用逻辑——这一切都发生在编译过程中。可以配合<a href="http://jakewharton.github.io/butterknife" target="_blank" rel="external">ButterKnife</a>使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainPresenter</span> <span class="keyword">extends</span> <span class="title">RxPresenter</span>&lt;<span class="title">MainActivity</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Icicle</span> String name = DEFAULT_NAME;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedState);</span><br><span class="line">        Icepick.restoreInstanceState(<span class="keyword">this</span>, savedState);</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSave</span><span class="params">(@NonNull Bundle state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onSave(state);</span><br><span class="line">        Icepick.saveInstanceState(<span class="keyword">this</span>, state);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>如果你有超过2个的请求参数，这个library会存储它们。你可以创建一个<code>BasePresenter</code>，并且把Icepick放在类里，这样所有的子类将会获得<code>@Icicle</code>，无需再次实现<code>onSave</code>。这也工作在activity，Fragment和view。</p>
+<h2 id="在onTakeView主线程中，执行一个即时查询Javadoc"><a href="#在onTakeView主线程中，执行一个即时查询Javadoc" class="headerlink" title="在onTakeView主线程中，执行一个即时查询Javadoc)"></a>在onTakeView主线程中，执行一个即时查询<a href="http://konmik.github.io/nucleus/nucleus/presenter/Presenter.html#onTakeView(ViewType" target="_blank" rel="external">Javadoc</a>)</h2><p>有时候，你要查询一段小数据，例如从数据库中读取一小段数据。虽然你可以用Nucleus简单的创建一个请求，但是你不必到处使用Nucleus。如果在一个Fragment创建的过程中创建一个后台请求，用户会看到一个空白屏幕一小会儿，尽管这个请求就几毫秒。因此，为了是代码更简短，更友善，使用主线程吧。</p>
+<h2 id="不要尝试用Presenter控制你的View"><a href="#不要尝试用Presenter控制你的View" class="headerlink" title="不要尝试用Presenter控制你的View"></a>不要尝试用Presenter控制你的View</h2><p>这么做不是个好方式——应用的逻辑会变得更复杂，这是不正常的方式。</p>
+<p>正常的方式是，控制流应该是从用户，通过View，到Presenter，再到Model。用户是控制应用程序的一个来源。因此我们的控制流应该是从用户开始，而不是从应用的内部的结构。</p>
+<p>当控制流是从View到Presenter，然后Presenter到Model，这是一个线性流，这样很好写代码。这样你得到了一个简单的序列，user-&gt;view-&gt;presenter-&gt;model-&gt;data。但是，当控制流是这个样子的：user-&gt;view-&gt;presenter-&gt;view-&gt;presenter-&gt;model-&gt;data，这只是违反了KISS原则。</p>
+<p>Fragment？是的，Fragment有时候会违反正常的控制流。他们太复杂了。这里有一篇不错的文章，关于思考Fragment：<a href="http://corner.squareup.com/2014/10/advocating-against-android-fragments.html" target="_blank" rel="external">Advocating Against Android Fragments</a>。但是<a href="https://github.com/square/flow" target="_blank" rel="external">Flow</a>也没有简化太多。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>如果你熟悉MVC，别用了。MVC完全不同于MVP，MVC并没有解决开发面临的问题。</p>
+<p>什么是MVC？</p>
+<pre><code>·Model应用内部的逻辑部分。负责数据存储。
+·View唯一和MVP共同的部分，应用中呈现到屏幕的部分。
+·Controller输入设备，例如键盘，鼠标，操纵杆。
+</code></pre><p>当你有一台电脑和一个用键盘简单驱动的游戏的时候，MVC出现有很长一段时间了。没有windows，没有图形交互界面，应用程序接收输入（Controller），维持一些状态（Model），产生输出（View）。控制流是这样的：Controller-&gt;Model-&gt;View。这种模式绝对不能用在Android中。</p>
+<p>有很多混淆的MVC模式。人们相信他们使用的是MVC，实际上他们可能用的是MVP（Web开发）。很多Android开发，认为Controller就是控制View，因此他们尝试抽取View的逻辑代码来减少View的代码，用Controller来控制View。我个人没看到这种方式有任何好处。</p>
+<h2 id="使用不可变数据结构的复杂关系数据库项目"><a href="#使用不可变数据结构的复杂关系数据库项目" class="headerlink" title="使用不可变数据结构的复杂关系数据库项目"></a>使用不可变数据结构的复杂关系数据库项目</h2><p><a href="https://github.com/google/auto/tree/master/value" target="_blank" rel="external">AutoValue</a>是一个这样的library，在它的描述中写了一堆好处，我推荐看看它。<a href="https://github.com/frankiesardo/auto-parcel" target="_blank" rel="external">AutoParcel</a>是AutoValue一个Android项目。使用的主要原因是，不用改变对象，通过AutoParcel转换，而不用关心其影响了应用程序的其他部分。他们都是线程安全的。</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>尝试MVP，并且分享给你的朋友。：）</p>
+
+          
         
+      
     </div>
 
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2015/04/22/原-WebView填坑——小功能篇/">[原]WebView填坑——小功能篇</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2015-04-22T08:31:06.000Z"><a href="/2015/04/22/原-WebView填坑——小功能篇/">2015-04-22</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
+    <div>
+      
     </div>
 
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2015/01/25/2015-01-25/">[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2015-01-25T14:44:22.000Z"><a href="/2015/01/25/2015-01-25/">2015-01-25</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
+    <div>
+      
     </div>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-                
-            </div>
+    
+      
 
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
             
-        </div>
-</article>
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/08/2015-05-08/" itemprop="url">
+                  [原]Android获取运营商
+                </a>
+              
+            
+          </h1>
+        
 
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2014/12/28/2014-12-28/">[原]CardView初级使用</a></h1>
-    
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-08T16:40:08+08:00" content="2015-05-08">
+              2015-05-08
+            </time>
+          </span>
 
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2014-12-28T06:08:54.000Z"><a href="/2014/12/28/2014-12-28/">2014-12-28</a></time>
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
 
                 
-    <div class="tags-row">
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/08/2015-05-08/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/08/2015-05-08/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+          
+            <p>今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：</p>
+<p><img src="http://img.blog.csdn.net/20150508163804803" alt="这里写图片描述"></p>
+<p>这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。</p>
+<p>我这里解决的方案是通过设备的MCC/MNC代码来判断。</p>
+<p>首先，我们要了解MCC/MNC是什么，请看<a href="http://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%A0%81" target="_blank" rel="external">WIKI百科</a>。通过阅读，我们能够知道，只要对比MCC/MNC编码，就能知道具体是什么运营商了。</p>
+<p>其次，就是具体代码了，如下：</p>
+<pre><code>&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     * 返回运营商 需要加入权限 &amp;lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot;/&amp;gt; &amp;lt;BR&amp;gt;
+     *
+     *&lt;span class=&quot;hljs-javadoctag&quot;&gt; @return&lt;/span&gt; 1,代表中国移动，2，代表中国联通，3，代表中国电信，0，代表未知
+     *&lt;span class=&quot;hljs-javadoctag&quot;&gt; @author&lt;/span&gt; youzc@yiche.com
+     */&lt;/span&gt;
+ &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getOperators&lt;/span&gt;(Context context) {
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 移动设备网络代码（英语：Mobile Network Code，MNC）是与移动设备国家代码（Mobile Country Code，MCC）（也称为“MCC /&lt;/span&gt;
+        &lt;span class=&quot;hljs-comment&quot;&gt;// MNC”）相结合, 例如46000，前三位是MCC，后两位是MNC 获取手机服务商信息&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; OperatorsName = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+        String IMSI =  (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE).getSubscriberId();
+        &lt;span class=&quot;hljs-comment&quot;&gt;// IMSI号前面3位460是国家，紧接着后面2位00 运营商代码&lt;/span&gt;
+        System.out.println(IMSI);
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46000&quot;&lt;/span&gt;) || IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46002&quot;&lt;/span&gt;) || IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46007&quot;&lt;/span&gt;)) {
+            OperatorsName = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+        } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46001&quot;&lt;/span&gt;) || IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46006&quot;&lt;/span&gt;)) {
+            OperatorsName = &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;;
+        } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46003&quot;&lt;/span&gt;) || IMSI.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;46005&quot;&lt;/span&gt;)) {
+            OperatorsName = &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;;
+        }
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; OperatorsName;
+    }
+</code></pre><p>通过客户端本地比对MCC/MNC确定运营商这种方式，本身我是不赞同的，我认为把MCC/MNC上送到服务器，由服务器判断这才是最优方案。因为应用打好包分发出去，代码就是死的，未来不可以扩展比对，但是服务器是可以动态的，随时配置比对的MCC/MNC编码。</p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2015/5/8 16:40:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/45582153)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：814 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/45582153#comments)
+&lt;/div&gt;
+</code></pre>
+          
         
-            <a href="/tags/View/" class="chip green accent-4">View</a>
-        
+      
     </div>
 
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2014/11/10/2014-11-10/">[原]RecyclerView初级使用</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2014-11-10T07:18:15.000Z"><a href="/2014/11/10/2014-11-10/">2014-11-10</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
+    <div>
+      
     </div>
 
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2014/11/04/2014-11-04/">[原]Palette的使用</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2014-11-04T08:19:53.000Z"><a href="/2014/11/04/2014-11-04/">2014-11-04</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
+    <div>
+      
     </div>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-                
-            </div>
+    
+      
 
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
             
-        </div>
-</article>
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/22/原-WebView填坑——小功能篇/" itemprop="url">
+                  [原]WebView填坑——小功能篇
+                </a>
+              
+            
+          </h1>
+        
 
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2014/10/24/2014-10-24/">[原]LayoutInflater.inflate详解</a></h1>
-    
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-22T16:31:06+08:00" content="2015-04-22">
+              2015-04-22
+            </time>
+          </span>
 
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2014-10-24T08:27:08.000Z"><a href="/2014/10/24/2014-10-24/">2014-10-24</a></time>
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
 
                 
-    <div class="tags-row">
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/22/原-WebView填坑——小功能篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/22/原-WebView填坑——小功能篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
+          
+            <p>这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。</p>
+<h3 id="Webview中上传文件"><a href="#Webview中上传文件" class="headerlink" title="Webview中上传文件"></a>Webview中上传文件</h3><p>这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。</p>
+<p><code>openFileChooser（）</code>方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。</p>
+<p><code>ValueCallback&amp;lt;Uri&amp;gt; mUploadMessage</code>作为成员变量的目的是我们要在打开的系统文件选择器<code>finish()</code>后在<code>onActivityResult()</code>时调用。</p>
+<p>具体实现代码如下：</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;initWebView&lt;/span&gt;(){
+    webView.setWebChromeClient(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; MyWebChromeClient());
+}
+
+ &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; ValueCallback&amp;lt;Uri&amp;gt; mUploadMessage;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;MyWebChromeClient&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;WebChromeClient&lt;/span&gt; {&lt;/span&gt;
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// js上传文件的&amp;lt;input type=&quot;file&quot; /&amp;gt;事件捕获&lt;/span&gt;
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Android &amp;gt; 4.1.1 调用这个方法&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;openFileChooser&lt;/span&gt;(ValueCallback&amp;lt;Uri&amp;gt; uploadMsg, String acceptType, String capture) {
+      mUploadMessage = uploadMsg;
+
+      Intent intent = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Intent(Intent.ACTION_GET_CONTENT);
+      intent.addCategory(Intent.CATEGORY_OPENABLE);
+      intent.setType(TextUtils.isEmpty(acceptType) ? &lt;span class=&quot;hljs-string&quot;&gt;&quot;image/*&quot;&lt;/span&gt; : acceptType);
+
+      MobileSiteActivity.&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.startActivityForResult(
+          Intent.createChooser(intent, ToolBox.getString(R.string.web_activity_please_chooser)),
+          MobileSiteActivity.FILECHOOSER_RESULTCODE);
+
+    }
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 3.0 + 调用这个方法&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;openFileChooser&lt;/span&gt;(ValueCallback&amp;lt;Uri&amp;gt; uploadMsg, String acceptType) {
+      openFileChooser(uploadMsg, acceptType, &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;);
+    }
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Android &amp;lt; 3.0 调用这个方法&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;openFileChooser&lt;/span&gt;(ValueCallback&amp;lt;Uri&amp;gt; uploadMsg) {
+      openFileChooser(uploadMsg, &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;);
+    }
+  }
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;onActivityResult&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; requestCode, &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; resultCode, Intent data) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (FILECHOOSER_RESULTCODE == requestCode) {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; == mUploadMessage) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
+      Uri result = data == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; || resultCode != RESULT_OK ? &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; : data.getData();
+      mUploadMessage.onReceiveValue(result);
+      mUploadMessage = &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
+    }
+  }
+`&lt;/pre&gt;
+
+### WebView当中网页中的地图为白色，不显示地图
+
+这个问题其实就是你没有打开Javascript支持。打开就好啦~
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`webView.setJavaScriptEnabled(&lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;);&lt;span class=&quot;hljs-comment&quot;&gt;// 设置支持javascript脚本&lt;/span&gt;`&lt;/pre&gt;
+
+### WebView中跳转系统拨号键盘
+
+举一反三，既然要打开系统拨号键盘，那邮箱，地图也可以支持。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`webView.setWebViewClient(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; WebViewClient() {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;shouldOverrideUrlLoading&lt;/span&gt;(WebView view, String url) {
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (url.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;mailto:&quot;&lt;/span&gt;) || url.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;geo:&quot;&lt;/span&gt;) || url.startsWith(&lt;span class=&quot;hljs-string&quot;&gt;&quot;tel:&quot;&lt;/span&gt;)) {
+          Intent intent = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Intent(Intent.ACTION_VIEW, Uri.parse(url));
+          startActivity(intent);
+          &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;;
+        }
+        view.loadUrl(url);
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;;
+      }
+    });`&lt;/pre&gt;
+
+### WebView中支持下载
+
+这里要给WebView设置一个下载监听，监听会回调给你下载地址，这里可以打开系统浏览器去激活下载，用DownloadManger直接去下载也可以，我选择的是第一种方式，这种方式我认为比较符合用户习惯哈。
+
+&lt;pre class=&quot;prettyprint&quot;&gt;` webView.setDownloadListener(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; MyWebViewDownLoadListener());`&lt;/pre&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`
+ &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;MyWebViewDownLoadListener&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;DownloadListener&lt;/span&gt; {&lt;/span&gt;
+
+    &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;onDownloadStart&lt;/span&gt;(String url, String userAgent, String contentDisposition,
+        String mimetype, &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; contentLength) {
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; != url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+      }
+    }
+
+  }
+
+        &lt;div&gt;
+            作者：zh08070005 发表于2015/4/22 16:31:06 [原文链接](http://blog.csdn.net/kennethyo/article/details/45196891)
+        &lt;/div&gt;
+        &lt;div&gt;
+        阅读：521 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/45196891#comments)
+        &lt;/div&gt;
+</code></pre>
+          
         
+      
     </div>
 
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2014/08/22/2014-08-22/">[原]Android API，版本对照</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2014-08-22T02:51:53.000Z"><a href="/2014/08/22/2014-08-22/">2014-08-22</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
+    <div>
+      
     </div>
 
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="undefined-link-context"><a href="/2014/06/23/20140623/">[译]Android文本的测量和绘制</a></h1>
-    
-
-
-                </div>
-
-                <time class="indigo-link-context" datetime="2014-06-23T03:20:50.000Z"><a href="/2014/06/23/20140623/">2014-06-23</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip green accent-4">Android</a>
-        
+    <div>
+      
     </div>
 
+    <footer class="post-footer">
+      
 
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/01/25/2015-01-25/" itemprop="url">
+                  [原]Android程序猿如何泡设计妹之快速掌握dp和px才可以
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-25T22:44:22+08:00" content="2015-01-25">
+              2015-01-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
 
                 
-            </div>
+                
 
+              
+            </span>
+          
+
+          
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/01/25/2015-01-25/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/25/2015-01-25/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
-</article>
-
+      </header>
     
 
-    <ul class="pagination center-align">
-    <li class="">
-        <a href="/"><i class="fa fa-angle-left"></i></a>
-    </li>
-    
-    
-        <li class="waves-effect"><a href="/">1</a></li>
-    
-        <li class="active green"><a href="/page/2">2</a></li>
-    
-        <li class="waves-effect"><a href="/page/3">3</a></li>
-    
-    
-    <li class="">
-        <a href="/page/3/"><i class="fa fa-angle-right"></i></a>
-    </li>
- </ul>
 
-</div>
+    <div class="post-body" itemprop="articleBody">
 
-        <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large green">
-      <i class="fa fa-caret-square-o-up"></i>
-    </a>
-    <ul>
-      <li><a class="btn-return-top btn-floating waves-effect blue" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
-    </ul>
+      
+      
+
+      
+        
+          
+            <p>相信很多Android程序猿已经对身边的设计妹垂涎三尺了，那么如何博得设计妹的好感呢，学好这篇文章就可以了。</p>
+<p>程序猿与UI设计妹讨论设计稿和切图的时候，经常会因为dp和px的问题搞的不愉快，这里可以分析出两个原因：</p>
+<p>1，程序猿原因，不懂dp和px的换算关系。包括我，以及我见到的大多数开发，更多的时候其实不是很关心dp和px是如何来的，以及如何转换的，只知道掌握一般情况用dp，字体大小用sp，画线用px。</p>
+<p>2，设计妹原因，设计不出dp标注，或者甚至就不懂dp是什么东东。大多数公司并不会为Android专门做一套设计稿，只会出一版iOS设计稿，而iOS的设计稿都是用px去标注的，又因为上面的第一个原因，Android程序猿也搞不明白标注的px应该用多少dp。</p>
+<p>下面我们就用简单的方式去增进程序猿和设计妹感情吧！</p>
+<p>首先，我们要了解这张图：</p>
+<p><img src="http://img.blog.csdn.net/20150125224509843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>这里面列举了目前Android开发常见的5种dpi，dpi是指每英寸的像素（例如：一个宽是1.5英寸240像素，高是2英寸320像素的手机的dpi是：240px/1.5in=320px/2in=160dpi，既对角线上的每英寸的像素），上面这张表里还少一种，就是LDPI，是MDPI的0.75倍，也就是120DPI。</p>
+<p>下面这张图是各种dpi对应的主流手机屏幕：</p>
+<p><img src="http://img.blog.csdn.net/20150125224550469?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>请按照图中下方的公式，分别计算一下屏幕dpi。在mdpi中，dp/pixel = DPI/160，即1dip等价于DPI为160的设备中的1个像素点。那么在xhdpi 320dpi中，就是1dp等价于2像素（再次强调，一定用计算器算一算啊，还有dpi是对角线上的像素密度）。</p>
+<p>一般情况设计妹出的图会是xhdpi，既能照顾iOS，又会照顾到Android。既然是xhdpi，我们就可以用1dp=2px来应对设计妹的标注。如果不是xhdpi的图，你也可以按照这个0.75:1:1.5:2:3:4这个比例去换算一下。</p>
+<p>帮到这里了，剩下的还得看你的修为了。</p>
+<p>下面我再给出几个常用的&#20540;：</p>
+<p>Launcher icon：48dp*48dp</p>
+<p>Action bar icons：32dp*32dp</p>
+<p>Small icons：16dp*16dp</p>
+<p>Notification icons：24dp*24dp</p>
+<p>如果这些你还不满意，再给你来张图，包你满意：</p>
+<p><img src="http://img.blog.csdn.net/20150125224602388?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>内容参考与网络和<a href="http://developer.android.com/guide/practices/screens_support.html#range" target="_blank" rel="external">Android.com</a></p>
+<p>如果打不开的话请看这里<a href="http://www.kennethyo.me/post/category/cheng-xu-yuan-de-wu-qi-zhi-vpn" target="_blank" rel="external">《程序员的武器之一VPN》</a></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2015/1/25 22:44:22 [原文链接](http://blog.csdn.net/kennethyo/article/details/43123731)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1117 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/43123731#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/28/2014-12-28/" itemprop="url">
+                  [原]CardView初级使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-28T14:08:54+08:00" content="2014-12-28">
+              2014-12-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/12/28/2014-12-28/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/28/2014-12-28/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>CardView</code>发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里<a href="http://kennethyo.farbox.com/post/android/recyclerviewchu-ji-shi-yong#main" target="_blank" rel="external">传送门</a>。</p>
+<p>卡片化是全新的Material风&#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。</p>
+<p><code>CardView</code>继承于<code>Framelayout</code>，比<code>FrameLayout</code>多了3个重要的属性，<code>card_view:cardElevation</code>，<code>card_view:cardCornerRadius</code>，<code>card_view:cardBackgroundColor</code>。</p>
+<p><code>card_view:cardElevation</code>，可以设置卡片的阴影，可以使<code>CardView</code>在z轴方向上有一种抬升的视觉效果，能给用户一种这里是重要信息的视觉感受。对应代码里的方法<code>public
+ void setCardElevation (float radius)</code>。</p>
+<p><code>card_view:cardCornerRadius</code>，显然就是设置<code>CardView</code>的圆角了。对应代码里的方法<code>public
+ void setRadius (float radius)</code>。</p>
+<p><code>card_view:cardBackgroundColor</code>，设置<code>CardView</code>的背景颜色，这个属性是不会影响阴影<code>card_view:cardElevation</code>的效果的。对应代码里的方法<code>public
+ void setCardBackgroundColor (int color)</code>。</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.CardView</span><br><span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/cardview&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;fill_parent&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardElevation=</span><span class="s" style="color:rgb(204,147,147)">&quot;100dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardBackgroundColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@color/grey&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardCornerRadius=</span><span class="s" style="color:rgb(204,147,147)">&quot;8dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginRight=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br>                <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_margin=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;这里是CardView&quot;</span><br>                <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/android.support.v7.widget.CardView&gt;</span><br></pre><br></div>
+
+<p>这里贴一个Android官方给的<a href="https://github.com/googlesamples/android-CardView" target="_blank" rel="external">sample</a>吧!</p>
+<p>—————————————</p>
+<p>从11月19日开始一直在加班，把大把的时间都用于了我们岁末版本的开发上，这期间规划了好几篇想要写的博文，慢慢会发出来的，主要还是偏于介绍新控件的使用，以及如何兼容lollipop以下版本进行material风&#26684;的设计，material风&#26684;设计也将会是我所在项目组15年第一季度android的全新设计方案。</p>
+<p><span style="color:rgb(221,17,68); font-family:Inconsolata,monospace,sans-serif; line-height:30px; white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://kennethyo.farbox.com/post/android/2014-12-28）" target="_blank" rel="external">http://kennethyo.farbox.com/post/android/2014-12-28）</a></span></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/12/28 14:08:54 [原文链接](http://blog.csdn.net/kennethyo/article/details/42213525)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：2090 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/42213525#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/10/2014-11-10/" itemprop="url">
+                  [原]RecyclerView初级使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-10T15:18:15+08:00" content="2014-11-10">
+              2014-11-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/11/10/2014-11-10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/10/2014-11-10/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span style="font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144"><span style="white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）" target="_blank" rel="external">http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）</a></span></span></p>
+<p><code>RecyclerView</code>是Android在v7包中包含了一个新的widget，<code>RecyclerView</code>是一个<code>ListView</code>进阶版，但不继承与<code>AdapterView</code>，相比<code>ListView</code>，<code>RecyclerView</code>更加灵活和先进。</p>
+<p>##<br>1，导入RecyclerView</p>
+<p>首先要保证<code>SDK Tools</code>和<code>Android
+ Support Repository</code>为最新版。如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141110151947150?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20141110152010581?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>其次，在你的demo工程里选中Project Structure按钮，并且选择app —— Dependencies —— “&#43;” —— Library dependency，去添加支持包，如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141110152138031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>最后，在新的对话框里选中<code>com.android.support:recyclerview-v7:21.0.0</code>，点击OK。如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141110152155781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>这里就顺利的导入了<code>RecyclerView</code>。</p>
+<p>##<br>2，使用<code>RecyclerView</code></p>
+<p>在布局文件中使用<code>RecyclerView</code>，跟其他自定义控件一样，如下：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;RelativeLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/apk/res/android&amp;quot" target="_blank" rel="external">http://schemas.android.com/apk/res/android&amp;quot</a>;</span><br>    <span class="na" style="color:rgb(154,195,159)">xmlns:tools=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/tools&amp;quot" target="_blank" rel="external">http://schemas.android.com/tools&amp;quot</a>;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">tools:context=</span><span class="s" style="color:rgb(204,147,147)">&quot;.MainActivity&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br><br>    <span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.RecyclerView</span><br>        <span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/recyclerView&quot;</span><br>        <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>        <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span> <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/RelativeLayout&gt;</span><br></pre><br></div>
+
+<p>因为日常开发中，我们大多数都是按照UI去布局每个item，所以这里我没与图省事用Android自带的布局。如下：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="cp" style="color:rgb(127,159,127)">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;LinearLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/apk/res/android&amp;quot" target="_blank" rel="external">http://schemas.android.com/apk/res/android&amp;quot</a>;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br><br>        <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>            <span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/textView&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;48dp&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:textStyle=</span><span class="s" style="color:rgb(204,147,147)">&quot;bold&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:background=</span><span class="s" style="color:rgb(204,147,147)">&quot;@android:color/holo_blue_light&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:textColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@android:color/holo_red_light&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:gravity=</span><span class="s" style="color:rgb(204,147,147)">&quot;center_vertical&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:paddingLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/activity_horizontal_margin&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;New Text&quot;</span> <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><br><span class="nt" style="color:rgb(154,195,159)">&lt;/LinearLayout&gt;</span><br></pre><br></div>
+
+<p>下面就是代码了：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">protected</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">Bundle</span> <span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">setContentView</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">activity_main</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="c1" style="color:rgb(127,159,127)">//LinearLayoutManager可以自定义实现不同的动画效果和布局效果</span><br>        <span class="c1" style="color:rgb(127,159,127)">//这里设置为LinearLayoutManager.HORIZONTAL变成为了一个可以横向滑动的ListView，赞不赞？</span><br>        <span class="n" style="color:rgb(220,220,204)">LinearLayoutManager</span> <span class="n" style="color:rgb(220,220,204)">layoutManager</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">LinearLayoutManager</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="n" style="color:rgb(220,220,204)">LinearLayoutManager</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">VERTICAL</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="kc" style="color:rgb(220,163,163)">false</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setLayoutManager</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">layoutManager</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setHasFixedSize</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kc" style="color:rgb(220,163,163)">false</span><span class="o" style="color:rgb(240,239,208)">);</span><span class="c1" style="color:rgb(127,159,127)">//adapter的改变不会改变RecyclerView的大小</span><br><br>        <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="mi" style="color:rgb(140,208,211)">50</span><span class="o" style="color:rgb(240,239,208)">];</span><br>        <span class="k" style="color:rgb(240,223,175)">for</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">;</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="mi" style="color:rgb(140,208,211)">50</span><span class="o" style="color:rgb(240,239,208)">;</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">&#43;&#43;){</span><br>            <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">]</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">valueOf</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br><br>        <span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span> <span class="n" style="color:rgb(220,220,204)">adapter</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">adapter</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br></pre><br></div>
+
+<p>可以明确看到的是，<code>RecyclerView</code>通过<code>(RecyclerView)
+ findViewById(R.id.recyclerView)</code>初始化之后，不仅要像<code>ListView</code>一样要放入<code>Adapter</code>进行数据和布局的适配，而且还要额外添加一个<code>LinearLayoutManager</code>。</p>
+<p>这个Manager就是我们的布局管理工具类，这里不仅可以用常规的竖直方向布局，还有横向的滑动的布局，以后再也不会因为没有横向滑动的<code>ListView</code>去头疼自定义了。</p>
+<p>通过自定义<code>LinearLayoutManager</code>也可以实现不同的动画效果，和移动效果。</p>
+<p><code>RecyclerView</code>的Adapter和<code>ListView</code>的Adapter也是不同的，<code>RecyclerView</code>的Adapter要继承<code>RecyclerView.Adapter&amp;lt;VH
+ extends ViewHolder&amp;gt;</code>,并且<code>ViewHolder</code>要继承与<code>ViewHolder.RecyclerView</code>，具体代码如下：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">StringRecyclerAdapter</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">Adapter</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">&gt;</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>    <span class="kd" style="color:rgb(255,255,134)">private</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="nf" style="color:rgb(239,239,143)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">strings</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="nf" style="color:rgb(239,239,143)">onCreateViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">ViewGroup</span> <span class="n" style="color:rgb(220,220,204)">viewGroup</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">view</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">View</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">inflate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">viewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getContext</span><span class="o" style="color:rgb(240,239,208)">(),</span> <span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">adapter_string_recylcer</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kc" style="color:rgb(220,163,163)">null</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>       <span class="c1" style="color:rgb(127,159,127)">//这里发现不给item布局添加LayoutParams，会直接默认为WRAP_CONTENT，WRAP_CONTENT布局。</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setPadding</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="mi" style="color:rgb(140,208,211)">20</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setFocusable</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kc" style="color:rgb(220,163,163)">true</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span> <span class="n" style="color:rgb(220,220,204)">lp</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">(</span><br>                <span class="n" style="color:rgb(220,220,204)">ViewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">MATCH_PARENT</span><span class="o" style="color:rgb(240,239,208)">,</span><br>                <span class="n" style="color:rgb(220,220,204)">ViewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">WRAP_CONTENT</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">leftMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">10</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">rightMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">5</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">topMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">20</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">bottomMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">15</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setLayoutParams</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onBindViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">textView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setText</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">class</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getSimpleName</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">&#43;</span> <span class="n" style="color:rgb(220,220,204)">getValueAt</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">));</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">String</span> <span class="nf" style="color:rgb(239,239,143)">getValueAt</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">];</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="nf" style="color:rgb(239,239,143)">getItemCount</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">strings</span> <span class="o" style="color:rgb(240,239,208)">==</span> <span class="kc" style="color:rgb(220,163,163)">null</span> <span class="o" style="color:rgb(240,239,208)">?</span> <span class="mi" style="color:rgb(140,208,211)">0</span> <span class="o" style="color:rgb(240,239,208)">:</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">length</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">static</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">ViewHolder</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span> <span class="kd" style="color:rgb(255,255,134)">implements</span> <span class="n" style="color:rgb(220,220,204)">View</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">OnClickListener</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">textView</span><span class="o" style="color:rgb(240,239,208)">;</span><br><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="nf" style="color:rgb(239,239,143)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">);</span><br>            <span class="n" style="color:rgb(220,220,204)">textView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">textView</span><span class="o" style="color:rgb(240,239,208)">);</span><br>            <span class="c1" style="color:rgb(127,159,127)">//因为RecyclerView没用setOnItemClickListener，所以在这里实现了点击事件</span><br>            <span class="c1" style="color:rgb(127,159,127)">//况且，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应</span><br>            <span class="n" style="color:rgb(220,220,204)">textView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setOnClickListener</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br><br>        <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onClick</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="n" style="color:rgb(220,220,204)">Toast</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">makeText</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getContext</span><span class="o" style="color:rgb(240,239,208)">(),((</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span><span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">).</span><span class="na" style="color:rgb(154,195,159)">getText</span><span class="o" style="color:rgb(240,239,208)">(),</span><span class="n" style="color:rgb(220,220,204)">Toast</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LENGTH_SHORT</span><span class="o" style="color:rgb(240,239,208)">).</span><span class="na" style="color:rgb(154,195,159)">show</span><span class="o" style="color:rgb(240,239,208)">();</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><span class="o" style="color:rgb(240,239,208)">}</span><br></pre><br></div>
+
+<p>在<code>onCreateViewHolder</code>方法中，我们需要把加载布局和<code>ViewHolder</code>绑定起来，这里有个问题，不知道是Android的bug，还是故意这么设计的，需要我们主动写代码给item设置<code>LayoutParams</code>。</p>
+<p>在<code>onBindViewHolder</code>中负责数据绑定。</p>
+<p>这里有一个问题，<code>RecyclerView</code>没有<code>setOnItemClickListener</code>方法，所以我在里面对<code>TextView</code>添加了点击事件，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应。</p>
+<p><img src="http://img.blog.csdn.net/20141110152225296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p><a href="https://github.com/KennethYo/RecyclerViewDemo" target="_blank" rel="external">Demo链接</a></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/11/10 15:18:15 [原文链接](http://blog.csdn.net/kennethyo/article/details/40981263)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1221 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40981263#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/04/2014-11-04/" itemprop="url">
+                  [原]Palette的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-04T16:19:53+08:00" content="2014-11-04">
+              2014-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/11/04/2014-11-04/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/04/2014-11-04/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>（转载，请注明出处：<a href="http://www.kennethyo.me/post/android/palettechu-ji-shi-yong" target="_blank" rel="external">http://www.kennethyo.me/post/android/palettechu-ji-shi-yong</a>）</p>
+<p><img src="" alt=""></p>
+<p>相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&#26684;让人&#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。</p>
+<p>这里就要说到，不久前Android在v7包中更新的<a href="http://developer.android.com/reference/android/support/v7/graphics/Palette.html" target="_blank" rel="external">Palette</a>。Palette可以让我们构造色彩鲜艳的界面更加方便，通过一个图片的<code>bitmap</code>来获取图片当中明暗对比的颜色。</p>
+<p>###<br>初始化Palette</p>
+<p><code>Palette</code>通过一个静态方法进行初始化，并且需要传入一个<code>bitmap</code>，这个<code>bitmap</code>是我们要获取颜色图片的位图。</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="n" style="color:rgb(220,220,204)">Palette</span> <span class="n" style="color:rgb(220,220,204)">palette</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">Palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">generate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">bitmap</span><span class="o" style="color:rgb(240,239,208)">);</span><br></pre><br></div>
+
+<p>还有一个异步方法：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="c1" style="color:rgb(127,159,127)">//提供了一个异步方法</span><br><span class="n" style="color:rgb(220,220,204)">Palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">generateAsync</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">bitmap</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">Palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">PaletteAsyncListener</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>            <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onGenerated</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">Palette</span> <span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="o" style="color:rgb(240,239,208)">}</span><br><span class="o" style="color:rgb(240,239,208)">});</span><br></pre><br></div>
+
+<p>###<br>获取<code>Palette.Swatch</code></p>
+<p>通过以下几种方法获取相应的<code>Palette.Swatch</code>，<code>Palette.Swatch</code>是包含我们获取到颜色的一个载体</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">();</span><br><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">();</span><br><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getLightVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">();</span><br><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getLightMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">();</span><br><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getDarkVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">();</span><br><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getDarkMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">();</span><br></pre><br></div>
+
+<p>###<br>通过<code>Palette.Swatch</code>获取到颜色</p>
+<p>针对Android，<code>Palette.Swatch.getRgb()</code>返回一个<code>int</code>RGB颜色&#20540;。例如如下的用法：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">tv1</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">tv1</span><span class="o" style="color:rgb(240,239,208)">);</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个活力的颜色</span><br><span class="n" style="color:rgb(220,220,204)">tv1</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setTextColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getRgb</span><span class="o" style="color:rgb(240,239,208)">());</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个柔和的颜色</span><br><span class="n" style="color:rgb(220,220,204)">tv1</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setBackgroundColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getRgb</span><span class="o" style="color:rgb(240,239,208)">());</span><br><br><span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">tv2</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">tv2</span><span class="o" style="color:rgb(240,239,208)">);</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个活力的亮色</span><br><span class="n" style="color:rgb(220,220,204)">tv2</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setTextColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getLightVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getRgb</span><span class="o" style="color:rgb(240,239,208)">());</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个柔和的亮色</span><br><span class="n" style="color:rgb(220,220,204)">tv2</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setBackgroundColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getLightMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getRgb</span><span class="o" style="color:rgb(240,239,208)">());</span><br><br><span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">tv3</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">tv3</span><span class="o" style="color:rgb(240,239,208)">);</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个活力的暗色</span><br><span class="n" style="color:rgb(220,220,204)">tv3</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setTextColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getDarkVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getRgb</span><span class="o" style="color:rgb(240,239,208)">());</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个柔和的暗色</span><br><span class="n" style="color:rgb(220,220,204)">tv3</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setBackgroundColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getDarkMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getRgb</span><span class="o" style="color:rgb(240,239,208)">());</span><br><br><span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">tv4</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">tv4</span><span class="o" style="color:rgb(240,239,208)">);</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个适合做标题的颜色</span><br><span class="n" style="color:rgb(220,220,204)">tv4</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setTextColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getVibrantSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getTitleTextColor</span><span class="o" style="color:rgb(240,239,208)">());</span><br><span class="c1" style="color:rgb(127,159,127)">//返回一个适合做主题的颜色</span><br><span class="n" style="color:rgb(220,220,204)">tv4</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setBackgroundColor</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">palette</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getDarkMutedSwatch</span><span class="o" style="color:rgb(240,239,208)">().</span><span class="na" style="color:rgb(154,195,159)">getBodyTextColor</span><span class="o" style="color:rgb(240,239,208)">());</span><br></pre><br></div>
+
+<p><img src="http://img.blog.csdn.net/20141105134308933?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>总体上看，Palette的使用简单，没有复杂的方法，更方便我们针对material风&#26684;进行开发。</p>
+<p><a href="https://github.com/KennethYo/PaletteDemo/tree/master" target="_blank" rel="external">demo地址</a></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/11/4 16:19:53 [原文链接](http://blog.csdn.net/kennethyo/article/details/40786685)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：692 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40786685#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/24/2014-10-24/" itemprop="url">
+                  [原]LayoutInflater.inflate详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-24T16:27:08+08:00" content="2014-10-24">
+              2014-10-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/10/24/2014-10-24/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/24/2014-10-24/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="介绍常见inflate方法"><a href="#介绍常见inflate方法" class="headerlink" title="介绍常见inflate方法"></a>介绍常见inflate方法</h2><p>在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种：</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_1_2164263" name="code" class="java">//1,通过系统服务获取布局加载器
+LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+View view = inflater.inflate(resource,root,attachToRoot);
+
+//2,通过activity中的getLayoutInflater()方法
+View view = getLayoutInflater().inflate(resource,root,attachToRoot);
+
+//3,通过View的静态inflate()方法
+View view = View.inflate(resource,root,attachToRoot);
+
+//4,通过LayoutInflater的inflate()方法
+View view = LayoutInflater.from(this).inflate(resource,root,attachToRoot);
+</pre>
+
+<p>通过对上述方法的源码的分析，很容易看出来这些方法都是最终调用了方式1，获取系统布局加载器的方式，来进行获取<code>View</code>。</p>
+<p>这里我列举的并没有<code>inflate(int resource, ViewGroup root)</code>这个重载方法，是因为他们最终都会到调用为<code>inflate(int resource, ViewGroup root, boolean attachToRoot)</code>方法，如下：</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_2_263903" name="code" class="java"> public View inflate(int resource, ViewGroup root) {
+        return inflate(resource, root, root != null);
+ }
+
+ public View inflate(int resource, ViewGroup root, boolean attachToRoot) {
+        if (DEBUG) System.out.println(&quot;INFLATING from resource: &quot; + resource);
+        XmlResourceParser parser = getContext().getResources().getLayout(resource);
+        try {
+            return inflate(parser, root, attachToRoot);
+        } finally {
+            parser.close();
+        }
+ }</pre>
+
+<p>这里要说明一下，其实最终要调用的是<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法，只不过这里把布局资源解析为了XmlPull解析器，这里就不针对<code>XmlPullParser</code>进行研究了。</p>
+<h2 id="针对传入的参数不同进行分析"><a href="#针对传入的参数不同进行分析" class="headerlink" title="针对传入的参数不同进行分析"></a>针对传入的参数不同进行分析</h2><p>通过对<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法的源码进行解读，<code>XmlPullParser parser</code>是对传入<code>int resource</code>的xml解析器，不用去主要考虑，那就需要考虑传入<code>ViewGroup root, boolean attachToRoot</code>的&#20540;不同，会出现什么结果呢？</p>
+<p>源码中有几个重要的代码块：</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_3_3719874" name="code" class="java">if (root != null) {
+if (DEBUG) {
+System.out.println(&quot;Creating params from root: &quot; +
+                                    root);
+}
+// 如果root不等于null，获取它的LayoutParams
+  params = root.generateLayoutParams(attrs);
+if (!attachToRoot) {
+//attachToRoot等于false，把root的LayoutParams属性给temp
+temp.setLayoutParams(params);
+}
+}
+</pre>
+
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_4_4700610" name="code" class="java">//attachToRoot等于true，将temp加入到root这个viewGroup中
+if (root != null &amp;&amp; attachToRoot) {
+root.addView(temp, params);
+}
+
+// root等于null，attachToRoot等于false，直接把temp赋值给返回结果
+if (root == null || !attachToRoot) {
+  result = temp;
+}</pre>
+
+<h2 id="根据不同的传-20540-进行实现"><a href="#根据不同的传-20540-进行实现" class="headerlink" title="根据不同的传&#20540;进行实现"></a>根据不同的传&#20540;进行实现</h2><p>两个布局文件，一个作为root，一个作为我们的要获取的view</p>
+<p>activity_my.xml</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_5_9900685" name="code" class="html">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MyActivity&quot;&gt;
+
+    &lt;TextView
+        android:text=&quot;@string/hello_world&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot; /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+
+<p>view.xml</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_6_881422" name="code" class="html">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;120dp&quot;
+    android:layout_height=&quot;120dp&quot;
+    android:background=&quot;@color/blue&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;hello inflate&quot;
+        android:textColor=&quot;@android:color/white&quot; /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+
+<p>1,rootView等于null，attachToRoot等于false</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_7_1272731" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+    view = getLayoutInflater().inflate(R.layout.view, null, false);
+    setContentView(view);
+}</pre>
+
+<p>本身root为null，就不会去获取view的LayoutParams，直接走<code>result = temp;</code>返回result，此时result等于view</p>
+<p><img src="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
+<p>2,rootView等于null，attachToRoot等于true</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_8_9504448" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+    view = getLayoutInflater().inflate(R.layout.view, null, true);
+    setContentView(view);
+}</pre>
+
+<p>root等于null，依然走<code>result = temp;</code>，此时result等于view</p>
+<p><img src="http://img.blog.csdn.net/20141024160851796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
+<p>3,rootView不等于null，attachToRoot等于false</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_9_1880625" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
+    view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,false);
+    setContentView(view);
+}</pre>
+
+<p>root不等于null，attachToRoot等于false，会走取view的LayoutParams并且赋&#20540;给temp，再走<code>result = temp;</code>，此时result等于view</p>
+<p><img src="http://img.blog.csdn.net/20141024160912700?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
+<p>4,rootView不等于null，attachToRoot等于true</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_10_3941156" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
+    view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,true);
+    setContentView(view);
+}</pre>
+
+<p>rootView不等于null，attachToRoot等于true，会首先获取view的Params，再走<code>root.addView(temp, params)</code>，也就是，把view先放入的root这个ViewGroup中，再返回result，因为初始化的时候result就等于root，此时返回的就是包含有子View的root。</p>
+<p><img src="http://img.blog.csdn.net/20141024160942932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>这里因为root的布局为RelativeLayout，我们把view加入到root中，view本身保留了自有的LayoutParm</p>
+<p>最后我要吐槽，为什么csdn不支持markdown，我都是先用Mou写好的，贴过来竟然要自己重新排版。。。</p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/10/24 16:27:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/40429031)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1061 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40429031#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/08/22/2014-08-22/" itemprop="url">
+                  [原]Android API，版本对照
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-22T10:51:53+08:00" content="2014-08-22">
+              2014-08-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/22/2014-08-22/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/22/2014-08-22/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div class="para" style="font-family:Arial; font-size:14px; line-height:26px"><br><br>###<br><br>### <strong>API等级1： &nbsp;<span style="white-space:pre"> </span>Android 1.0&nbsp;<br><br>API等级2： &nbsp;<span style="white-space:pre"> </span>Android 1.1 Petit Four &nbsp;花式小蛋糕<br><br>API等级3： &nbsp;<span style="white-space:pre"> </span>Android 1.5 Cupcake &nbsp;纸杯蛋糕<br><br>API等级4： &nbsp;<span style="white-space:pre"> </span>Android 1.6 Donut &nbsp;甜甜圈<br><br>API等级5： &nbsp;<span style="white-space:pre"> </span>Android 2.0 Éclair &nbsp; 松饼<br><br>API等级6： &nbsp;<span style="white-space:pre"> </span>Android 2.0.1 Éclair &nbsp;松饼<br><br>API等级7： &nbsp;<span style="white-space:pre"> </span>Android 2.1 Éclair &nbsp; 松饼<br><br>API等级8： &nbsp;<span style="white-space:pre"> </span>Android 2.2 - 2.2.3 Froyo &nbsp;冻酸奶<br><br>API等级9： &nbsp;<span style="white-space:pre"> </span>Android 2.3 - 2.3.2 Gingerbread &nbsp;姜饼<br><br>API等级10：<span style="white-space:pre"> </span>Android 2.3.3-2.3.7 Gingerbread &nbsp; 姜饼<br><br>API等级11：<span style="white-space:pre"> </span>Android 3.0 Honeycomb 蜂巢<br><br>API等级12：<span style="white-space:pre"> </span>Android 3.1 Honeycomb 蜂巢<br><br>API等级13：<span style="white-space:pre"> </span>Android 3.2 Honeycomb 蜂巢<br><br>API等级14：<span style="white-space:pre"> </span>Android 4.0 - 4.0.2 Ice Cream Sandwich &nbsp;冰激凌三明治<br><br>API等级15：<span style="white-space:pre"> </span>Android 4.0.3 - 4.0.4 Ice Cream Sandwich &nbsp;冰激凌三明治<br><br>API等级16：<span style="white-space:pre"> </span>Android 4.1 Jelly Bean &nbsp;糖豆<br><br>API等级17：<span style="white-space:pre"> </span>Android 4.2 Jelly Bean &nbsp;糖豆<br><br>API等级18：<span style="white-space:pre"> </span>Android 4.3 Jelly Bean &nbsp;糖豆<br><br>API等级19：<span style="white-space:pre"> </span>Android 4.4 KitKat &nbsp;奇巧巧克力棒<br><br>API等级20：<span style="white-space:pre"> </span>Android L</strong><br><br><div><br><br></div><br></div>
+
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/8/22 10:51:53 [原文链接](http://blog.csdn.net/kennethyo/article/details/38752431)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：410 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/38752431#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/06/23/20140623/" itemprop="url">
+                  [译]Android文本的测量和绘制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-06-23T11:20:50+08:00" content="2014-06-23">
+              2014-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/23/20140623/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/23/20140623/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span style="font-size:18px">翻译与<a href="http://chris.banes.me/#blog" target="_blank" rel="external">Chris Banes的博客</a>&nbsp; &nbsp;<a href="http://chris.banes.me/2014/03/27/measuring-text/" target="_blank" rel="external">原文地址</a></span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。</span></p>
+<p><u><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></p>
+<p><span style="font-size:18px">最近我在一款APP中，需要在横向和纵向的画布上绘制一些以文本为中心的文字。于是我用了下面这些代码：</span></p>
+<pre code_snippet_id="402800" snippet_file_name="blog_20140623_1_1957768" name="code" class="java">Paint mTextPaint = new Paint();  
+mTextPaint.setTextAlign(Paint.Align.CENTER); // Center the text
+
+// Later when you draw...
+canvas.drawText(mText, // Text to display  
+        mBounds.centerX(), // Center X of canvas bounds
+        mBounds.centerY(), // Center Y of canvas bounds
+        mTextPaint
+);</pre><span style="font-size:18px">
+
+我没想到代码的运行后竟然是下面的这个样子：</span>
+
+![](http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-41-58.png)
+
+<span style="font-size:32px">测量文本</span>
+
+<span style="font-size:18px">
+
+</span>
+
+<span style="font-size:18px">接下来，我尝试定位文本，计算了文本的高宽度，并且修改了绘制文本X轴Y轴的位置：</span>
+
+<span style="font-size:18px">
+
+</span>
+
+<span style="font-size:18px"></span>
+
+<pre code_snippet_id="402800" snippet_file_name="blog_20140623_2_8130520" name="code" class="java">int mTextWidth, mTextHeight; // Our calculated text bounds  
+Paint mTextPaint = new Paint();
+
+// Now lets calculate the size of the text
+Rect textBounds = new Rect();  
+mTextPaint.getTextBounds(mText, 0, mText.length(), textBounds);  
+mTextWidth = textBounds.width();  
+mTextHeight = textBounds.height();
+
+// Later when you draw...
+canvas.drawText(mText, // Text to display  
+        mBounds.centerX() - (mTextWidth / 2f),
+        mBounds.centerY() + (mTextHeight / 2f),
+        mTextPaint
+);</pre>
+
+<p>这一次我们做的已经相当接近了，但是你可以看到文本还是没有居中。</p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"><img src="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-48-48.png" alt=""></span></p>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">为了确定我没看到的原因，我用Paint.getTextBounds()计算一个矩形，并画在了文本的后面。</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"><img src="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-50-33.png" alt=""></span></p>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">正如你看到的，文本的高宽绘制在了计算范围之外。</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:32px">另一中测量文本的方法</span></p>
+<p><span style="font-size:24px"></span></p>
+<p></p>
+<p><span style="font-size:18px">在这个基础点上，我看到Paint另一种计算文本宽度的方法：Paint.measureText()</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">这个方法只能计算宽度而不能计算高度，因此我尝试结合两种方法：</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<pre code_snippet_id="402800" snippet_file_name="blog_20140623_3_9003355" name="code" class="java">int mTextWidth, mTextHeight; // Our calculated text bounds  
+Paint mTextPaint = new Paint();
+
+// Now lets calculate the size of the text
+Rect textBounds = new Rect();  
+mTextPaint.getTextBounds(mText, 0, mText.length(), textBounds);  
+mTextWidth = mTextPaint.measureText(mText); // Use measureText to calculate width  
+mTextHeight = textBounds.height(); // Use height from getTextBounds()
+
+// Later when you draw...
+canvas.drawText(mText, // Text to display  
+        mBounds.centerX() - (mTextWidth / 2f),
+        mBounds.centerY() + (mTextHeight / 2f),
+        mTextPaint
+);</pre>
+
+<p>这几下就做出了完美居中的文本。悠嘻！</p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"><img src="http://chris.banes.me/content/images/2014/Mar/perfect.png" alt=""></span></p>
+<p></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/6/23 11:20:50 [原文链接](http://blog.csdn.net/kennethyo/article/details/33720589)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：773 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/33720589#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
 
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="鸿雁" />
+          <p class="site-author-name" itemprop="name">鸿雁</p>
+          <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
     </main>
-    <footer class="page-footer indigo darken-1">
-    
-    <div class="container">
-        <div class="row">
-            
-            <div class="social-group col m3 s12">
-                <h5 class="white-text">社交</h5>
-                
-                    <a class="social-link" href="http://weibo.com/304526030" target="_blank">
-                        <i class="fa fa-2x fa-weibo"></i>
-                    </a>
-                
-                    <a class="social-link" href="https://github.com/kennethyo" target="_blank">
-                        <i class="fa fa-2x fa-github"></i>
-                    </a>
-                
-                    <a class="social-link" href="/atom.xml" target="_blank">
-                        <i class="fa fa-2x fa-rss"></i>
-                    </a>
-                
-            </div>
-            
 
-            
-            <div class="col m9 s12">
-                <h5 class="white-text">友情链接</h5>
-                
-                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
-                
-                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
-                
-            </div>
-            
-        </div>
-    </div>
-    
-
-    <div class="footer-copyright indigo-link-context">
-        <div class="container">
-            © 2016 kennethyo.me, All rights reserved.
-            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
-        </div>
-    </div>
-</footer>
-
-
-    <noscript>
-    <div class="noscript">
-        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
-    </div>
-</noscript>
-<div class="noscript">
-    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
 
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/materialize.min.js"></script>
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
 
-<script>
-    (function($) {
-        $(document).ready(function() {
-            // 隐藏禁用javascript（针对微信内置浏览器）的提示
-            $('.noscript').hide();
+        
 
-            // 图片缩放效果
-            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+        
+      </div>
+    </footer>
 
-            // 给图片加上点击放大效果（materialbox插件）
-            $imgs.addClass('materialboxed').each(function(i, el) {
-                $(this).attr('data-caption', $(this).attr('alt') || ' ');
-            }).materialbox();
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
 
-            // 优化表格的显示
-            $('table').each(function() {
-                var $table = $(this);
-                // 除去多行代码的情况
-                if ($table.find('pre').length == 0) {
-                    $table.addClass('responsive-table striped bordered');
-                }
-            });
+  
 
-            // 首页幻灯片
-            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
-            $(".button-collapse").sideNav();
-            $(".category-menu").sideNav();
 
-            // 针对gallery post
-            $('.carousel').carousel({full_width: true});
-            $('.carousel-control.prev').click(function() {
-                $('.carousel').carousel('prev');
-            });
-            $('.carousel-control.next').click(function() {
-                $('.carousel').carousel('next');
-            });
 
-            // 文章目录
-            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
-            // 修正文章目录的left-border颜色
-            var color = $('.table-of-contents-text').css('color');
-            $('.table-of-contents-link').css('border-left-color', color);
 
-            // 针对移动端做的优化：FAB按钮点击一下收回
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                $('.fixed-action-btn').addClass('click-to-toggle');
-            }
-            // 回到顶部
-            $('.btn-return-top').click(function() {
-                $('body, html').animate({
-                    scrollTop: 0
-                }, 500);
-            });
 
-            // 重置读书页面的Tab标签页的颜色
-            $('li.tab a').hover(function() {
-                $(this).toggleClass('text-lighten-4');
-            });
-            $('.indicator').addClass('green lighten-2');
 
-            
-            // 添加new标签
-            $('').append('<span class="new badge pink"></span>');
-            
 
-            // 搜索功能
-            $('.modal-trigger').leanModal({
-                // 打开搜索框时自动聚焦
-                ready: function() {
-                    if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
-                    }
-                }
-            });
-            var searchXml = "search.xml";
-            if (searchXml.length == 0) {
-             	searchXml = "search.xml";
-            }
-            var searchPath = "/" + searchXml;
-            initSearch(searchPath, 'search-input', 'search-result');
-        });
 
-        // 初始化搜索与匹配函数
-        var initSearch = function(path, search_id, content_id) {
-            'use strict';
-            $.ajax({
-                url: path,
-                dataType: "xml",
-                success: function(xmlResponse) {
-                    // get the contents from search data
-                    var datas = $("entry", xmlResponse).map(function() {
-                        return {
-                            title: $("title", this).text(),
-                            content: $("content", this).text(),
-                            url: $("url", this).text()
-                        };
-                    }).get();
-                    var $input = document.getElementById(search_id);
-                    var $resultContent = document.getElementById(content_id);
-                    $input.addEventListener('input', function() {
-                        var str = '<ul class=\"search-result-list\">';
-                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                        $resultContent.innerHTML = "";
-                        if (this.value.trim().length <= 0) {
-                            return;
-                        }
-                        // perform local searching
-                        datas.forEach(function(data) {
-                            var isMatch = true;
-                            var content_index = [];
-                            var data_title = data.title.trim().toLowerCase();
-                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                            var data_url = data.url;
-                            var index_title = -1;
-                            var index_content = -1;
-                            var first_occur = -1;
-                            // only match artiles with not empty titles and contents
-                            if (data_title != '' && data_content != '') {
-                                keywords.forEach(function(keyword, i) {
-                                    index_title = data_title.indexOf(keyword);
-                                    index_content = data_content.indexOf(keyword);
-                                    if (index_title < 0 && index_content < 0) {
-                                        isMatch = false;
-                                    } else {
-                                        if (index_content < 0) {
-                                            index_content = 0;
-                                        }
-                                        if (i == 0) {
-                                            first_occur = index_content;
-                                        }
-                                    }
-                                });
-                            }
-                            // show search results
-                            if (isMatch) {
-                                keywords.forEach(function(keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
-                                });
 
-                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                                var content = data.content.trim().replace(/<[^>]+>/g, "");
-                                if (first_occur >= 0) {
-                                    // cut out 100 characters
-                                    var start = first_occur - 20;
-                                    var end = first_occur + 80;
-                                    if (start < 0) {
-                                        start = 0;
-                                    }
-                                    if (start == 0) {
-                                        end = 100;
-                                    }
-                                    if (end > content.length) {
-                                        end = content.length;
-                                    }
-                                    var match_content = content.substring(start, end);
-                                    // highlight all keywords
-                                    keywords.forEach(function(keyword) {
-                                        var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword indigo lighten-2\">" + keyword + "</span>");
-                                    });
+  
 
-                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kennethyo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
                                 }
-                                str += "</li>";
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
                             }
                         });
-                        str += "</ul>";
-                        $resultContent.innerHTML = str;
-                    });
-                }
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
             });
+            proceedsearch();
         }
-    })(jQuery);
-</script>
+    });}
 
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
 
-<script src="/js/prettify.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("pre").addClass("prettyprint");
-        prettyPrint();
     });
-</script>
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
 
 
+  
 
+  
 
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=56699390" charset="UTF-8"></script>
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
+  
 
 </body>
 </html>
