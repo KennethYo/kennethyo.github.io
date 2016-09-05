@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2016-09-01T09:39:08.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://www.kennethyo.me/"/>
+  <updated>2016-09-05T10:37:31.000Z</updated>
+  <id>http://www.kennethyo.me/</id>
   
   <author>
     <name>鸿雁</name>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>自建私有 Maven 仓库</title>
-    <link href="http://yoursite.com/2016/09/01/untitled-1472722428873/"/>
-    <id>http://yoursite.com/2016/09/01/untitled-1472722428873/</id>
+    <link href="http://www.kennethyo.me/2016/09/01/untitled-1472722428873/"/>
+    <id>http://www.kennethyo.me/2016/09/01/untitled-1472722428873/</id>
     <published>2016-09-01T09:33:48.000Z</published>
-    <updated>2016-09-01T09:39:08.000Z</updated>
+    <updated>2016-09-05T10:37:31.000Z</updated>
     
     <content type="html">&lt;p&gt;项目组从2015年上半年全面切换到 AndroidStudio 进行开发，随着这1年多业务逻辑和代码逻辑的增长，导致项目  LibraryModule 由最初的3个增长到如今的8个。&lt;/p&gt;
 &lt;p&gt;代码量的增加必然导致编译的变慢，AndroidStudio 在编译项目时会先编译 LibraryModule 生成 aar 包，之后这些 aar 包会和 APPModule 进行集成编译，最终生成 APK。这个编译过程，第一次在5.0及以上手机安装，经常会出现6分钟以上的编译时间，5.0以下手机也有3分钟左右的编译时间，这些时间严重影响了工作效率！&lt;/p&gt;
@@ -28,7 +28,7 @@
 &lt;p&gt;如果能够像 compile 第三方 Library 那样引用我们的 Library ，岂不是又降低 Module 的耦合，又单独对 Library 增加了版本控制。第三方 Library  基本都是把 aar 发布到中央 Maven 对外提供引用，而我们的 Library 作为公司的商业项目，是不可能发布到中央 Maven 对外提供引用的，这就要求我们需要有自己的 Maven 服务。&lt;/p&gt;
 &lt;p&gt;私有 Maven 还会产生另一个好处，就是代理中央 Maven 仓库。例如，我们新加入了一个第三方库，导致每个人的 IDE 都需要从中央 Maven pull 库，而中国 GFW 的存在，导致中央 Maven 极其不稳定，经常 time out ，有了代理 Maven，只要代理 maven pull 一次库，每个人就不必从中央 Maven pull库了。&lt;/p&gt;
 &lt;p&gt;这里我们是用 Docker 作为容器，在里面搭建的 Sonatype Nexus 私有 Maven 仓库。使用 Docker 的好处是可以把环境独立出来不会和服务器其他服务产生冲突，卸载也简单。&lt;/p&gt;
-&lt;h1 id=&quot;一，安装-Docker-并运行-Nexus&quot;&gt;&lt;a href=&quot;#一，安装-Docker-并运行-Nexus&quot; class=&quot;headerlink&quot; title=&quot;一，安装 Docker 并运行 Nexus&quot;&gt;&lt;/a&gt;一，安装 Docker 并运行 Nexus&lt;/h1&gt;&lt;p&gt;1，下载 并安装 Docker，&lt;a href=&quot;https://www.docker.com/products/docker#/mac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;安装-Docker-并运行-Nexus&quot;&gt;&lt;a href=&quot;#安装-Docker-并运行-Nexus&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker 并运行 Nexus&quot;&gt;&lt;/a&gt;安装 Docker 并运行 Nexus&lt;/h1&gt;&lt;p&gt;1，下载 并安装 Docker，&lt;a href=&quot;https://www.docker.com/products/docker#/mac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2，在 Terminal 中输入&lt;code&gt;docker -v&lt;/code&gt;，如果显示版本号，说明安装后环境是没有问题的，如下是我显示的版本号：&lt;br&gt;&lt;code&gt;Docker version 1.12.0, build 8eab29e&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;3，在 Terminal 输入&lt;code&gt;docker pull sonatype/nexus&lt;/code&gt;进行下载 nexus 镜像。&lt;br&gt;下载过程中，会显示下载进度。如果比较慢或者超时，请在 Docker 里设置 mirror。如下图，我配置了灵雀加速和阿里云加速。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/72f96cbajw1f7e4dnn8xcj20l40u60w6.jpg&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;br&gt;灵雀加速：&lt;a href=&quot;http://houchaohann.m.alauda.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://houchaohann.m.alauda.cn&lt;/a&gt;&lt;br&gt;阿里云加速：&lt;a href=&quot;https://3wky8dz8.mirror.aliyuncs.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://3wky8dz8.mirror.aliyuncs.com&lt;/a&gt; &lt;/p&gt;
@@ -40,16 +40,16 @@
 &lt;p&gt;6，浏览器里输入&lt;a href=&quot;http://localhost:8081/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8081/&lt;/a&gt;，如果显示如下界面，证明 Nexus 搭建成功。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/72f96cbajw1f7e4x3tmhej21kw0zkk21.jpg&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
 &lt;p&gt;7，一些常用指令：&lt;br&gt;&lt;code&gt;docker start yiche&lt;/code&gt;开始运行yiche 容器&lt;br&gt;&lt;code&gt;docker restart yiche&lt;/code&gt;c运 重新行yiche容器&lt;br&gt;&lt;code&gt;docker stop yiche&lt;/code&gt;停止运行yiche容器&lt;br&gt;&lt;code&gt;docker rm yiche&lt;/code&gt;删除yiche容器&lt;/p&gt;
-&lt;h1 id=&quot;二，Nexus-使用&quot;&gt;&lt;a href=&quot;#二，Nexus-使用&quot; class=&quot;headerlink&quot; title=&quot;二，Nexus 使用&quot;&gt;&lt;/a&gt;二，Nexus 使用&lt;/h1&gt;&lt;p&gt;点击右上角&lt;code&gt;login&lt;/code&gt;登录，默认账户&lt;code&gt;admin&lt;/code&gt;，默认密码&lt;code&gt;admin123&lt;/code&gt; 。&lt;/p&gt;
+&lt;h1 id=&quot;Nexus-使用&quot;&gt;&lt;a href=&quot;#Nexus-使用&quot; class=&quot;headerlink&quot; title=&quot;Nexus 使用&quot;&gt;&lt;/a&gt;Nexus 使用&lt;/h1&gt;&lt;p&gt;点击右上角&lt;code&gt;login&lt;/code&gt;登录，默认账户&lt;code&gt;admin&lt;/code&gt;，默认密码&lt;code&gt;admin123&lt;/code&gt; 。&lt;/p&gt;
 &lt;p&gt;点击左侧栏目的&lt;code&gt;Repositories&lt;/code&gt;，显示Nexus 默认已经有的仓库，如下图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/72f96cbajw1f7e5tldqexj21kw0zkwrs.jpg&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1，创建一个私有仓库&quot;&gt;&lt;a href=&quot;#1，创建一个私有仓库&quot; class=&quot;headerlink&quot; title=&quot;1，创建一个私有仓库&quot;&gt;&lt;/a&gt;1，创建一个私有仓库&lt;/h2&gt;&lt;p&gt;1，点击&lt;code&gt;add&lt;/code&gt;，选择&lt;code&gt;Hosted Repository&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;创建一个私有仓库&quot;&gt;&lt;a href=&quot;#创建一个私有仓库&quot; class=&quot;headerlink&quot; title=&quot;创建一个私有仓库&quot;&gt;&lt;/a&gt;创建一个私有仓库&lt;/h2&gt;&lt;p&gt;1，点击&lt;code&gt;add&lt;/code&gt;，选择&lt;code&gt;Hosted Repository&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;2，在下方输入&lt;code&gt;Repository ID&lt;/code&gt;和&lt;code&gt;Repository Name&lt;/code&gt;，这里我分别输入的是&lt;code&gt;demo&lt;/code&gt;和&lt;code&gt;Demo&lt;/code&gt;，这里可以换成你自己的。&lt;/p&gt;
 &lt;p&gt;3，部署策略&lt;code&gt;Deployment Policy&lt;/code&gt;选择为&lt;code&gt;Allow Redeploy&lt;/code&gt;允许重新部署。&lt;/p&gt;
 &lt;p&gt;4，点击&lt;code&gt;save&lt;/code&gt;保存，在上方列表中就会显示完成的仓库信息，最后一列&lt;code&gt;Repository Path&lt;/code&gt;就是仓库的地址。&lt;/p&gt;
 &lt;p&gt;如下图：&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/72f96cbajw1f7e625xn92j21kw0zkdsb.jpg&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
 &lt;p&gt;注：如果在&lt;code&gt;Repository Policy&lt;/code&gt;选择&lt;code&gt;snapshot&lt;/code&gt;，仓库就是快照版仓库。&lt;/p&gt;
-&lt;h2 id=&quot;2，代理仓库&quot;&gt;&lt;a href=&quot;#2，代理仓库&quot; class=&quot;headerlink&quot; title=&quot;2，代理仓库&quot;&gt;&lt;/a&gt;2，代理仓库&lt;/h2&gt;&lt;p&gt;这里我是代理的 jcenter，因为这是 Android  Studio 的默认仓库。&lt;/p&gt;
+&lt;h2 id=&quot;代理仓库&quot;&gt;&lt;a href=&quot;#代理仓库&quot; class=&quot;headerlink&quot; title=&quot;代理仓库&quot;&gt;&lt;/a&gt;代理仓库&lt;/h2&gt;&lt;p&gt;这里我是代理的 jcenter，因为这是 Android  Studio 的默认仓库。&lt;/p&gt;
 &lt;p&gt;1，点击&lt;code&gt;add&lt;/code&gt;，选择&lt;code&gt;Proxy Repository&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;2，在下方输入&lt;code&gt;Repository ID&lt;/code&gt;和&lt;code&gt;Repository Name&lt;/code&gt;，这里我分别输入的是&lt;code&gt;jcenter&lt;/code&gt;和&lt;code&gt;Jcenter&lt;/code&gt;，因为代理的就是 jcenter 哈。&lt;/p&gt;
 &lt;p&gt;3，在&lt;code&gt;Remote Storage Location&lt;/code&gt;输入代理仓库的仓库地址&lt;code&gt;http://jcenter.bintray.com/&lt;/code&gt;。&lt;/p&gt;
@@ -57,12 +57,12 @@
 &lt;p&gt;如下图：&lt;br&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/72f96cbajw1f7e6iqpczrj21kw0zktlr.jpg&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
 &lt;p&gt;其实在我们项目里并没有新创建一个仓库，而是直接用的默认&lt;code&gt;Release&lt;/code&gt;和&lt;code&gt;Snapshot&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/72f96cbajw1f7e6n006u5j21ji02sgn0.jpg&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;三，Android-Studio-中上传-Library-Module-到私有-maven&quot;&gt;&lt;a href=&quot;#三，Android-Studio-中上传-Library-Module-到私有-maven&quot; class=&quot;headerlink&quot; title=&quot;三，Android Studio 中上传 Library Module 到私有 maven&quot;&gt;&lt;/a&gt;三，Android Studio 中上传 Library Module 到私有 maven&lt;/h1&gt;&lt;h2 id=&quot;1，上传到-Maven&quot;&gt;&lt;a href=&quot;#1，上传到-Maven&quot; class=&quot;headerlink&quot; title=&quot;1，上传到 Maven&quot;&gt;&lt;/a&gt;1，上传到 Maven&lt;/h2&gt;&lt;p&gt;因为，Module比较多，我在项目根目录里写了一个 gradle 文件&lt;code&gt;gradle_mvn_push.gradle&lt;/code&gt;来上传。代码如下：&lt;br&gt;&lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply &lt;span class=&quot;string&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;maven&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//release 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; RELEASE_REPOSITORY_URL = &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/releases/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//snapshots 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; SNAPSHOT_REPOSITORY_URL = &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/snapshots/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; REPOSITORY_URL = VERSION_NAME.endsWith(&lt;span class=&quot;string&quot;&gt;&quot;-SNAPSHOT&quot;&lt;/span&gt;) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logger.info(&lt;span class=&quot;string&quot;&gt;&quot;groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n&quot;&lt;/span&gt;, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;afterEvaluate &amp;#123; project -&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    uploadArchives &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        repositories.mavenDeployer &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            pom.groupId = GROUP&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            pom.artifactId = POM_ARTIFACT_ID&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            pom.version = VERSION_NAME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            repository(&lt;span class=&quot;string&quot;&gt;url:&lt;/span&gt; REPOSITORY_URL) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                authentication(&lt;span class=&quot;string&quot;&gt;userName:&lt;/span&gt; NEXUS_USERNAME, &lt;span class=&quot;string&quot;&gt;password:&lt;/span&gt; NEXUS_PASSWORD)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task androidSourcesJar(&lt;span class=&quot;string&quot;&gt;type:&lt;/span&gt; Jar) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        classifier = &lt;span class=&quot;string&quot;&gt;&#39;sources&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        from android.sourceSets.main.java.sourceFiles&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    artifacts &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        archives androidSourcesJar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Android-Studio-中上传-Library-Module-到私有-maven&quot;&gt;&lt;a href=&quot;#Android-Studio-中上传-Library-Module-到私有-maven&quot; class=&quot;headerlink&quot; title=&quot;Android Studio 中上传 Library Module 到私有 maven&quot;&gt;&lt;/a&gt;Android Studio 中上传 Library Module 到私有 maven&lt;/h1&gt;&lt;h2 id=&quot;上传到-Maven&quot;&gt;&lt;a href=&quot;#上传到-Maven&quot; class=&quot;headerlink&quot; title=&quot;上传到 Maven&quot;&gt;&lt;/a&gt;上传到 Maven&lt;/h2&gt;&lt;p&gt;因为，Module比较多，我在项目根目录里写了一个 gradle 文件&lt;code&gt;gradle_mvn_push.gradle&lt;/code&gt;来上传。代码如下：&lt;br&gt;&lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply &lt;span class=&quot;string&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;maven&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//release 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; RELEASE_REPOSITORY_URL = &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/releases/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//snapshots 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; SNAPSHOT_REPOSITORY_URL = &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/snapshots/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; REPOSITORY_URL = VERSION_NAME.endsWith(&lt;span class=&quot;string&quot;&gt;&quot;-SNAPSHOT&quot;&lt;/span&gt;) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logger.info(&lt;span class=&quot;string&quot;&gt;&quot;groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n&quot;&lt;/span&gt;, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;afterEvaluate &amp;#123; project -&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    uploadArchives &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        repositories.mavenDeployer &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            pom.groupId = GROUP&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            pom.artifactId = POM_ARTIFACT_ID&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            pom.version = VERSION_NAME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            repository(&lt;span class=&quot;string&quot;&gt;url:&lt;/span&gt; REPOSITORY_URL) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                authentication(&lt;span class=&quot;string&quot;&gt;userName:&lt;/span&gt; NEXUS_USERNAME, &lt;span class=&quot;string&quot;&gt;password:&lt;/span&gt; NEXUS_PASSWORD)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task androidSourcesJar(&lt;span class=&quot;string&quot;&gt;type:&lt;/span&gt; Jar) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        classifier = &lt;span class=&quot;string&quot;&gt;&#39;sources&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        from android.sourceSets.main.java.sourceFiles&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    artifacts &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        archives androidSourcesJar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;然后在你要上传 module 的&lt;code&gt;build.gradle&lt;/code&gt; 文件引入。&lt;br&gt;如下图是我们换肤 Module 的 &lt;code&gt;build.gradle&lt;/code&gt;：&lt;br&gt;&lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply &lt;span class=&quot;string&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.android.library&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;android &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    compileSdkVersion Integer.valueOf(COMPILE_SDK_VERSION)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    buildToolsVersion BUILD_TOOLS_VERSION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    defaultConfig &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        minSdkVersion MIN_SDK_VERSION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        targetSdkVersion TARGET_SDK_VERSION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        versionCode &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        versionName &lt;span class=&quot;string&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    buildTypes &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        release &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            minifyEnabled &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            proguardFiles getDefaultProguardFile(&lt;span class=&quot;string&quot;&gt;&#39;proguard-android.txt&#39;&lt;/span&gt;), &lt;span class=&quot;string&quot;&gt;&#39;proguard-rules.pro&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dependencies &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    compile fileTree(&lt;span class=&quot;string&quot;&gt;dir:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;libs&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;include:&lt;/span&gt; [&lt;span class=&quot;string&quot;&gt;&#39;*.jar&#39;&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    compile SUPPORT_APPCOMPAT_V7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    compile SUPPORT_CARDVIEW_V7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ext.GROUP=&lt;span class=&quot;string&quot;&gt;&quot;com.yiche&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ext.VERSION_NAME=&lt;span class=&quot;string&quot;&gt;&quot;1.1.0-SNAPSHOT&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ext.POM_ARTIFACT_ID=&lt;span class=&quot;string&quot;&gt;&quot;changeskin&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apply &lt;span class=&quot;string&quot;&gt;from:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;$&amp;#123;project.rootDir&amp;#125;/gradle_mvn_push.gradle&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;这里请关注下面的代码，&lt;code&gt;GROUP&lt;/code&gt;，&lt;code&gt;VERSION_NAME&lt;/code&gt;，&lt;code&gt;POM_ARTIFACT_ID&lt;/code&gt;和最后一行引入我们前面写的&lt;code&gt;gradle_mvn_push.gradle&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;GROUP&lt;/code&gt;一般代表了你的组织名称，例如我的&lt;code&gt;com.yiche&lt;/code&gt;&lt;br&gt;&lt;code&gt;POM_ARTIFACT_ID&lt;/code&gt;Library 的简称。&lt;br&gt;&lt;code&gt;VERSION_NAME&lt;/code&gt;版本号，如果有&lt;code&gt;-SNAPSHOT&lt;/code&gt;表示是快照版。&lt;/p&gt;
 &lt;p&gt;上面这三个也就组成了我们平常看见的引依赖 &lt;code&gt;com.yiche:changeskin:1.1.0-SNAPSHOT&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;2，引用私有-Maven&quot;&gt;&lt;a href=&quot;#2，引用私有-Maven&quot; class=&quot;headerlink&quot; title=&quot;2，引用私有 Maven&quot;&gt;&lt;/a&gt;2，引用私有 Maven&lt;/h2&gt;&lt;p&gt;下面就直接上一段代码吧，这是项目根目录的&lt;code&gt;build.gradle&lt;/code&gt;里面修改了 maven 仓库的地址。&lt;/p&gt;
+&lt;h2 id=&quot;引用私有-Maven&quot;&gt;&lt;a href=&quot;#引用私有-Maven&quot; class=&quot;headerlink&quot; title=&quot;引用私有 Maven&quot;&gt;&lt;/a&gt;引用私有 Maven&lt;/h2&gt;&lt;p&gt;下面就直接上一段代码吧，这是项目根目录的&lt;code&gt;build.gradle&lt;/code&gt;里面修改了 maven 仓库的地址。&lt;/p&gt;
 &lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Top-level build file where you can add configuration options common to all sub-projects/modules.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;buildscript &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    repositories &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jcenter()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    dependencies &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        classpath &lt;span class=&quot;string&quot;&gt;&#39;com.android.tools.build:gradle:2.1.3&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;allprojects &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    repositories &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//        jcenter()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 私有 release 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        maven&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            url &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/releases/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 私有 snapshot 地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        maven&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            url &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/snapshots/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//jcenter 代理&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        maven&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            url &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/jcenter/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// maven 代理&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        maven&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            url &lt;span class=&quot;string&quot;&gt;&quot;http://192.168.4.53:32770/content/repositories/central/&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;task clean(&lt;span class=&quot;string&quot;&gt;type:&lt;/span&gt; Delete) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    delete rootProject.buildDir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;好的，到这里就算结束了，后面这部分写的比较少，有问题留言啦。&lt;/p&gt;
 </content>
@@ -74,25 +74,25 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
-      <category term="Docker" scheme="http://yoursite.com/categories/Android/Docker/"/>
+      <category term="Docker" scheme="http://www.kennethyo.me/categories/Android/Docker/"/>
     
     
-      <category term="Nexus" scheme="http://yoursite.com/tags/Nexus/"/>
+      <category term="Nexus" scheme="http://www.kennethyo.me/tags/Nexus/"/>
     
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+      <category term="maven" scheme="http://www.kennethyo.me/tags/maven/"/>
     
-      <category term="jcenter" scheme="http://yoursite.com/tags/jcenter/"/>
+      <category term="jcenter" scheme="http://www.kennethyo.me/tags/jcenter/"/>
     
-      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+      <category term="Docker" scheme="http://www.kennethyo.me/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>TextUtils方法介绍</title>
-    <link href="http://yoursite.com/2016/07/06/2016-07-06/"/>
-    <id>http://yoursite.com/2016/07/06/2016-07-06/</id>
+    <link href="http://www.kennethyo.me/2016/07/06/2016-07-06/"/>
+    <id>http://www.kennethyo.me/2016/07/06/2016-07-06/</id>
     <published>2016-07-06T07:50:37.000Z</published>
     <updated>2016-09-01T06:36:36.000Z</updated>
     
@@ -213,25 +213,25 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="Utils" scheme="http://yoursite.com/tags/Utils/"/>
+      <category term="Utils" scheme="http://www.kennethyo.me/tags/Utils/"/>
     
-      <category term="TextView" scheme="http://yoursite.com/tags/TextView/"/>
+      <category term="TextView" scheme="http://www.kennethyo.me/tags/TextView/"/>
     
-      <category term="EditText" scheme="http://yoursite.com/tags/EditText/"/>
+      <category term="EditText" scheme="http://www.kennethyo.me/tags/EditText/"/>
     
-      <category term="TextUtils" scheme="http://yoursite.com/tags/TextUtils/"/>
+      <category term="TextUtils" scheme="http://www.kennethyo.me/tags/TextUtils/"/>
     
   </entry>
   
   <entry>
     <title>Mac 下反编译 apk</title>
-    <link href="http://yoursite.com/2016/06/21/2016-06-21/"/>
-    <id>http://yoursite.com/2016/06/21/2016-06-21/</id>
+    <link href="http://www.kennethyo.me/2016/06/21/2016-06-21/"/>
+    <id>http://www.kennethyo.me/2016/06/21/2016-06-21/</id>
     <published>2016-06-21T03:34:24.000Z</published>
     <updated>2016-09-01T06:36:58.000Z</updated>
     
@@ -249,21 +249,21 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="反编译" scheme="http://yoursite.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+      <category term="反编译" scheme="http://www.kennethyo.me/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
     
-      <category term="brew" scheme="http://yoursite.com/tags/brew/"/>
+      <category term="brew" scheme="http://www.kennethyo.me/tags/brew/"/>
     
   </entry>
   
   <entry>
     <title>CURL常用指令</title>
-    <link href="http://yoursite.com/2016/06/17/2016-06-17/"/>
-    <id>http://yoursite.com/2016/06/17/2016-06-17/</id>
+    <link href="http://www.kennethyo.me/2016/06/17/2016-06-17/"/>
+    <id>http://www.kennethyo.me/2016/06/17/2016-06-17/</id>
     <published>2016-06-17T03:48:12.000Z</published>
     <updated>2016-09-01T06:37:11.000Z</updated>
     
@@ -286,19 +286,19 @@
     
     </summary>
     
-      <category term="Web" scheme="http://yoursite.com/categories/Web/"/>
+      <category term="Web" scheme="http://www.kennethyo.me/categories/Web/"/>
     
     
-      <category term="Web" scheme="http://yoursite.com/tags/Web/"/>
+      <category term="Web" scheme="http://www.kennethyo.me/tags/Web/"/>
     
-      <category term="CURL" scheme="http://yoursite.com/tags/CURL/"/>
+      <category term="CURL" scheme="http://www.kennethyo.me/tags/CURL/"/>
     
   </entry>
   
   <entry>
     <title>[原]React-Native Android 学习笔记——2，自定义 logger</title>
-    <link href="http://yoursite.com/2016/03/23/2016-03-23/"/>
-    <id>http://yoursite.com/2016/03/23/2016-03-23/</id>
+    <link href="http://www.kennethyo.me/2016/03/23/2016-03-23/"/>
+    <id>http://www.kennethyo.me/2016/03/23/2016-03-23/</id>
     <published>2016-03-23T08:35:48.000Z</published>
     <updated>2016-09-01T06:37:33.000Z</updated>
     
@@ -331,19 +331,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="React-Native" scheme="http://yoursite.com/tags/React-Native/"/>
+      <category term="React-Native" scheme="http://www.kennethyo.me/tags/React-Native/"/>
     
   </entry>
   
   <entry>
     <title>[原]React-Native Android 学习笔记——1，配置环境</title>
-    <link href="http://yoursite.com/2016/03/18/2016-03-18/"/>
-    <id>http://yoursite.com/2016/03/18/2016-03-18/</id>
+    <link href="http://www.kennethyo.me/2016/03/18/2016-03-18/"/>
+    <id>http://www.kennethyo.me/2016/03/18/2016-03-18/</id>
     <published>2016-03-18T07:30:43.000Z</published>
     <updated>2016-09-01T06:37:49.000Z</updated>
     
@@ -368,19 +368,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="React-Native" scheme="http://yoursite.com/tags/React-Native/"/>
+      <category term="React-Native" scheme="http://www.kennethyo.me/tags/React-Native/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android 自定义字体，字替换为图片</title>
-    <link href="http://yoursite.com/2015/12/03/2015-12-03/"/>
-    <id>http://yoursite.com/2015/12/03/2015-12-03/</id>
+    <link href="http://www.kennethyo.me/2015/12/03/2015-12-03/"/>
+    <id>http://www.kennethyo.me/2015/12/03/2015-12-03/</id>
     <published>2015-12-03T05:54:59.000Z</published>
     <updated>2016-09-01T06:38:06.000Z</updated>
     
@@ -406,19 +406,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+      <category term="View" scheme="http://www.kennethyo.me/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android 翻转动画 Rotate3dAnimation 效果</title>
-    <link href="http://yoursite.com/2015/10/16/2015-10-16/"/>
-    <id>http://yoursite.com/2015/10/16/2015-10-16/</id>
+    <link href="http://www.kennethyo.me/2015/10/16/2015-10-16/"/>
+    <id>http://www.kennethyo.me/2015/10/16/2015-10-16/</id>
     <published>2015-10-16T09:05:57.000Z</published>
     <updated>2016-09-01T06:38:25.000Z</updated>
     
@@ -442,19 +442,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="Animation" scheme="http://yoursite.com/tags/Animation/"/>
+      <category term="Animation" scheme="http://www.kennethyo.me/tags/Animation/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除</title>
-    <link href="http://yoursite.com/2015/09/29/2015-09-29/"/>
-    <id>http://yoursite.com/2015/09/29/2015-09-29/</id>
+    <link href="http://www.kennethyo.me/2015/09/29/2015-09-29/"/>
+    <id>http://www.kennethyo.me/2015/09/29/2015-09-29/</id>
     <published>2015-09-29T07:22:08.000Z</published>
     <updated>2016-09-01T06:39:45.000Z</updated>
     
@@ -474,19 +474,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+      <category term="View" scheme="http://www.kennethyo.me/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>[原]高仿SinaWeibo新浪微博发布页面话题效果</title>
-    <link href="http://yoursite.com/2015/08/10/2015-08-10/"/>
-    <id>http://yoursite.com/2015/08/10/2015-08-10/</id>
+    <link href="http://www.kennethyo.me/2015/08/10/2015-08-10/"/>
+    <id>http://www.kennethyo.me/2015/08/10/2015-08-10/</id>
     <published>2015-08-09T16:06:33.000Z</published>
     <updated>2016-09-01T06:38:45.000Z</updated>
     
@@ -512,7 +512,7 @@
 &lt;p&gt;最终还是有点小遗憾没有完成.当拷贝一段已经变色的话题,再粘贴到文本后,无法删除掉拷贝进来文本的变色效果,尝试调用&lt;code&gt;Editable.clearSpans()&lt;/code&gt;去除全部 span 也无法实现,并且这个方法会导致直接卡死.后来直接使用&lt;code&gt;EditText.setText()&lt;/code&gt;控制文本,确实达到了效果,但是当输入法是类似 mx4默认输入法效果时(效果大概是,输入的拼音直接显示在 EditText 里面,点击被选汉字,替换掉拼音),会把输入的拼音放入到文本里,所以上面的代码,我一般是直接操作 Editable.&lt;/p&gt;
 &lt;p&gt;如果有更好的方法或者修复了上面的小遗憾,请留言指教.&lt;/p&gt;
 &lt;p&gt;Demo 地址：&lt;a href=&quot;https://github.com/KennethYo/SinaTopic&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/KennethYo/SinaTopic&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;转载请注明出处:&lt;a href=&quot;http://www.kennethyo.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;转载请注明出处:&lt;a href=&quot;http://www.kennethyo.me&quot;&gt;http://www.kennethyo.me&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -524,17 +524,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[译]介绍MVP Model-View-Presenter在Android中的应用</title>
-    <link href="http://yoursite.com/2015/05/25/2015-05-25/"/>
-    <id>http://yoursite.com/2015/05/25/2015-05-25/</id>
+    <link href="http://www.kennethyo.me/2015/05/25/2015-05-25/"/>
+    <id>http://www.kennethyo.me/2015/05/25/2015-05-25/</id>
     <published>2015-05-25T05:47:35.000Z</published>
     <updated>2016-09-01T06:39:29.000Z</updated>
     
@@ -656,19 +656,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="MVP" scheme="http://yoursite.com/tags/MVP/"/>
+      <category term="MVP" scheme="http://www.kennethyo.me/tags/MVP/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android获取运营商</title>
-    <link href="http://yoursite.com/2015/05/08/2015-05-08/"/>
-    <id>http://yoursite.com/2015/05/08/2015-05-08/</id>
+    <link href="http://www.kennethyo.me/2015/05/08/2015-05-08/"/>
+    <id>http://www.kennethyo.me/2015/05/08/2015-05-08/</id>
     <published>2015-05-08T08:40:08.000Z</published>
     <updated>2016-09-01T06:39:08.000Z</updated>
     
@@ -716,17 +716,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]WebView填坑——小功能篇</title>
-    <link href="http://yoursite.com/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/"/>
-    <id>http://yoursite.com/2015/04/22/原-WebView填坑——小功能篇/</id>
+    <link href="http://www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/"/>
+    <id>http://www.kennethyo.me/2015/04/22/原-WebView填坑——小功能篇/</id>
     <published>2015-04-22T08:31:06.000Z</published>
     <updated>2016-06-08T06:46:36.000Z</updated>
     
@@ -839,17 +839,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以</title>
-    <link href="http://yoursite.com/2015/01/25/2015-01-25/"/>
-    <id>http://yoursite.com/2015/01/25/2015-01-25/</id>
+    <link href="http://www.kennethyo.me/2015/01/25/2015-01-25/"/>
+    <id>http://www.kennethyo.me/2015/01/25/2015-01-25/</id>
     <published>2015-01-25T14:44:22.000Z</published>
     <updated>2016-09-01T06:35:53.000Z</updated>
     
@@ -874,7 +874,7 @@
 &lt;p&gt;如果这些你还不满意，再给你来张图，包你满意：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150125224602388?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;内容参考与网络和&lt;a href=&quot;http://developer.android.com/guide/practices/screens_support.html#range&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;如果打不开的话请看这里&lt;a href=&quot;http://www.kennethyo.me/post/category/cheng-xu-yuan-de-wu-qi-zhi-vpn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《程序员的武器之一VPN》&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果打不开的话请看这里&lt;a href=&quot;http://www.kennethyo.me/post/category/cheng-xu-yuan-de-wu-qi-zhi-vpn&quot;&gt;《程序员的武器之一VPN》&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
     作者：zh08070005 发表于2015/1/25 22:44:22 [原文链接](http://blog.csdn.net/kennethyo/article/details/43123731)
 &amp;lt;/div&amp;gt;
@@ -891,17 +891,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]CardView初级使用</title>
-    <link href="http://yoursite.com/2014/12/28/2014-12-28/"/>
-    <id>http://yoursite.com/2014/12/28/2014-12-28/</id>
+    <link href="http://www.kennethyo.me/2014/12/28/2014-12-28/"/>
+    <id>http://www.kennethyo.me/2014/12/28/2014-12-28/</id>
     <published>2014-12-28T06:08:54.000Z</published>
     <updated>2016-09-01T06:35:27.000Z</updated>
     
@@ -934,23 +934,23 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+      <category term="View" scheme="http://www.kennethyo.me/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>[原]RecyclerView初级使用</title>
-    <link href="http://yoursite.com/2014/11/10/2014-11-10/"/>
-    <id>http://yoursite.com/2014/11/10/2014-11-10/</id>
+    <link href="http://www.kennethyo.me/2014/11/10/2014-11-10/"/>
+    <id>http://www.kennethyo.me/2014/11/10/2014-11-10/</id>
     <published>2014-11-10T07:18:15.000Z</published>
     <updated>2016-09-01T06:35:08.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;span style=&quot;font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144&quot;&gt;&lt;span style=&quot;white-space:pre-wrap; background-color:rgb(247,247,249)&quot;&gt;（转载请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;span style=&quot;font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144&quot;&gt;&lt;span style=&quot;white-space:pre-wrap; background-color:rgb(247,247,249)&quot;&gt;（转载请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）&quot;&gt;http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;RecyclerView&lt;/code&gt;是Android在v7包中包含了一个新的widget，&lt;code&gt;RecyclerView&lt;/code&gt;是一个&lt;code&gt;ListView&lt;/code&gt;进阶版，但不继承与&lt;code&gt;AdapterView&lt;/code&gt;，相比&lt;code&gt;ListView&lt;/code&gt;，&lt;code&gt;RecyclerView&lt;/code&gt;更加灵活和先进。&lt;/p&gt;
 &lt;p&gt;##&lt;br&gt;1，导入RecyclerView&lt;/p&gt;
 &lt;p&gt;首先要保证&lt;code&gt;SDK Tools&lt;/code&gt;和&lt;code&gt;Android
@@ -999,21 +999,21 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]Palette的使用</title>
-    <link href="http://yoursite.com/2014/11/04/2014-11-04/"/>
-    <id>http://yoursite.com/2014/11/04/2014-11-04/</id>
+    <link href="http://www.kennethyo.me/2014/11/04/2014-11-04/"/>
+    <id>http://www.kennethyo.me/2014/11/04/2014-11-04/</id>
     <published>2014-11-04T08:19:53.000Z</published>
     <updated>2016-09-01T06:34:47.000Z</updated>
     
-    <content type="html">&lt;p&gt;（转载，请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&lt;/a&gt;）&lt;/p&gt;
+    <content type="html">&lt;p&gt;（转载，请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&quot;&gt;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。&lt;/p&gt;
 &lt;p&gt;这里就要说到，不久前Android在v7包中更新的&lt;a href=&quot;http://developer.android.com/reference/android/support/v7/graphics/Palette.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Palette&lt;/a&gt;。Palette可以让我们构造色彩鲜艳的界面更加方便，通过一个图片的&lt;code&gt;bitmap&lt;/code&gt;来获取图片当中明暗对比的颜色。&lt;/p&gt;
@@ -1045,21 +1045,21 @@
     
     <summary type="html">
     
-      &lt;p&gt;（转载，请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.kennethyo.me/po
+      &lt;p&gt;（转载，请注明出处：&lt;a href=&quot;http://www.kennethyo.me/post/android/palettechu-ji-shi-yong&quot;&gt;http://www.kennethyo.me/post/android/palettechu-ji-shi-yo
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]LayoutInflater.inflate详解</title>
-    <link href="http://yoursite.com/2014/10/24/2014-10-24/"/>
-    <id>http://yoursite.com/2014/10/24/2014-10-24/</id>
+    <link href="http://www.kennethyo.me/2014/10/24/2014-10-24/"/>
+    <id>http://www.kennethyo.me/2014/10/24/2014-10-24/</id>
     <published>2014-10-24T08:27:08.000Z</published>
     <updated>2016-09-01T06:34:26.000Z</updated>
     
@@ -1208,17 +1208,17 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android API，版本对照</title>
-    <link href="http://yoursite.com/2014/08/22/2014-08-22/"/>
-    <id>http://yoursite.com/2014/08/22/2014-08-22/</id>
+    <link href="http://www.kennethyo.me/2014/08/22/2014-08-22/"/>
+    <id>http://www.kennethyo.me/2014/08/22/2014-08-22/</id>
     <published>2014-08-22T02:51:53.000Z</published>
     <updated>2016-09-01T06:34:00.000Z</updated>
     
@@ -1238,17 +1238,17 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[译]Android文本的测量和绘制</title>
-    <link href="http://yoursite.com/2014/06/23/20140623/"/>
-    <id>http://yoursite.com/2014/06/23/20140623/</id>
+    <link href="http://www.kennethyo.me/2014/06/23/20140623/"/>
+    <id>http://www.kennethyo.me/2014/06/23/20140623/</id>
     <published>2014-06-23T03:20:50.000Z</published>
     <updated>2016-09-01T06:33:37.000Z</updated>
     
@@ -1367,10 +1367,10 @@ canvas.drawText(mText, // Text to display
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   

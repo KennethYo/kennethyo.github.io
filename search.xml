@@ -5,14 +5,14 @@
     
     <entry>
       <title><![CDATA[自建私有 Maven 仓库]]></title>
-      <url>http://yoursite.com/2016/09/01/untitled-1472722428873/</url>
+      <url>http://www.kennethyo.me/2016/09/01/untitled-1472722428873/</url>
       <content type="html"><![CDATA[<p>项目组从2015年上半年全面切换到 AndroidStudio 进行开发，随着这1年多业务逻辑和代码逻辑的增长，导致项目  LibraryModule 由最初的3个增长到如今的8个。</p>
 <p>代码量的增加必然导致编译的变慢，AndroidStudio 在编译项目时会先编译 LibraryModule 生成 aar 包，之后这些 aar 包会和 APPModule 进行集成编译，最终生成 APK。这个编译过程，第一次在5.0及以上手机安装，经常会出现6分钟以上的编译时间，5.0以下手机也有3分钟左右的编译时间，这些时间严重影响了工作效率！</p>
 <p>考虑到 LibraryModule 是长期不会修改的代码，如果发布成 aar 加入到项目里，就可以节省下每次 Module 编译的时间。</p>
 <p>如果能够像 compile 第三方 Library 那样引用我们的 Library ，岂不是又降低 Module 的耦合，又单独对 Library 增加了版本控制。第三方 Library  基本都是把 aar 发布到中央 Maven 对外提供引用，而我们的 Library 作为公司的商业项目，是不可能发布到中央 Maven 对外提供引用的，这就要求我们需要有自己的 Maven 服务。</p>
 <p>私有 Maven 还会产生另一个好处，就是代理中央 Maven 仓库。例如，我们新加入了一个第三方库，导致每个人的 IDE 都需要从中央 Maven pull 库，而中国 GFW 的存在，导致中央 Maven 极其不稳定，经常 time out ，有了代理 Maven，只要代理 maven pull 一次库，每个人就不必从中央 Maven pull库了。</p>
 <p>这里我们是用 Docker 作为容器，在里面搭建的 Sonatype Nexus 私有 Maven 仓库。使用 Docker 的好处是可以把环境独立出来不会和服务器其他服务产生冲突，卸载也简单。</p>
-<h1 id="一，安装-Docker-并运行-Nexus"><a href="#一，安装-Docker-并运行-Nexus" class="headerlink" title="一，安装 Docker 并运行 Nexus"></a>一，安装 Docker 并运行 Nexus</h1><p>1，下载 并安装 Docker，<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">传送门</a></p>
+<h1 id="安装-Docker-并运行-Nexus"><a href="#安装-Docker-并运行-Nexus" class="headerlink" title="安装 Docker 并运行 Nexus"></a>安装 Docker 并运行 Nexus</h1><p>1，下载 并安装 Docker，<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">传送门</a></p>
 <p>2，在 Terminal 中输入<code>docker -v</code>，如果显示版本号，说明安装后环境是没有问题的，如下是我显示的版本号：<br><code>Docker version 1.12.0, build 8eab29e</code></p>
 <p>3，在 Terminal 输入<code>docker pull sonatype/nexus</code>进行下载 nexus 镜像。<br>下载过程中，会显示下载进度。如果比较慢或者超时，请在 Docker 里设置 mirror。如下图，我配置了灵雀加速和阿里云加速。</p>
 <p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e4dnn8xcj20l40u60w6.jpg" alt="这里写图片描述"><br>灵雀加速：<a href="http://houchaohann.m.alauda.cn" target="_blank" rel="external">http://houchaohann.m.alauda.cn</a><br>阿里云加速：<a href="https://3wky8dz8.mirror.aliyuncs.com" target="_blank" rel="external">https://3wky8dz8.mirror.aliyuncs.com</a> </p>
@@ -24,16 +24,16 @@
 <p>6，浏览器里输入<a href="http://localhost:8081/" target="_blank" rel="external">http://localhost:8081/</a>，如果显示如下界面，证明 Nexus 搭建成功。</p>
 <p><img src="http://ww4.sinaimg.cn/large/72f96cbajw1f7e4x3tmhej21kw0zkk21.jpg" alt="这里写图片描述"></p>
 <p>7，一些常用指令：<br><code>docker start yiche</code>开始运行yiche 容器<br><code>docker restart yiche</code>c运 重新行yiche容器<br><code>docker stop yiche</code>停止运行yiche容器<br><code>docker rm yiche</code>删除yiche容器</p>
-<h1 id="二，Nexus-使用"><a href="#二，Nexus-使用" class="headerlink" title="二，Nexus 使用"></a>二，Nexus 使用</h1><p>点击右上角<code>login</code>登录，默认账户<code>admin</code>，默认密码<code>admin123</code> 。</p>
+<h1 id="Nexus-使用"><a href="#Nexus-使用" class="headerlink" title="Nexus 使用"></a>Nexus 使用</h1><p>点击右上角<code>login</code>登录，默认账户<code>admin</code>，默认密码<code>admin123</code> 。</p>
 <p>点击左侧栏目的<code>Repositories</code>，显示Nexus 默认已经有的仓库，如下图：</p>
 <p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e5tldqexj21kw0zkwrs.jpg" alt="这里写图片描述"></p>
-<h2 id="1，创建一个私有仓库"><a href="#1，创建一个私有仓库" class="headerlink" title="1，创建一个私有仓库"></a>1，创建一个私有仓库</h2><p>1，点击<code>add</code>，选择<code>Hosted Repository</code></p>
+<h2 id="创建一个私有仓库"><a href="#创建一个私有仓库" class="headerlink" title="创建一个私有仓库"></a>创建一个私有仓库</h2><p>1，点击<code>add</code>，选择<code>Hosted Repository</code></p>
 <p>2，在下方输入<code>Repository ID</code>和<code>Repository Name</code>，这里我分别输入的是<code>demo</code>和<code>Demo</code>，这里可以换成你自己的。</p>
 <p>3，部署策略<code>Deployment Policy</code>选择为<code>Allow Redeploy</code>允许重新部署。</p>
 <p>4，点击<code>save</code>保存，在上方列表中就会显示完成的仓库信息，最后一列<code>Repository Path</code>就是仓库的地址。</p>
 <p>如下图：<br><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e625xn92j21kw0zkdsb.jpg" alt="这里写图片描述"></p>
 <p>注：如果在<code>Repository Policy</code>选择<code>snapshot</code>，仓库就是快照版仓库。</p>
-<h2 id="2，代理仓库"><a href="#2，代理仓库" class="headerlink" title="2，代理仓库"></a>2，代理仓库</h2><p>这里我是代理的 jcenter，因为这是 Android  Studio 的默认仓库。</p>
+<h2 id="代理仓库"><a href="#代理仓库" class="headerlink" title="代理仓库"></a>代理仓库</h2><p>这里我是代理的 jcenter，因为这是 Android  Studio 的默认仓库。</p>
 <p>1，点击<code>add</code>，选择<code>Proxy Repository</code></p>
 <p>2，在下方输入<code>Repository ID</code>和<code>Repository Name</code>，这里我分别输入的是<code>jcenter</code>和<code>Jcenter</code>，因为代理的就是 jcenter 哈。</p>
 <p>3，在<code>Remote Storage Location</code>输入代理仓库的仓库地址<code>http://jcenter.bintray.com/</code>。</p>
@@ -41,12 +41,12 @@
 <p>如下图：<br><img src="http://ww3.sinaimg.cn/large/72f96cbajw1f7e6iqpczrj21kw0zktlr.jpg" alt="这里写图片描述"></p>
 <p>其实在我们项目里并没有新创建一个仓库，而是直接用的默认<code>Release</code>和<code>Snapshot</code>。</p>
 <p><img src="http://ww2.sinaimg.cn/large/72f96cbajw1f7e6n006u5j21ji02sgn0.jpg" alt="这里写图片描述"></p>
-<h1 id="三，Android-Studio-中上传-Library-Module-到私有-maven"><a href="#三，Android-Studio-中上传-Library-Module-到私有-maven" class="headerlink" title="三，Android Studio 中上传 Library Module 到私有 maven"></a>三，Android Studio 中上传 Library Module 到私有 maven</h1><h2 id="1，上传到-Maven"><a href="#1，上传到-Maven" class="headerlink" title="1，上传到 Maven"></a>1，上传到 Maven</h2><p>因为，Module比较多，我在项目根目录里写了一个 gradle 文件<code>gradle_mvn_push.gradle</code>来上传。代码如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line"><span class="comment">//release 地址</span></span><br><span class="line"><span class="keyword">def</span> RELEASE_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line"><span class="comment">//snapshots 地址</span></span><br><span class="line"><span class="keyword">def</span> SNAPSHOT_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line"><span class="comment">//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址</span></span><br><span class="line"><span class="keyword">def</span> REPOSITORY_URL = VERSION_NAME.endsWith(<span class="string">"-SNAPSHOT"</span>) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;</span><br><span class="line"></span><br><span class="line">logger.info(<span class="string">"groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n"</span>, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)</span><br><span class="line"></span><br><span class="line">afterEvaluate &#123; project -&gt;</span><br><span class="line">    uploadArchives &#123;</span><br><span class="line">        repositories.mavenDeployer &#123;</span><br><span class="line">            pom.groupId = GROUP</span><br><span class="line">            pom.artifactId = POM_ARTIFACT_ID</span><br><span class="line">            pom.version = VERSION_NAME</span><br><span class="line">            repository(<span class="string">url:</span> REPOSITORY_URL) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> NEXUS_USERNAME, <span class="string">password:</span> NEXUS_PASSWORD)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task androidSourcesJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">        classifier = <span class="string">'sources'</span></span><br><span class="line">        from android.sourceSets.main.java.sourceFiles</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    artifacts &#123;</span><br><span class="line">        archives androidSourcesJar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Android-Studio-中上传-Library-Module-到私有-maven"><a href="#Android-Studio-中上传-Library-Module-到私有-maven" class="headerlink" title="Android Studio 中上传 Library Module 到私有 maven"></a>Android Studio 中上传 Library Module 到私有 maven</h1><h2 id="上传到-Maven"><a href="#上传到-Maven" class="headerlink" title="上传到 Maven"></a>上传到 Maven</h2><p>因为，Module比较多，我在项目根目录里写了一个 gradle 文件<code>gradle_mvn_push.gradle</code>来上传。代码如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line"><span class="comment">//release 地址</span></span><br><span class="line"><span class="keyword">def</span> RELEASE_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line"><span class="comment">//snapshots 地址</span></span><br><span class="line"><span class="keyword">def</span> SNAPSHOT_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line"><span class="comment">//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址</span></span><br><span class="line"><span class="keyword">def</span> REPOSITORY_URL = VERSION_NAME.endsWith(<span class="string">"-SNAPSHOT"</span>) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;</span><br><span class="line"></span><br><span class="line">logger.info(<span class="string">"groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n"</span>, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)</span><br><span class="line"></span><br><span class="line">afterEvaluate &#123; project -&gt;</span><br><span class="line">    uploadArchives &#123;</span><br><span class="line">        repositories.mavenDeployer &#123;</span><br><span class="line">            pom.groupId = GROUP</span><br><span class="line">            pom.artifactId = POM_ARTIFACT_ID</span><br><span class="line">            pom.version = VERSION_NAME</span><br><span class="line">            repository(<span class="string">url:</span> REPOSITORY_URL) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> NEXUS_USERNAME, <span class="string">password:</span> NEXUS_PASSWORD)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task androidSourcesJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">        classifier = <span class="string">'sources'</span></span><br><span class="line">        from android.sourceSets.main.java.sourceFiles</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    artifacts &#123;</span><br><span class="line">        archives androidSourcesJar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后在你要上传 module 的<code>build.gradle</code> 文件引入。<br>如下图是我们换肤 Module 的 <code>build.gradle</code>：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.library'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion Integer.valueOf(COMPILE_SDK_VERSION)</span><br><span class="line">    buildToolsVersion BUILD_TOOLS_VERSION</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        minSdkVersion MIN_SDK_VERSION</span><br><span class="line">        targetSdkVersion TARGET_SDK_VERSION</span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>])</span><br><span class="line">    compile SUPPORT_APPCOMPAT_V7</span><br><span class="line">    compile SUPPORT_CARDVIEW_V7</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ext.GROUP=<span class="string">"com.yiche"</span></span><br><span class="line">ext.VERSION_NAME=<span class="string">"1.1.0-SNAPSHOT"</span></span><br><span class="line">ext.POM_ARTIFACT_ID=<span class="string">"changeskin"</span></span><br><span class="line"></span><br><span class="line">apply <span class="string">from:</span> <span class="string">"$&#123;project.rootDir&#125;/gradle_mvn_push.gradle"</span></span><br></pre></td></tr></table></figure></p>
 <p>这里请关注下面的代码，<code>GROUP</code>，<code>VERSION_NAME</code>，<code>POM_ARTIFACT_ID</code>和最后一行引入我们前面写的<code>gradle_mvn_push.gradle</code>。</p>
 <p><code>GROUP</code>一般代表了你的组织名称，例如我的<code>com.yiche</code><br><code>POM_ARTIFACT_ID</code>Library 的简称。<br><code>VERSION_NAME</code>版本号，如果有<code>-SNAPSHOT</code>表示是快照版。</p>
 <p>上面这三个也就组成了我们平常看见的引依赖 <code>com.yiche:changeskin:1.1.0-SNAPSHOT</code></p>
-<h2 id="2，引用私有-Maven"><a href="#2，引用私有-Maven" class="headerlink" title="2，引用私有 Maven"></a>2，引用私有 Maven</h2><p>下面就直接上一段代码吧，这是项目根目录的<code>build.gradle</code>里面修改了 maven 仓库的地址。</p>
+<h2 id="引用私有-Maven"><a href="#引用私有-Maven" class="headerlink" title="引用私有 Maven"></a>引用私有 Maven</h2><p>下面就直接上一段代码吧，这是项目根目录的<code>build.gradle</code>里面修改了 maven 仓库的地址。</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.1.3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line"><span class="comment">//        jcenter()</span></span><br><span class="line">        <span class="comment">// 私有 release 地址</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 私有 snapshot 地址</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//jcenter 代理</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/jcenter/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// maven 代理</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/central/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(<span class="string">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>好的，到这里就算结束了，后面这部分写的比较少，有问题留言啦。</p>
 ]]></content>
@@ -54,7 +54,7 @@
     
     <entry>
       <title><![CDATA[TextUtils方法介绍]]></title>
-      <url>http://yoursite.com/2016/07/06/2016-07-06/</url>
+      <url>http://www.kennethyo.me/2016/07/06/2016-07-06/</url>
       <content type="html"><![CDATA[<p>把一个<code>List&lt;String&gt;</code>输出成<code>a,b,c</code>这种形式，我们项目里面提供了一个这样的工具类：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static String getString(List&lt;String&gt; list) &#123;</span><br><span class="line">        if (CollectionsWrapper.isEmpty(list)) return null;</span><br><span class="line"></span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        int size = list.size();</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            sb.append(list.get(i));</span><br><span class="line"></span><br><span class="line">            if (i != size - 1) &#123;</span><br><span class="line">                sb.append(&quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>方法肯定是多种多样的，但是<code>Android SDK</code>在<code>TextUtils</code>里面就有提供了一个方法<code>join</code>，可以达到效果。</p>
@@ -168,7 +168,7 @@
     
     <entry>
       <title><![CDATA[Mac 下反编译 apk]]></title>
-      <url>http://yoursite.com/2016/06/21/2016-06-21/</url>
+      <url>http://www.kennethyo.me/2016/06/21/2016-06-21/</url>
       <content type="html"><![CDATA[<h1 id="1，环境准备"><a href="#1，环境准备" class="headerlink" title="1，环境准备"></a>1，环境准备</h1><p><code>brew install apktool</code><br><code>brew install dex2jar</code><br><code>jd-gui</code></p>
 <h1 id="2，反编译-代码"><a href="#2，反编译-代码" class="headerlink" title="2，反编译 代码"></a>2，反编译 代码</h1><p>解压 apk 拿到 dex 文件<br>执行 <code>d2j-dex2jar classes.dex</code> 获取到 jar 文件，拖进 jd-gui 就可以了</p>
 <h1 id="3，反编译资源文件"><a href="#3，反编译资源文件" class="headerlink" title="3，反编译资源文件"></a>3，反编译资源文件</h1><p>执行 <code>apktool  d *.apk</code><br>-f  如果目标文件存在，删除存在<br>-o 指定目标文件夹名字<br>-s 不反编译 dex 文件<br>-r 不反编译资源文件</p>
@@ -180,7 +180,7 @@
     
     <entry>
       <title><![CDATA[CURL常用指令]]></title>
-      <url>http://yoursite.com/2016/06/17/2016-06-17/</url>
+      <url>http://www.kennethyo.me/2016/06/17/2016-06-17/</url>
       <content type="html"><![CDATA[<h1 id="一，查看网页源代码"><a href="#一，查看网页源代码" class="headerlink" title="一，查看网页源代码"></a>一，查看网页源代码</h1><p><code>curl www.bitauto.com</code><br>保存网页<br><code>curl -o demo.txt www.bitauto.com</code></p>
 <h1 id="二，自动跳转"><a href="#二，自动跳转" class="headerlink" title="二，自动跳转"></a>二，自动跳转</h1><p><code>curl -L www.bitauto.com</code></p>
 <h1 id="三，显示头信息"><a href="#三，显示头信息" class="headerlink" title="三，显示头信息"></a>三，显示头信息</h1><p><code>curl -i www.bitauto.com</code></p>
@@ -197,7 +197,7 @@
     
     <entry>
       <title><![CDATA[[原]React-Native Android 学习笔记——2，自定义 logger]]></title>
-      <url>http://yoursite.com/2016/03/23/2016-03-23/</url>
+      <url>http://www.kennethyo.me/2016/03/23/2016-03-23/</url>
       <content type="html"><![CDATA[<p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="external">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：<br><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"><br>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
 <h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Sample React Native App</span><br><span class="line"> * https://github.com/facebook/react-native</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.container&#125;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.welcome&#125;</span>&gt;</span></span><br><span class="line">          Welcome to React Native!</span><br><span class="line">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span><br><span class="line">          To get started, edit index.android.js</span><br><span class="line">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span><br><span class="line">          Shake or press menu button for dev menu</span><br><span class="line">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    justifyContent: <span class="string">'center'</span>,</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    margin: <span class="number">10</span>,</span><br><span class="line">    color:<span class="string">'red'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  instructions: &#123;</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    color: <span class="string">'#333333'</span>,</span><br><span class="line">    marginBottom: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</span><br></pre></td></tr></table></figure></p>
 <p>可以看到我在 welcome 的 style 中设置了<code>color:&#39;red&#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">welcome: &#123;</span><br><span class="line">  fontSize: <span class="number">20</span>,</span><br><span class="line">  textAlign: <span class="string">'center'</span>,</span><br><span class="line">  margin: <span class="number">10</span>,</span><br><span class="line">  color:<span class="string">'red'</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
@@ -224,7 +224,7 @@
     
     <entry>
       <title><![CDATA[[原]React-Native Android 学习笔记——1，配置环境]]></title>
-      <url>http://yoursite.com/2016/03/18/2016-03-18/</url>
+      <url>http://www.kennethyo.me/2016/03/18/2016-03-18/</url>
       <content type="html"><![CDATA[<h2 id="一，设备与环境"><a href="#一，设备与环境" class="headerlink" title="一，设备与环境"></a>一，设备与环境</h2><h3 id="1，一台-mac"><a href="#1，一台-mac" class="headerlink" title="1，一台 mac"></a>1，一台 mac</h3><h3 id="2，安装软件包管理器-Homebrew-中文"><a href="#2，安装软件包管理器-Homebrew-中文" class="headerlink" title="2，安装软件包管理器 Homebrew(中文)"></a>2，安装软件包管理器 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew(中文)</a></h3><p>终端里输入<code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code>进行安装。</p>
 <h3 id="3，安装-wget-或者-curl"><a href="#3，安装-wget-或者-curl" class="headerlink" title="3，安装 wget 或者 curl"></a>3，安装 <a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="external">wget</a> 或者 <a href="https://zh.wikipedia.org/wiki/CURL" target="_blank" rel="external">curl</a></h3><p>wget，终端里输入<code>brew install wget</code>进行安装。<br>curl，终端里输入<code>brew install curl</code>进行安装。</p>
 <h3 id="4，安装-nvm-node版本管理器"><a href="#4，安装-nvm-node版本管理器" class="headerlink" title="4，安装 nvm (node版本管理器)"></a>4，安装 <a href="https://github.com/creationix/nvm#installation" target="_blank" rel="external">nvm</a> (node版本管理器)</h3><p>如果安装了 wget，终端输入<code>wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</code>进行安装 nvm。</p>
@@ -243,7 +243,7 @@
     
     <entry>
       <title><![CDATA[[原]Android 自定义字体，字替换为图片]]></title>
-      <url>http://yoursite.com/2015/12/03/2015-12-03/</url>
+      <url>http://www.kennethyo.me/2015/12/03/2015-12-03/</url>
       <content type="html"><![CDATA[<p>不久前开发的版本中有这样一个需求，根据服务器返回的分数，显示分数，各位可能觉得这有什么呢？那么请看下图。<br><img src="http://img.blog.csdn.net/20151203113652497" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20151203113712189" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20151203113725790" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20151203113742294" alt="这里写图片描述"></p>
 <p>没错，这就是我们的需求。</p>
 <hr>
@@ -263,7 +263,7 @@
     
     <entry>
       <title><![CDATA[[原]Android 翻转动画 Rotate3dAnimation 效果]]></title>
-      <url>http://yoursite.com/2015/10/16/2015-10-16/</url>
+      <url>http://www.kennethyo.me/2015/10/16/2015-10-16/</url>
       <content type="html"><![CDATA[<p>十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~</p>
 <hr>
 <p>上班回来，按照产品的需求做了这样一个效果，如下图：</p>
@@ -279,7 +279,7 @@
     
     <entry>
       <title><![CDATA[[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除]]></title>
-      <url>http://yoursite.com/2015/09/29/2015-09-29/</url>
+      <url>http://www.kennethyo.me/2015/09/29/2015-09-29/</url>
       <content type="html"><![CDATA[<p>最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。<br><img src="http://img.blog.csdn.net/20150929150020321" alt="这里写图片描述"></p>
 <p>拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客<a href="http://blog.csdn.net/xiaanming/article/details/17718579。" target="_blank" rel="external">http://blog.csdn.net/xiaanming/article/details/17718579。</a></p>
 <p>我的需求当中，多了一个拖动到底部区域缩小并且删除。</p>
@@ -292,7 +292,7 @@
     
     <entry>
       <title><![CDATA[[原]高仿SinaWeibo新浪微博发布页面话题效果]]></title>
-      <url>http://yoursite.com/2015/08/10/2015-08-10/</url>
+      <url>http://www.kennethyo.me/2015/08/10/2015-08-10/</url>
       <content type="html"><![CDATA[<p>最近做了一个仿新浪微博话题效果的功能,网上搜索了几个效果,都存在一定问题,最终借鉴别人的思路,完成这一套效果.</p>
 <p>首先,我们拆分逻辑以及开发顺序.</p>
 <blockquote>
@@ -315,13 +315,13 @@
 <p>最终还是有点小遗憾没有完成.当拷贝一段已经变色的话题,再粘贴到文本后,无法删除掉拷贝进来文本的变色效果,尝试调用<code>Editable.clearSpans()</code>去除全部 span 也无法实现,并且这个方法会导致直接卡死.后来直接使用<code>EditText.setText()</code>控制文本,确实达到了效果,但是当输入法是类似 mx4默认输入法效果时(效果大概是,输入的拼音直接显示在 EditText 里面,点击被选汉字,替换掉拼音),会把输入的拼音放入到文本里,所以上面的代码,我一般是直接操作 Editable.</p>
 <p>如果有更好的方法或者修复了上面的小遗憾,请留言指教.</p>
 <p>Demo 地址：<a href="https://github.com/KennethYo/SinaTopic" target="_blank" rel="external">https://github.com/KennethYo/SinaTopic</a></p>
-<p>转载请注明出处:<a href="http://www.kennethyo.me" target="_blank" rel="external">http://www.kennethyo.me</a></p>
+<p>转载请注明出处:<a href="http://www.kennethyo.me">http://www.kennethyo.me</a></p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[[译]介绍MVP Model-View-Presenter在Android中的应用]]></title>
-      <url>http://yoursite.com/2015/05/25/2015-05-25/</url>
+      <url>http://www.kennethyo.me/2015/05/25/2015-05-25/</url>
       <content type="html"><![CDATA[<p>这篇文章是我学习MVP模式时翻译的，原文是<a href="http://konmik.github.io/author/konstantin-mikheev.html" target="_blank" rel="external">Konstantin Mikheev</a>所写，<a href="http://konmik.github.io/introduction-to-model-view-presenter-on-android.html?utm_source=Android+Weekly&amp;utm_campaign=5589504b56-Android_Weekly_148&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-5589504b56-337835113" target="_blank" rel="external">传送门</a>。<br>因英语水平有限，翻译的很生硬，基本靠Google，请见谅。以下是译文。<br>转载请注明出处:<a href="http://blog.csdn.net/kennethyo" target="_blank" rel="external">http://blog.csdn.net/kennethyo</a></p>
 <hr>
 <p>这篇文章我会通过一个最简单的例子去一步步介绍MVP模式在Android中的最佳实践。同时我也会介绍一个使MVP模式在Android开发中变简单的library。</p>
@@ -437,7 +437,7 @@
     
     <entry>
       <title><![CDATA[[原]Android获取运营商]]></title>
-      <url>http://yoursite.com/2015/05/08/2015-05-08/</url>
+      <url>http://www.kennethyo.me/2015/05/08/2015-05-08/</url>
       <content type="html"><![CDATA[<p>今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：</p>
 <p><img src="http://img.blog.csdn.net/20150508163804803" alt="这里写图片描述"></p>
 <p>这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。</p>
@@ -478,7 +478,7 @@
     
     <entry>
       <title><![CDATA[[原]WebView填坑——小功能篇]]></title>
-      <url>http://yoursite.com/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/</url>
+      <url>http://www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/</url>
       <content type="html"><![CDATA[<p>这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。</p>
 <h3 id="Webview中上传文件"><a href="#Webview中上传文件" class="headerlink" title="Webview中上传文件"></a>Webview中上传文件</h3><p>这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。</p>
 <p><code>openFileChooser（）</code>方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。</p>
@@ -584,7 +584,7 @@
     
     <entry>
       <title><![CDATA[[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以]]></title>
-      <url>http://yoursite.com/2015/01/25/2015-01-25/</url>
+      <url>http://www.kennethyo.me/2015/01/25/2015-01-25/</url>
       <content type="html"><![CDATA[<p>相信很多Android程序猿已经对身边的设计妹垂涎三尺了，那么如何博得设计妹的好感呢，学好这篇文章就可以了。</p>
 <p>程序猿与UI设计妹讨论设计稿和切图的时候，经常会因为dp和px的问题搞的不愉快，这里可以分析出两个原因：</p>
 <p>1，程序猿原因，不懂dp和px的换算关系。包括我，以及我见到的大多数开发，更多的时候其实不是很关心dp和px是如何来的，以及如何转换的，只知道掌握一般情况用dp，字体大小用sp，画线用px。</p>
@@ -606,7 +606,7 @@
 <p>如果这些你还不满意，再给你来张图，包你满意：</p>
 <p><img src="http://img.blog.csdn.net/20150125224602388?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
 <p>内容参考与网络和<a href="http://developer.android.com/guide/practices/screens_support.html#range" target="_blank" rel="external">Android.com</a></p>
-<p>如果打不开的话请看这里<a href="http://www.kennethyo.me/post/category/cheng-xu-yuan-de-wu-qi-zhi-vpn" target="_blank" rel="external">《程序员的武器之一VPN》</a></p>
+<p>如果打不开的话请看这里<a href="http://www.kennethyo.me/post/category/cheng-xu-yuan-de-wu-qi-zhi-vpn">《程序员的武器之一VPN》</a></p>
 <pre><code>&lt;div&gt;
     作者：zh08070005 发表于2015/1/25 22:44:22 [原文链接](http://blog.csdn.net/kennethyo/article/details/43123731)
 &lt;/div&gt;
@@ -618,7 +618,7 @@
     
     <entry>
       <title><![CDATA[[原]CardView初级使用]]></title>
-      <url>http://yoursite.com/2014/12/28/2014-12-28/</url>
+      <url>http://www.kennethyo.me/2014/12/28/2014-12-28/</url>
       <content type="html"><![CDATA[<p><code>CardView</code>发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里<a href="http://kennethyo.farbox.com/post/android/recyclerviewchu-ji-shi-yong#main" target="_blank" rel="external">传送门</a>。</p>
 <p>卡片化是全新的Material风&#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。</p>
 <p><code>CardView</code>继承于<code>Framelayout</code>，比<code>FrameLayout</code>多了3个重要的属性，<code>card_view:cardElevation</code>，<code>card_view:cardCornerRadius</code>，<code>card_view:cardBackgroundColor</code>。</p>
@@ -645,8 +645,8 @@
     
     <entry>
       <title><![CDATA[[原]RecyclerView初级使用]]></title>
-      <url>http://yoursite.com/2014/11/10/2014-11-10/</url>
-      <content type="html"><![CDATA[<p><span style="font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144"><span style="white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）" target="_blank" rel="external">http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）</a></span></span></p>
+      <url>http://www.kennethyo.me/2014/11/10/2014-11-10/</url>
+      <content type="html"><![CDATA[<p><span style="font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144"><span style="white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）">http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）</a></span></span></p>
 <p><code>RecyclerView</code>是Android在v7包中包含了一个新的widget，<code>RecyclerView</code>是一个<code>ListView</code>进阶版，但不继承与<code>AdapterView</code>，相比<code>ListView</code>，<code>RecyclerView</code>更加灵活和先进。</p>
 <p>##<br>1，导入RecyclerView</p>
 <p>首先要保证<code>SDK Tools</code>和<code>Android
@@ -692,8 +692,8 @@
     
     <entry>
       <title><![CDATA[[原]Palette的使用]]></title>
-      <url>http://yoursite.com/2014/11/04/2014-11-04/</url>
-      <content type="html"><![CDATA[<p>（转载，请注明出处：<a href="http://www.kennethyo.me/post/android/palettechu-ji-shi-yong" target="_blank" rel="external">http://www.kennethyo.me/post/android/palettechu-ji-shi-yong</a>）</p>
+      <url>http://www.kennethyo.me/2014/11/04/2014-11-04/</url>
+      <content type="html"><![CDATA[<p>（转载，请注明出处：<a href="http://www.kennethyo.me/post/android/palettechu-ji-shi-yong">http://www.kennethyo.me/post/android/palettechu-ji-shi-yong</a>）</p>
 <p><img src="" alt=""></p>
 <p>相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&#26684;让人&#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。</p>
 <p>这里就要说到，不久前Android在v7包中更新的<a href="http://developer.android.com/reference/android/support/v7/graphics/Palette.html" target="_blank" rel="external">Palette</a>。Palette可以让我们构造色彩鲜艳的界面更加方便，通过一个图片的<code>bitmap</code>来获取图片当中明暗对比的颜色。</p>
@@ -726,7 +726,7 @@
     
     <entry>
       <title><![CDATA[[原]LayoutInflater.inflate详解]]></title>
-      <url>http://yoursite.com/2014/10/24/2014-10-24/</url>
+      <url>http://www.kennethyo.me/2014/10/24/2014-10-24/</url>
       <content type="html"><![CDATA[<h2 id="介绍常见inflate方法"><a href="#介绍常见inflate方法" class="headerlink" title="介绍常见inflate方法"></a>介绍常见inflate方法</h2><p>在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种：</p>
 <pre code_snippet_id="495633" snippet_file_name="blog_20141024_1_2164263" name="code" class="java">//1,通过系统服务获取布局加载器
 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -869,7 +869,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     <entry>
       <title><![CDATA[[原]Android API，版本对照]]></title>
-      <url>http://yoursite.com/2014/08/22/2014-08-22/</url>
+      <url>http://www.kennethyo.me/2014/08/22/2014-08-22/</url>
       <content type="html"><![CDATA[<div class="para" style="font-family:Arial; font-size:14px; line-height:26px"><br><br>###<br><br>### <strong>API等级1： &nbsp;<span style="white-space:pre"> </span>Android 1.0&nbsp;<br><br>API等级2： &nbsp;<span style="white-space:pre"> </span>Android 1.1 Petit Four &nbsp;花式小蛋糕<br><br>API等级3： &nbsp;<span style="white-space:pre"> </span>Android 1.5 Cupcake &nbsp;纸杯蛋糕<br><br>API等级4： &nbsp;<span style="white-space:pre"> </span>Android 1.6 Donut &nbsp;甜甜圈<br><br>API等级5： &nbsp;<span style="white-space:pre"> </span>Android 2.0 Éclair &nbsp; 松饼<br><br>API等级6： &nbsp;<span style="white-space:pre"> </span>Android 2.0.1 Éclair &nbsp;松饼<br><br>API等级7： &nbsp;<span style="white-space:pre"> </span>Android 2.1 Éclair &nbsp; 松饼<br><br>API等级8： &nbsp;<span style="white-space:pre"> </span>Android 2.2 - 2.2.3 Froyo &nbsp;冻酸奶<br><br>API等级9： &nbsp;<span style="white-space:pre"> </span>Android 2.3 - 2.3.2 Gingerbread &nbsp;姜饼<br><br>API等级10：<span style="white-space:pre"> </span>Android 2.3.3-2.3.7 Gingerbread &nbsp; 姜饼<br><br>API等级11：<span style="white-space:pre"> </span>Android 3.0 Honeycomb 蜂巢<br><br>API等级12：<span style="white-space:pre"> </span>Android 3.1 Honeycomb 蜂巢<br><br>API等级13：<span style="white-space:pre"> </span>Android 3.2 Honeycomb 蜂巢<br><br>API等级14：<span style="white-space:pre"> </span>Android 4.0 - 4.0.2 Ice Cream Sandwich &nbsp;冰激凌三明治<br><br>API等级15：<span style="white-space:pre"> </span>Android 4.0.3 - 4.0.4 Ice Cream Sandwich &nbsp;冰激凌三明治<br><br>API等级16：<span style="white-space:pre"> </span>Android 4.1 Jelly Bean &nbsp;糖豆<br><br>API等级17：<span style="white-space:pre"> </span>Android 4.2 Jelly Bean &nbsp;糖豆<br><br>API等级18：<span style="white-space:pre"> </span>Android 4.3 Jelly Bean &nbsp;糖豆<br><br>API等级19：<span style="white-space:pre"> </span>Android 4.4 KitKat &nbsp;奇巧巧克力棒<br><br>API等级20：<span style="white-space:pre"> </span>Android L</strong><br><br><div><br><br></div><br></div>
 
 <pre><code>&lt;div&gt;
@@ -883,7 +883,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     <entry>
       <title><![CDATA[[译]Android文本的测量和绘制]]></title>
-      <url>http://yoursite.com/2014/06/23/20140623/</url>
+      <url>http://www.kennethyo.me/2014/06/23/20140623/</url>
       <content type="html"><![CDATA[<p><span style="font-size:18px">翻译与<a href="http://chris.banes.me/#blog" target="_blank" rel="external">Chris Banes的博客</a>&nbsp; &nbsp;<a href="http://chris.banes.me/2014/03/27/measuring-text/" target="_blank" rel="external">原文地址</a></span></p>
 <p><span style="font-size:18px"></span></p>
 <p></p>
@@ -996,7 +996,7 @@ canvas.drawText(mText, // Text to display
     
     <entry>
       <title><![CDATA[[原]自定义TextView实现内容的旋转和偏移]]></title>
-      <url>http://yoursite.com/2014/05/08/20140508/</url>
+      <url>http://www.kennethyo.me/2014/05/08/20140508/</url>
       <content type="html"><![CDATA[<p>在一些设计上，设计师会要求我们的文字以45度显示，或者135度显示（如下图“抽奖”），可是android本身并没有提供TextView在布局文件中实现旋转的标签，这时候就需要我们去自定义TextView，并且重写onDraw（）方法实现效果。</p>
 <p><img src="http://img.blog.csdn.net/20140508114640671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <p>下面，让我们去实现这个效果吧。</p>
@@ -1012,7 +1012,7 @@ canvas.drawText(mText, // Text to display
     
     <entry>
       <title><![CDATA[[原]博主毕业以来总结的android经验，想起来什么就加点]]></title>
-      <url>http://yoursite.com/2014/04/23/20140423/</url>
+      <url>http://www.kennethyo.me/2014/04/23/20140423/</url>
       <content type="html"><![CDATA[<h2 id="1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果"><a href="#1，api10以下尽量用padding-margin很多的时候会有bug，显示不出效果" class="headerlink" title="1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果"></a>1，api10以下尽量用padding,margin很多的时候会有bug，显示不出效果</h2><h2 id="2，混淆，最好不要混淆实体类，用到反射的时候会报错"><a href="#2，混淆，最好不要混淆实体类，用到反射的时候会报错" class="headerlink" title="2，混淆，最好不要混淆实体类，用到反射的时候会报错"></a>2，混淆，最好不要混淆实体类，用到反射的时候会报错</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">bocop</span>.<span class="title">commons</span>.<span class="title">bean</span>.**</span><br><span class="line">-<span class="title">keepclasseswithmembers</span> <span class="title">class</span> <span class="title">com</span>.<span class="title">bocop</span>.<span class="title">commons</span>.<span class="title">bean</span>.** </span>&#123;</span><br><span class="line">    *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3，非常好用的收键盘方式，适用fragment"><a href="#3，非常好用的收键盘方式，适用fragment" class="headerlink" title="3，非常好用的收键盘方式，适用fragment"></a>3，非常好用的收键盘方式，适用fragment</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);</span><br></pre></td></tr></table></figure>
 <p>收键盘代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (getActivity().getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) &#123;</span><br><span class="line">	<span class="keyword">if</span> (getActivity().getCurrentFocus() != <span class="keyword">null</span>)</span><br><span class="line">		imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1035,7 +1035,7 @@ canvas.drawText(mText, // Text to display
     
     <entry>
       <title><![CDATA[[原]用Fragment来代替过期的Tabhost和ActivityGroup]]></title>
-      <url>http://yoursite.com/2014/02/11/20140211/</url>
+      <url>http://www.kennethyo.me/2014/02/11/20140211/</url>
       <content type="html"><![CDATA[<p><span style="white-space:pre"></span>我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。</p>
 <p><span style="white-space:pre"></span>最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期）</p>
 <p><span style="white-space:pre"></span>本篇博客主要介绍如何用Fragment实现Tabhost效果。</p>
@@ -1198,7 +1198,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
     
     <entry>
       <title><![CDATA[[转]Google Java编程风格指南]]></title>
-      <url>http://yoursite.com/2014/02/10/20160901/</url>
+      <url>http://www.kennethyo.me/2014/02/10/20160901/</url>
       <content type="html"><![CDATA[<div style="color:rgb(51,51,51); font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px; line-height:23px"><br>作者：Hawstein<br><br>出处：<a href="http://hawstein.com/posts/google-java-style.html" target="_blank" rel="external">http://hawstein.com/posts/google-java-style.html</a><br><br>声明：本文采用以下协议进行授权：&nbsp;<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0</a>&nbsp;，转载请注明作者及出处。<br><br></div>
 
 <p>##<br>目录</p>
@@ -1669,7 +1669,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
     
     <entry>
       <title></title>
-      <url>http://yoursite.com/404.html</url>
+      <url>http://www.kennethyo.me/404.html</url>
       <content type="html"><![CDATA[<!DOCTYPE HTML>
 <html>
 <head>
@@ -1689,14 +1689,14 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
     
     <entry>
       <title><![CDATA[关于]]></title>
-      <url>http://yoursite.com/about/index.html</url>
+      <url>http://www.kennethyo.me/about/index.html</url>
       <content type="html"><![CDATA[<p>大家好，我是鸿雁。欢迎来到我的个人技术博客。</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[读书]]></title>
-      <url>http://yoursite.com/reading/index.html</url>
+      <url>http://www.kennethyo.me/reading/index.html</url>
       <content type="html"></content>
     </entry>
     

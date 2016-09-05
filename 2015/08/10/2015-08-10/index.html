@@ -96,7 +96,7 @@
 一,实现话题变色实现逻辑主要是通过EditText的addTextChangedListener()来进行监听文本变动,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]高仿SinaWeibo新浪微博发布页面话题效果">
-<meta property="og:url" content="http://yoursite.com/2015/08/10/2015-08-10/index.html">
+<meta property="og:url" content="http://www.kennethyo.me/2015/08/10/2015-08-10/index.html">
 <meta property="og:site_name" content="在北京敲键盘的呼伦贝尔人">
 <meta property="og:description" content="最近做了一个仿新浪微博话题效果的功能,网上搜索了几个效果,都存在一定问题,最终借鉴别人的思路,完成这一套效果.
 首先,我们拆分逻辑以及开发顺序.
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/08/10/2015-08-10/"/>
+  <link rel="canonical" href="http://www.kennethyo.me/2015/08/10/2015-08-10/"/>
 
   <title> [原]高仿SinaWeibo新浪微博发布页面话题效果 | 在北京敲键盘的呼伦贝尔人 </title>
 </head>
@@ -392,7 +392,7 @@
 <p>最终还是有点小遗憾没有完成.当拷贝一段已经变色的话题,再粘贴到文本后,无法删除掉拷贝进来文本的变色效果,尝试调用<code>Editable.clearSpans()</code>去除全部 span 也无法实现,并且这个方法会导致直接卡死.后来直接使用<code>EditText.setText()</code>控制文本,确实达到了效果,但是当输入法是类似 mx4默认输入法效果时(效果大概是,输入的拼音直接显示在 EditText 里面,点击被选汉字,替换掉拼音),会把输入的拼音放入到文本里,所以上面的代码,我一般是直接操作 Editable.</p>
 <p>如果有更好的方法或者修复了上面的小遗憾,请留言指教.</p>
 <p>Demo 地址：<a href="https://github.com/KennethYo/SinaTopic" target="_blank" rel="external">https://github.com/KennethYo/SinaTopic</a></p>
-<p>转载请注明出处:<a href="http://www.kennethyo.me" target="_blank" rel="external">http://www.kennethyo.me</a></p>
+<p>转载请注明出处:<a href="http://www.kennethyo.me">http://www.kennethyo.me</a></p>
 
       
     </div>
@@ -449,6 +449,25 @@
 
     <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="2015/08/10/2015-08-10/"
+     data-title="[原]高仿SinaWeibo新浪微博发布页面话题效果"
+     data-content=""
+     data-url="http://www.kennethyo.me/2015/08/10/2015-08-10/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
     </div>
   </div>
 
@@ -456,12 +475,15 @@
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2015/08/10/2015-08-10/"
-           data-title="[原]高仿SinaWeibo新浪微博发布页面话题效果" data-url="http://yoursite.com/2015/08/10/2015-08-10/">
+           data-title="[原]高仿SinaWeibo新浪微博发布页面话题效果" data-url="http://www.kennethyo.me/2015/08/10/2015-08-10/">
       </div>
     
   </div>
