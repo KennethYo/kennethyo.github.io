@@ -1666,39 +1666,4 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
     
   
   
-    
-    <entry>
-      <title></title>
-      <url>http://www.kennethyo.me/404.html</url>
-      <content type="html"><![CDATA[<!DOCTYPE HTML>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="robots" content="all">
-  <meta name="robots" content="index,follow">
-</head>
-<body>
-
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://www.kennethyo.me" homepagename="回到我的主页"></script>
-
-</body>
-</html>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[关于]]></title>
-      <url>http://www.kennethyo.me/about/index.html</url>
-      <content type="html"><![CDATA[<p>大家好，我是鸿雁。欢迎来到我的个人技术博客。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[读书]]></title>
-      <url>http://www.kennethyo.me/reading/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-  
 </search>
