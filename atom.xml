@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://kennethyo.me/"/>
+  <link href="http://www.kennethyo.me/"/>
   <updated>2016-09-05T10:37:31.000Z</updated>
-  <id>http://kennethyo.me/</id>
+  <id>http://www.kennethyo.me/</id>
   
   <author>
     <name>鸿雁</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>自建私有 Maven 仓库</title>
-    <link href="http://kennethyo.me/2016/09/01/untitled-1472722428873/"/>
-    <id>http://kennethyo.me/2016/09/01/untitled-1472722428873/</id>
+    <link href="http://www.kennethyo.me/2016/09/01/untitled-1472722428873/"/>
+    <id>http://www.kennethyo.me/2016/09/01/untitled-1472722428873/</id>
     <published>2016-09-01T09:33:48.000Z</published>
     <updated>2016-09-05T10:37:31.000Z</updated>
     
@@ -74,25 +74,25 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
-      <category term="Docker" scheme="http://kennethyo.me/categories/Android/Docker/"/>
+      <category term="Docker" scheme="http://www.kennethyo.me/categories/Android/Docker/"/>
     
     
-      <category term="Nexus" scheme="http://kennethyo.me/tags/Nexus/"/>
+      <category term="Nexus" scheme="http://www.kennethyo.me/tags/Nexus/"/>
     
-      <category term="maven" scheme="http://kennethyo.me/tags/maven/"/>
+      <category term="maven" scheme="http://www.kennethyo.me/tags/maven/"/>
     
-      <category term="jcenter" scheme="http://kennethyo.me/tags/jcenter/"/>
+      <category term="jcenter" scheme="http://www.kennethyo.me/tags/jcenter/"/>
     
-      <category term="Docker" scheme="http://kennethyo.me/tags/Docker/"/>
+      <category term="Docker" scheme="http://www.kennethyo.me/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>TextUtils方法介绍</title>
-    <link href="http://kennethyo.me/2016/07/06/2016-07-06/"/>
-    <id>http://kennethyo.me/2016/07/06/2016-07-06/</id>
+    <link href="http://www.kennethyo.me/2016/07/06/2016-07-06/"/>
+    <id>http://www.kennethyo.me/2016/07/06/2016-07-06/</id>
     <published>2016-07-06T07:50:37.000Z</published>
     <updated>2016-09-01T06:36:36.000Z</updated>
     
@@ -213,25 +213,25 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="Utils" scheme="http://kennethyo.me/tags/Utils/"/>
+      <category term="Utils" scheme="http://www.kennethyo.me/tags/Utils/"/>
     
-      <category term="TextView" scheme="http://kennethyo.me/tags/TextView/"/>
+      <category term="TextView" scheme="http://www.kennethyo.me/tags/TextView/"/>
     
-      <category term="EditText" scheme="http://kennethyo.me/tags/EditText/"/>
+      <category term="EditText" scheme="http://www.kennethyo.me/tags/EditText/"/>
     
-      <category term="TextUtils" scheme="http://kennethyo.me/tags/TextUtils/"/>
+      <category term="TextUtils" scheme="http://www.kennethyo.me/tags/TextUtils/"/>
     
   </entry>
   
   <entry>
     <title>Mac 下反编译 apk</title>
-    <link href="http://kennethyo.me/2016/06/21/2016-06-21/"/>
-    <id>http://kennethyo.me/2016/06/21/2016-06-21/</id>
+    <link href="http://www.kennethyo.me/2016/06/21/2016-06-21/"/>
+    <id>http://www.kennethyo.me/2016/06/21/2016-06-21/</id>
     <published>2016-06-21T03:34:24.000Z</published>
     <updated>2016-09-01T06:36:58.000Z</updated>
     
@@ -249,21 +249,21 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="反编译" scheme="http://kennethyo.me/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+      <category term="反编译" scheme="http://www.kennethyo.me/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
     
-      <category term="brew" scheme="http://kennethyo.me/tags/brew/"/>
+      <category term="brew" scheme="http://www.kennethyo.me/tags/brew/"/>
     
   </entry>
   
   <entry>
     <title>CURL常用指令</title>
-    <link href="http://kennethyo.me/2016/06/17/2016-06-17/"/>
-    <id>http://kennethyo.me/2016/06/17/2016-06-17/</id>
+    <link href="http://www.kennethyo.me/2016/06/17/2016-06-17/"/>
+    <id>http://www.kennethyo.me/2016/06/17/2016-06-17/</id>
     <published>2016-06-17T03:48:12.000Z</published>
     <updated>2016-09-01T06:37:11.000Z</updated>
     
@@ -286,19 +286,19 @@
     
     </summary>
     
-      <category term="Web" scheme="http://kennethyo.me/categories/Web/"/>
+      <category term="Web" scheme="http://www.kennethyo.me/categories/Web/"/>
     
     
-      <category term="Web" scheme="http://kennethyo.me/tags/Web/"/>
+      <category term="Web" scheme="http://www.kennethyo.me/tags/Web/"/>
     
-      <category term="CURL" scheme="http://kennethyo.me/tags/CURL/"/>
+      <category term="CURL" scheme="http://www.kennethyo.me/tags/CURL/"/>
     
   </entry>
   
   <entry>
     <title>[原]React-Native Android 学习笔记——2，自定义 logger</title>
-    <link href="http://kennethyo.me/2016/03/23/2016-03-23/"/>
-    <id>http://kennethyo.me/2016/03/23/2016-03-23/</id>
+    <link href="http://www.kennethyo.me/2016/03/23/2016-03-23/"/>
+    <id>http://www.kennethyo.me/2016/03/23/2016-03-23/</id>
     <published>2016-03-23T08:35:48.000Z</published>
     <updated>2016-09-01T06:37:33.000Z</updated>
     
@@ -331,19 +331,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="React-Native" scheme="http://kennethyo.me/tags/React-Native/"/>
+      <category term="React-Native" scheme="http://www.kennethyo.me/tags/React-Native/"/>
     
   </entry>
   
   <entry>
     <title>[原]React-Native Android 学习笔记——1，配置环境</title>
-    <link href="http://kennethyo.me/2016/03/18/2016-03-18/"/>
-    <id>http://kennethyo.me/2016/03/18/2016-03-18/</id>
+    <link href="http://www.kennethyo.me/2016/03/18/2016-03-18/"/>
+    <id>http://www.kennethyo.me/2016/03/18/2016-03-18/</id>
     <published>2016-03-18T07:30:43.000Z</published>
     <updated>2016-09-01T06:37:49.000Z</updated>
     
@@ -368,19 +368,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="React-Native" scheme="http://kennethyo.me/tags/React-Native/"/>
+      <category term="React-Native" scheme="http://www.kennethyo.me/tags/React-Native/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android 自定义字体，字替换为图片</title>
-    <link href="http://kennethyo.me/2015/12/03/2015-12-03/"/>
-    <id>http://kennethyo.me/2015/12/03/2015-12-03/</id>
+    <link href="http://www.kennethyo.me/2015/12/03/2015-12-03/"/>
+    <id>http://www.kennethyo.me/2015/12/03/2015-12-03/</id>
     <published>2015-12-03T05:54:59.000Z</published>
     <updated>2016-09-01T06:38:06.000Z</updated>
     
@@ -406,19 +406,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="View" scheme="http://kennethyo.me/tags/View/"/>
+      <category term="View" scheme="http://www.kennethyo.me/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android 翻转动画 Rotate3dAnimation 效果</title>
-    <link href="http://kennethyo.me/2015/10/16/2015-10-16/"/>
-    <id>http://kennethyo.me/2015/10/16/2015-10-16/</id>
+    <link href="http://www.kennethyo.me/2015/10/16/2015-10-16/"/>
+    <id>http://www.kennethyo.me/2015/10/16/2015-10-16/</id>
     <published>2015-10-16T09:05:57.000Z</published>
     <updated>2016-09-01T06:38:25.000Z</updated>
     
@@ -442,19 +442,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="Animation" scheme="http://kennethyo.me/tags/Animation/"/>
+      <category term="Animation" scheme="http://www.kennethyo.me/tags/Animation/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除</title>
-    <link href="http://kennethyo.me/2015/09/29/2015-09-29/"/>
-    <id>http://kennethyo.me/2015/09/29/2015-09-29/</id>
+    <link href="http://www.kennethyo.me/2015/09/29/2015-09-29/"/>
+    <id>http://www.kennethyo.me/2015/09/29/2015-09-29/</id>
     <published>2015-09-29T07:22:08.000Z</published>
     <updated>2016-09-01T06:39:45.000Z</updated>
     
@@ -474,19 +474,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="View" scheme="http://kennethyo.me/tags/View/"/>
+      <category term="View" scheme="http://www.kennethyo.me/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>[原]高仿SinaWeibo新浪微博发布页面话题效果</title>
-    <link href="http://kennethyo.me/2015/08/10/2015-08-10/"/>
-    <id>http://kennethyo.me/2015/08/10/2015-08-10/</id>
+    <link href="http://www.kennethyo.me/2015/08/10/2015-08-10/"/>
+    <id>http://www.kennethyo.me/2015/08/10/2015-08-10/</id>
     <published>2015-08-09T16:06:33.000Z</published>
     <updated>2016-09-01T06:38:45.000Z</updated>
     
@@ -524,17 +524,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[译]介绍MVP Model-View-Presenter在Android中的应用</title>
-    <link href="http://kennethyo.me/2015/05/25/2015-05-25/"/>
-    <id>http://kennethyo.me/2015/05/25/2015-05-25/</id>
+    <link href="http://www.kennethyo.me/2015/05/25/2015-05-25/"/>
+    <id>http://www.kennethyo.me/2015/05/25/2015-05-25/</id>
     <published>2015-05-25T05:47:35.000Z</published>
     <updated>2016-09-01T06:39:29.000Z</updated>
     
@@ -656,19 +656,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="MVP" scheme="http://kennethyo.me/tags/MVP/"/>
+      <category term="MVP" scheme="http://www.kennethyo.me/tags/MVP/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android获取运营商</title>
-    <link href="http://kennethyo.me/2015/05/08/2015-05-08/"/>
-    <id>http://kennethyo.me/2015/05/08/2015-05-08/</id>
+    <link href="http://www.kennethyo.me/2015/05/08/2015-05-08/"/>
+    <id>http://www.kennethyo.me/2015/05/08/2015-05-08/</id>
     <published>2015-05-08T08:40:08.000Z</published>
     <updated>2016-09-01T06:39:08.000Z</updated>
     
@@ -716,17 +716,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]WebView填坑——小功能篇</title>
-    <link href="http://kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/"/>
-    <id>http://kennethyo.me/2015/04/22/原-WebView填坑——小功能篇/</id>
+    <link href="http://www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/"/>
+    <id>http://www.kennethyo.me/2015/04/22/原-WebView填坑——小功能篇/</id>
     <published>2015-04-22T08:31:06.000Z</published>
     <updated>2016-06-08T06:46:36.000Z</updated>
     
@@ -839,17 +839,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以</title>
-    <link href="http://kennethyo.me/2015/01/25/2015-01-25/"/>
-    <id>http://kennethyo.me/2015/01/25/2015-01-25/</id>
+    <link href="http://www.kennethyo.me/2015/01/25/2015-01-25/"/>
+    <id>http://www.kennethyo.me/2015/01/25/2015-01-25/</id>
     <published>2015-01-25T14:44:22.000Z</published>
     <updated>2016-09-01T06:35:53.000Z</updated>
     
@@ -891,17 +891,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]CardView初级使用</title>
-    <link href="http://kennethyo.me/2014/12/28/2014-12-28/"/>
-    <id>http://kennethyo.me/2014/12/28/2014-12-28/</id>
+    <link href="http://www.kennethyo.me/2014/12/28/2014-12-28/"/>
+    <id>http://www.kennethyo.me/2014/12/28/2014-12-28/</id>
     <published>2014-12-28T06:08:54.000Z</published>
     <updated>2016-09-01T06:35:27.000Z</updated>
     
@@ -934,19 +934,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
-      <category term="View" scheme="http://kennethyo.me/tags/View/"/>
+      <category term="View" scheme="http://www.kennethyo.me/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>[原]RecyclerView初级使用</title>
-    <link href="http://kennethyo.me/2014/11/10/2014-11-10/"/>
-    <id>http://kennethyo.me/2014/11/10/2014-11-10/</id>
+    <link href="http://www.kennethyo.me/2014/11/10/2014-11-10/"/>
+    <id>http://www.kennethyo.me/2014/11/10/2014-11-10/</id>
     <published>2014-11-10T07:18:15.000Z</published>
     <updated>2016-09-01T06:35:08.000Z</updated>
     
@@ -999,17 +999,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]Palette的使用</title>
-    <link href="http://kennethyo.me/2014/11/04/2014-11-04/"/>
-    <id>http://kennethyo.me/2014/11/04/2014-11-04/</id>
+    <link href="http://www.kennethyo.me/2014/11/04/2014-11-04/"/>
+    <id>http://www.kennethyo.me/2014/11/04/2014-11-04/</id>
     <published>2014-11-04T08:19:53.000Z</published>
     <updated>2016-09-01T06:34:47.000Z</updated>
     
@@ -1049,17 +1049,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]LayoutInflater.inflate详解</title>
-    <link href="http://kennethyo.me/2014/10/24/2014-10-24/"/>
-    <id>http://kennethyo.me/2014/10/24/2014-10-24/</id>
+    <link href="http://www.kennethyo.me/2014/10/24/2014-10-24/"/>
+    <id>http://www.kennethyo.me/2014/10/24/2014-10-24/</id>
     <published>2014-10-24T08:27:08.000Z</published>
     <updated>2016-09-01T06:34:26.000Z</updated>
     
@@ -1208,17 +1208,17 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[原]Android API，版本对照</title>
-    <link href="http://kennethyo.me/2014/08/22/2014-08-22/"/>
-    <id>http://kennethyo.me/2014/08/22/2014-08-22/</id>
+    <link href="http://www.kennethyo.me/2014/08/22/2014-08-22/"/>
+    <id>http://www.kennethyo.me/2014/08/22/2014-08-22/</id>
     <published>2014-08-22T02:51:53.000Z</published>
     <updated>2016-09-01T06:34:00.000Z</updated>
     
@@ -1238,17 +1238,17 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>[译]Android文本的测量和绘制</title>
-    <link href="http://kennethyo.me/2014/06/23/20140623/"/>
-    <id>http://kennethyo.me/2014/06/23/20140623/</id>
+    <link href="http://www.kennethyo.me/2014/06/23/20140623/"/>
+    <id>http://www.kennethyo.me/2014/06/23/20140623/</id>
     <published>2014-06-23T03:20:50.000Z</published>
     <updated>2016-09-01T06:33:37.000Z</updated>
     
@@ -1367,10 +1367,10 @@ canvas.drawText(mText, // Text to display
     
     </summary>
     
-      <category term="Android" scheme="http://kennethyo.me/categories/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://kennethyo.me/tags/Android/"/>
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
     
   </entry>
   
