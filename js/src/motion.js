@@ -177,15 +177,7 @@ $(document).ready(function () {
     next: function () {
       this.cursor++;
       var fn = this.queue[this.cursor];
-
-      if ($.isFunction(fn)) {
-        try{
-          fn(NexT.motion.integrator);
-        } catch(e) {
-          console.warn(e);
-          this.next();
-        }
-      }
+      $.isFunction(fn) && fn(NexT.motion.integrator);
     },
     bootstrap: function () {
       this.next();

@@ -53,20 +53,6 @@ NexT.utils = NexT.$u = {
     });
   },
 
-  registerNavToggle: function () {
-    $('.site-nav-toggle button').on('click', function () {
-      var $siteNav = $('.site-nav');
-      var ON_CLASS_NAME = 'site-nav-on';
-      var isSiteNavOn = $siteNav.hasClass(ON_CLASS_NAME);
-      var animateAction = isSiteNavOn ? 'slideUp' : 'slideDown';
-      var animateCallback = isSiteNavOn ? 'removeClass' : 'addClass';
-
-      $siteNav.stop()[animateAction]('fast', function () {
-        $siteNav[animateCallback](ON_CLASS_NAME);
-      });
-    });
-  },
-
   /**
    * Transform embedded video to support responsive layout.
    * @see http://toddmotto.com/fluid-and-responsive-youtube-and-vimeo-videos-with-fluidvids-js/
@@ -200,10 +186,6 @@ NexT.utils = NexT.$u = {
     return CONFIG.scheme === 'Pisces';
   },
 
-  isServant: function () {
-    return CONFIG.scheme === 'Servant';
-  },
-
   getScrollbarWidth: function () {
     var $div = $('<div />').addClass('scrollbar-measure').prependTo('body');
     var div = $div[0];
@@ -220,6 +202,6 @@ NexT.utils = NexT.$u = {
    * @returns {Boolean}
    */
   needAffix: function () {
-    return this.isPisces() || this.isServant();
+    return this.isPisces();
   }
 };
