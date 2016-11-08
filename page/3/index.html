@@ -282,6 +282,232 @@
             
               
                 
+                <a class="post-title-link" href="/2014/06/23/20140623/" itemprop="url">
+                  [译]Android文本的测量和绘制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-06-23T11:20:50+08:00" content="2014-06-23">
+              2014-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/23/20140623/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/23/20140623/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span style="font-size:18px">翻译与<a href="http://chris.banes.me/#blog" target="_blank" rel="external">Chris Banes的博客</a>&nbsp; &nbsp;<a href="http://chris.banes.me/2014/03/27/measuring-text/" target="_blank" rel="external">原文地址</a></span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。</span></p>
+<p><u><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></p>
+<p><span style="font-size:18px">最近我在一款APP中，需要在横向和纵向的画布上绘制一些以文本为中心的文字。于是我用了下面这些代码：</span></p>
+<pre code_snippet_id="402800" snippet_file_name="blog_20140623_1_1957768" name="code" class="java">Paint mTextPaint = new Paint();  
+mTextPaint.setTextAlign(Paint.Align.CENTER); // Center the text
+
+// Later when you draw...
+canvas.drawText(mText, // Text to display  
+        mBounds.centerX(), // Center X of canvas bounds
+        mBounds.centerY(), // Center Y of canvas bounds
+        mTextPaint
+);</pre><span style="font-size:18px">
+
+我没想到代码的运行后竟然是下面的这个样子：</span>
+
+![](http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-41-58.png)
+
+<span style="font-size:32px">测量文本</span>
+
+<span style="font-size:18px">
+
+</span>
+
+<span style="font-size:18px">接下来，我尝试定位文本，计算了文本的高宽度，并且修改了绘制文本X轴Y轴的位置：</span>
+
+<span style="font-size:18px">
+
+</span>
+
+<span style="font-size:18px"></span>
+
+<pre code_snippet_id="402800" snippet_file_name="blog_20140623_2_8130520" name="code" class="java">int mTextWidth, mTextHeight; // Our calculated text bounds  
+Paint mTextPaint = new Paint();
+
+// Now lets calculate the size of the text
+Rect textBounds = new Rect();  
+mTextPaint.getTextBounds(mText, 0, mText.length(), textBounds);  
+mTextWidth = textBounds.width();  
+mTextHeight = textBounds.height();
+
+// Later when you draw...
+canvas.drawText(mText, // Text to display  
+        mBounds.centerX() - (mTextWidth / 2f),
+        mBounds.centerY() + (mTextHeight / 2f),
+        mTextPaint
+);</pre>
+
+<p>这一次我们做的已经相当接近了，但是你可以看到文本还是没有居中。</p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"><img src="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-48-48.png" alt=""></span></p>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">为了确定我没看到的原因，我用Paint.getTextBounds()计算一个矩形，并画在了文本的后面。</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"><img src="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-50-33.png" alt=""></span></p>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">正如你看到的，文本的高宽绘制在了计算范围之外。</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:32px">另一中测量文本的方法</span></p>
+<p><span style="font-size:24px"></span></p>
+<p></p>
+<p><span style="font-size:18px">在这个基础点上，我看到Paint另一种计算文本宽度的方法：Paint.measureText()</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">这个方法只能计算宽度而不能计算高度，因此我尝试结合两种方法：</span></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"></span></p>
+<pre code_snippet_id="402800" snippet_file_name="blog_20140623_3_9003355" name="code" class="java">int mTextWidth, mTextHeight; // Our calculated text bounds  
+Paint mTextPaint = new Paint();
+
+// Now lets calculate the size of the text
+Rect textBounds = new Rect();  
+mTextPaint.getTextBounds(mText, 0, mText.length(), textBounds);  
+mTextWidth = mTextPaint.measureText(mText); // Use measureText to calculate width  
+mTextHeight = textBounds.height(); // Use height from getTextBounds()
+
+// Later when you draw...
+canvas.drawText(mText, // Text to display  
+        mBounds.centerX() - (mTextWidth / 2f),
+        mBounds.centerY() + (mTextHeight / 2f),
+        mTextPaint
+);</pre>
+
+<p>这几下就做出了完美居中的文本。悠嘻！</p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px"><img src="http://chris.banes.me/content/images/2014/Mar/perfect.png" alt=""></span></p>
+<p></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/6/23 11:20:50 [原文链接](http://blog.csdn.net/kennethyo/article/details/33720589)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：773 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/33720589#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/05/08/20140508/" itemprop="url">
                   [原]自定义TextView实现内容的旋转和偏移
                 </a>
@@ -1428,7 +1654,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1445,7 +1671,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
