@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kennethyo.me/"/>
-  <updated>2016-09-05T10:37:31.000Z</updated>
+  <updated>2016-11-08T07:11:49.000Z</updated>
   <id>http://www.kennethyo.me/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Travis 和 CircleCI 配置文件</title>
+    <link href="http://www.kennethyo.me/2016/11/08/untitled-1478588050831/"/>
+    <id>http://www.kennethyo.me/2016/11/08/untitled-1478588050831/</id>
+    <published>2016-11-08T07:09:56.000Z</published>
+    <updated>2016-11-08T07:11:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;以下都用 &lt;a href=&quot;https://github.com/KennethYo/BrakeLight&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;BrakeLight&lt;/code&gt;&lt;/a&gt; 项目举例。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;#&lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Circleci&lt;/a&gt;&lt;br&gt;在项目目录中创建 &lt;code&gt;circle.yml&lt;/code&gt; 文件，内容如下：&lt;br&gt;&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;machine:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;symbol&quot;&gt;java:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;symbol&quot;&gt;version:&lt;/span&gt; oraclejdk8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;dependencies:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;symbol&quot;&gt;pre:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ ! -d &lt;span class=&quot;string&quot;&gt;&quot;/usr/local/android-sdk-linux/platforms/android-24&quot;&lt;/span&gt; ]; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt; echo y &lt;span class=&quot;params&quot;&gt;| android update sdk --no-ui --all --filter &quot;android-24&quot;; fi&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ ! -d &quot;/usr/local/android-sdk-linux/build-tools/24.0.2&quot; ]; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt; echo y |&lt;/span&gt; android update sdk --no-ui --all --filter &lt;span class=&quot;string&quot;&gt;&quot;build-tools-24.0.2&quot;&lt;/span&gt;; fi&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ ! -d &lt;span class=&quot;string&quot;&gt;&quot;/usr/local/android_sdk/extras/android/m2repository/com/android/support/support-core-utils/24.2.1&quot;&lt;/span&gt; ]; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt; echo y &lt;span class=&quot;params&quot;&gt;| android update sdk --no-ui --all --filter &quot;extra-android-m2repository&quot;; fi&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;test:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  override:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - ./gradlew assembleRelease&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;#&lt;a href=&quot;https://travis-ci.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Travis&lt;/a&gt;&lt;br&gt;在项目目录中创建 &lt;code&gt;.travis.yml&lt;/code&gt; 文件，内容如下：&lt;br&gt;&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;sudo:&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;language:&lt;/span&gt; android&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;jdk:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - oraclejdk8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;android:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;symbol&quot;&gt;components:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - platform-tools&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - tools&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - build-tools-&lt;span class=&quot;number&quot;&gt;24.0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - android-&lt;span class=&quot;number&quot;&gt;24&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - extra-android-m2repository&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    - extra-android-support&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;#其实还有&lt;a href=&quot;https://app.shippable.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Shippable&lt;/a&gt;&lt;br&gt;国内访问速度比较慢，Android 支持的不好，放弃了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;以下都用 &lt;a href=&quot;https://github.com/KennethYo/BrakeLight&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;BrakeLight&lt;/code&gt;&lt;/a&gt; 项目举例。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
+    
+    
+      <category term="CI" scheme="http://www.kennethyo.me/tags/CI/"/>
+    
+  </entry>
   
   <entry>
     <title>自建私有 Maven 仓库</title>
@@ -1235,135 +1265,6 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     <summary type="html">
     
       &lt;div class=&quot;para&quot; style=&quot;font-family:Arial; font-size:14px; line-height:26px&quot;&gt;&lt;br&gt;&lt;br&gt;###&lt;br&gt;&lt;br&gt;### &lt;strong&gt;API等级1： &amp;nbsp;&lt;span style=&quot;whit
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[译]Android文本的测量和绘制</title>
-    <link href="http://www.kennethyo.me/2014/06/23/20140623/"/>
-    <id>http://www.kennethyo.me/2014/06/23/20140623/</id>
-    <published>2014-06-23T03:20:50.000Z</published>
-    <updated>2016-09-01T06:33:37.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;翻译与&lt;a href=&quot;http://chris.banes.me/#blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chris Banes的博客&lt;/a&gt;&amp;nbsp; &amp;nbsp;&lt;a href=&quot;http://chris.banes.me/2014/03/27/measuring-text/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文地址&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;u&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;/u&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;最近我在一款APP中，需要在横向和纵向的画布上绘制一些以文本为中心的文字。于是我用了下面这些代码：&lt;/span&gt;&lt;/p&gt;
-&lt;pre code_snippet_id=&quot;402800&quot; snippet_file_name=&quot;blog_20140623_1_1957768&quot; name=&quot;code&quot; class=&quot;java&quot;&gt;Paint mTextPaint = new Paint();  
-mTextPaint.setTextAlign(Paint.Align.CENTER); // Center the text
-
-// Later when you draw...
-canvas.drawText(mText, // Text to display  
-        mBounds.centerX(), // Center X of canvas bounds
-        mBounds.centerY(), // Center Y of canvas bounds
-        mTextPaint
-);&lt;/pre&gt;&lt;span style=&quot;font-size:18px&quot;&gt;
-
-我没想到代码的运行后竟然是下面的这个样子：&lt;/span&gt;
-
-![](http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-41-58.png)
-
-&lt;span style=&quot;font-size:32px&quot;&gt;测量文本&lt;/span&gt;
-
-&lt;span style=&quot;font-size:18px&quot;&gt;
-
-&lt;/span&gt;
-
-&lt;span style=&quot;font-size:18px&quot;&gt;接下来，我尝试定位文本，计算了文本的高宽度，并且修改了绘制文本X轴Y轴的位置：&lt;/span&gt;
-
-&lt;span style=&quot;font-size:18px&quot;&gt;
-
-&lt;/span&gt;
-
-&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;
-
-&lt;pre code_snippet_id=&quot;402800&quot; snippet_file_name=&quot;blog_20140623_2_8130520&quot; name=&quot;code&quot; class=&quot;java&quot;&gt;int mTextWidth, mTextHeight; // Our calculated text bounds  
-Paint mTextPaint = new Paint();
-
-// Now lets calculate the size of the text
-Rect textBounds = new Rect();  
-mTextPaint.getTextBounds(mText, 0, mText.length(), textBounds);  
-mTextWidth = textBounds.width();  
-mTextHeight = textBounds.height();
-
-// Later when you draw...
-canvas.drawText(mText, // Text to display  
-        mBounds.centerX() - (mTextWidth / 2f),
-        mBounds.centerY() + (mTextHeight / 2f),
-        mTextPaint
-);&lt;/pre&gt;
-
-&lt;p&gt;这一次我们做的已经相当接近了，但是你可以看到文本还是没有居中。&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;img src=&quot;http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-48-48.png&quot; alt=&quot;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;为了确定我没看到的原因，我用Paint.getTextBounds()计算一个矩形，并画在了文本的后面。&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;img src=&quot;http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-50-33.png&quot; alt=&quot;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;正如你看到的，文本的高宽绘制在了计算范围之外。&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:32px&quot;&gt;另一中测量文本的方法&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:24px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;在这个基础点上，我看到Paint另一种计算文本宽度的方法：Paint.measureText()&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;这个方法只能计算宽度而不能计算高度，因此我尝试结合两种方法：&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;pre code_snippet_id=&quot;402800&quot; snippet_file_name=&quot;blog_20140623_3_9003355&quot; name=&quot;code&quot; class=&quot;java&quot;&gt;int mTextWidth, mTextHeight; // Our calculated text bounds  
-Paint mTextPaint = new Paint();
-
-// Now lets calculate the size of the text
-Rect textBounds = new Rect();  
-mTextPaint.getTextBounds(mText, 0, mText.length(), textBounds);  
-mTextWidth = mTextPaint.measureText(mText); // Use measureText to calculate width  
-mTextHeight = textBounds.height(); // Use height from getTextBounds()
-
-// Later when you draw...
-canvas.drawText(mText, // Text to display  
-        mBounds.centerX() - (mTextWidth / 2f),
-        mBounds.centerY() + (mTextHeight / 2f),
-        mTextPaint
-);&lt;/pre&gt;
-
-&lt;p&gt;这几下就做出了完美居中的文本。悠嘻！&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;&lt;img src=&quot;http://chris.banes.me/content/images/2014/Mar/perfect.png&quot; alt=&quot;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
-    作者：zh08070005 发表于2014/6/23 11:20:50 [原文链接](http://blog.csdn.net/kennethyo/article/details/33720589)
-&amp;lt;/div&amp;gt;
-&amp;lt;div&amp;gt;
-阅读：773 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/33720589#comments)
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;span style=&quot;font-size:18px&quot;&gt;翻译与&lt;a href=&quot;http://chris.banes.me/#blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chris Banes的博客&lt;/a&gt;&amp;nbsp; &amp;nbsp;&lt;a hr
     
     </summary>
     
