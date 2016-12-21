@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>www.kennethyo.me/2014/08/22/2014-08-22/</loc>
+    <lastmod>2016-12-21T06:22:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]Android API，版本对照</title>
+        <pubTime>2014-08-22T02:51:53.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>www.kennethyo.me/2016/11/08/untitled-1478588050831/</loc>
     <lastmod>2016-11-08T07:11:49.000Z</lastmod>
     <data>
@@ -387,26 +407,6 @@
         <display>
         <title>[原]LayoutInflater.inflate详解</title>
         <pubTime>2014-10-24T08:27:08.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2014/08/22/2014-08-22/</loc>
-    <lastmod>2016-09-01T06:34:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]Android API，版本对照</title>
-        <pubTime>2014-08-22T02:51:53.000Z</pubTime>
         
         <tag>Android</tag>
          

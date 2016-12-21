@@ -1250,21 +1250,39 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     <link href="http://www.kennethyo.me/2014/08/22/2014-08-22/"/>
     <id>http://www.kennethyo.me/2014/08/22/2014-08-22/</id>
     <published>2014-08-22T02:51:53.000Z</published>
-    <updated>2016-09-01T06:34:00.000Z</updated>
+    <updated>2016-12-21T06:22:32.000Z</updated>
     
-    <content type="html">&lt;div class=&quot;para&quot; style=&quot;font-family:Arial; font-size:14px; line-height:26px&quot;&gt;&lt;br&gt;&lt;br&gt;###&lt;br&gt;&lt;br&gt;### &lt;strong&gt;API等级1： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.0&amp;nbsp;&lt;br&gt;&lt;br&gt;API等级2： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.1 Petit Four &amp;nbsp;花式小蛋糕&lt;br&gt;&lt;br&gt;API等级3： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕&lt;br&gt;&lt;br&gt;API等级4： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.6 Donut &amp;nbsp;甜甜圈&lt;br&gt;&lt;br&gt;API等级5： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.0 Éclair &amp;nbsp; 松饼&lt;br&gt;&lt;br&gt;API等级6： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.0.1 Éclair &amp;nbsp;松饼&lt;br&gt;&lt;br&gt;API等级7： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.1 Éclair &amp;nbsp; 松饼&lt;br&gt;&lt;br&gt;API等级8： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.2 - 2.2.3 Froyo &amp;nbsp;冻酸奶&lt;br&gt;&lt;br&gt;API等级9： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.3 - 2.3.2 Gingerbread &amp;nbsp;姜饼&lt;br&gt;&lt;br&gt;API等级10：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.3.3-2.3.7 Gingerbread &amp;nbsp; 姜饼&lt;br&gt;&lt;br&gt;API等级11：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.0 Honeycomb 蜂巢&lt;br&gt;&lt;br&gt;API等级12：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.1 Honeycomb 蜂巢&lt;br&gt;&lt;br&gt;API等级13：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.2 Honeycomb 蜂巢&lt;br&gt;&lt;br&gt;API等级14：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.0 - 4.0.2 Ice Cream Sandwich &amp;nbsp;冰激凌三明治&lt;br&gt;&lt;br&gt;API等级15：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.0.3 - 4.0.4 Ice Cream Sandwich &amp;nbsp;冰激凌三明治&lt;br&gt;&lt;br&gt;API等级16：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.1 Jelly Bean &amp;nbsp;糖豆&lt;br&gt;&lt;br&gt;API等级17：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.2 Jelly Bean &amp;nbsp;糖豆&lt;br&gt;&lt;br&gt;API等级18：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.3 Jelly Bean &amp;nbsp;糖豆&lt;br&gt;&lt;br&gt;API等级19：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.4 KitKat &amp;nbsp;奇巧巧克力棒&lt;br&gt;&lt;br&gt;API等级20：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android L&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
-    作者：zh08070005 发表于2014/8/22 10:51:53 [原文链接](http://blog.csdn.net/kennethyo/article/details/38752431)
-&amp;lt;/div&amp;gt;
-&amp;lt;div&amp;gt;
-阅读：410 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/38752431#comments)
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content>
+    <content type="html">&lt;p&gt;API等级1： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.0&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;API等级2： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.1 Petit Four &amp;nbsp;花式小蛋糕&lt;/p&gt;
+&lt;p&gt;API等级3： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕&lt;/p&gt;
+&lt;p&gt;API等级4： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.6 Donut &amp;nbsp;甜甜圈&lt;/p&gt;
+&lt;p&gt;API等级5： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.0 Éclair &amp;nbsp; 松饼&lt;/p&gt;
+&lt;p&gt;API等级6： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.0.1 Éclair &amp;nbsp;松饼&lt;/p&gt;
+&lt;p&gt;API等级7： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.1 Éclair &amp;nbsp; 松饼&lt;/p&gt;
+&lt;p&gt;API等级8： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.2 - 2.2.3 Froyo &amp;nbsp;冻酸奶&lt;/p&gt;
+&lt;p&gt;API等级9： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.3 - 2.3.2 Gingerbread &amp;nbsp;姜饼&lt;/p&gt;
+&lt;p&gt;API等级10：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 2.3.3-2.3.7 Gingerbread &amp;nbsp; 姜饼&lt;/p&gt;
+&lt;p&gt;API等级11：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.0 Honeycomb 蜂巢&lt;/p&gt;
+&lt;p&gt;API等级12：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.1 Honeycomb 蜂巢&lt;/p&gt;
+&lt;p&gt;API等级13：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 3.2 Honeycomb 蜂巢&lt;/p&gt;
+&lt;p&gt;API等级14：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.0 - 4.0.2 Ice Cream Sandwich &amp;nbsp;冰激凌三明治&lt;/p&gt;
+&lt;p&gt;API等级15：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.0.3 - 4.0.4 Ice Cream Sandwich &amp;nbsp;冰激凌三明治&lt;/p&gt;
+&lt;p&gt;API等级16：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.1 Jelly Bean &amp;nbsp;糖豆&lt;/p&gt;
+&lt;p&gt;API等级17：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.2 Jelly Bean &amp;nbsp;糖豆&lt;/p&gt;
+&lt;p&gt;API等级18：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.3 Jelly Bean &amp;nbsp;糖豆&lt;/p&gt;
+&lt;p&gt;API等级19：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.4 KitKat &amp;nbsp;奇巧巧克力棒&lt;/p&gt;
+&lt;p&gt;API等级20：&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 4.4W KitKat Wear&lt;/p&gt;
+&lt;p&gt;API等级21：Android 5.0 Lollipop 棒棒糖&lt;/p&gt;
+&lt;p&gt;API等级22：Android 5.1 Lollipop 棒棒糖&lt;/p&gt;
+&lt;p&gt;API等级23：Android 6.0 Marshmallow 棉花糖&lt;/p&gt;
+&lt;p&gt;API等级24：Android 7.0 Nougat 牛轧糖&lt;/p&gt;
+&lt;p&gt;API等级25：Android 7.1.1 Nougat 牛轧糖&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;div class=&quot;para&quot; style=&quot;font-family:Arial; font-size:14px; line-height:26px&quot;&gt;&lt;br&gt;&lt;br&gt;###&lt;br&gt;&lt;br&gt;### &lt;strong&gt;API等级1： &amp;nbsp;&lt;span style=&quot;whit
+      &lt;p&gt;API等级1： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 1.0&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;API等级2： &amp;nbsp;&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;Android 
     
     </summary>
     
