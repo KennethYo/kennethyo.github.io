@@ -536,7 +536,7 @@
     
     <entry>
       <title><![CDATA[[原]WebView填坑——小功能篇]]></title>
-      <url>http://www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/</url>
+      <url>http://www.kennethyo.me/2015/04/22/2015-04-22-16-31-06/</url>
       <content type="html"><![CDATA[<p>这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。</p>
 <h3 id="Webview中上传文件"><a href="#Webview中上传文件" class="headerlink" title="Webview中上传文件"></a>Webview中上传文件</h3><p>这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。</p>
 <p><code>openFileChooser（）</code>方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。</p>

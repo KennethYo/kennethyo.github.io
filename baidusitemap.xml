@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>www.kennethyo.me/2015/04/22/2015-04-22-16-31-06/</loc>
+    <lastmod>2017-03-06T11:06:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>[原]WebView填坑——小功能篇</title>
+        <pubTime>2015-04-22T08:31:06.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.kennethyo.me/2016/09/01/untitled-1472722428873/</loc>
+    <lastmod>2017-03-06T11:05:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>自建私有 Maven 仓库</title>
+        <pubTime>2016-09-01T09:33:48.000Z</pubTime>
+        
+        <tag>Nexus</tag>
+         
+        <tag>maven</tag>
+         
+        <tag>jcenter</tag>
+         
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
     <loc>www.kennethyo.me/2017/03/06/untitled-1488794629968/</loc>
     <lastmod>2017-03-06T10:37:13.000Z</lastmod>
     <data>
@@ -59,35 +107,6 @@
            
              
               <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.kennethyo.me/2016/09/01/untitled-1472722428873/</loc>
-    <lastmod>2016-09-05T10:37:31.000Z</lastmod>
-    <data>
-        <display>
-        <title>自建私有 Maven 仓库</title>
-        <pubTime>2016-09-01T09:33:48.000Z</pubTime>
-        
-        <tag>Nexus</tag>
-         
-        <tag>maven</tag>
-         
-        <tag>jcenter</tag>
-         
-        <tag>Docker</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
-          
-             
-              <breadCrumb title="Docker" url="http://www.kennethyo.me/categories/Android/Docker/"/>
           
         </display>
     </data>
@@ -542,26 +561,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>www.kennethyo.me/2015/04/22/%E5%8E%9F-WebView%E5%A1%AB%E5%9D%91%E2%80%94%E2%80%94%E5%B0%8F%E5%8A%9F%E8%83%BD%E7%AF%87/</loc>
-    <lastmod>2016-06-08T06:46:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>[原]WebView填坑——小功能篇</title>
-        <pubTime>2015-04-22T08:31:06.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.kennethyo.me/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
     
 </urlset>
