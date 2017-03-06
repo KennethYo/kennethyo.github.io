@@ -286,9 +286,6 @@ a:hover {
   color: #222;
   border-bottom-color: #222;
 }
-ul {
-  list-style: none;
-}
 blockquote {
   margin: 0;
   padding: 0;
@@ -490,8 +487,8 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #4d4d4c;
-  background: #f7f7f7;
+  color: #555;
+  background: #eee;
   border-radius: 3px;
   font-size: 13px;
 }
@@ -1076,6 +1073,7 @@ pre .javascript .function {
 .menu .menu-item {
   display: inline-block;
   margin: 0 10px;
+  list-style: none;
 }
 @media screen and (max-width: 767px) {
   .menu .menu-item {
@@ -1085,7 +1083,6 @@ pre .javascript .function {
 .menu .menu-item a {
   display: block;
   font-size: 13px;
-  text-transform: capitalize;
   line-height: inherit;
   border-bottom: 1px solid transparent;
   transition-property: border-color;
@@ -1702,7 +1699,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #65ff90;
+  background: #62c3a1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1715,6 +1712,7 @@ pre .javascript .function {
 .links-of-blogroll-list {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .links-of-blogroll-item {
   padding: 2px 10px;
@@ -2680,7 +2678,6 @@ pre .javascript .function {
 .menu .menu-item {
   display: block;
   margin: 0;
-  list-style: none;
 }
 .menu .menu-item a {
   position: relative;
