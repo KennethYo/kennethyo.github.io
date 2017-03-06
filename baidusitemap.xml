@@ -5,7 +5,7 @@
     
   <url>
     <loc>www.kennethyo.me/2017/03/06/untitled-1488794629968/</loc>
-    <lastmod>2017-03-06T10:09:01.000Z</lastmod>
+    <lastmod>2017-03-06T10:37:13.000Z</lastmod>
     <data>
         <display>
         <title>Git-flow 学习总结</title>
@@ -17,6 +17,9 @@
          
          
            
+             
+              <breadCrumb title="Git" url="http://www.kennethyo.me/categories/Git/"/>
+          
         </display>
     </data>
     </url>
