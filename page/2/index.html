@@ -281,6 +281,165 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2015/10/16/2015-10-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/16/2015-10-16/" itemprop="url">
+                  [原]Android 翻转动画 Rotate3dAnimation 效果
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-16T17:05:57+08:00">
+                2015-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/10/16/2015-10-16/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/16/2015-10-16/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~</p>
+<hr>
+<p>上班回来，按照产品的需求做了这样一个效果，如下图：</p>
+<p><img src="http://img.blog.csdn.net/20151016162517318" alt="这里写图片描述"></p>
+<p>这其中包含了3个动画，分别是移动动画、放大动画、旋转动画。</p>
+<p>前两个动画比较好完成，可以用 TranslateAnimation 和 ScaleAnimation来完成，但是第三个就比较麻烦了，因为这个旋转动画是根据 Y 轴来旋转的，而 RotateAnimation 是根据垂直屏幕的 Z 轴旋转的，所以 RotateAnimation 并不能够完成我们需要的效果，这里就需要我们去继承 Animation 去自定义动画了。</p>
+<p>但是！！！<br>但是 APIdemo 里面已经实现了这个动画，so，我们拿来用就好了，下面是我贴出来的Rotate3dAnimation，其中我添加了一个构造，添加了相对自己位置的 type。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.kenneth.rotate3danimation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Camera;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Matrix;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Animation;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Transformation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rotate3dAnimation</span> <span class="keyword">extends</span> <span class="title">Animation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterXType = ABSOLUTE;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterYType = ABSOLUTE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mFromDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mToDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterX;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterY;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mDepthZ;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> mReverse;</span><br><span class="line">    <span class="keyword">private</span> Camera mCamera;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Creates a new 3D rotation on the Y axis. The rotation is defined by its</span><br><span class="line">     * start angle and its end angle. Both angles are in degrees. The rotation</span><br><span class="line">     * is performed around a center point on the 2D space, definied by a pair</span><br><span class="line">     * of X and Y coordinates, called centerX and centerY. When the animation</span><br><span class="line">     * starts, a translation on the Z axis (depth) is performed. The length</span><br><span class="line">     * of the translation can be specified, as well as whether the translation</span><br><span class="line">     * should be reversed in time.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> fromDegrees the start angle of the 3D rotation</span><br><span class="line">     * <span class="doctag">@param</span> toDegrees   the end angle of the 3D rotation</span><br><span class="line">     * <span class="doctag">@param</span> centerX     the X center of the 3D rotation</span><br><span class="line">     * <span class="doctag">@param</span> centerY     the Y center of the 3D rotation</span><br><span class="line">     * <span class="doctag">@param</span> reverse     true if the translation should be reversed, false otherwise</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span><br><span class="line">                             <span class="keyword">float</span> centerX, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span><br><span class="line">                             <span class="keyword">int</span> centerXType, <span class="keyword">float</span> centerX, <span class="keyword">int</span> centerYType, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterXType = centerXType;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterYType = centerYType;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> parentWidth, <span class="keyword">int</span> parentHeight)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.initialize(width, height, parentWidth, parentHeight);</span><br><span class="line">        mCamera = <span class="keyword">new</span> Camera();</span><br><span class="line">        mCenterX = resolveSize(mCenterXType, mCenterX, width, parentWidth);</span><br><span class="line">        mCenterY = resolveSize(mCenterYType, mCenterY, height, parentHeight);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyTransformation</span><span class="params">(<span class="keyword">float</span> interpolatedTime, Transformation t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> fromDegrees = mFromDegrees;</span><br><span class="line">        <span class="keyword">float</span> degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerX = mCenterX;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerY = mCenterY;</span><br><span class="line">        <span class="keyword">final</span> Camera camera = mCamera;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> Matrix matrix = t.getMatrix();</span><br><span class="line"></span><br><span class="line">        camera.save();</span><br><span class="line">        <span class="keyword">if</span> (mReverse) &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * interpolatedTime);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * (<span class="number">1.0f</span> - interpolatedTime));</span><br><span class="line">        &#125;</span><br><span class="line">        camera.rotateY(degrees);</span><br><span class="line">        camera.getMatrix(matrix);</span><br><span class="line">        camera.restore();</span><br><span class="line"></span><br><span class="line">        matrix.preTranslate(-centerX, -centerY);</span><br><span class="line">        matrix.postTranslate(centerX, centerY);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>移动动画也比较好做，点击的时候记录点击 icon 在 window 上的位置，然后传到下一个界面，计算一下偏移量。</p>
+<p>这里面要注意，里面的 weibo 等 icon，我用的并不是图片，用的是FontAwesome，具体用法看下面博客：<br>中文地址：<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208795106&amp;idx=1&amp;sn=7745289b193dc8ff20ba81ff9bb23b21&amp;scene=1&amp;srcid=1016s8Satc5ZO0gDrVLqVIBM&amp;key=b410d3164f5f798e7ec8a5a17847eeddc1247303cf5fe40ac8a564295602dd6161bb83fa346de7cd9878b60274b20e77&amp;ascene=0&amp;uin=MTAxNzk0OTM1&amp;devicetype=iMac+MacBookPro11%2C1+OSX+OSX+10.11+build(15A284" target="_blank" rel="external">传送门</a>&amp;version=11020201&amp;pass_ticket=WHgV251%2BEh%2Bkh7UMBqQp034b8MGYzxeoJ7l9Ncwz3iE%3D)<br>项目网站：<a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="external">传送门</a></p>
+<p>demo 代码地址：<a href="https://github.com/KennethYo/Rotate3dAnimation" target="_blank" rel="external">传送门</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2015/09/29/2015-09-29/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2006,292 +2165,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/10/24/2014-10-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/10/24/2014-10-24/" itemprop="url">
-                  [原]LayoutInflater.inflate详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-24T16:27:08+08:00">
-                2014-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/24/2014-10-24/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/24/2014-10-24/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="介绍常见inflate方法"><a href="#介绍常见inflate方法" class="headerlink" title="介绍常见inflate方法"></a>介绍常见inflate方法</h2><p>在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种：</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_1_2164263" name="code" class="java">//1,通过系统服务获取布局加载器
-LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-View view = inflater.inflate(resource,root,attachToRoot);
-
-//2,通过activity中的getLayoutInflater()方法
-View view = getLayoutInflater().inflate(resource,root,attachToRoot);
-
-//3,通过View的静态inflate()方法
-View view = View.inflate(resource,root,attachToRoot);
-
-//4,通过LayoutInflater的inflate()方法
-View view = LayoutInflater.from(this).inflate(resource,root,attachToRoot);
-</pre>
-
-<p>通过对上述方法的源码的分析，很容易看出来这些方法都是最终调用了方式1，获取系统布局加载器的方式，来进行获取<code>View</code>。</p>
-<p>这里我列举的并没有<code>inflate(int resource, ViewGroup root)</code>这个重载方法，是因为他们最终都会到调用为<code>inflate(int resource, ViewGroup root, boolean attachToRoot)</code>方法，如下：</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_2_263903" name="code" class="java"> public View inflate(int resource, ViewGroup root) {
-        return inflate(resource, root, root != null);
- }
-
- public View inflate(int resource, ViewGroup root, boolean attachToRoot) {
-        if (DEBUG) System.out.println(&quot;INFLATING from resource: &quot; + resource);
-        XmlResourceParser parser = getContext().getResources().getLayout(resource);
-        try {
-            return inflate(parser, root, attachToRoot);
-        } finally {
-            parser.close();
-        }
- }</pre>
-
-<p>这里要说明一下，其实最终要调用的是<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法，只不过这里把布局资源解析为了XmlPull解析器，这里就不针对<code>XmlPullParser</code>进行研究了。</p>
-<h2 id="针对传入的参数不同进行分析"><a href="#针对传入的参数不同进行分析" class="headerlink" title="针对传入的参数不同进行分析"></a>针对传入的参数不同进行分析</h2><p>通过对<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法的源码进行解读，<code>XmlPullParser parser</code>是对传入<code>int resource</code>的xml解析器，不用去主要考虑，那就需要考虑传入<code>ViewGroup root, boolean attachToRoot</code>的&#20540;不同，会出现什么结果呢？</p>
-<p>源码中有几个重要的代码块：</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_3_3719874" name="code" class="java">if (root != null) {
-if (DEBUG) {
-System.out.println(&quot;Creating params from root: &quot; +
-                                    root);
-}
-// 如果root不等于null，获取它的LayoutParams
-  params = root.generateLayoutParams(attrs);
-if (!attachToRoot) {
-//attachToRoot等于false，把root的LayoutParams属性给temp
-temp.setLayoutParams(params);
-}
-}
-</pre>
-
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_4_4700610" name="code" class="java">//attachToRoot等于true，将temp加入到root这个viewGroup中
-if (root != null &amp;&amp; attachToRoot) {
-root.addView(temp, params);
-}
-
-// root等于null，attachToRoot等于false，直接把temp赋值给返回结果
-if (root == null || !attachToRoot) {
-  result = temp;
-}</pre>
-
-<h2 id="根据不同的传-20540-进行实现"><a href="#根据不同的传-20540-进行实现" class="headerlink" title="根据不同的传&#20540;进行实现"></a>根据不同的传&#20540;进行实现</h2><p>两个布局文件，一个作为root，一个作为我们的要获取的view</p>
-<p>activity_my.xml</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_5_9900685" name="code" class="html">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    tools:context=&quot;.MyActivity&quot;&gt;
-
-    &lt;TextView
-        android:text=&quot;@string/hello_world&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot; /&gt;
-
-&lt;/RelativeLayout&gt;</pre>
-
-<p>view.xml</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_6_881422" name="code" class="html">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;120dp&quot;
-    android:layout_height=&quot;120dp&quot;
-    android:background=&quot;@color/blue&quot;&gt;
-
-    &lt;TextView
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;hello inflate&quot;
-        android:textColor=&quot;@android:color/white&quot; /&gt;
-
-&lt;/LinearLayout&gt;</pre>
-
-<p>1,rootView等于null，attachToRoot等于false</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_7_1272731" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-    view = getLayoutInflater().inflate(R.layout.view, null, false);
-    setContentView(view);
-}</pre>
-
-<p>本身root为null，就不会去获取view的LayoutParams，直接走<code>result = temp;</code>返回result，此时result等于view</p>
-<p><img src="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
-<p>2,rootView等于null，attachToRoot等于true</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_8_9504448" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-    view = getLayoutInflater().inflate(R.layout.view, null, true);
-    setContentView(view);
-}</pre>
-
-<p>root等于null，依然走<code>result = temp;</code>，此时result等于view</p>
-<p><img src="http://img.blog.csdn.net/20141024160851796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
-<p>3,rootView不等于null，attachToRoot等于false</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_9_1880625" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
-    view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,false);
-    setContentView(view);
-}</pre>
-
-<p>root不等于null，attachToRoot等于false，会走取view的LayoutParams并且赋&#20540;给temp，再走<code>result = temp;</code>，此时result等于view</p>
-<p><img src="http://img.blog.csdn.net/20141024160912700?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
-<p>4,rootView不等于null，attachToRoot等于true</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_10_3941156" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
-    view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,true);
-    setContentView(view);
-}</pre>
-
-<p>rootView不等于null，attachToRoot等于true，会首先获取view的Params，再走<code>root.addView(temp, params)</code>，也就是，把view先放入的root这个ViewGroup中，再返回result，因为初始化的时候result就等于root，此时返回的就是包含有子View的root。</p>
-<p><img src="http://img.blog.csdn.net/20141024160942932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p>这里因为root的布局为RelativeLayout，我们把view加入到root中，view本身保留了自有的LayoutParm</p>
-<p>最后我要吐槽，为什么csdn不支持markdown，我都是先用Mou写好的，贴过来竟然要自己重新排版。。。</p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2014/10/24 16:27:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/40429031)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：1061 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40429031#comments)
-&lt;/div&gt;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2341,7 +2214,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2352,7 +2225,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2363,7 +2236,7 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

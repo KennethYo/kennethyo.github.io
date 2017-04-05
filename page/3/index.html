@@ -281,6 +281,292 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/10/24/2014-10-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/24/2014-10-24/" itemprop="url">
+                  [原]LayoutInflater.inflate详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-24T16:27:08+08:00">
+                2014-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/10/24/2014-10-24/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/24/2014-10-24/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="介绍常见inflate方法"><a href="#介绍常见inflate方法" class="headerlink" title="介绍常见inflate方法"></a>介绍常见inflate方法</h2><p>在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种：</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_1_2164263" name="code" class="java">//1,通过系统服务获取布局加载器
+LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+View view = inflater.inflate(resource,root,attachToRoot);
+
+//2,通过activity中的getLayoutInflater()方法
+View view = getLayoutInflater().inflate(resource,root,attachToRoot);
+
+//3,通过View的静态inflate()方法
+View view = View.inflate(resource,root,attachToRoot);
+
+//4,通过LayoutInflater的inflate()方法
+View view = LayoutInflater.from(this).inflate(resource,root,attachToRoot);
+</pre>
+
+<p>通过对上述方法的源码的分析，很容易看出来这些方法都是最终调用了方式1，获取系统布局加载器的方式，来进行获取<code>View</code>。</p>
+<p>这里我列举的并没有<code>inflate(int resource, ViewGroup root)</code>这个重载方法，是因为他们最终都会到调用为<code>inflate(int resource, ViewGroup root, boolean attachToRoot)</code>方法，如下：</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_2_263903" name="code" class="java"> public View inflate(int resource, ViewGroup root) {
+        return inflate(resource, root, root != null);
+ }
+
+ public View inflate(int resource, ViewGroup root, boolean attachToRoot) {
+        if (DEBUG) System.out.println(&quot;INFLATING from resource: &quot; + resource);
+        XmlResourceParser parser = getContext().getResources().getLayout(resource);
+        try {
+            return inflate(parser, root, attachToRoot);
+        } finally {
+            parser.close();
+        }
+ }</pre>
+
+<p>这里要说明一下，其实最终要调用的是<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法，只不过这里把布局资源解析为了XmlPull解析器，这里就不针对<code>XmlPullParser</code>进行研究了。</p>
+<h2 id="针对传入的参数不同进行分析"><a href="#针对传入的参数不同进行分析" class="headerlink" title="针对传入的参数不同进行分析"></a>针对传入的参数不同进行分析</h2><p>通过对<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法的源码进行解读，<code>XmlPullParser parser</code>是对传入<code>int resource</code>的xml解析器，不用去主要考虑，那就需要考虑传入<code>ViewGroup root, boolean attachToRoot</code>的&#20540;不同，会出现什么结果呢？</p>
+<p>源码中有几个重要的代码块：</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_3_3719874" name="code" class="java">if (root != null) {
+if (DEBUG) {
+System.out.println(&quot;Creating params from root: &quot; +
+                                    root);
+}
+// 如果root不等于null，获取它的LayoutParams
+  params = root.generateLayoutParams(attrs);
+if (!attachToRoot) {
+//attachToRoot等于false，把root的LayoutParams属性给temp
+temp.setLayoutParams(params);
+}
+}
+</pre>
+
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_4_4700610" name="code" class="java">//attachToRoot等于true，将temp加入到root这个viewGroup中
+if (root != null &amp;&amp; attachToRoot) {
+root.addView(temp, params);
+}
+
+// root等于null，attachToRoot等于false，直接把temp赋值给返回结果
+if (root == null || !attachToRoot) {
+  result = temp;
+}</pre>
+
+<h2 id="根据不同的传-20540-进行实现"><a href="#根据不同的传-20540-进行实现" class="headerlink" title="根据不同的传&#20540;进行实现"></a>根据不同的传&#20540;进行实现</h2><p>两个布局文件，一个作为root，一个作为我们的要获取的view</p>
+<p>activity_my.xml</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_5_9900685" name="code" class="html">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MyActivity&quot;&gt;
+
+    &lt;TextView
+        android:text=&quot;@string/hello_world&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot; /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+
+<p>view.xml</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_6_881422" name="code" class="html">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;120dp&quot;
+    android:layout_height=&quot;120dp&quot;
+    android:background=&quot;@color/blue&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;hello inflate&quot;
+        android:textColor=&quot;@android:color/white&quot; /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+
+<p>1,rootView等于null，attachToRoot等于false</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_7_1272731" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+    view = getLayoutInflater().inflate(R.layout.view, null, false);
+    setContentView(view);
+}</pre>
+
+<p>本身root为null，就不会去获取view的LayoutParams，直接走<code>result = temp;</code>返回result，此时result等于view</p>
+<p><img src="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
+<p>2,rootView等于null，attachToRoot等于true</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_8_9504448" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+    view = getLayoutInflater().inflate(R.layout.view, null, true);
+    setContentView(view);
+}</pre>
+
+<p>root等于null，依然走<code>result = temp;</code>，此时result等于view</p>
+<p><img src="http://img.blog.csdn.net/20141024160851796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
+<p>3,rootView不等于null，attachToRoot等于false</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_9_1880625" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
+    view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,false);
+    setContentView(view);
+}</pre>
+
+<p>root不等于null，attachToRoot等于false，会走取view的LayoutParams并且赋&#20540;给temp，再走<code>result = temp;</code>，此时result等于view</p>
+<p><img src="http://img.blog.csdn.net/20141024160912700?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
+<p>4,rootView不等于null，attachToRoot等于true</p>
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_10_3941156" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
+    view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,true);
+    setContentView(view);
+}</pre>
+
+<p>rootView不等于null，attachToRoot等于true，会首先获取view的Params，再走<code>root.addView(temp, params)</code>，也就是，把view先放入的root这个ViewGroup中，再返回result，因为初始化的时候result就等于root，此时返回的就是包含有子View的root。</p>
+<p><img src="http://img.blog.csdn.net/20141024160942932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>这里因为root的布局为RelativeLayout，我们把view加入到root中，view本身保留了自有的LayoutParm</p>
+<p>最后我要吐槽，为什么csdn不支持markdown，我都是先用Mou写好的，贴过来竟然要自己重新排版。。。</p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/10/24 16:27:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/40429031)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1061 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40429031#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/08/22/2014-08-22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1993,7 +2279,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2004,7 +2290,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2015,7 +2301,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
