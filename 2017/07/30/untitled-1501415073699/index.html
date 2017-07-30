@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,View," />
+  <meta name="keywords" content="copy,paste," />
 
 
 
@@ -89,22 +89,19 @@
 
 
 
-<meta name="description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。
-卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。
-CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta name="description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[原]CardView初级使用">
-<meta property="og:url" content="http://www.kennethyo.me/2014/12/28/2014-12-28/index.html">
+<meta property="og:title" content="Android 的复制和粘贴功能">
+<meta property="og:url" content="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。
-卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。
-CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
-<meta property="og:updated_time" content="2016-09-01T06:35:27.000Z">
+<meta property="og:description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
+<meta property="og:updated_time" content="2017-07-30T11:45:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[原]CardView初级使用">
-<meta name="twitter:description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。
-卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。
-CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta name="twitter:title" content="Android 的复制和粘贴功能">
+<meta name="twitter:description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
 
 
 
@@ -132,13 +129,13 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2014/12/28/2014-12-28/"/>
+  <link rel="canonical" href="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/"/>
 
 
 
 
 
-  <title> [原]CardView初级使用 | 敲键盘的呼伦贝尔人 </title>
+  <title> Android 的复制和粘贴功能 | 敲键盘的呼伦贝尔人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +283,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/12/28/2014-12-28/">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="鸿雁">
@@ -307,7 +304,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
             
             
               
-                [原]CardView初级使用
+                Android 的复制和粘贴功能
               
             
           </h1>
@@ -322,8 +319,8 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-28T14:08:54+08:00">
-                2014-12-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T19:44:33+08:00">
+                2017-07-30
               </time>
             
 
@@ -363,8 +360,8 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/12/28/2014-12-28/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/28/2014-12-28/" itemprop="commentCount"></span>
+                <a href="/2017/07/30/untitled-1501415073699/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/30/untitled-1501415073699/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,28 +387,18 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
       
 
       
-        <p><code>CardView</code>发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里<a href="http://kennethyo.farbox.com/post/android/recyclerviewchu-ji-shi-yong#main" target="_blank" rel="external">传送门</a>。</p>
-<p>卡片化是全新的Material风&#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。</p>
-<p><code>CardView</code>继承于<code>Framelayout</code>，比<code>FrameLayout</code>多了3个重要的属性，<code>card_view:cardElevation</code>，<code>card_view:cardCornerRadius</code>，<code>card_view:cardBackgroundColor</code>。</p>
-<p><code>card_view:cardElevation</code>，可以设置卡片的阴影，可以使<code>CardView</code>在z轴方向上有一种抬升的视觉效果，能给用户一种这里是重要信息的视觉感受。对应代码里的方法<code>public
- void setCardElevation (float radius)</code>。</p>
-<p><code>card_view:cardCornerRadius</code>，显然就是设置<code>CardView</code>的圆角了。对应代码里的方法<code>public
- void setRadius (float radius)</code>。</p>
-<p><code>card_view:cardBackgroundColor</code>，设置<code>CardView</code>的背景颜色，这个属性是不会影响阴影<code>card_view:cardElevation</code>的效果的。对应代码里的方法<code>public
- void setCardBackgroundColor (int color)</code>。</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.CardView</span><br><span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/cardview&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;fill_parent&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardElevation=</span><span class="s" style="color:rgb(204,147,147)">&quot;100dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardBackgroundColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@color/grey&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardCornerRadius=</span><span class="s" style="color:rgb(204,147,147)">&quot;8dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginRight=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br>                <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_margin=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;这里是CardView&quot;</span><br>                <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/android.support.v7.widget.CardView&gt;</span><br></pre><br></div>
+        <p>Android 复制和粘贴功能，需要调用系统服务<code>ClipboardManager</code>来实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);</span><br></pre></td></tr></table></figure></p>
+<p>复制功能，首先要构造一个<code>ClipData</code>对象，并且把要复制的数据和 MIME type 赋值给<code>ClipData</code>，然后在把<code>ClipData</code>传入<code>mClipboardManager.setPrimaryClip()</code>方法，此时，我们完成了一个复制。</p>
+<p>粘贴功能，调用<code>mClipboardManager.hasPrimaryClip()</code>来判断粘贴板是否有数据，然后通过<code>mClipboardManager.getPrimaryClipDescription().hasMimeType()</code>判断当前粘贴板的数据 MIME type是不是APP支持的，如果是APP支持的，获取数据<code>mClipboardManager.getPrimaryClip()</code>。</p>
+<p>下面就文本，URI，Intent的复制粘贴，分别提供一个demo。</p>
+<p>#文本<br>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个参数，是描述复制的内容，也可以和内容一样。</span></span><br><span class="line">ClipData clipData = ClipData.newPlainText(<span class="string">"copy from demo"</span>, mEtCopy.getText());</span><br><span class="line">mClipboardManager.setPrimaryClip(clipData);</span><br></pre></td></tr></table></figure></p>
+<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 粘贴板有数据，并且是文本</span></span><br><span class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</span><br><span class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) &#123;</span><br><span class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</span><br><span class="line">    CharSequence text = item.getText();</span><br><span class="line">    <span class="keyword">if</span> (text == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mEtPaste.setText(text);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#URI 复制<br>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Uri uri = Uri.parse(uriStr);</span><br><span class="line">ClipData clipData = ClipData.newUri(getContentResolver(), <span class="string">"copy from demo"</span>, uri);</span><br><span class="line">mClipboardManager.setPrimaryClip(clipData);</span><br></pre></td></tr></table></figure></p>
+<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</span><br><span class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_URILIST)) &#123;</span><br><span class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</span><br><span class="line">    Uri uri = item.getUri();</span><br><span class="line">    <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mTvScheme.setText(uri.getScheme());</span><br><span class="line">    mTvUri.setText(uri.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#Intent 复制<br>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, TextActivity.class);</span><br><span class="line">ClipData clipData = ClipData.newIntent(<span class="string">"copy from demo"</span>, intent);</span><br><span class="line">mClipboardManager.setPrimaryClip(clipData);</span><br></pre></td></tr></table></figure></p>
+<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</span><br><span class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_INTENT)) &#123;</span><br><span class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</span><br><span class="line">    Intent intent = item.getIntent();</span><br><span class="line">    <span class="keyword">if</span> (intent == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>复制粘贴功能的API并不难理解，如果想了解更多的功能，可以看<a href="https://developer.android.google.cn/guide/topics/text/copy-paste.html" target="_blank" rel="external">官方API指南</a>。<br><a href="https://github.com/KennethYo/CopyAndPasteDemo" target="_blank" rel="external">Demo地址</a></p>
 
-<p>这里贴一个Android官方给的<a href="https://github.com/googlesamples/android-CardView" target="_blank" rel="external">sample</a>吧!</p>
-<p>—————————————</p>
-<p>从11月19日开始一直在加班，把大把的时间都用于了我们岁末版本的开发上，这期间规划了好几篇想要写的博文，慢慢会发出来的，主要还是偏于介绍新控件的使用，以及如何兼容lollipop以下版本进行material风&#26684;的设计，material风&#26684;设计也将会是我所在项目组15年第一季度android的全新设计方案。</p>
-<p><span style="color:rgb(221,17,68); font-family:Inconsolata,monospace,sans-serif; line-height:30px; white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://kennethyo.farbox.com/post/android/2014-12-28）" target="_blank" rel="external">http://kennethyo.farbox.com/post/android/2014-12-28）</a></span></p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2014/12/28 14:08:54 [原文链接](http://blog.csdn.net/kennethyo/article/details/42213525)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：2090 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/42213525#comments)
-&lt;/div&gt;
-</code></pre>
       
     </div>
 
@@ -434,9 +421,9 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
+            <a href="/tags/copy/" rel="tag"># copy</a>
           
-            <a href="/tags/View/" rel="tag"># View</a>
+            <a href="/tags/paste/" rel="tag"># paste</a>
           
         </div>
       
@@ -449,8 +436,8 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/11/10/2014-11-10/" rel="next" title="[原]RecyclerView初级使用">
-                <i class="fa fa-chevron-left"></i> [原]RecyclerView初级使用
+              <a href="/2017/04/05/untitled-1491391624769/" rel="next" title="把编译信息放在 Launch Icon 上">
+                <i class="fa fa-chevron-left"></i> 把编译信息放在 Launch Icon 上
               </a>
             
           </div>
@@ -458,10 +445,6 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/01/25/2015-01-25/" rel="prev" title="[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以">
-                [原]Android程序猿如何泡设计妹之快速掌握dp和px才可以 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,10 +459,10 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/12/28/2014-12-28/"
-     data-title="[原]CardView初级使用"
+        <div class="ds-share flat" data-thread-key="2017/07/30/untitled-1501415073699/"
+     data-title="Android 的复制和粘贴功能"
      data-content=""
-     data-url="http://www.kennethyo.me/2014/12/28/2014-12-28/">
+     data-url="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -509,8 +492,8 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/12/28/2014-12-28/"
-           data-title="[原]CardView初级使用" data-url="http://www.kennethyo.me/2014/12/28/2014-12-28/">
+      <div class="ds-thread" data-thread-key="2017/07/30/untitled-1501415073699/"
+           data-title="Android 的复制和粘贴功能" data-url="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/">
       </div>
     
   </div>
