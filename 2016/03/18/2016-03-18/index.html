@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android,React-Native," />
@@ -82,26 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;进行安装。
-3，安装 wget 或者 curlwget，终端里输入brew install wge">
+<meta name="description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;进行安装。 3，安装 wget 或者 curlwget，终端里输入brew install wge">
+<meta name="keywords" content="Android,React-Native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]React-Native Android 学习笔记——1，配置环境">
 <meta property="og:url" content="http://www.kennethyo.me/2016/03/18/2016-03-18/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;进行安装。
-3，安装 wget 或者 curlwget，终端里输入brew install wge">
+<meta property="og:description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;进行安装。 3，安装 wget 或者 curlwget，终端里输入brew install wge">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-01T06:37:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]React-Native Android 学习笔记——1，配置环境">
-<meta name="twitter:description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;进行安装。
-3，安装 wget 或者 curlwget，终端里输入brew install wge">
+<meta name="twitter:description" content="一，设备与环境1，一台 mac2，安装软件包管理器 Homebrew(中文)终端里输入/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;进行安装。 3，安装 wget 或者 curlwget，终端里输入brew install wge">
 
 
 
@@ -110,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -135,11 +140,7 @@
 
 
 
-  <title> [原]React-Native Android 学习笔记——1，配置环境 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]React-Native Android 学习笔记——1，配置环境 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -164,12 +165,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -300,14 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]React-Native Android 学习笔记——1，配置环境
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]React-Native Android 学习笔记——1，配置环境</h1>
         
 
         <div class="post-meta">
@@ -380,7 +378,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -398,7 +395,7 @@
 <p>进入到你要创建 demo 的目录，终端输入<code>cd 你得文件路径</code>.<br>终端输入<code>react-native init AwesomeProject</code>，初始 AwesomeProject 。</p>
 <p>终端输入<code>cd AwesomeProject</code>。</p>
 <p>终端输入<code>react-native run-android</code>可以直接运行 node 服务并编译运行 Android 项目，直至安装到手机。</p>
-<p>如果界面报错提示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Unable to download JS bundle</span><br><span class="line">com.facebook.react.devsupport.DebugServerException: Could not connect to development server.</span><br><span class="line"></span><br><span class="line">URL: http://localhost:8081/index.android.bundle?platform=android&amp;dev=true&amp;hot=false</span><br><span class="line"></span><br><span class="line">Try the following to fix the issue:</span><br><span class="line">• Ensure that the packager server is running</span><br><span class="line">• Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run &apos;adb devices&apos; to see a list of connected devices</span><br><span class="line">• If you&apos;re on a physical device connected to the same machine, run &apos;adb reverse tcp:8081 tcp:8081&apos; to forward requests from your device</span><br><span class="line">• If your device is on the same Wi-Fi network, set &apos;Debug server host &amp; port for device&apos; in &apos;Dev settings&apos; to your machine&apos;s IP address and the port of the local dev server - e.g. 10.0.1.1:8081</span><br><span class="line">at com.facebook.react.devsupport.DevServerHelper$1.onFailure(DevServerHelper.java:203)</span><br><span class="line">at com.squareup.okhttp.Call$AsyncCall.execute(Call.java:175)</span><br><span class="line">at com.squareup.okhttp.internal.NamedRunnable.run(NamedRunnable.java:33)</span><br><span class="line">at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)</span><br><span class="line">at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)</span><br><span class="line">at java.lang.Thread.run(Thread.java:818)</span><br></pre></td></tr></table></figure></p>
+<p>如果界面报错提示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Unable to download JS bundle</div><div class="line">com.facebook.react.devsupport.DebugServerException: Could not connect to development server.</div><div class="line"></div><div class="line">URL: http://localhost:8081/index.android.bundle?platform=android&amp;dev=true&amp;hot=false</div><div class="line"></div><div class="line">Try the following to fix the issue:</div><div class="line">• Ensure that the packager server is running</div><div class="line">• Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run &apos;adb devices&apos; to see a list of connected devices</div><div class="line">• If you&apos;re on a physical device connected to the same machine, run &apos;adb reverse tcp:8081 tcp:8081&apos; to forward requests from your device</div><div class="line">• If your device is on the same Wi-Fi network, set &apos;Debug server host &amp; port for device&apos; in &apos;Dev settings&apos; to your machine&apos;s IP address and the port of the local dev server - e.g. 10.0.1.1:8081</div><div class="line">at com.facebook.react.devsupport.DevServerHelper$1.onFailure(DevServerHelper.java:203)</div><div class="line">at com.squareup.okhttp.Call$AsyncCall.execute(Call.java:175)</div><div class="line">at com.squareup.okhttp.internal.NamedRunnable.run(NamedRunnable.java:33)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)</div><div class="line">at java.lang.Thread.run(Thread.java:818)</div></pre></td></tr></table></figure></p>
 <p>一般在终端输入<code>adb reverse tcp:8081 tcp:8081</code>即可解决，其他请详细看 log。</p>
 
       
@@ -418,6 +415,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -431,7 +434,7 @@
       
 
       
-        
+      
       
 
       
@@ -487,7 +490,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -518,6 +521,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -667,7 +671,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -687,6 +691,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -713,32 +725,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -780,8 +792,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -791,6 +807,7 @@
 
   
 
+  
 
   
 

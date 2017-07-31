@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android," />
@@ -82,47 +88,28 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="翻译与Chris Banes的博客&amp;nbsp; &amp;nbsp;原文地址
-
-
-如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。
-
-
-文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;">
+<meta name="description" content="翻译与Chris Banes的博客&amp;nbsp; &amp;nbsp;原文地址   如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。   文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[译]Android文本的测量和绘制">
 <meta property="og:url" content="http://www.kennethyo.me/2014/06/23/20140623/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="翻译与Chris Banes的博客&amp;nbsp; &amp;nbsp;原文地址
-
-
-如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。
-
-
-文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;">
+<meta property="og:description" content="翻译与Chris Banes的博客&amp;nbsp; &amp;nbsp;原文地址   如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。   文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-48-48.png">
 <meta property="og:image" content="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-50-33.png">
 <meta property="og:image" content="http://chris.banes.me/content/images/2014/Mar/perfect.png">
 <meta property="og:updated_time" content="2016-09-01T06:33:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android文本的测量和绘制">
-<meta name="twitter:description" content="翻译与Chris Banes的博客&amp;nbsp; &amp;nbsp;原文地址
-
-
-如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。
-
-
-文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;">
+<meta name="twitter:description" content="翻译与Chris Banes的博客&amp;nbsp; &amp;nbsp;原文地址   如果你想手动在Android Canvas上画些什么东西，你最好从绘制文本开始。   文本绘制之前，你需要知道测量文本的绘制位置，计算文本X/Y轴的位置。 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;">
 <meta name="twitter:image" content="http://chris.banes.me/content/images/2014/Mar/Screenshot_2014-03-27-14-48-48.png">
 
 
@@ -132,7 +119,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -157,11 +144,7 @@
 
 
 
-  <title> [译]Android文本的测量和绘制 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[译]Android文本的测量和绘制 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -186,12 +169,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -322,14 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [译]Android文本的测量和绘制
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[译]Android文本的测量和绘制</h1>
         
 
         <div class="post-meta">
@@ -401,7 +381,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -534,6 +513,12 @@ canvas.drawText(mText, // Text to display
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -545,7 +530,7 @@ canvas.drawText(mText, // Text to display
       
 
       
-        
+      
       
 
       
@@ -601,7 +586,7 @@ canvas.drawText(mText, // Text to display
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -632,6 +617,7 @@ canvas.drawText(mText, // Text to display
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -756,7 +742,7 @@ canvas.drawText(mText, // Text to display
         
       </div>
     
-    
+
   </div>
 
   
@@ -776,6 +762,14 @@ canvas.drawText(mText, // Text to display
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -802,32 +796,32 @@ canvas.drawText(mText, // Text to display
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -869,8 +863,12 @@ canvas.drawText(mText, // Text to display
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -880,6 +878,7 @@ canvas.drawText(mText, // Text to display
 
   
 
+  
 
   
 

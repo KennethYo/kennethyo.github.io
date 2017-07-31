@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="copy,paste," />
@@ -82,26 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
+<meta name="description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
+<meta name="keywords" content="copy,paste">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 的复制和粘贴功能">
 <meta property="og:url" content="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
+<meta property="og:description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-30T11:51:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 的复制和粘贴功能">
-<meta name="twitter:description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
+<meta name="twitter:description" content="Android 复制和粘贴功能，需要调用系统服务ClipboardManager来实现。1ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 复制功能，首先要构造一个ClipData对象，并且把要复制的数据和 MIME type 赋值给ClipData，然后在把Cl">
 
 
 
@@ -110,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -135,11 +140,7 @@
 
 
 
-  <title> Android 的复制和粘贴功能 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Android 的复制和粘贴功能 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -164,12 +165,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -300,14 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Android 的复制和粘贴功能
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Android 的复制和粘贴功能</h1>
         
 
         <div class="post-meta">
@@ -380,23 +378,22 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>Android 复制和粘贴功能，需要调用系统服务<code>ClipboardManager</code>来实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);</span><br></pre></td></tr></table></figure></p>
+        <p>Android 复制和粘贴功能，需要调用系统服务<code>ClipboardManager</code>来实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ClipboardManager mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);</div></pre></td></tr></table></figure></p>
 <p>复制功能，首先要构造一个<code>ClipData</code>对象，并且把要复制的数据和 MIME type 赋值给<code>ClipData</code>，然后在把<code>ClipData</code>传入<code>mClipboardManager.setPrimaryClip()</code>方法，此时，我们完成了一个复制。</p>
 <p>粘贴功能，调用<code>mClipboardManager.hasPrimaryClip()</code>来判断粘贴板是否有数据，然后通过<code>mClipboardManager.getPrimaryClipDescription().hasMimeType()</code>判断当前粘贴板的数据 MIME type是不是APP支持的，如果是APP支持的，获取数据<code>mClipboardManager.getPrimaryClip()</code>。</p>
 <p>下面就文本，URI，Intent的复制粘贴，分别提供一个demo。</p>
-<h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><p>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个参数，是描述复制的内容，也可以和内容一样。</span></span><br><span class="line">ClipData clipData = ClipData.newPlainText(<span class="string">"copy from demo"</span>, mEtCopy.getText());</span><br><span class="line">mClipboardManager.setPrimaryClip(clipData);</span><br></pre></td></tr></table></figure></p>
-<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 粘贴板有数据，并且是文本</span></span><br><span class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</span><br><span class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) &#123;</span><br><span class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</span><br><span class="line">    CharSequence text = item.getText();</span><br><span class="line">    <span class="keyword">if</span> (text == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mEtPaste.setText(text);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="URI-复制"><a href="#URI-复制" class="headerlink" title="URI 复制"></a>URI 复制</h1><p>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Uri uri = Uri.parse(uriStr);</span><br><span class="line">ClipData clipData = ClipData.newUri(getContentResolver(), <span class="string">"copy from demo"</span>, uri);</span><br><span class="line">mClipboardManager.setPrimaryClip(clipData);</span><br></pre></td></tr></table></figure></p>
-<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</span><br><span class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_URILIST)) &#123;</span><br><span class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</span><br><span class="line">    Uri uri = item.getUri();</span><br><span class="line">    <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mTvScheme.setText(uri.getScheme());</span><br><span class="line">    mTvUri.setText(uri.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Intent-复制"><a href="#Intent-复制" class="headerlink" title="Intent 复制"></a>Intent 复制</h1><p>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, TextActivity.class);</span><br><span class="line">ClipData clipData = ClipData.newIntent(<span class="string">"copy from demo"</span>, intent);</span><br><span class="line">mClipboardManager.setPrimaryClip(clipData);</span><br></pre></td></tr></table></figure></p>
-<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</span><br><span class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_INTENT)) &#123;</span><br><span class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</span><br><span class="line">    Intent intent = item.getIntent();</span><br><span class="line">    <span class="keyword">if</span> (intent == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><p>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一个参数，是描述复制的内容，也可以和内容一样。</span></div><div class="line">ClipData clipData = ClipData.newPlainText(<span class="string">"copy from demo"</span>, mEtCopy.getText());</div><div class="line">mClipboardManager.setPrimaryClip(clipData);</div></pre></td></tr></table></figure></p>
+<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 粘贴板有数据，并且是文本</span></div><div class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</div><div class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) &#123;</div><div class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</div><div class="line">    CharSequence text = item.getText();</div><div class="line">    <span class="keyword">if</span> (text == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    mEtPaste.setText(text);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="URI-复制"><a href="#URI-复制" class="headerlink" title="URI 复制"></a>URI 复制</h1><p>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Uri uri = Uri.parse(uriStr);</div><div class="line">ClipData clipData = ClipData.newUri(getContentResolver(), <span class="string">"copy from demo"</span>, uri);</div><div class="line">mClipboardManager.setPrimaryClip(clipData);</div></pre></td></tr></table></figure></p>
+<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</div><div class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_URILIST)) &#123;</div><div class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</div><div class="line">    Uri uri = item.getUri();</div><div class="line">    <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    mTvScheme.setText(uri.getScheme());</div><div class="line">    mTvUri.setText(uri.toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="Intent-复制"><a href="#Intent-复制" class="headerlink" title="Intent 复制"></a>Intent 复制</h1><p>复制：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, TextActivity.class);</div><div class="line">ClipData clipData = ClipData.newIntent(<span class="string">"copy from demo"</span>, intent);</div><div class="line">mClipboardManager.setPrimaryClip(clipData);</div></pre></td></tr></table></figure></p>
+<p>粘贴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (mClipboardManager.hasPrimaryClip()</div><div class="line">        &amp;&amp; mClipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_INTENT)) &#123;</div><div class="line">    ClipData.Item item = mClipboardManager.getPrimaryClip().getItemAt(<span class="number">0</span>);</div><div class="line">    Intent intent = item.getIntent();</div><div class="line">    <span class="keyword">if</span> (intent == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    startActivity(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>复制粘贴功能的API并不难理解，如果想了解更多的功能，可以看<a href="https://developer.android.google.cn/guide/topics/text/copy-paste.html" target="_blank" rel="external">官方API指南</a>。<br><a href="https://github.com/KennethYo/CopyAndPasteDemo" target="_blank" rel="external">Demo地址</a></p>
 
       
@@ -416,6 +413,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -429,7 +432,7 @@
       
 
       
-        
+      
       
 
       
@@ -481,7 +484,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -512,6 +515,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -661,7 +665,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -681,6 +685,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -707,32 +719,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -774,8 +786,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -785,6 +801,7 @@
 
   
 
+  
 
   
 

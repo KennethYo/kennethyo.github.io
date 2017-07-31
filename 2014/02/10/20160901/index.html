@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Java," />
@@ -82,53 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="作者：Hawstein出处：http://hawstein.com/posts/google-java-style.html声明：本文采用以下协议进行授权：&amp;nbsp;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&amp;nbsp;，转载请注明作者及出处。
-
-##目录
-
-前言
-源文件基础
-源文件结构
-&amp;#26684;式
-命名约定
-编程实践
-Javadoc">
+<meta name="description" content="作者：Hawstein出处：http://hawstein.com/posts/google-java-style.html声明：本文采用以下协议进行授权：&amp;nbsp;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&amp;nbsp;，转载请注明作者及出处。  ##目录  前言 源文件基础 源文件结构 &amp;#26684;式 命名约定 编程实践 Javadoc">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[转]Google Java编程风格指南">
 <meta property="og:url" content="http://www.kennethyo.me/2014/02/10/20160901/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="作者：Hawstein出处：http://hawstein.com/posts/google-java-style.html声明：本文采用以下协议进行授权：&amp;nbsp;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&amp;nbsp;，转载请注明作者及出处。
-
-##目录
-
-前言
-源文件基础
-源文件结构
-&amp;#26684;式
-命名约定
-编程实践
-Javadoc">
+<meta property="og:description" content="作者：Hawstein出处：http://hawstein.com/posts/google-java-style.html声明：本文采用以下协议进行授权：&amp;nbsp;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&amp;nbsp;，转载请注明作者及出处。  ##目录  前言 源文件基础 源文件结构 &amp;#26684;式 命名约定 编程实践 Javadoc">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-01T06:31:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转]Google Java编程风格指南">
-<meta name="twitter:description" content="作者：Hawstein出处：http://hawstein.com/posts/google-java-style.html声明：本文采用以下协议进行授权：&amp;nbsp;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&amp;nbsp;，转载请注明作者及出处。
-
-##目录
-
-前言
-源文件基础
-源文件结构
-&amp;#26684;式
-命名约定
-编程实践
-Javadoc">
+<meta name="twitter:description" content="作者：Hawstein出处：http://hawstein.com/posts/google-java-style.html声明：本文采用以下协议进行授权：&amp;nbsp;自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0&amp;nbsp;，转载请注明作者及出处。  ##目录  前言 源文件基础 源文件结构 &amp;#26684;式 命名约定 编程实践 Javadoc">
 
 
 
@@ -137,7 +115,7 @@ Javadoc">
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -162,11 +140,7 @@ Javadoc">
 
 
 
-  <title> [转]Google Java编程风格指南 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[转]Google Java编程风格指南 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -191,12 +165,16 @@ Javadoc">
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -327,14 +305,7 @@ Javadoc">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [转]Google Java编程风格指南
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[转]Google Java编程风格指南</h1>
         
 
         <div class="post-meta">
@@ -406,7 +377,6 @@ Javadoc">
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -894,6 +864,12 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -905,7 +881,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
       
 
       
-        
+      
       
 
       
@@ -957,7 +933,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -988,6 +964,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -1137,7 +1114,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
         
       </div>
     
-    
+
   </div>
 
   
@@ -1157,6 +1134,14 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -1183,32 +1168,32 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -1250,8 +1235,12 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -1261,6 +1250,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
 
   
 
+  
 
   
 

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android," />
@@ -82,32 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。
-Webview中上传文件这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。
-openFileChooser（）方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。
-ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
+<meta name="description" content="这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。 Webview中上传文件这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。 openFileChooser（）方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。 ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]WebView填坑——小功能篇">
 <meta property="og:url" content="http://www.kennethyo.me/2015/04/22/2015-04-22-16-31-06/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。
-Webview中上传文件这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。
-openFileChooser（）方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。
-ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
+<meta property="og:description" content="这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。 Webview中上传文件这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。 openFileChooser（）方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。 ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-06T11:06:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]WebView填坑——小功能篇">
-<meta name="twitter:description" content="这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。
-Webview中上传文件这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。
-openFileChooser（）方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。
-ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
+<meta name="twitter:description" content="这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。 Webview中上传文件这里的效果类似在pc端上传文件效果，点击打开一个文件选择器，上传文件图片之类的。 openFileChooser（）方法的重载是因为在不同系统中调用的方法参数不一样，具体看注释。 ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
 
 
@@ -116,7 +115,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -141,11 +140,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
 
 
-  <title> [原]WebView填坑——小功能篇 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]WebView填坑——小功能篇 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -170,12 +165,16 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,14 +305,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]WebView填坑——小功能篇
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]WebView填坑——小功能篇</h1>
         
 
         <div class="post-meta">
@@ -385,7 +377,6 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -511,6 +502,12 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -522,7 +519,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
       
 
       
-        
+      
       
 
       
@@ -578,7 +575,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -609,6 +606,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -758,7 +756,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
         
       </div>
     
-    
+
   </div>
 
   
@@ -778,6 +776,14 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -804,32 +810,32 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -871,8 +877,12 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -882,6 +892,7 @@ ValueCallback&amp;amp;lt;Uri&amp;amp;gt; m">
 
   
 
+  
 
   
 

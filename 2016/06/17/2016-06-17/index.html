@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Web,CURL," />
@@ -82,32 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com
-二，自动跳转curl -L www.bitauto.com
-三，显示头信息curl -i www.bitauto.com
-四，显示通信过程curl -v www.bitauto.com更多详细信息curl --trace demo.txt www.bitauto.co">
+<meta name="description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com 二，自动跳转curl -L www.bitauto.com 三，显示头信息curl -i www.bitauto.com 四，显示通信过程curl -v www.bitauto.com更多详细信息curl --trace demo.txt www.bitauto.co">
+<meta name="keywords" content="Web,CURL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CURL常用指令">
 <meta property="og:url" content="http://www.kennethyo.me/2016/06/17/2016-06-17/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com
-二，自动跳转curl -L www.bitauto.com
-三，显示头信息curl -i www.bitauto.com
-四，显示通信过程curl -v www.bitauto.com更多详细信息curl --trace demo.txt www.bitauto.co">
+<meta property="og:description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com 二，自动跳转curl -L www.bitauto.com 三，显示头信息curl -i www.bitauto.com 四，显示通信过程curl -v www.bitauto.com更多详细信息curl --trace demo.txt www.bitauto.co">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-01T06:37:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CURL常用指令">
-<meta name="twitter:description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com
-二，自动跳转curl -L www.bitauto.com
-三，显示头信息curl -i www.bitauto.com
-四，显示通信过程curl -v www.bitauto.com更多详细信息curl --trace demo.txt www.bitauto.co">
+<meta name="twitter:description" content="一，查看网页源代码curl www.bitauto.com保存网页curl -o demo.txt www.bitauto.com 二，自动跳转curl -L www.bitauto.com 三，显示头信息curl -i www.bitauto.com 四，显示通信过程curl -v www.bitauto.com更多详细信息curl --trace demo.txt www.bitauto.co">
 
 
 
@@ -116,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -141,11 +140,7 @@
 
 
 
-  <title> CURL常用指令 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>CURL常用指令 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -170,12 +165,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,14 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                CURL常用指令
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">CURL常用指令</h1>
         
 
         <div class="post-meta">
@@ -386,7 +378,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -422,6 +413,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -435,7 +432,7 @@
       
 
       
-        
+      
       
 
       
@@ -491,7 +488,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -522,6 +519,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -671,7 +669,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -691,6 +689,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -717,32 +723,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -784,8 +790,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -795,6 +805,7 @@
 
   
 
+  
 
   
 

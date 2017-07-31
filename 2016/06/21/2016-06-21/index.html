@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android,反编译,brew," />
@@ -82,29 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="1，环境准备brew install apktoolbrew install dex2jarjd-gui
-2，反编译 代码解压 apk 拿到 dex 文件执行 d2j-dex2jar classes.dex 获取到 jar 文件，拖进 jd-gui 就可以了
-3，反编译资源文件执行 apktool  d *.apk-f  如果目标文件存在，删除存在-o 指定目标文件夹名字-s 不反编译 dex 文">
+<meta name="description" content="1，环境准备brew install apktoolbrew install dex2jarjd-gui 2，反编译 代码解压 apk 拿到 dex 文件执行 d2j-dex2jar classes.dex 获取到 jar 文件，拖进 jd-gui 就可以了 3，反编译资源文件执行 apktool  d *.apk-f  如果目标文件存在，删除存在-o 指定目标文件夹名字-s 不反编译 dex 文">
+<meta name="keywords" content="Android,反编译,brew">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac 下反编译 apk">
 <meta property="og:url" content="http://www.kennethyo.me/2016/06/21/2016-06-21/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="1，环境准备brew install apktoolbrew install dex2jarjd-gui
-2，反编译 代码解压 apk 拿到 dex 文件执行 d2j-dex2jar classes.dex 获取到 jar 文件，拖进 jd-gui 就可以了
-3，反编译资源文件执行 apktool  d *.apk-f  如果目标文件存在，删除存在-o 指定目标文件夹名字-s 不反编译 dex 文">
+<meta property="og:description" content="1，环境准备brew install apktoolbrew install dex2jarjd-gui 2，反编译 代码解压 apk 拿到 dex 文件执行 d2j-dex2jar classes.dex 获取到 jar 文件，拖进 jd-gui 就可以了 3，反编译资源文件执行 apktool  d *.apk-f  如果目标文件存在，删除存在-o 指定目标文件夹名字-s 不反编译 dex 文">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-01T06:36:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 下反编译 apk">
-<meta name="twitter:description" content="1，环境准备brew install apktoolbrew install dex2jarjd-gui
-2，反编译 代码解压 apk 拿到 dex 文件执行 d2j-dex2jar classes.dex 获取到 jar 文件，拖进 jd-gui 就可以了
-3，反编译资源文件执行 apktool  d *.apk-f  如果目标文件存在，删除存在-o 指定目标文件夹名字-s 不反编译 dex 文">
+<meta name="twitter:description" content="1，环境准备brew install apktoolbrew install dex2jarjd-gui 2，反编译 代码解压 apk 拿到 dex 文件执行 d2j-dex2jar classes.dex 获取到 jar 文件，拖进 jd-gui 就可以了 3，反编译资源文件执行 apktool  d *.apk-f  如果目标文件存在，删除存在-o 指定目标文件夹名字-s 不反编译 dex 文">
 
 
 
@@ -113,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -138,11 +140,7 @@
 
 
 
-  <title> Mac 下反编译 apk | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Mac 下反编译 apk | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -167,12 +165,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -303,14 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Mac 下反编译 apk
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Mac 下反编译 apk</h1>
         
 
         <div class="post-meta">
@@ -383,7 +378,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -414,6 +408,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -429,7 +429,7 @@
       
 
       
-        
+      
       
 
       
@@ -485,7 +485,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -516,6 +516,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -665,7 +666,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -685,6 +686,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -711,32 +720,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -778,8 +787,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -789,6 +802,7 @@
 
   
 
+  
 
   
 

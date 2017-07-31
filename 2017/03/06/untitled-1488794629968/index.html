@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="git,git-flow," />
@@ -82,29 +88,28 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。
-作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
+<meta name="description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。 作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
+<meta name="keywords" content="git,git-flow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git-flow 学习总结">
 <meta property="og:url" content="http://www.kennethyo.me/2017/03/06/untitled-1488794629968/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。
-作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
+<meta property="og:description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。 作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdd9shg2uoj30yg1cpn9p.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdcxolq5hvj30dw0gu759.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdcxrpvc6lj306y0k63yz.jpg">
 <meta property="og:updated_time" content="2017-03-06T10:37:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git-flow 学习总结">
-<meta name="twitter:description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。
-作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
+<meta name="twitter:description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。 作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdd9shg2uoj30yg1cpn9p.jpg">
 
 
@@ -114,7 +119,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -139,11 +144,7 @@
 
 
 
-  <title> Git-flow 学习总结 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Git-flow 学习总结 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -168,12 +169,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -304,14 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Git-flow 学习总结
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Git-flow 学习总结</h1>
         
 
         <div class="post-meta">
@@ -384,7 +382,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -400,36 +397,36 @@
 <h1 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h1><p>tag 永远只在 <code>master</code> 分支创建。</p>
 <p><code>release/*</code> 分支合并到 <code>master</code> 之后，推送 <code>master</code> 到远端，然后创建 <code>tag</code> , 推送 <code>tag</code>到远端。<br><code>hotfix/*</code> 分支合并到 <code>master</code> 之后，推送 <code>master</code> 到远端，然后创建 <code>tag</code> , 推送 <code>tag</code>到远端。</p>
 <h1 id="操作流"><a href="#操作流" class="headerlink" title="操作流"></a>操作流</h1><p>我们根据上面的理论，进行一次完整操作。</p>
-<h2 id="创建-develop-分支"><a href="#创建-develop-分支" class="headerlink" title="创建 develop 分支"></a>创建 develop 分支</h2><p>新仓库默认是 <code>master</code> 分支，<code>master</code> 分支只作为发布版本，日常开发都要基于开发分支 <code>develop</code>。从 <code>master</code> 分支创建 <code>develop</code> 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop master</span><br></pre></td></tr></table></figure></p>
-<p>推送 <code>develop</code>分支，到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure></p>
-<h2 id="v0-1-0-开始开发"><a href="#v0-1-0-开始开发" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h2><p>现在来开发第一个版本 <code>v0.1.0</code>，首先从 <code>develop</code> 创建分支 <code>feature/v0.1.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature/v0.1.0 develop</span><br></pre></td></tr></table></figure></p>
-<p>推送到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature/v0.1.0</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建-develop-分支"><a href="#创建-develop-分支" class="headerlink" title="创建 develop 分支"></a>创建 develop 分支</h2><p>新仓库默认是 <code>master</code> 分支，<code>master</code> 分支只作为发布版本，日常开发都要基于开发分支 <code>develop</code>。从 <code>master</code> 分支创建 <code>develop</code> 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop master</div></pre></td></tr></table></figure></p>
+<p>推送 <code>develop</code>分支，到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin develop</div></pre></td></tr></table></figure></p>
+<h2 id="v0-1-0-开始开发"><a href="#v0-1-0-开始开发" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h2><p>现在来开发第一个版本 <code>v0.1.0</code>，首先从 <code>develop</code> 创建分支 <code>feature/v0.1.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b feature/v0.1.0 develop</div></pre></td></tr></table></figure></p>
+<p>推送到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin feature/v0.1.0</div></pre></td></tr></table></figure></p>
 <p>各种 <code>v0.1.0</code>版本功能代码的提交…<br>…….</p>
-<h2 id="v0-1-0-完成开发"><a href="#v0-1-0-完成开发" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h2><p>开发完成后，将 <code>feature/v0.1.0</code> 合并到 <code>develop</code>  分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line">git merge --no-ff feature/v0.1.0</span><br></pre></td></tr></table></figure></p>
-<p><code>--no-ff</code> 参数的意思是不进行快速合并，<code>merge</code>命令默认会进行“快进式合并（fast-farward merge）”，直接将 <code>develop</code> 指向 <code>feature/v0.1.0</code>，这里使用<a href="http://www.ruanyifeng.com/" target="_blank" rel="external">阮一峰</a>在<a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="external">Git分支管理策略</a>中的图片。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdcxolq5hvj30dw0gu759.jpg" alt="Alt text|center|300x0"><br>加上<code>--no-ff</code> 参数后，合并的时候会生成一个新节点。可以保证版本演进的清晰。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdcxrpvc6lj306y0k63yz.jpg" alt="enter image description here|center|0x300"><br>推送到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure></p>
-<p>删除 <code>feature/v0.1.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -b feature/v0.1.0</span><br></pre></td></tr></table></figure></p>
-<h2 id="预发布"><a href="#预发布" class="headerlink" title="预发布"></a>预发布</h2><p>开发完成之后，要进行测试，fix bugs。创建预发布分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b release/v0.1.0 develop</span><br><span class="line">git push origin release/v0.1.0</span><br></pre></td></tr></table></figure></p>
+<h2 id="v0-1-0-完成开发"><a href="#v0-1-0-完成开发" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h2><p>开发完成后，将 <code>feature/v0.1.0</code> 合并到 <code>develop</code>  分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout develop</div><div class="line">git merge --no-ff feature/v0.1.0</div></pre></td></tr></table></figure></p>
+<p><code>--no-ff</code> 参数的意思是不进行快速合并，<code>merge</code>命令默认会进行“快进式合并（fast-farward merge）”，直接将 <code>develop</code> 指向 <code>feature/v0.1.0</code>，这里使用<a href="http://www.ruanyifeng.com/" target="_blank" rel="external">阮一峰</a>在<a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="external">Git分支管理策略</a>中的图片。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdcxolq5hvj30dw0gu759.jpg" alt="Alt text|center|300x0"><br>加上<code>--no-ff</code> 参数后，合并的时候会生成一个新节点。可以保证版本演进的清晰。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdcxrpvc6lj306y0k63yz.jpg" alt="enter image description here|center|0x300"><br>推送到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin develop</div></pre></td></tr></table></figure></p>
+<p>删除 <code>feature/v0.1.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -b feature/v0.1.0</div></pre></td></tr></table></figure></p>
+<h2 id="预发布"><a href="#预发布" class="headerlink" title="预发布"></a>预发布</h2><p>开发完成之后，要进行测试，fix bugs。创建预发布分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout -b release/v0.1.0 develop</div><div class="line">git push origin release/v0.1.0</div></pre></td></tr></table></figure></p>
 <p>各种测试，各种蹂躏，各种 fix bugs ……</p>
-<h2 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h2><p>经过测试和修复，终于要上线了，合并 <code>release/v0.1.0</code> 到 <code>master</code> 和 <code>develop</code>：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并到master</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge --no-ff release/v0.<span class="number">1.0</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#打上tag</span></span><br><span class="line">git tag -a v0.<span class="number">1.0</span> -m <span class="string">"publish v0.1.0"</span></span><br><span class="line">git push origin v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#合并到develop</span></span><br><span class="line">git checkout develop</span><br><span class="line">git merge --no-ff release/v0.<span class="number">1.0</span></span><br><span class="line">git push origin develop</span><br><span class="line"><span class="comment">#删除 release/v0.1.0</span></span><br><span class="line">git branch -d release/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="出-bug-了"><a href="#出-bug-了" class="headerlink" title="出 bug 了"></a>出 bug 了</h2><p>代码上线之后，出 bug 是谁都不愿意看到的，但是难免会出的嘛。下面我们进行修复，下面我们从 <code>master</code> 创建 <code>hotfix/v0.1.0</code> 分支，进行修复工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hotfix/v0.1.0 master</span><br><span class="line">git push origin hotfix/v0.1.0</span><br></pre></td></tr></table></figure></p>
-<p>修复完成之后合并到 <code>master</code> 和 <code>develop</code> 分支：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并到master</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge --no-ff hotfix/v0.<span class="number">1.0</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#打上tag</span></span><br><span class="line">git tag -a v0.<span class="number">1.1</span> -m <span class="string">"publish v0.1.1"</span></span><br><span class="line">git push origin v0.<span class="number">1.1</span></span><br><span class="line"><span class="comment">#合并到develop</span></span><br><span class="line">git checkout develop</span><br><span class="line">git merge --no-ff hotfix/v0.<span class="number">1.0</span></span><br><span class="line">git push origin develop</span><br><span class="line"><span class="comment">#删除 hotfix/v0.1.0</span></span><br><span class="line">git branch -d hotfix/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h2><p>经过测试和修复，终于要上线了，合并 <code>release/v0.1.0</code> 到 <code>master</code> 和 <code>develop</code>：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#合并到master</span></div><div class="line">git checkout master</div><div class="line">git merge --no-ff release/v0.<span class="number">1.0</span></div><div class="line">git push origin master</div><div class="line"><span class="comment">#打上tag</span></div><div class="line">git tag -a v0.<span class="number">1.0</span> -m <span class="string">"publish v0.1.0"</span></div><div class="line">git push origin v0.<span class="number">1.0</span></div><div class="line"><span class="comment">#合并到develop</span></div><div class="line">git checkout develop</div><div class="line">git merge --no-ff release/v0.<span class="number">1.0</span></div><div class="line">git push origin develop</div><div class="line"><span class="comment">#删除 release/v0.1.0</span></div><div class="line">git branch -d release/v0.<span class="number">1.0</span></div></pre></td></tr></table></figure></p>
+<h2 id="出-bug-了"><a href="#出-bug-了" class="headerlink" title="出 bug 了"></a>出 bug 了</h2><p>代码上线之后，出 bug 是谁都不愿意看到的，但是难免会出的嘛。下面我们进行修复，下面我们从 <code>master</code> 创建 <code>hotfix/v0.1.0</code> 分支，进行修复工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout -b hotfix/v0.1.0 master</div><div class="line">git push origin hotfix/v0.1.0</div></pre></td></tr></table></figure></p>
+<p>修复完成之后合并到 <code>master</code> 和 <code>develop</code> 分支：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#合并到master</span></div><div class="line">git checkout master</div><div class="line">git merge --no-ff hotfix/v0.<span class="number">1.0</span></div><div class="line">git push origin master</div><div class="line"><span class="comment">#打上tag</span></div><div class="line">git tag -a v0.<span class="number">1.1</span> -m <span class="string">"publish v0.1.1"</span></div><div class="line">git push origin v0.<span class="number">1.1</span></div><div class="line"><span class="comment">#合并到develop</span></div><div class="line">git checkout develop</div><div class="line">git merge --no-ff hotfix/v0.<span class="number">1.0</span></div><div class="line">git push origin develop</div><div class="line"><span class="comment">#删除 hotfix/v0.1.0</span></div><div class="line">git branch -d hotfix/v0.<span class="number">1.0</span></div></pre></td></tr></table></figure></p>
 <h1 id="利与弊"><a href="#利与弊" class="headerlink" title="利与弊"></a>利与弊</h1><p>各个分支，各司其职，清晰可控。</p>
 <p>经常切换分支，容易进行误操作（在不对应的分支上进行提交，细心能够解决）。</p>
 <h1 id="Git-flow-工具"><a href="#Git-flow-工具" class="headerlink" title="Git-flow 工具"></a>Git-flow 工具</h1><p>由 <code>git flow</code> 提出者 <a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">Vincent Driessen</a>开发的 <code>git flow</code>工具。</p>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://github.com/mxcl/homebrew" target="_blank" rel="external">Homebrew</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git-flow</span><br></pre></td></tr></table></figure>
-<h3 id="MacPorts"><a href="#MacPorts" class="headerlink" title="MacPorts"></a><a href="https://www.macports.org/" target="_blank" rel="external">MacPorts</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port install git-flow</span><br></pre></td></tr></table></figure>
-<h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a><a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="external">wget</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash</span><br></pre></td></tr></table></figure>
-<h3 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a><a href="https://zh.wikipedia.org/zh-cn/CURL" target="_blank" rel="external">cURL</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L -O https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh</span><br><span class="line">sudo bash gitflow-installer.sh</span><br></pre></td></tr></table></figure>
-<h2 id="操作流-1"><a href="#操作流-1" class="headerlink" title="操作流"></a>操作流</h2><p>在项目根目录初始化 <code>git flow</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow init</span><br></pre></td></tr></table></figure></p>
-<p>会出现如下的一系列问题，都是设置各个分支前缀，直接回车默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Which branch should be used for bringing forth production releases?</span><br><span class="line">   - master</span><br><span class="line">Branch name for production releases: [master]</span><br><span class="line">Branch name for &quot;next release&quot; development: [develop]</span><br><span class="line"></span><br><span class="line">How to name your supporting branch prefixes?</span><br><span class="line">Feature branches? [feature/]</span><br><span class="line">Release branches? [release/]</span><br><span class="line">Hotfix branches? [hotfix/]</span><br><span class="line">Support branches? [support/]</span><br><span class="line">Version tag prefix? []</span><br></pre></td></tr></table></figure></p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://github.com/mxcl/homebrew" target="_blank" rel="external">Homebrew</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install git-flow</div></pre></td></tr></table></figure>
+<h3 id="MacPorts"><a href="#MacPorts" class="headerlink" title="MacPorts"></a><a href="https://www.macports.org/" target="_blank" rel="external">MacPorts</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">port install git-flow</div></pre></td></tr></table></figure>
+<h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a><a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="external">wget</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash</div></pre></td></tr></table></figure>
+<h3 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a><a href="https://zh.wikipedia.org/zh-cn/CURL" target="_blank" rel="external">cURL</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -L -O https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh</div><div class="line">sudo bash gitflow-installer.sh</div></pre></td></tr></table></figure>
+<h2 id="操作流-1"><a href="#操作流-1" class="headerlink" title="操作流"></a>操作流</h2><p>在项目根目录初始化 <code>git flow</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow init</div></pre></td></tr></table></figure></p>
+<p>会出现如下的一系列问题，都是设置各个分支前缀，直接回车默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Which branch should be used for bringing forth production releases?</div><div class="line">   - master</div><div class="line">Branch name for production releases: [master]</div><div class="line">Branch name for &quot;next release&quot; development: [develop]</div><div class="line"></div><div class="line">How to name your supporting branch prefixes?</div><div class="line">Feature branches? [feature/]</div><div class="line">Release branches? [release/]</div><div class="line">Hotfix branches? [hotfix/]</div><div class="line">Support branches? [support/]</div><div class="line">Version tag prefix? []</div></pre></td></tr></table></figure></p>
 <p>初始化完成之后，当前分支会变成 <code>develop</code> 分支。</p>
-<h3 id="v0-1-0-开始开发-1"><a href="#v0-1-0-开始开发-1" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>feature/v0.1.0</code> 分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature start v0.1.0</span><br></pre></td></tr></table></figure></p>
-<p>推送分支到远端：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git flow feature publish v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">git push origin feature/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="v0-1-0-完成开发-1"><a href="#v0-1-0-完成开发-1" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h3><p>输入如下命令，会把 <code>feature/v0.1.0</code> 分支合并到 <code>develop</code> 分支，并删除 <code>feature/v0.1.0</code>分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature finish v0.1.0</span><br></pre></td></tr></table></figure></p>
-<h3 id="预发布-1"><a href="#预发布-1" class="headerlink" title="预发布"></a>预发布</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>release/v0.1.0</code> 分支：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git flow release start v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#推送到远端</span></span><br><span class="line">git flow release publish v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">git push origin release/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="发布版本-1"><a href="#发布版本-1" class="headerlink" title="发布版本"></a>发布版本</h3><p>输入如下命令，会把 <code>release/v0.1.0</code> 分支合并到 <code>develop</code> 分支和 <code>master</code> 分支，并删除 <code>release/v0.1.0</code>分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow release finish v0.1.0</span><br></pre></td></tr></table></figure></p>
-<h3 id="出-bug-了-1"><a href="#出-bug-了-1" class="headerlink" title="出 bug 了"></a>出 bug 了</h3><p>输入如下命令，会从 <code>master</code> 创建 <code>hotfix/v0.1.1</code> 分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow hotfix start v0.1.1</span><br></pre></td></tr></table></figure></p>
-<p>修复完成，输入如下命令，会合分别合并到 <code>master</code> 和 <code>develop</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow hotfix finish v0.1.1</span><br></pre></td></tr></table></figure></p>
+<h3 id="v0-1-0-开始开发-1"><a href="#v0-1-0-开始开发-1" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>feature/v0.1.0</code> 分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature start v0.1.0</div></pre></td></tr></table></figure></p>
+<p>推送分支到远端：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git flow feature publish v0.<span class="number">1.0</span></div><div class="line"><span class="comment">#或者</span></div><div class="line">git push origin feature/v0.<span class="number">1.0</span></div></pre></td></tr></table></figure></p>
+<h3 id="v0-1-0-完成开发-1"><a href="#v0-1-0-完成开发-1" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h3><p>输入如下命令，会把 <code>feature/v0.1.0</code> 分支合并到 <code>develop</code> 分支，并删除 <code>feature/v0.1.0</code>分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature finish v0.1.0</div></pre></td></tr></table></figure></p>
+<h3 id="预发布-1"><a href="#预发布-1" class="headerlink" title="预发布"></a>预发布</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>release/v0.1.0</code> 分支：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git flow release start v0.<span class="number">1.0</span></div><div class="line"><span class="comment">#推送到远端</span></div><div class="line">git flow release publish v0.<span class="number">1.0</span></div><div class="line"><span class="comment">#或者</span></div><div class="line">git push origin release/v0.<span class="number">1.0</span></div></pre></td></tr></table></figure></p>
+<h3 id="发布版本-1"><a href="#发布版本-1" class="headerlink" title="发布版本"></a>发布版本</h3><p>输入如下命令，会把 <code>release/v0.1.0</code> 分支合并到 <code>develop</code> 分支和 <code>master</code> 分支，并删除 <code>release/v0.1.0</code>分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow release finish v0.1.0</div></pre></td></tr></table></figure></p>
+<h3 id="出-bug-了-1"><a href="#出-bug-了-1" class="headerlink" title="出 bug 了"></a>出 bug 了</h3><p>输入如下命令，会从 <code>master</code> 创建 <code>hotfix/v0.1.1</code> 分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow hotfix start v0.1.1</div></pre></td></tr></table></figure></p>
+<p>修复完成，输入如下命令，会合分别合并到 <code>master</code> 和 <code>develop</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow hotfix finish v0.1.1</div></pre></td></tr></table></figure></p>
 <h1 id="抄袭文献"><a href="#抄袭文献" class="headerlink" title="抄袭文献"></a>抄袭文献</h1><p>1，<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="external">Git 工作流程</a><br>2，<a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="external">Git分支管理策略</a><br>3，<a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">A successful Git branching model</a><br>4，<a href="https://github.com/nvie/gitflow" target="_blank" rel="external">gitflow</a><br>5，<a href="http://stormzhang.com/git/2014/01/29/git-flow/" target="_blank" rel="external">使用GIT FLOW管理开发流程</a><br>6，<a href="https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow" target="_blank" rel="external">git-flow 的工作流程</a></p>
 
       
@@ -449,6 +446,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -462,7 +465,7 @@
       
 
       
-        
+      
       
 
       
@@ -518,7 +521,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -549,6 +552,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -698,7 +702,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -718,6 +722,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -744,32 +756,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -811,8 +823,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -822,6 +838,7 @@
 
   
 
+  
 
   
 

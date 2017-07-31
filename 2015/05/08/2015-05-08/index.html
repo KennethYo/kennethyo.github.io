@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android," />
@@ -82,36 +88,26 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：
-
-这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。
-我这里解决的方案是通过设备的MCC/MNC代码来判断。
-首先，我们要了解MCC/MNC是什么">
+<meta name="description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：  这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。 我这里解决的方案是通过设备的MCC/MNC代码来判断。 首先，我们要了解MCC/MNC是什么">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]Android获取运营商">
 <meta property="og:url" content="http://www.kennethyo.me/2015/05/08/2015-05-08/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：
-
-这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。
-我这里解决的方案是通过设备的MCC/MNC代码来判断。
-首先，我们要了解MCC/MNC是什么">
+<meta property="og:description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：  这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。 我这里解决的方案是通过设备的MCC/MNC代码来判断。 首先，我们要了解MCC/MNC是什么">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20150508163804803">
 <meta property="og:updated_time" content="2016-09-01T06:39:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Android获取运营商">
-<meta name="twitter:description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：
-
-这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。
-我这里解决的方案是通过设备的MCC/MNC代码来判断。
-首先，我们要了解MCC/MNC是什么">
+<meta name="twitter:description" content="今天接到一个新需求，要给服务器上送设备运营商名称，之后我的第一反应是，umeng都无法精确统计运营商，我如何判断上送具体的运营商呢？如下图：  这张图里反映了友盟统计到用户手机的运营商名称，这些名称什么样子的都有。有什么办法精确判断具体是什么运营商呢？比如，只返回“中国移动”，“中国联通”，“中国电信”。 我这里解决的方案是通过设备的MCC/MNC代码来判断。 首先，我们要了解MCC/MNC是什么">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20150508163804803">
 
 
@@ -121,7 +117,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -146,11 +142,7 @@
 
 
 
-  <title> [原]Android获取运营商 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]Android获取运营商 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -175,12 +167,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -311,14 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]Android获取运营商
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]Android获取运营商</h1>
         
 
         <div class="post-meta">
@@ -391,7 +380,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -451,6 +439,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -462,7 +456,7 @@
       
 
       
-        
+      
       
 
       
@@ -518,7 +512,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -549,6 +543,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -673,7 +668,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -693,6 +688,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -719,32 +722,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -786,8 +789,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -797,6 +804,7 @@
 
   
 
+  
 
   
 

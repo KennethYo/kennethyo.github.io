@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android,View," />
@@ -82,29 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。
-卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。
-CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta name="description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。 卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。 CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta name="keywords" content="Android,View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]CardView初级使用">
 <meta property="og:url" content="http://www.kennethyo.me/2014/12/28/2014-12-28/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。
-卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。
-CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta property="og:description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。 卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。 CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-01T06:35:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]CardView初级使用">
-<meta name="twitter:description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。
-卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。
-CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
+<meta name="twitter:description" content="CardView发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里传送门。 卡片化是全新的Material风&amp;#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。 CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_view:cardElevation">
 
 
 
@@ -113,7 +115,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -138,11 +140,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
 
 
-  <title> [原]CardView初级使用 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]CardView初级使用 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -167,12 +165,16 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -303,14 +305,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]CardView初级使用
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]CardView初级使用</h1>
         
 
         <div class="post-meta">
@@ -383,7 +378,6 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -429,6 +423,12 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -442,7 +442,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
       
 
       
-        
+      
       
 
       
@@ -498,7 +498,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -529,6 +529,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -653,7 +654,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
         
       </div>
     
-    
+
   </div>
 
   
@@ -673,6 +674,14 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -699,32 +708,32 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -766,8 +775,12 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -777,6 +790,7 @@ CardView继承于Framelayout，比FrameLayout多了3个重要的属性，card_vi
 
   
 
+  
 
   
 

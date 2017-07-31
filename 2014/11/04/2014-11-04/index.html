@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android," />
@@ -82,33 +88,26 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="（转载，请注明出处：http://www.kennethyo.me/post/android/palettechu-ji-shi-yong）
-
-相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。
-这里就要说到，不久前Android在v7包中更">
+<meta name="description" content="（转载，请注明出处：http://www.kennethyo.me/post/android/palettechu-ji-shi-yong）  相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。 这里就要说到，不久前Android在v7包中更">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]Palette的使用">
 <meta property="og:url" content="http://www.kennethyo.me/2014/11/04/2014-11-04/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="（转载，请注明出处：http://www.kennethyo.me/post/android/palettechu-ji-shi-yong）
-
-相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。
-这里就要说到，不久前Android在v7包中更">
+<meta property="og:description" content="（转载，请注明出处：http://www.kennethyo.me/post/android/palettechu-ji-shi-yong）  相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。 这里就要说到，不久前Android在v7包中更">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20141105134308933?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:updated_time" content="2016-09-01T06:34:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Palette的使用">
-<meta name="twitter:description" content="（转载，请注明出处：http://www.kennethyo.me/post/android/palettechu-ji-shi-yong）
-
-相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。
-这里就要说到，不久前Android在v7包中更">
+<meta name="twitter:description" content="（转载，请注明出处：http://www.kennethyo.me/post/android/palettechu-ji-shi-yong）  相信有不少的人已经开始关注Android Lollipop，全新的Material设计风&amp;#26684;让人&amp;#30524;前一亮，Material强调大胆的阴影和高亮搭配，引用那些意料之外和充满活力的颜色。 这里就要说到，不久前Android在v7包中更">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20141105134308933?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
@@ -118,7 +117,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -143,11 +142,7 @@
 
 
 
-  <title> [原]Palette的使用 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]Palette的使用 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -172,12 +167,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,14 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]Palette的使用
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]Palette的使用</h1>
         
 
         <div class="post-meta">
@@ -388,7 +380,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -441,6 +432,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -452,7 +449,7 @@
       
 
       
-        
+      
       
 
       
@@ -508,7 +505,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -539,6 +536,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -663,7 +661,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -683,6 +681,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -709,32 +715,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -776,8 +782,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -787,6 +797,7 @@
 
   
 
+  
 
   
 

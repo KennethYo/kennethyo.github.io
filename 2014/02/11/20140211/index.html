@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android," />
@@ -82,33 +88,26 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。
-最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期）
-本篇博客主要介绍如何用Fragment实现Tabhost效果。
-下图红色部分是RelativeLayout，用来实现Fragment的容器；绿色部分为RadioGroup">
+<meta name="description" content="我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。 最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期） 本篇博客主要介绍如何用Fragment实现Tabhost效果。 下图红色部分是RelativeLayout，用来实现Fragment的容器；绿色部分为RadioGroup">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]用Fragment来代替过期的Tabhost和ActivityGroup">
 <meta property="og:url" content="http://www.kennethyo.me/2014/02/11/20140211/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。
-最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期）
-本篇博客主要介绍如何用Fragment实现Tabhost效果。
-下图红色部分是RelativeLayout，用来实现Fragment的容器；绿色部分为RadioGroup">
+<meta property="og:description" content="我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。 最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期） 本篇博客主要介绍如何用Fragment实现Tabhost效果。 下图红色部分是RelativeLayout，用来实现Fragment的容器；绿色部分为RadioGroup">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20140211130538312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:updated_time" content="2016-09-01T06:32:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]用Fragment来代替过期的Tabhost和ActivityGroup">
-<meta name="twitter:description" content="我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。
-最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期）
-本篇博客主要介绍如何用Fragment实现Tabhost效果。
-下图红色部分是RelativeLayout，用来实现Fragment的容器；绿色部分为RadioGroup">
+<meta name="twitter:description" content="我去年9月份做的一个项目中，主界面也是选项卡这种效果，搭建项目的另一位工程师仍然使用的是Tabhost。 最近想起这件事来，便有了这篇博客。（Tabhost和ActivityGroup分别在api 13 和 14 中标记为过期） 本篇博客主要介绍如何用Fragment实现Tabhost效果。 下图红色部分是RelativeLayout，用来实现Fragment的容器；绿色部分为RadioGroup">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20140211130538312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
@@ -118,7 +117,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -143,11 +142,7 @@
 
 
 
-  <title> [原]用Fragment来代替过期的Tabhost和ActivityGroup | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]用Fragment来代替过期的Tabhost和ActivityGroup | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -172,12 +167,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,14 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]用Fragment来代替过期的Tabhost和ActivityGroup
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]用Fragment来代替过期的Tabhost和ActivityGroup</h1>
         
 
         <div class="post-meta">
@@ -387,7 +379,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -570,6 +561,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -581,7 +578,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
       
 
       
-        
+      
       
 
       
@@ -637,7 +634,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -668,6 +665,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -792,7 +790,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
         
       </div>
     
-    
+
   </div>
 
   
@@ -812,6 +810,14 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -838,32 +844,32 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -905,8 +911,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -916,6 +926,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
 
   
 
+  
 
   
 

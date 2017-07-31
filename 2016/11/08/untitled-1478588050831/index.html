@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="CI," />
@@ -82,29 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="以下都用 BrakeLight 项目举例。
-
-#Circleci在项目目录中创建 circle.yml 文件，内容如下：12345678910111213machine:  java:      version: oraclejdk8dependencies:  pre:    - if [ ! -d &quot;/usr/local/android-sdk-linux/platforms/android">
+<meta name="description" content="以下都用 BrakeLight 项目举例。  #Circleci在项目目录中创建 circle.yml 文件，内容如下：12345678910111213machine:  java:      version: oraclejdk8dependencies:  pre:    - if [ ! -d &quot;/usr/local/android-sdk-linux/platforms/android">
+<meta name="keywords" content="CI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Travis 和 CircleCI 配置文件">
 <meta property="og:url" content="http://www.kennethyo.me/2016/11/08/untitled-1478588050831/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="以下都用 BrakeLight 项目举例。
-
-#Circleci在项目目录中创建 circle.yml 文件，内容如下：12345678910111213machine:  java:      version: oraclejdk8dependencies:  pre:    - if [ ! -d &quot;/usr/local/android-sdk-linux/platforms/android">
+<meta property="og:description" content="以下都用 BrakeLight 项目举例。  #Circleci在项目目录中创建 circle.yml 文件，内容如下：12345678910111213machine:  java:      version: oraclejdk8dependencies:  pre:    - if [ ! -d &quot;/usr/local/android-sdk-linux/platforms/android">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-11-08T07:11:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Travis 和 CircleCI 配置文件">
-<meta name="twitter:description" content="以下都用 BrakeLight 项目举例。
-
-#Circleci在项目目录中创建 circle.yml 文件，内容如下：12345678910111213machine:  java:      version: oraclejdk8dependencies:  pre:    - if [ ! -d &quot;/usr/local/android-sdk-linux/platforms/android">
+<meta name="twitter:description" content="以下都用 BrakeLight 项目举例。  #Circleci在项目目录中创建 circle.yml 文件，内容如下：12345678910111213machine:  java:      version: oraclejdk8dependencies:  pre:    - if [ ! -d &quot;/usr/local/android-sdk-linux/platforms/android">
 
 
 
@@ -113,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -138,11 +140,7 @@
 
 
 
-  <title> Travis 和 CircleCI 配置文件 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Travis 和 CircleCI 配置文件 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -167,12 +165,16 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -303,14 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Travis 和 CircleCI 配置文件
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Travis 和 CircleCI 配置文件</h1>
         
 
         <div class="post-meta">
@@ -383,7 +378,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -393,8 +387,8 @@
         <blockquote>
 <p>以下都用 <a href="https://github.com/KennethYo/BrakeLight" target="_blank" rel="external"><code>BrakeLight</code></a> 项目举例。</p>
 </blockquote>
-<p>#<a href="https://circleci.com/" target="_blank" rel="external">Circleci</a><br>在项目目录中创建 <code>circle.yml</code> 文件，内容如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">machine:</span></span><br><span class="line">  <span class="symbol">java:</span></span><br><span class="line">      <span class="symbol">version:</span> oraclejdk8</span><br><span class="line"></span><br><span class="line"><span class="symbol">dependencies:</span></span><br><span class="line">  <span class="symbol">pre:</span></span><br><span class="line">    - <span class="keyword">if</span> [ ! -d <span class="string">"/usr/local/android-sdk-linux/platforms/android-24"</span> ]; <span class="keyword">then</span> echo y <span class="params">| android update sdk --no-ui --all --filter "android-24"; fi</span><br><span class="line">    - <span class="keyword">if</span> [ ! -d "/usr/local/android-sdk-linux/build-tools/24.0.2" ]; <span class="keyword">then</span> echo y |</span> android update sdk --no-ui --all --filter <span class="string">"build-tools-24.0.2"</span>; fi</span><br><span class="line">    - <span class="keyword">if</span> [ ! -d <span class="string">"/usr/local/android_sdk/extras/android/m2repository/com/android/support/support-core-utils/24.2.1"</span> ]; <span class="keyword">then</span> echo y <span class="params">| android update sdk --no-ui --all --filter "extra-android-m2repository"; fi</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">  override:</span><br><span class="line">    - ./gradlew assembleRelease</span></span><br></pre></td></tr></table></figure></p>
-<p>#<a href="https://travis-ci.org" target="_blank" rel="external">Travis</a><br>在项目目录中创建 <code>.travis.yml</code> 文件，内容如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sudo:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">language:</span> android</span><br><span class="line"></span><br><span class="line"><span class="symbol">jdk:</span></span><br><span class="line">  - oraclejdk8</span><br><span class="line"></span><br><span class="line"><span class="symbol">android:</span></span><br><span class="line">  <span class="symbol">components:</span></span><br><span class="line">    - platform-tools</span><br><span class="line">    - tools</span><br><span class="line">    - build-tools-<span class="number">24.0</span>.<span class="number">2</span></span><br><span class="line">    - android-<span class="number">24</span></span><br><span class="line">    - extra-android-m2repository</span><br><span class="line">    - extra-android-support</span><br></pre></td></tr></table></figure></p>
+<p>#<a href="https://circleci.com/" target="_blank" rel="external">Circleci</a><br>在项目目录中创建 <code>circle.yml</code> 文件，内容如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">machine:</span></div><div class="line">  <span class="symbol">java:</span></div><div class="line">      <span class="symbol">version:</span> oraclejdk8</div><div class="line"></div><div class="line"><span class="symbol">dependencies:</span></div><div class="line">  <span class="symbol">pre:</span></div><div class="line">    - <span class="keyword">if</span> [ ! -d <span class="string">"/usr/local/android-sdk-linux/platforms/android-24"</span> ]; <span class="keyword">then</span> echo y <span class="params">| android update sdk --no-ui --all --filter "android-24"; fi</span></div><div class="line"><span class="params">    - <span class="keyword">if</span> [ ! -d "/usr/local/android-sdk-linux/build-tools/24.0.2" ]; <span class="keyword">then</span> echo y |</span> android update sdk --no-ui --all --filter <span class="string">"build-tools-24.0.2"</span>; fi</div><div class="line">    - <span class="keyword">if</span> [ ! -d <span class="string">"/usr/local/android_sdk/extras/android/m2repository/com/android/support/support-core-utils/24.2.1"</span> ]; <span class="keyword">then</span> echo y <span class="params">| android update sdk --no-ui --all --filter "extra-android-m2repository"; fi</span></div><div class="line"><span class="params"></span></div><div class="line"><span class="params">test:</span></div><div class="line"><span class="params">  override:</span></div><div class="line"><span class="params">    - ./gradlew assembleRelease</span></div></pre></td></tr></table></figure></p>
+<p>#<a href="https://travis-ci.org" target="_blank" rel="external">Travis</a><br>在项目目录中创建 <code>.travis.yml</code> 文件，内容如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">sudo:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="symbol">language:</span> android</div><div class="line"></div><div class="line"><span class="symbol">jdk:</span></div><div class="line">  - oraclejdk8</div><div class="line"></div><div class="line"><span class="symbol">android:</span></div><div class="line">  <span class="symbol">components:</span></div><div class="line">    - platform-tools</div><div class="line">    - tools</div><div class="line">    - build-tools-<span class="number">24.0</span>.<span class="number">2</span></div><div class="line">    - android-<span class="number">24</span></div><div class="line">    - extra-android-m2repository</div><div class="line">    - extra-android-support</div></pre></td></tr></table></figure></p>
 <p>#其实还有<a href="https://app.shippable.com" target="_blank" rel="external">Shippable</a><br>国内访问速度比较慢，Android 支持的不好，放弃了。</p>
 
       
@@ -414,6 +408,12 @@
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -425,7 +425,7 @@
       
 
       
-        
+      
       
 
       
@@ -481,7 +481,7 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -512,6 +512,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -636,7 +637,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -656,6 +657,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -682,32 +691,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -749,8 +758,12 @@
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -760,6 +773,7 @@
 
   
 
+  
 
   
 

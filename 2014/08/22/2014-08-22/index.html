@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -68,7 +74,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android," />
@@ -82,35 +88,25 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="API等级1： &amp;nbsp; Android 1.0&amp;nbsp;
-API等级2： &amp;nbsp; Android 1.1 Petit Four &amp;nbsp;花式小蛋糕
-API等级3： &amp;nbsp; Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕
-API等级4： &amp;nbsp; Android 1.6 Donut &amp;nbsp;甜甜圈
-API等级5： &amp;nbsp; Android 2.0 É">
+<meta name="description" content="API等级1： &amp;nbsp; Android 1.0&amp;nbsp; API等级2： &amp;nbsp; Android 1.1 Petit Four &amp;nbsp;花式小蛋糕 API等级3： &amp;nbsp; Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕 API等级4： &amp;nbsp; Android 1.6 Donut &amp;nbsp;甜甜圈 API等级5： &amp;nbsp; Android 2.0 É">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]Android API，版本对照">
 <meta property="og:url" content="http://www.kennethyo.me/2014/08/22/2014-08-22/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="API等级1： &amp;nbsp; Android 1.0&amp;nbsp;
-API等级2： &amp;nbsp; Android 1.1 Petit Four &amp;nbsp;花式小蛋糕
-API等级3： &amp;nbsp; Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕
-API等级4： &amp;nbsp; Android 1.6 Donut &amp;nbsp;甜甜圈
-API等级5： &amp;nbsp; Android 2.0 É">
+<meta property="og:description" content="API等级1： &amp;nbsp; Android 1.0&amp;nbsp; API等级2： &amp;nbsp; Android 1.1 Petit Four &amp;nbsp;花式小蛋糕 API等级3： &amp;nbsp; Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕 API等级4： &amp;nbsp; Android 1.6 Donut &amp;nbsp;甜甜圈 API等级5： &amp;nbsp; Android 2.0 É">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-12-21T06:22:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Android API，版本对照">
-<meta name="twitter:description" content="API等级1： &amp;nbsp; Android 1.0&amp;nbsp;
-API等级2： &amp;nbsp; Android 1.1 Petit Four &amp;nbsp;花式小蛋糕
-API等级3： &amp;nbsp; Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕
-API等级4： &amp;nbsp; Android 1.6 Donut &amp;nbsp;甜甜圈
-API等级5： &amp;nbsp; Android 2.0 É">
+<meta name="twitter:description" content="API等级1： &amp;nbsp; Android 1.0&amp;nbsp; API等级2： &amp;nbsp; Android 1.1 Petit Four &amp;nbsp;花式小蛋糕 API等级3： &amp;nbsp; Android 1.5 Cupcake &amp;nbsp;纸杯蛋糕 API等级4： &amp;nbsp; Android 1.6 Donut &amp;nbsp;甜甜圈 API等级5： &amp;nbsp; Android 2.0 É">
 
 
 
@@ -119,7 +115,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -144,11 +140,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
 
 
 
-  <title> [原]Android API，版本对照 | 敲键盘的呼伦贝尔人 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>[原]Android API，版本对照 | 敲键盘的呼伦贝尔人</title>
   
 
 
@@ -173,12 +165,16 @@ API等级5： &amp;nbsp; Android 2.0 É">
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -309,14 +305,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                [原]Android API，版本对照
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">[原]Android API，版本对照</h1>
         
 
         <div class="post-meta">
@@ -389,7 +378,6 @@ API等级5： &amp;nbsp; Android 2.0 É">
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -439,6 +427,12 @@ API等级5： &amp;nbsp; Android 2.0 É">
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -450,7 +444,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
       
 
       
-        
+      
       
 
       
@@ -506,7 +500,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -537,6 +531,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -661,7 +656,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
         
       </div>
     
-    
+
   </div>
 
   
@@ -681,6 +676,14 @@ API等级5： &amp;nbsp; Android 2.0 É">
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -707,32 +710,32 @@ API等级5： &amp;nbsp; Android 2.0 É">
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -774,8 +777,12 @@ API等级5： &amp;nbsp; Android 2.0 É">
 
 
 
+
   
-  
+
+
+
+
 
   
 
@@ -785,6 +792,7 @@ API等级5： &amp;nbsp; Android 2.0 É">
 
   
 
+  
 
   
 
