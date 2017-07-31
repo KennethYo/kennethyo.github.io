@@ -355,16 +355,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/02/11/20140211/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/11/20140211/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -612,25 +602,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/02/11/20140211/"
-     data-title="[原]用Fragment来代替过期的Tabhost和ActivityGroup"
-     data-content=""
-     data-url="http://www.kennethyo.me/2014/02/11/20140211/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -638,16 +609,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/02/11/20140211/"
-           data-title="[原]用Fragment来代替过期的Tabhost和ActivityGroup" data-url="http://www.kennethyo.me/2014/02/11/20140211/">
-      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
     
   </div>
 
@@ -875,22 +841,17 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
 
   
 
-  
-    
+
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"kennethyo"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+
+
+
+	
+
+
+
+
 
   
 
@@ -898,9 +859,18 @@ public class MainActivity extends Activity implements OnCheckedChangeListener {
 
 
 
-
-
-
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
 
 
 
