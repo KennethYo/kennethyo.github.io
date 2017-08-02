@@ -288,6 +288,306 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/03/23/2016-03-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/23/2016-03-23/" itemprop="url">[原]React-Native Android 学习笔记——2，自定义 logger</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-23T16:35:48+08:00">
+                2016-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="external">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：<br><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"><br>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
+<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Sample React Native App</span></div><div class="line"><span class="comment"> * https://github.com/facebook/react-native</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
+<p>可以看到我在 welcome 的 style 中设置了<code>color:&#39;red&#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">welcome: &#123;</div><div class="line">  fontSize: <span class="number">20</span>,</div><div class="line">  textAlign: <span class="string">'center'</span>,</div><div class="line">  margin: <span class="number">10</span>,</div><div class="line">  color:<span class="string">'red'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>下面我们来熟悉一下<code>index.android.js</code>这个文件里面的 js 代码都是干什么的。</p>
+<p><code>&#39;use strict&#39;</code>是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="external">《Javascript 严格模式详解》</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
+<p>这段代码类似 java 的 import，把需要引用的 module 引入。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码是渲染当前注册界面的布局，<code>render</code>方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>标签的具体规范可以看这里<a href="http://facebook.github.io/react-native/docs/text.html#content" target="_blank" rel="external">Text</a>，<a href="http://facebook.github.io/react-native/docs/view.html#content" target="_blank" rel="external">View</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
+<p>上面这段代码把我们 js 文件中的 class <code>AwesomeProject</code>和我们 Android 项目中 <code>Activity</code>中<code>getMainComponentName() { return &quot;AwesomeProject&quot;; }</code>的 Activity关联起来。</p>
+<h2 id="二，显示一个-Toast"><a href="#二，显示一个-Toast" class="headerlink" title="二，显示一个 Toast"></a>二，显示一个 Toast</h2><p>React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在<code>../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js</code>中。<br>我们来看 ToastAndroid 的源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Copyright (c) 2015-present, Facebook, Inc.</span></div><div class="line"><span class="comment"> * All rights reserved.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * This source code is licensed under the BSD-style license found in the</span></div><div class="line"><span class="comment"> * LICENSE file in the root directory of this source tree. An additional grant</span></div><div class="line"><span class="comment"> * of patent rights can be found in the PATENTS file in the same directory.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * @providesModule ToastAndroid</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * This exposes the native ToastAndroid module as a JS module. This has a function 'show'</span></div><div class="line"><span class="comment"> * which takes the following parameters:</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 1. String message: A string with the text to toast</span></div><div class="line"><span class="comment"> * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> ToastAndroid = &#123;</div><div class="line"></div><div class="line">  SHORT: RCTToastAndroid.SHORT,</div><div class="line">  LONG: RCTToastAndroid.LONG,</div><div class="line"></div><div class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">    message: string,</span></span></div><div class="line"><span class="function"><span class="params">    duration: number</span></span></div><div class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</div><div class="line">    RCTToastAndroid.show(message, duration);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = ToastAndroid;</div></pre></td></tr></table></figure></p>
+<p>我们可以直接在引包当中加入ToastAndroid。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ToastAndroid,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
+<p>下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码<code>ToastAndroid.show(&#39;Awesome&#39;, ToastAndroid.SHORT);</code>，下面来摇摆手机调出开发菜单，点击<code>Reload JS</code>。就会弹出Toast。<br>我们来分析一下<code>ToastAndroid.android.js</code>这个 module。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</div></pre></td></tr></table></figure></p>
+<p>这里是<code>require</code>是加载<code>NativeModules</code>模块，并把 <code>ToastAndroid</code> 赋值给 <code>RCTToastAndroid</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ToastAndroid = &#123;</div><div class="line"></div><div class="line">  SHORT: RCTToastAndroid.SHORT,</div><div class="line">  LONG: RCTToastAndroid.LONG,</div><div class="line"></div><div class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">    message: string,</span></span></div><div class="line"><span class="function"><span class="params">    duration: number</span></span></div><div class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</div><div class="line">    RCTToastAndroid.show(message, duration);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这段代码，创建一个对象赋值给<code>ToastAndroid</code>，对象内分别设置了<code>Toast</code>的 <code>SHORT</code>，<code>LONG</code>和<code>show</code>方法。<br><code>module.exports = ToastAndroid;</code>这里把<code>ToastAndroid</code>作为当前这个 Module 导出，提供给外部使用。<br>那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 <code>ToastModule</code>，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_SHORT_KEY = <span class="string">"SHORT"</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_LONG_KEY = <span class="string">"LONG"</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ToastModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(reactContext);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"ToastAndroid"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</div><div class="line">    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);</div><div class="line">    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);</div><div class="line">    <span class="keyword">return</span> constants;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@ReactMethod</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String message, <span class="keyword">int</span> duration)</span> </span>&#123;</div><div class="line">    Toast.makeText(getReactApplicationContext(), message, duration).show();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里<code>getName()</code>方法的返回值对应 JS 中的<code>var RCTToastAndroid = require(&#39;NativeModules&#39;).ToastAndroid;</code>结尾处的<code>ToastAndroid</code>，正如 js 里的请求手机本地的 modules ，对应到类里的<code>getName()</code>返回值。<br><code>getConstants()</code>方法负责把类中的常量映射到 JS 中去。<br><code>show(String message, int duration)</code>方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。</p>
+<h2 id="三，自定义-Logger"><a href="#三，自定义-Logger" class="headerlink" title="三，自定义 Logger"></a>三，自定义 Logger</h2><p>这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODULE_NAME = <span class="string">"Logger"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_KEY = <span class="string">"TAG"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_VALUE = <span class="string">"LoggerModule"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoggerModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(reactContext);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</div><div class="line">        constants.put(TAG_KEY, TAG_VALUE);</div><div class="line">        <span class="keyword">return</span> constants;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> MODULE_NAME;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.i(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.d(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.w(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.e(tag, msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我把常量<code>TAG</code>返回给 JS 调用，Module 命名为<code>Logger</code>，并且把 info，debug，warn，error 等 Log 方法加上<code>@ReactMethod</code>注释，提供给 JS调用。<br>这里还没有结束，我们还需要实现一个类，去注册我们自己写的 <code>LoggerModule</code>。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppReactPackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        modules.add(<span class="keyword">new</span> LoggerModule(reactContext));</div><div class="line">        <span class="keyword">return</span> modules;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后，把这个 AppReactPackage 注册到 Activity。如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns the name of the main component registered from JavaScript.</span></div><div class="line"><span class="comment">     * This is used to schedule rendering of the component.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getMainComponentName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"AwesomeProject"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns whether dev mode should be enabled.</span></div><div class="line"><span class="comment">     * This enables e.g. the dev menu.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * A list of packages used by the app. If the app uses additional views</span></div><div class="line"><span class="comment">     * or modules besides the default ones, add more packages here.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">                <span class="keyword">new</span> MainReactPackage(),</div><div class="line">                <span class="keyword">new</span> AppReactPackage()</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>java 代码到这里就结束了。<br>下面，我们在<code>index.android.js</code>的同级目录创建一个 js 文件<code>log.js</code>。里面内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> RCTLogger = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).Logger;<span class="comment">//加载本地 modules，Module#getName()</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> LogAndroid = &#123;</div><div class="line">  <span class="comment">//添加定义的常量 Module#getConstants()</span></div><div class="line">  TAG: RCTLogger.TAG,</div><div class="line">  <span class="comment">//添加的方法 Module#d()</span></div><div class="line">  d: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.d(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  i: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.i(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  w: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.w(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  e: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.e(tag,msg);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = LogAndroid;<span class="comment">//module 导出</span></div></pre></td></tr></table></figure></p>
+<p>这里不用多说了，无非就是创建一个 LogAndroid 对象获取 <code>LoggerModule</code>java 类中的常量，方法等，并且导出。<br>下面我贴出完整的<code>index.android.js</code>，里面显示如何引用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Sample React Native App</span></div><div class="line"><span class="comment"> * https://github.com/facebook/react-native</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ToastAndroid,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">var</span> LogAndroid = <span class="built_in">require</span>(<span class="string">'./log'</span>);</div><div class="line"></div><div class="line">LogAndroid.i(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.d(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.w(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.e(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line"></div><div class="line">ToastAndroid.show(<span class="string">'Awesome'</span>, ToastAndroid.SHORT);</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
+<p>重新编译并运行你的 app，看看 logcat 打印出了日志吗？</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/03/18/2016-03-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/18/2016-03-18/" itemprop="url">[原]React-Native Android 学习笔记——1，配置环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-18T15:30:43+08:00">
+                2016-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一，设备与环境"><a href="#一，设备与环境" class="headerlink" title="一，设备与环境"></a>一，设备与环境</h2><h3 id="1，一台-mac"><a href="#1，一台-mac" class="headerlink" title="1，一台 mac"></a>1，一台 mac</h3><h3 id="2，安装软件包管理器-Homebrew-中文"><a href="#2，安装软件包管理器-Homebrew-中文" class="headerlink" title="2，安装软件包管理器 Homebrew(中文)"></a>2，安装软件包管理器 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew(中文)</a></h3><p>终端里输入<code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code>进行安装。</p>
+<h3 id="3，安装-wget-或者-curl"><a href="#3，安装-wget-或者-curl" class="headerlink" title="3，安装 wget 或者 curl"></a>3，安装 <a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="external">wget</a> 或者 <a href="https://zh.wikipedia.org/wiki/CURL" target="_blank" rel="external">curl</a></h3><p>wget，终端里输入<code>brew install wget</code>进行安装。<br>curl，终端里输入<code>brew install curl</code>进行安装。</p>
+<h3 id="4，安装-nvm-node版本管理器"><a href="#4，安装-nvm-node版本管理器" class="headerlink" title="4，安装 nvm (node版本管理器)"></a>4，安装 <a href="https://github.com/creationix/nvm#installation" target="_blank" rel="external">nvm</a> (node版本管理器)</h3><p>如果安装了 wget，终端输入<code>wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</code>进行安装 nvm。</p>
+<p>如果安装了 curl，终端输入<code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bashÂ</code>进行安装 nvm。</p>
+<h3 id="5，Android-SDK"><a href="#5，Android-SDK" class="headerlink" title="5，Android SDK"></a>5，Android SDK</h3><p>这个不用多说了，相信大家都会的。顺便把 Android SDK 配置到环境变量。</p>
+<p>如果你没有 Android SDK，也可以通过终端输入<code>brew install android-sdk</code>。</p>
+<h2 id="二，安装和初始react-native-demo"><a href="#二，安装和初始react-native-demo" class="headerlink" title="二，安装和初始react-native demo"></a>二，安装和初始react-native demo</h2><p>终端输入<code>npm install -g react-native-cli</code>安装 react-native。</p>
+<p>如果显示<code>EACCES: permission denied</code>，用超级权限再次执行一下上面的指令。反正我是没遇到。</p>
+<p>进入到你要创建 demo 的目录，终端输入<code>cd 你得文件路径</code>.<br>终端输入<code>react-native init AwesomeProject</code>，初始 AwesomeProject 。</p>
+<p>终端输入<code>cd AwesomeProject</code>。</p>
+<p>终端输入<code>react-native run-android</code>可以直接运行 node 服务并编译运行 Android 项目，直至安装到手机。</p>
+<p>如果界面报错提示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Unable to download JS bundle</div><div class="line">com.facebook.react.devsupport.DebugServerException: Could not connect to development server.</div><div class="line"></div><div class="line">URL: http://localhost:8081/index.android.bundle?platform=android&amp;dev=true&amp;hot=false</div><div class="line"></div><div class="line">Try the following to fix the issue:</div><div class="line">• Ensure that the packager server is running</div><div class="line">• Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run &apos;adb devices&apos; to see a list of connected devices</div><div class="line">• If you&apos;re on a physical device connected to the same machine, run &apos;adb reverse tcp:8081 tcp:8081&apos; to forward requests from your device</div><div class="line">• If your device is on the same Wi-Fi network, set &apos;Debug server host &amp; port for device&apos; in &apos;Dev settings&apos; to your machine&apos;s IP address and the port of the local dev server - e.g. 10.0.1.1:8081</div><div class="line">at com.facebook.react.devsupport.DevServerHelper$1.onFailure(DevServerHelper.java:203)</div><div class="line">at com.squareup.okhttp.Call$AsyncCall.execute(Call.java:175)</div><div class="line">at com.squareup.okhttp.internal.NamedRunnable.run(NamedRunnable.java:33)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)</div><div class="line">at java.lang.Thread.run(Thread.java:818)</div></pre></td></tr></table></figure></p>
+<p>一般在终端输入<code>adb reverse tcp:8081 tcp:8081</code>即可解决，其他请详细看 log。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2015/12/03/2015-12-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1670,334 +1970,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/12/28/2014-12-28/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/12/28/2014-12-28/" itemprop="url">[原]CardView初级使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-28T14:08:54+08:00">
-                2014-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>CardView</code>发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里<a href="http://kennethyo.farbox.com/post/android/recyclerviewchu-ji-shi-yong#main" target="_blank" rel="external">传送门</a>。</p>
-<p>卡片化是全新的Material风&#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。</p>
-<p><code>CardView</code>继承于<code>Framelayout</code>，比<code>FrameLayout</code>多了3个重要的属性，<code>card_view:cardElevation</code>，<code>card_view:cardCornerRadius</code>，<code>card_view:cardBackgroundColor</code>。</p>
-<p><code>card_view:cardElevation</code>，可以设置卡片的阴影，可以使<code>CardView</code>在z轴方向上有一种抬升的视觉效果，能给用户一种这里是重要信息的视觉感受。对应代码里的方法<code>public
- void setCardElevation (float radius)</code>。</p>
-<p><code>card_view:cardCornerRadius</code>，显然就是设置<code>CardView</code>的圆角了。对应代码里的方法<code>public
- void setRadius (float radius)</code>。</p>
-<p><code>card_view:cardBackgroundColor</code>，设置<code>CardView</code>的背景颜色，这个属性是不会影响阴影<code>card_view:cardElevation</code>的效果的。对应代码里的方法<code>public
- void setCardBackgroundColor (int color)</code>。</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.CardView</span><br><span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/cardview&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;fill_parent&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardElevation=</span><span class="s" style="color:rgb(204,147,147)">&quot;100dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardBackgroundColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@color/grey&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardCornerRadius=</span><span class="s" style="color:rgb(204,147,147)">&quot;8dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginRight=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br>                <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_margin=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;这里是CardView&quot;</span><br>                <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/android.support.v7.widget.CardView&gt;</span><br></pre><br></div>
-
-<p>这里贴一个Android官方给的<a href="https://github.com/googlesamples/android-CardView" target="_blank" rel="external">sample</a>吧!</p>
-<p>—————————————</p>
-<p>从11月19日开始一直在加班，把大把的时间都用于了我们岁末版本的开发上，这期间规划了好几篇想要写的博文，慢慢会发出来的，主要还是偏于介绍新控件的使用，以及如何兼容lollipop以下版本进行material风&#26684;的设计，material风&#26684;设计也将会是我所在项目组15年第一季度android的全新设计方案。</p>
-<p><span style="color:rgb(221,17,68); font-family:Inconsolata,monospace,sans-serif; line-height:30px; white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://kennethyo.farbox.com/post/android/2014-12-28）" target="_blank" rel="external">http://kennethyo.farbox.com/post/android/2014-12-28）</a></span></p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2014/12/28 14:08:54 [原文链接](http://blog.csdn.net/kennethyo/article/details/42213525)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：2090 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/42213525#comments)
-&lt;/div&gt;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/11/10/2014-11-10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/11/10/2014-11-10/" itemprop="url">[原]RecyclerView初级使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-10T15:18:15+08:00">
-                2014-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><span style="font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144"><span style="white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）">http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）</a></span></span></p>
-<p><code>RecyclerView</code>是Android在v7包中包含了一个新的widget，<code>RecyclerView</code>是一个<code>ListView</code>进阶版，但不继承与<code>AdapterView</code>，相比<code>ListView</code>，<code>RecyclerView</code>更加灵活和先进。</p>
-<p>##<br>1，导入RecyclerView</p>
-<p>首先要保证<code>SDK Tools</code>和<code>Android
- Support Repository</code>为最新版。如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141110151947150?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20141110152010581?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>其次，在你的demo工程里选中Project Structure按钮，并且选择app —— Dependencies —— “&#43;” —— Library dependency，去添加支持包，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141110152138031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>最后，在新的对话框里选中<code>com.android.support:recyclerview-v7:21.0.0</code>，点击OK。如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141110152155781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>这里就顺利的导入了<code>RecyclerView</code>。</p>
-<p>##<br>2，使用<code>RecyclerView</code></p>
-<p>在布局文件中使用<code>RecyclerView</code>，跟其他自定义控件一样，如下：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;RelativeLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/apk/res/android&amp;quot" target="_blank" rel="external">http://schemas.android.com/apk/res/android&amp;quot</a>;</span><br>    <span class="na" style="color:rgb(154,195,159)">xmlns:tools=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/tools&amp;quot" target="_blank" rel="external">http://schemas.android.com/tools&amp;quot</a>;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">tools:context=</span><span class="s" style="color:rgb(204,147,147)">&quot;.MainActivity&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br><br>    <span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.RecyclerView</span><br>        <span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/recyclerView&quot;</span><br>        <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>        <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span> <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/RelativeLayout&gt;</span><br></pre><br></div>
-
-<p>因为日常开发中，我们大多数都是按照UI去布局每个item，所以这里我没与图省事用Android自带的布局。如下：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="cp" style="color:rgb(127,159,127)">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;LinearLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/apk/res/android&amp;quot" target="_blank" rel="external">http://schemas.android.com/apk/res/android&amp;quot</a>;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br><br>        <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>            <span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/textView&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;48dp&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:textStyle=</span><span class="s" style="color:rgb(204,147,147)">&quot;bold&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:background=</span><span class="s" style="color:rgb(204,147,147)">&quot;@android:color/holo_blue_light&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:textColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@android:color/holo_red_light&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:gravity=</span><span class="s" style="color:rgb(204,147,147)">&quot;center_vertical&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:paddingLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/activity_horizontal_margin&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;New Text&quot;</span> <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><br><span class="nt" style="color:rgb(154,195,159)">&lt;/LinearLayout&gt;</span><br></pre><br></div>
-
-<p>下面就是代码了：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">protected</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">Bundle</span> <span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">setContentView</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">activity_main</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="c1" style="color:rgb(127,159,127)">//LinearLayoutManager可以自定义实现不同的动画效果和布局效果</span><br>        <span class="c1" style="color:rgb(127,159,127)">//这里设置为LinearLayoutManager.HORIZONTAL变成为了一个可以横向滑动的ListView，赞不赞？</span><br>        <span class="n" style="color:rgb(220,220,204)">LinearLayoutManager</span> <span class="n" style="color:rgb(220,220,204)">layoutManager</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">LinearLayoutManager</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="n" style="color:rgb(220,220,204)">LinearLayoutManager</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">VERTICAL</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="kc" style="color:rgb(220,163,163)">false</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setLayoutManager</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">layoutManager</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setHasFixedSize</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kc" style="color:rgb(220,163,163)">false</span><span class="o" style="color:rgb(240,239,208)">);</span><span class="c1" style="color:rgb(127,159,127)">//adapter的改变不会改变RecyclerView的大小</span><br><br>        <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="mi" style="color:rgb(140,208,211)">50</span><span class="o" style="color:rgb(240,239,208)">];</span><br>        <span class="k" style="color:rgb(240,223,175)">for</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">;</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="mi" style="color:rgb(140,208,211)">50</span><span class="o" style="color:rgb(240,239,208)">;</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">&#43;&#43;){</span><br>            <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">]</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">valueOf</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br><br>        <span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span> <span class="n" style="color:rgb(220,220,204)">adapter</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">adapter</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br></pre><br></div>
-
-<p>可以明确看到的是，<code>RecyclerView</code>通过<code>(RecyclerView)
- findViewById(R.id.recyclerView)</code>初始化之后，不仅要像<code>ListView</code>一样要放入<code>Adapter</code>进行数据和布局的适配，而且还要额外添加一个<code>LinearLayoutManager</code>。</p>
-<p>这个Manager就是我们的布局管理工具类，这里不仅可以用常规的竖直方向布局，还有横向的滑动的布局，以后再也不会因为没有横向滑动的<code>ListView</code>去头疼自定义了。</p>
-<p>通过自定义<code>LinearLayoutManager</code>也可以实现不同的动画效果，和移动效果。</p>
-<p><code>RecyclerView</code>的Adapter和<code>ListView</code>的Adapter也是不同的，<code>RecyclerView</code>的Adapter要继承<code>RecyclerView.Adapter&amp;lt;VH
- extends ViewHolder&amp;gt;</code>,并且<code>ViewHolder</code>要继承与<code>ViewHolder.RecyclerView</code>，具体代码如下：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">StringRecyclerAdapter</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">Adapter</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">&gt;</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>    <span class="kd" style="color:rgb(255,255,134)">private</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="nf" style="color:rgb(239,239,143)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">strings</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="nf" style="color:rgb(239,239,143)">onCreateViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">ViewGroup</span> <span class="n" style="color:rgb(220,220,204)">viewGroup</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">view</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">View</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">inflate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">viewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getContext</span><span class="o" style="color:rgb(240,239,208)">(),</span> <span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">adapter_string_recylcer</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kc" style="color:rgb(220,163,163)">null</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>       <span class="c1" style="color:rgb(127,159,127)">//这里发现不给item布局添加LayoutParams，会直接默认为WRAP_CONTENT，WRAP_CONTENT布局。</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setPadding</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="mi" style="color:rgb(140,208,211)">20</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setFocusable</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kc" style="color:rgb(220,163,163)">true</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span> <span class="n" style="color:rgb(220,220,204)">lp</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">(</span><br>                <span class="n" style="color:rgb(220,220,204)">ViewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">MATCH_PARENT</span><span class="o" style="color:rgb(240,239,208)">,</span><br>                <span class="n" style="color:rgb(220,220,204)">ViewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">WRAP_CONTENT</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">leftMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">10</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">rightMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">5</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">topMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">20</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">bottomMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">15</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setLayoutParams</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onBindViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">textView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setText</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">class</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getSimpleName</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">&#43;</span> <span class="n" style="color:rgb(220,220,204)">getValueAt</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">));</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">String</span> <span class="nf" style="color:rgb(239,239,143)">getValueAt</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">];</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="nf" style="color:rgb(239,239,143)">getItemCount</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">strings</span> <span class="o" style="color:rgb(240,239,208)">==</span> <span class="kc" style="color:rgb(220,163,163)">null</span> <span class="o" style="color:rgb(240,239,208)">?</span> <span class="mi" style="color:rgb(140,208,211)">0</span> <span class="o" style="color:rgb(240,239,208)">:</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">length</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">static</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">ViewHolder</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span> <span class="kd" style="color:rgb(255,255,134)">implements</span> <span class="n" style="color:rgb(220,220,204)">View</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">OnClickListener</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">textView</span><span class="o" style="color:rgb(240,239,208)">;</span><br><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="nf" style="color:rgb(239,239,143)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">);</span><br>            <span class="n" style="color:rgb(220,220,204)">textView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">textView</span><span class="o" style="color:rgb(240,239,208)">);</span><br>            <span class="c1" style="color:rgb(127,159,127)">//因为RecyclerView没用setOnItemClickListener，所以在这里实现了点击事件</span><br>            <span class="c1" style="color:rgb(127,159,127)">//况且，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应</span><br>            <span class="n" style="color:rgb(220,220,204)">textView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setOnClickListener</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br><br>        <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onClick</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="n" style="color:rgb(220,220,204)">Toast</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">makeText</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getContext</span><span class="o" style="color:rgb(240,239,208)">(),((</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span><span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">).</span><span class="na" style="color:rgb(154,195,159)">getText</span><span class="o" style="color:rgb(240,239,208)">(),</span><span class="n" style="color:rgb(220,220,204)">Toast</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LENGTH_SHORT</span><span class="o" style="color:rgb(240,239,208)">).</span><span class="na" style="color:rgb(154,195,159)">show</span><span class="o" style="color:rgb(240,239,208)">();</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><span class="o" style="color:rgb(240,239,208)">}</span><br></pre><br></div>
-
-<p>在<code>onCreateViewHolder</code>方法中，我们需要把加载布局和<code>ViewHolder</code>绑定起来，这里有个问题，不知道是Android的bug，还是故意这么设计的，需要我们主动写代码给item设置<code>LayoutParams</code>。</p>
-<p>在<code>onBindViewHolder</code>中负责数据绑定。</p>
-<p>这里有一个问题，<code>RecyclerView</code>没有<code>setOnItemClickListener</code>方法，所以我在里面对<code>TextView</code>添加了点击事件，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应。</p>
-<p><img src="http://img.blog.csdn.net/20141110152225296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p><a href="https://github.com/KennethYo/RecyclerViewDemo" target="_blank" rel="external">Demo链接</a></p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2014/11/10 15:18:15 [原文链接](http://blog.csdn.net/kennethyo/article/details/40981263)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：1221 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40981263#comments)
-&lt;/div&gt;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2048,7 +2020,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2070,7 +2042,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

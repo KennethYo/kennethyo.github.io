@@ -288,6 +288,550 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/08/02/untitled-1501674058670-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/02/untitled-1501674058670-1/" itemprop="url">adb logcat 指北</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T19:40:58+08:00">
+                2017-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Nexus 5, Android 6.0.1, API 23</p>
+</blockquote>
+<p><code>Log</code>类，相信开发 Android 的同学都不陌生，正如其名，<code>Log</code>类提供了打印日志功能，方便我们在开发调试过程中输出调试信息，输出如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fi4ax7awudj312s04qmyv.jpg" alt=""></p>
+<p>有大神觉得这样的输出信息不够多，不够美观，不够强大，于是就有了 <a href="https://github.com/orhanobut/logger" target="_blank" rel="external">logger</a>、<a href="https://github.com/JakeWharton/hugo" target="_blank" rel="external">hugo</a>、<a href="https://github.com/JakeWharton/timber" target="_blank" rel="external">timber</a>等 log 工具类。</p>
+<p>虽然有这些强大的工具来使用，但是你离开了 IDE  还会看 log 吗？下面我们来介绍 <code>adb logcat</code>的使用。</p>
+<h1 id="adb-logcat"><a href="#adb-logcat" class="headerlink" title="adb logcat"></a>adb logcat</h1><p><code>adb</code>全名叫做<code>Android Debug Bridge</code>，也就是 Android 调试桥。是 Android SDK 提供的一个 DEBUG 工具，在 <code>platform-tools</code>目录下。</p>
+<p><code>logcat</code>是Android系统提供的一个命令行工具，用于输出 log 日志。</p>
+<p><code>adb</code>和<code>logcat</code>就组成了远程调试输出 log 的工具。😓</p>
+<p>把 SDK 的<code>platform-tools</code>配置到了环境变量当中，在任意位置都可以调用<code>adb</code>指令，当然也可以每次都进入到目录下进行调用…</p>
+<p>调用<code>logcat</code>指令有两种方式，一种是前面说的，直接<code>adb logcat</code>，另一种是<code>adb shell</code>进入手机的 shell 面板，然后在调用<code>logcat</code>。下面我都会使用<code>adb logcat</code>这种方式进行演示。</p>
+<h1 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h1><p><code>logcat</code>的语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">logcat [options] [filterspecs]</div></pre></td></tr></table></figure></p>
+<h1 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">设置过滤器</td>
+</tr>
+<tr>
+<td style="text-align:left">-v format</td>
+<td style="text-align:left">设置日志打印格式</td>
+</tr>
+<tr>
+<td style="text-align:left">-f filename</td>
+<td style="text-align:left">日志输出到指定文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-r kbytes</td>
+<td style="text-align:left">每 kbytes 输出日志，与-f一起使用</td>
+</tr>
+<tr>
+<td style="text-align:left">-n count</td>
+<td style="text-align:left">设置日志最大数目</td>
+</tr>
+<tr>
+<td style="text-align:left">-b buffer</td>
+<td style="text-align:left">加载日志缓冲区</td>
+</tr>
+<tr>
+<td style="text-align:left">-D</td>
+<td style="text-align:left">在不同的缓冲区日志之间添加分割线</td>
+</tr>
+<tr>
+<td style="text-align:left">-c</td>
+<td style="text-align:left">清除缓冲区并退出</td>
+</tr>
+<tr>
+<td style="text-align:left">-d</td>
+<td style="text-align:left">打印缓冲区的log，并退出</td>
+</tr>
+<tr>
+<td style="text-align:left">-g</td>
+<td style="text-align:left">打印环形缓冲区大小</td>
+</tr>
+<tr>
+<td style="text-align:left">-G size</td>
+<td style="text-align:left">设置环形缓冲区大小</td>
+</tr>
+<tr>
+<td style="text-align:left">-t count</td>
+<td style="text-align:left">打印最近 count 行日志，包含 -d 命令</td>
+</tr>
+<tr>
+<td style="text-align:left">-t time</td>
+<td style="text-align:left">打印最近从 time 开始的日志，包含 -d 命令，时间格式 MM-DD hh:mm:ss.mmm</td>
+</tr>
+<tr>
+<td style="text-align:left">-T count</td>
+<td style="text-align:left">打印最近 count 行日志，不包含 -d 命令</td>
+</tr>
+<tr>
+<td style="text-align:left">-T time</td>
+<td style="text-align:left">打印最近从 time 开始的日志，不包含 -d 命令，时间格式 MM-DD hh:mm:ss.mmm</td>
+</tr>
+<tr>
+<td style="text-align:left">-L</td>
+<td style="text-align:left">打印上次启动之前的日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-B</td>
+<td style="text-align:left">输出二进制日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-S</td>
+<td style="text-align:left">输出统计</td>
+</tr>
+<tr>
+<td style="text-align:left">-P list.</td>
+<td style="text-align:left">设置 log 黑白名单</td>
+</tr>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">获取 log 黑白名单</td>
+</tr>
+</tbody>
+</table>
+<h1 id="s"><a href="#s" class="headerlink" title="-s"></a>-s</h1><p>设置默认过滤器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -s &lt;tag&gt;[:priority]</div></pre></td></tr></table></figure></p>
+<p><code>tag</code>：对应 log 的 tag。值<code>*</code>代表全部，如果只有<code>*</code>，等于<code>*:D</code>，如果仅有<code>&lt;tag&gt;</code>，等于<code>&lt;tag&gt;:V</code>。</p>
+<p><code>priority</code>：优先级，从低到高分别是V，D，I，W，E，F，S。V，全部输出。S，全部输出。</p>
+<p>例1，只输出 tag 为 test 的 log：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb logcat -s test</div><div class="line">#或者</div><div class="line">adb logcat -s test:V</div></pre></td></tr></table></figure></p>
+<p>例2，只输出优先级大于 W 的日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -s *:W</div></pre></td></tr></table></figure></p>
+<p>例3，输出 tag 为 test 的 E 级别 和 tag 为 test1 的 W 级别日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -s test:E test1:W</div></pre></td></tr></table></figure></p>
+<h1 id="v"><a href="#v" class="headerlink" title="-v"></a>-v</h1><p>设置日志打印格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -v &lt;format&gt;</div></pre></td></tr></table></figure></p>
+<p>format 共有 brief、color、long、printable、process、raw、tag、thread、threadtime、time、usec 格式，默认 threadtime。</p>
+<p>各种输出格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">#Java 代码</div><div class="line">#private final static String TAG_0 = &quot;sth0&quot;;</div><div class="line">#Log.v(TAG_0, &quot;0 Send a verbose log message&quot;);</div><div class="line"></div><div class="line">#命令</div><div class="line"># adb logcat -v &lt;format&gt; -s sth0:W</div><div class="line"></div><div class="line">#brief</div><div class="line">W/sth0    ( 1065): 0 Send a warn log message</div><div class="line"></div><div class="line">#color 其实在 Terminal 里面是有颜色的</div><div class="line">08-02 09:38:42.094  1065  1065 W sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#long</div><div class="line">[ 08-02 09:38:42.094  1065: 1065 W/sth0     ]</div><div class="line">0 Send a warn log message</div><div class="line"></div><div class="line">#printable</div><div class="line">08-02 09:38:42.094  1065  1065 W sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#process</div><div class="line">W( 1065) 0 Send a warn log message  (sth0)</div><div class="line"></div><div class="line">#raw</div><div class="line">0 Send a warn log message</div><div class="line"></div><div class="line">#tag</div><div class="line">W/sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#thread</div><div class="line">W( 1065: 1065) 0 Send a warn log message</div><div class="line"></div><div class="line">#threadtime</div><div class="line">08-02 09:38:42.094  1065  1065 W sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#time</div><div class="line">08-02 09:38:42.094 W/sth0    ( 1065): 0 Send a warn log message</div><div class="line"></div><div class="line">#usec</div><div class="line">08-02 09:38:42.094771  1065  1065 W sth0    : 0 Send a warn log message</div></pre></td></tr></table></figure></p>
+<h1 id="f"><a href="#f" class="headerlink" title="-f"></a>-f</h1><p>输出log到指定文件。<code>&lt;filename&gt;</code>是手机内的文件，并不是调试用的电脑。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -f &lt;filename&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="r"><a href="#r" class="headerlink" title="-r"></a>-r</h1><p>设置每<code>&lt;kbytes&gt;</code>时输出日志，需要和<code>-f</code>一起使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -f &lt;filenam&gt; -r &lt;kbytes&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="n"><a href="#n" class="headerlink" title="-n"></a>-n</h1><p>设置日志每次最大输出<code>&lt;count&gt;</code>行，需要和<code>-f</code>一起使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -f &lt;filenam&gt; -n &lt;count&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="b"><a href="#b" class="headerlink" title="-b"></a>-b</h1><p>加载日志缓冲区，<code>&lt;buffer&gt;</code>的值有<code>main</code>，<code>system</code>，<code>radio</code>，<code>events</code>，<code>crash</code>，<code>all</code>。默认<code>main</code>，<code>system</code>，<code>crash</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -b &lt;buffer&gt;</div></pre></td></tr></table></figure></p>
+<p>例，加载<code>radio</code>，<code>events</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -b radio -b events</div></pre></td></tr></table></figure></p>
+<h1 id="D"><a href="#D" class="headerlink" title="-D"></a>-D</h1><p>在不同的缓冲区日志之间添加分割线。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -D</div></pre></td></tr></table></figure></p>
+<h1 id="c"><a href="#c" class="headerlink" title="-c"></a>-c</h1><p>清除缓冲区日志，并退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -c</div></pre></td></tr></table></figure></p>
+<h1 id="d"><a href="#d" class="headerlink" title="-d"></a>-d</h1><p>打印缓冲区日志，并退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -d</div></pre></td></tr></table></figure></p>
+<h1 id="g"><a href="#g" class="headerlink" title="-g"></a>-g</h1><p>打印缓冲区大小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -g</div></pre></td></tr></table></figure></p>
+<h1 id="G"><a href="#G" class="headerlink" title="-G"></a>-G</h1><p>设置缓冲区大小。<code>&lt;size&gt;</code>，以<code>K</code>结尾，单位 kb，以<code>M</code>结尾，单位 MB。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -G &lt;size&gt;</div></pre></td></tr></table></figure></p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -G 100K</div></pre></td></tr></table></figure></p>
+<h1 id="t"><a href="#t" class="headerlink" title="-t"></a>-t</h1><p>包含 <code>-d</code> 功能，也就是打印后退出。<br>打印最近<code>&lt;size&gt;</code>行日志。<br>打印从<code>&#39;&lt;time&gt;&#39;</code>时间开始的日志。时间格式<code>MM-DD hh:mm:ss.mmm</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat -t &lt;size&gt;</div><div class="line">adb logcat -t &apos;&lt;time&gt;&apos;</div></pre></td></tr></table></figure></p>
+<p>例1，打印最近1000行日志，并且过滤出 tag 为 sth0 的日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -t 1000 -s sth0:V</div></pre></td></tr></table></figure></p>
+<p>例2，打印 08-02 17:51:20.145  开始的日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -t &apos;08-02 17:51:20.145&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="T"><a href="#T" class="headerlink" title="-T"></a>-T</h1><p>不包含 <code>-d</code> 功能，也就是打印后不退出，会持续输出。<br>打印最近<code>&lt;size&gt;</code>行日志。<br>打印从<code>&#39;&lt;time&gt;&#39;</code>时间开始的日志。时间格式<code>MM-DD hh:mm:ss.mmm</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat -T &lt;size&gt;</div><div class="line">adb logcat -T &apos;&lt;time&gt;&apos;</div></pre></td></tr></table></figure></p>
+<p>例1，打印最近1000行日志，并且过滤出 tag 为 sth0 的日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -T 1000 -s sth0:V</div></pre></td></tr></table></figure></p>
+<p>例2，打印 08-02 17:51:20.145  开始的日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -T &apos;08-02 17:51:20.145&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="L"><a href="#L" class="headerlink" title="-L"></a>-L</h1><p>打印最后一次重启之前的日志。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -L</div></pre></td></tr></table></figure></p>
+<h1 id="B"><a href="#B" class="headerlink" title="-B"></a>-B</h1><p>输出日志的二进制格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -B</div></pre></td></tr></table></figure></p>
+<h1 id="S"><a href="#S" class="headerlink" title="-S"></a>-S</h1><p>输出统计信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -S</div></pre></td></tr></table></figure></p>
+<h1 id="P"><a href="#P" class="headerlink" title="-P"></a>-P</h1><p>设置黑白名单。可以对 <code>UID</code>，<code>PID</code>设置，也可以<code>UID/PID</code>一起设置。设置黑名单，前缀<code>~</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -P &apos;&lt;list&gt;...&apos;</div></pre></td></tr></table></figure></p>
+<p>例1，对<code>UID</code> 520881设置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat - P &apos;520881&apos;</div></pre></td></tr></table></figure></p>
+<p>例2，对<code>PID</code> 520881 设置黑名单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -P &apos;~/520881&apos;</div></pre></td></tr></table></figure></p>
+<p>例3，对<code>UID</code> 520881，对<code>PID</code> 78883，对 <code>UID/PID</code> 52189/8883 设置黑名单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -P `~520881 ~/78883 ~52189/8883&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h1><p>查看黑白名单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -p</div></pre></td></tr></table></figure></p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><p>利用 shell 重定向输出日志到指定文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#输出sth0:V到桌面1.log文件</div><div class="line">adb logcat -s sth0:V &gt;~/Desktop/1.log</div></pre></td></tr></table></figure></p>
+<p>利用 <code>grep</code> 过滤日志。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 过滤日志包含 verbose 的日志</div><div class="line">adb logcat | grep verbose </div><div class="line"># 过滤日志包含 verbose 的日志，忽略大小写</div><div class="line">adb logcat | grep -i verbose</div><div class="line"># 过滤符合正则表达式 sth. 的日志</div><div class="line">adb logcat | grep -e sth.</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/08/02/untitled-1501674058670/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/02/untitled-1501674058670/" itemprop="url">adb logcat 指北</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T19:40:58+08:00">
+                2017-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Nexus 5, Android 6.0.1, API 23</p>
+</blockquote>
+<p><code>Log</code>类，相信开发 Android 的同学都不陌生，正如其名，<code>Log</code>类提供了打印日志功能，方便我们在开发调试过程中输出调试信息，输出如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fi4ax7awudj312s04qmyv.jpg" alt=""></p>
+<p>有大神觉得这样的输出信息不够多，不够美观，不够强大，于是就有了 <a href="https://github.com/orhanobut/logger" target="_blank" rel="external">logger</a>、<a href="https://github.com/JakeWharton/hugo" target="_blank" rel="external">hugo</a>、<a href="https://github.com/JakeWharton/timber" target="_blank" rel="external">timber</a>等 log 工具类。</p>
+<p>虽然有这些强大的工具来使用，但是你离开了 IDE  还会看 log 吗？下面我们来介绍 <code>adb logcat</code>的使用。</p>
+<h1 id="adb-logcat"><a href="#adb-logcat" class="headerlink" title="adb logcat"></a>adb logcat</h1><p><code>adb</code>全名叫做<code>Android Debug Bridge</code>，也就是 Android 调试桥。是 Android SDK 提供的一个 DEBUG 工具，在 <code>platform-tools</code>目录下。</p>
+<p><code>logcat</code>是Android系统提供的一个命令行工具，用于输出 log 日志。</p>
+<p><code>adb</code>和<code>logcat</code>就组成了远程调试输出 log 的工具。😓</p>
+<p>把 SDK 的<code>platform-tools</code>配置到了环境变量当中，在任意位置都可以调用<code>adb</code>指令，当然也可以每次都进入到目录下进行调用…</p>
+<p>调用<code>logcat</code>指令有两种方式，一种是前面说的，直接<code>adb logcat</code>，另一种是<code>adb shell</code>进入手机的 shell 面板，然后在调用<code>logcat</code>。下面我都会使用<code>adb logcat</code>这种方式进行演示。</p>
+<h1 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h1><p><code>logcat</code>的语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">logcat [options] [filterspecs]</div></pre></td></tr></table></figure></p>
+<h1 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">设置过滤器</td>
+</tr>
+<tr>
+<td style="text-align:left">-v format</td>
+<td style="text-align:left">设置日志打印格式</td>
+</tr>
+<tr>
+<td style="text-align:left">-f filename</td>
+<td style="text-align:left">日志输出到指定文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-r kbytes</td>
+<td style="text-align:left">每 kbytes 输出日志，与-f一起使用</td>
+</tr>
+<tr>
+<td style="text-align:left">-n count</td>
+<td style="text-align:left">设置日志最大数目</td>
+</tr>
+<tr>
+<td style="text-align:left">-b buffer</td>
+<td style="text-align:left">加载日志缓冲区</td>
+</tr>
+<tr>
+<td style="text-align:left">-D</td>
+<td style="text-align:left">在不同的缓冲区日志之间添加分割线</td>
+</tr>
+<tr>
+<td style="text-align:left">-c</td>
+<td style="text-align:left">清除缓冲区并退出</td>
+</tr>
+<tr>
+<td style="text-align:left">-d</td>
+<td style="text-align:left">打印缓冲区的log，并退出</td>
+</tr>
+<tr>
+<td style="text-align:left">-g</td>
+<td style="text-align:left">打印环形缓冲区大小</td>
+</tr>
+<tr>
+<td style="text-align:left">-G size</td>
+<td style="text-align:left">设置环形缓冲区大小</td>
+</tr>
+<tr>
+<td style="text-align:left">-t count</td>
+<td style="text-align:left">打印最近 count 行日志，包含 -d 命令</td>
+</tr>
+<tr>
+<td style="text-align:left">-t time</td>
+<td style="text-align:left">打印最近从 time 开始的日志，包含 -d 命令，时间格式 MM-DD hh:mm:ss.mmm</td>
+</tr>
+<tr>
+<td style="text-align:left">-T count</td>
+<td style="text-align:left">打印最近 count 行日志，不包含 -d 命令</td>
+</tr>
+<tr>
+<td style="text-align:left">-T time</td>
+<td style="text-align:left">打印最近从 time 开始的日志，不包含 -d 命令，时间格式 MM-DD hh:mm:ss.mmm</td>
+</tr>
+<tr>
+<td style="text-align:left">-L</td>
+<td style="text-align:left">打印上次启动之前的日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-B</td>
+<td style="text-align:left">输出二进制日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-S</td>
+<td style="text-align:left">输出统计</td>
+</tr>
+<tr>
+<td style="text-align:left">-P list.</td>
+<td style="text-align:left">设置 log 黑白名单</td>
+</tr>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">获取 log 黑白名单</td>
+</tr>
+</tbody>
+</table>
+<h1 id="s"><a href="#s" class="headerlink" title="-s"></a>-s</h1><p>设置默认过滤器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -s &lt;tag&gt;[:priority]</div></pre></td></tr></table></figure></p>
+<p><code>tag</code>：对应 log 的 tag。值<code>*</code>代表全部，如果只有<code>*</code>，等于<code>*:D</code>，如果仅有<code>&lt;tag&gt;</code>，等于<code>&lt;tag&gt;:V</code>。</p>
+<p><code>priority</code>：优先级，从低到高分别是V，D，I，W，E，F，S。V，全部输出。S，全部输出。</p>
+<p>例1，只输出 tag 为 test 的 log：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb logcat -s test</div><div class="line">#或者</div><div class="line">adb logcat -s test:V</div></pre></td></tr></table></figure></p>
+<p>例2，只输出优先级大于 W 的日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -s *:W</div></pre></td></tr></table></figure></p>
+<p>例3，输出 tag 为 test 的 E 级别 和 tag 为 test1 的 W 级别日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -s test:E test1:W</div></pre></td></tr></table></figure></p>
+<h1 id="v"><a href="#v" class="headerlink" title="-v"></a>-v</h1><p>设置日志打印格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -v &lt;format&gt;</div></pre></td></tr></table></figure></p>
+<p>format 共有 brief、color、long、printable、process、raw、tag、thread、threadtime、time、usec 格式，默认 threadtime。</p>
+<p>各种输出格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">#Java 代码</div><div class="line">#private final static String TAG_0 = &quot;sth0&quot;;</div><div class="line">#Log.v(TAG_0, &quot;0 Send a verbose log message&quot;);</div><div class="line"></div><div class="line">#命令</div><div class="line"># adb logcat -v &lt;format&gt; -s sth0:W</div><div class="line"></div><div class="line">#brief</div><div class="line">W/sth0    ( 1065): 0 Send a warn log message</div><div class="line"></div><div class="line">#color 其实在 Terminal 里面是有颜色的</div><div class="line">08-02 09:38:42.094  1065  1065 W sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#long</div><div class="line">[ 08-02 09:38:42.094  1065: 1065 W/sth0     ]</div><div class="line">0 Send a warn log message</div><div class="line"></div><div class="line">#printable</div><div class="line">08-02 09:38:42.094  1065  1065 W sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#process</div><div class="line">W( 1065) 0 Send a warn log message  (sth0)</div><div class="line"></div><div class="line">#raw</div><div class="line">0 Send a warn log message</div><div class="line"></div><div class="line">#tag</div><div class="line">W/sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#thread</div><div class="line">W( 1065: 1065) 0 Send a warn log message</div><div class="line"></div><div class="line">#threadtime</div><div class="line">08-02 09:38:42.094  1065  1065 W sth0    : 0 Send a warn log message</div><div class="line"></div><div class="line">#time</div><div class="line">08-02 09:38:42.094 W/sth0    ( 1065): 0 Send a warn log message</div><div class="line"></div><div class="line">#usec</div><div class="line">08-02 09:38:42.094771  1065  1065 W sth0    : 0 Send a warn log message</div></pre></td></tr></table></figure></p>
+<h1 id="f"><a href="#f" class="headerlink" title="-f"></a>-f</h1><p>输出log到指定文件。<code>&lt;filename&gt;</code>是手机内的文件，并不是调试用的电脑。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -f &lt;filename&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="r"><a href="#r" class="headerlink" title="-r"></a>-r</h1><p>设置每<code>&lt;kbytes&gt;</code>时输出日志，需要和<code>-f</code>一起使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -f &lt;filenam&gt; -r &lt;kbytes&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="n"><a href="#n" class="headerlink" title="-n"></a>-n</h1><p>设置日志每次最大输出<code>&lt;count&gt;</code>行，需要和<code>-f</code>一起使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -f &lt;filenam&gt; -n &lt;count&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="b"><a href="#b" class="headerlink" title="-b"></a>-b</h1><p>加载日志缓冲区，<code>&lt;buffer&gt;</code>的值有<code>main</code>，<code>system</code>，<code>radio</code>，<code>events</code>，<code>crash</code>，<code>all</code>。默认<code>main</code>，<code>system</code>，<code>crash</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -b &lt;buffer&gt;</div></pre></td></tr></table></figure></p>
+<p>例，加载<code>radio</code>，<code>events</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -b radio -b events</div></pre></td></tr></table></figure></p>
+<h1 id="D"><a href="#D" class="headerlink" title="-D"></a>-D</h1><p>在不同的缓冲区日志之间添加分割线。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -D</div></pre></td></tr></table></figure></p>
+<h1 id="c"><a href="#c" class="headerlink" title="-c"></a>-c</h1><p>清除缓冲区日志，并退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -c</div></pre></td></tr></table></figure></p>
+<h1 id="d"><a href="#d" class="headerlink" title="-d"></a>-d</h1><p>打印缓冲区日志，并退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -d</div></pre></td></tr></table></figure></p>
+<h1 id="g"><a href="#g" class="headerlink" title="-g"></a>-g</h1><p>打印缓冲区大小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -g</div></pre></td></tr></table></figure></p>
+<h1 id="G"><a href="#G" class="headerlink" title="-G"></a>-G</h1><p>设置缓冲区大小。<code>&lt;size&gt;</code>，以<code>K</code>结尾，单位 kb，以<code>M</code>结尾，单位 MB。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -G &lt;size&gt;</div></pre></td></tr></table></figure></p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -G 100K</div></pre></td></tr></table></figure></p>
+<h1 id="t"><a href="#t" class="headerlink" title="-t"></a>-t</h1><p>包含 <code>-d</code> 功能，也就是打印后退出。<br>打印最近<code>&lt;size&gt;</code>行日志。<br>打印从<code>&#39;&lt;time&gt;&#39;</code>时间开始的日志。时间格式<code>MM-DD hh:mm:ss.mmm</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat -t &lt;size&gt;</div><div class="line">adb logcat -t &apos;&lt;time&gt;&apos;</div></pre></td></tr></table></figure></p>
+<p>例1，打印最近1000行日志，并且过滤出 tag 为 sth0 的日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -t 1000 -s sth0:V</div></pre></td></tr></table></figure></p>
+<p>例2，打印 08-02 17:51:20.145  开始的日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -t &apos;08-02 17:51:20.145&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="T"><a href="#T" class="headerlink" title="-T"></a>-T</h1><p>不包含 <code>-d</code> 功能，也就是打印后不退出，会持续输出。<br>打印最近<code>&lt;size&gt;</code>行日志。<br>打印从<code>&#39;&lt;time&gt;&#39;</code>时间开始的日志。时间格式<code>MM-DD hh:mm:ss.mmm</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat -T &lt;size&gt;</div><div class="line">adb logcat -T &apos;&lt;time&gt;&apos;</div></pre></td></tr></table></figure></p>
+<p>例1，打印最近1000行日志，并且过滤出 tag 为 sth0 的日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -T 1000 -s sth0:V</div></pre></td></tr></table></figure></p>
+<p>例2，打印 08-02 17:51:20.145  开始的日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -T &apos;08-02 17:51:20.145&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="L"><a href="#L" class="headerlink" title="-L"></a>-L</h1><p>打印最后一次重启之前的日志。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -L</div></pre></td></tr></table></figure></p>
+<h1 id="B"><a href="#B" class="headerlink" title="-B"></a>-B</h1><p>输出日志的二进制格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -B</div></pre></td></tr></table></figure></p>
+<h1 id="S"><a href="#S" class="headerlink" title="-S"></a>-S</h1><p>输出统计信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -S</div></pre></td></tr></table></figure></p>
+<h1 id="P"><a href="#P" class="headerlink" title="-P"></a>-P</h1><p>设置黑白名单。可以对 <code>UID</code>，<code>PID</code>设置，也可以<code>UID/PID</code>一起设置。设置黑名单，前缀<code>~</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -P &apos;&lt;list&gt;...&apos;</div></pre></td></tr></table></figure></p>
+<p>例1，对<code>UID</code> 520881设置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat - P &apos;520881&apos;</div></pre></td></tr></table></figure></p>
+<p>例2，对<code>PID</code> 520881 设置黑名单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -P &apos;~/520881&apos;</div></pre></td></tr></table></figure></p>
+<p>例3，对<code>UID</code> 520881，对<code>PID</code> 78883，对 <code>UID/PID</code> 52189/8883 设置黑名单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -P `~520881 ~/78883 ~52189/8883&apos;</div></pre></td></tr></table></figure></p>
+<h1 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h1><p>查看黑白名单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat -p</div></pre></td></tr></table></figure></p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><p>利用 shell 重定向输出日志到指定文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#输出sth0:V到桌面1.log文件</div><div class="line">adb logcat -s sth0:V &gt;~/Desktop/1.log</div></pre></td></tr></table></figure></p>
+<p>利用 <code>grep</code> 过滤日志。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 过滤日志包含 verbose 的日志</div><div class="line">adb logcat | grep verbose </div><div class="line"># 过滤日志包含 verbose 的日志，忽略大小写</div><div class="line">adb logcat | grep -i verbose</div><div class="line"># 过滤符合正则表达式 sth. 的日志</div><div class="line">adb logcat | grep -e sth.</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/07/30/untitled-1501415073699/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1574,306 +2118,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/03/23/2016-03-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/23/2016-03-23/" itemprop="url">[原]React-Native Android 学习笔记——2，自定义 logger</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-23T16:35:48+08:00">
-                2016-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="external">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：<br><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"><br>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
-<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Sample React Native App</span></div><div class="line"><span class="comment"> * https://github.com/facebook/react-native</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
-<p>可以看到我在 welcome 的 style 中设置了<code>color:&#39;red&#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">welcome: &#123;</div><div class="line">  fontSize: <span class="number">20</span>,</div><div class="line">  textAlign: <span class="string">'center'</span>,</div><div class="line">  margin: <span class="number">10</span>,</div><div class="line">  color:<span class="string">'red'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
-<p>下面我们来熟悉一下<code>index.android.js</code>这个文件里面的 js 代码都是干什么的。</p>
-<p><code>&#39;use strict&#39;</code>是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="external">《Javascript 严格模式详解》</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
-<p>这段代码类似 java 的 import，把需要引用的 module 引入。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这段代码是渲染当前注册界面的布局，<code>render</code>方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>标签的具体规范可以看这里<a href="http://facebook.github.io/react-native/docs/text.html#content" target="_blank" rel="external">Text</a>，<a href="http://facebook.github.io/react-native/docs/view.html#content" target="_blank" rel="external">View</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
-<p>上面这段代码把我们 js 文件中的 class <code>AwesomeProject</code>和我们 Android 项目中 <code>Activity</code>中<code>getMainComponentName() { return &quot;AwesomeProject&quot;; }</code>的 Activity关联起来。</p>
-<h2 id="二，显示一个-Toast"><a href="#二，显示一个-Toast" class="headerlink" title="二，显示一个 Toast"></a>二，显示一个 Toast</h2><p>React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在<code>../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js</code>中。<br>我们来看 ToastAndroid 的源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Copyright (c) 2015-present, Facebook, Inc.</span></div><div class="line"><span class="comment"> * All rights reserved.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * This source code is licensed under the BSD-style license found in the</span></div><div class="line"><span class="comment"> * LICENSE file in the root directory of this source tree. An additional grant</span></div><div class="line"><span class="comment"> * of patent rights can be found in the PATENTS file in the same directory.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * @providesModule ToastAndroid</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * This exposes the native ToastAndroid module as a JS module. This has a function 'show'</span></div><div class="line"><span class="comment"> * which takes the following parameters:</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 1. String message: A string with the text to toast</span></div><div class="line"><span class="comment"> * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> ToastAndroid = &#123;</div><div class="line"></div><div class="line">  SHORT: RCTToastAndroid.SHORT,</div><div class="line">  LONG: RCTToastAndroid.LONG,</div><div class="line"></div><div class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">    message: string,</span></span></div><div class="line"><span class="function"><span class="params">    duration: number</span></span></div><div class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</div><div class="line">    RCTToastAndroid.show(message, duration);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = ToastAndroid;</div></pre></td></tr></table></figure></p>
-<p>我们可以直接在引包当中加入ToastAndroid。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ToastAndroid,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
-<p>下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码<code>ToastAndroid.show(&#39;Awesome&#39;, ToastAndroid.SHORT);</code>，下面来摇摆手机调出开发菜单，点击<code>Reload JS</code>。就会弹出Toast。<br>我们来分析一下<code>ToastAndroid.android.js</code>这个 module。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</div></pre></td></tr></table></figure></p>
-<p>这里是<code>require</code>是加载<code>NativeModules</code>模块，并把 <code>ToastAndroid</code> 赋值给 <code>RCTToastAndroid</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ToastAndroid = &#123;</div><div class="line"></div><div class="line">  SHORT: RCTToastAndroid.SHORT,</div><div class="line">  LONG: RCTToastAndroid.LONG,</div><div class="line"></div><div class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">    message: string,</span></span></div><div class="line"><span class="function"><span class="params">    duration: number</span></span></div><div class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</div><div class="line">    RCTToastAndroid.show(message, duration);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>这段代码，创建一个对象赋值给<code>ToastAndroid</code>，对象内分别设置了<code>Toast</code>的 <code>SHORT</code>，<code>LONG</code>和<code>show</code>方法。<br><code>module.exports = ToastAndroid;</code>这里把<code>ToastAndroid</code>作为当前这个 Module 导出，提供给外部使用。<br>那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 <code>ToastModule</code>，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_SHORT_KEY = <span class="string">"SHORT"</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_LONG_KEY = <span class="string">"LONG"</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ToastModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(reactContext);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"ToastAndroid"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</div><div class="line">    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);</div><div class="line">    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);</div><div class="line">    <span class="keyword">return</span> constants;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@ReactMethod</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String message, <span class="keyword">int</span> duration)</span> </span>&#123;</div><div class="line">    Toast.makeText(getReactApplicationContext(), message, duration).show();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里<code>getName()</code>方法的返回值对应 JS 中的<code>var RCTToastAndroid = require(&#39;NativeModules&#39;).ToastAndroid;</code>结尾处的<code>ToastAndroid</code>，正如 js 里的请求手机本地的 modules ，对应到类里的<code>getName()</code>返回值。<br><code>getConstants()</code>方法负责把类中的常量映射到 JS 中去。<br><code>show(String message, int duration)</code>方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。</p>
-<h2 id="三，自定义-Logger"><a href="#三，自定义-Logger" class="headerlink" title="三，自定义 Logger"></a>三，自定义 Logger</h2><p>这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODULE_NAME = <span class="string">"Logger"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_KEY = <span class="string">"TAG"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_VALUE = <span class="string">"LoggerModule"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoggerModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(reactContext);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</div><div class="line">        constants.put(TAG_KEY, TAG_VALUE);</div><div class="line">        <span class="keyword">return</span> constants;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> MODULE_NAME;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.i(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.d(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.w(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.e(tag, msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里我把常量<code>TAG</code>返回给 JS 调用，Module 命名为<code>Logger</code>，并且把 info，debug，warn，error 等 Log 方法加上<code>@ReactMethod</code>注释，提供给 JS调用。<br>这里还没有结束，我们还需要实现一个类，去注册我们自己写的 <code>LoggerModule</code>。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppReactPackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        modules.add(<span class="keyword">new</span> LoggerModule(reactContext));</div><div class="line">        <span class="keyword">return</span> modules;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后，把这个 AppReactPackage 注册到 Activity。如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns the name of the main component registered from JavaScript.</span></div><div class="line"><span class="comment">     * This is used to schedule rendering of the component.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getMainComponentName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"AwesomeProject"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns whether dev mode should be enabled.</span></div><div class="line"><span class="comment">     * This enables e.g. the dev menu.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * A list of packages used by the app. If the app uses additional views</span></div><div class="line"><span class="comment">     * or modules besides the default ones, add more packages here.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">                <span class="keyword">new</span> MainReactPackage(),</div><div class="line">                <span class="keyword">new</span> AppReactPackage()</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>java 代码到这里就结束了。<br>下面，我们在<code>index.android.js</code>的同级目录创建一个 js 文件<code>log.js</code>。里面内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> RCTLogger = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).Logger;<span class="comment">//加载本地 modules，Module#getName()</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> LogAndroid = &#123;</div><div class="line">  <span class="comment">//添加定义的常量 Module#getConstants()</span></div><div class="line">  TAG: RCTLogger.TAG,</div><div class="line">  <span class="comment">//添加的方法 Module#d()</span></div><div class="line">  d: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.d(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  i: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.i(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  w: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.w(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  e: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.e(tag,msg);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = LogAndroid;<span class="comment">//module 导出</span></div></pre></td></tr></table></figure></p>
-<p>这里不用多说了，无非就是创建一个 LogAndroid 对象获取 <code>LoggerModule</code>java 类中的常量，方法等，并且导出。<br>下面我贴出完整的<code>index.android.js</code>，里面显示如何引用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Sample React Native App</span></div><div class="line"><span class="comment"> * https://github.com/facebook/react-native</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ToastAndroid,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">var</span> LogAndroid = <span class="built_in">require</span>(<span class="string">'./log'</span>);</div><div class="line"></div><div class="line">LogAndroid.i(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.d(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.w(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.e(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line"></div><div class="line">ToastAndroid.show(<span class="string">'Awesome'</span>, ToastAndroid.SHORT);</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
-<p>重新编译并运行你的 app，看看 logcat 打印出了日志吗？</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/03/18/2016-03-18/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/18/2016-03-18/" itemprop="url">[原]React-Native Android 学习笔记——1，配置环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-18T15:30:43+08:00">
-                2016-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一，设备与环境"><a href="#一，设备与环境" class="headerlink" title="一，设备与环境"></a>一，设备与环境</h2><h3 id="1，一台-mac"><a href="#1，一台-mac" class="headerlink" title="1，一台 mac"></a>1，一台 mac</h3><h3 id="2，安装软件包管理器-Homebrew-中文"><a href="#2，安装软件包管理器-Homebrew-中文" class="headerlink" title="2，安装软件包管理器 Homebrew(中文)"></a>2，安装软件包管理器 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew(中文)</a></h3><p>终端里输入<code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code>进行安装。</p>
-<h3 id="3，安装-wget-或者-curl"><a href="#3，安装-wget-或者-curl" class="headerlink" title="3，安装 wget 或者 curl"></a>3，安装 <a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="external">wget</a> 或者 <a href="https://zh.wikipedia.org/wiki/CURL" target="_blank" rel="external">curl</a></h3><p>wget，终端里输入<code>brew install wget</code>进行安装。<br>curl，终端里输入<code>brew install curl</code>进行安装。</p>
-<h3 id="4，安装-nvm-node版本管理器"><a href="#4，安装-nvm-node版本管理器" class="headerlink" title="4，安装 nvm (node版本管理器)"></a>4，安装 <a href="https://github.com/creationix/nvm#installation" target="_blank" rel="external">nvm</a> (node版本管理器)</h3><p>如果安装了 wget，终端输入<code>wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</code>进行安装 nvm。</p>
-<p>如果安装了 curl，终端输入<code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bashÂ</code>进行安装 nvm。</p>
-<h3 id="5，Android-SDK"><a href="#5，Android-SDK" class="headerlink" title="5，Android SDK"></a>5，Android SDK</h3><p>这个不用多说了，相信大家都会的。顺便把 Android SDK 配置到环境变量。</p>
-<p>如果你没有 Android SDK，也可以通过终端输入<code>brew install android-sdk</code>。</p>
-<h2 id="二，安装和初始react-native-demo"><a href="#二，安装和初始react-native-demo" class="headerlink" title="二，安装和初始react-native demo"></a>二，安装和初始react-native demo</h2><p>终端输入<code>npm install -g react-native-cli</code>安装 react-native。</p>
-<p>如果显示<code>EACCES: permission denied</code>，用超级权限再次执行一下上面的指令。反正我是没遇到。</p>
-<p>进入到你要创建 demo 的目录，终端输入<code>cd 你得文件路径</code>.<br>终端输入<code>react-native init AwesomeProject</code>，初始 AwesomeProject 。</p>
-<p>终端输入<code>cd AwesomeProject</code>。</p>
-<p>终端输入<code>react-native run-android</code>可以直接运行 node 服务并编译运行 Android 项目，直至安装到手机。</p>
-<p>如果界面报错提示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Unable to download JS bundle</div><div class="line">com.facebook.react.devsupport.DebugServerException: Could not connect to development server.</div><div class="line"></div><div class="line">URL: http://localhost:8081/index.android.bundle?platform=android&amp;dev=true&amp;hot=false</div><div class="line"></div><div class="line">Try the following to fix the issue:</div><div class="line">• Ensure that the packager server is running</div><div class="line">• Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run &apos;adb devices&apos; to see a list of connected devices</div><div class="line">• If you&apos;re on a physical device connected to the same machine, run &apos;adb reverse tcp:8081 tcp:8081&apos; to forward requests from your device</div><div class="line">• If your device is on the same Wi-Fi network, set &apos;Debug server host &amp; port for device&apos; in &apos;Dev settings&apos; to your machine&apos;s IP address and the port of the local dev server - e.g. 10.0.1.1:8081</div><div class="line">at com.facebook.react.devsupport.DevServerHelper$1.onFailure(DevServerHelper.java:203)</div><div class="line">at com.squareup.okhttp.Call$AsyncCall.execute(Call.java:175)</div><div class="line">at com.squareup.okhttp.internal.NamedRunnable.run(NamedRunnable.java:33)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)</div><div class="line">at java.lang.Thread.run(Thread.java:818)</div></pre></td></tr></table></figure></p>
-<p>一般在终端输入<code>adb reverse tcp:8081 tcp:8081</code>即可解决，其他请详细看 log。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1924,7 +2168,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1946,7 +2190,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
