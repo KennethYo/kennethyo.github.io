@@ -288,6 +288,160 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/12/28/2014-12-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/12/28/2014-12-28/" itemprop="url">[原]CardView初级使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-28T14:08:54+08:00">
+                2014-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>CardView</code>发布于android sdk v7的支持包中，具体如何将项目加入v7包，请看这里<a href="http://kennethyo.farbox.com/post/android/recyclerviewchu-ji-shi-yong#main" target="_blank" rel="external">传送门</a>。</p>
+<p>卡片化是全新的Material风&#26684;设计中重要的组成部分之一，卡片设计适合重要信息的展示，以及在list中作为一个包含有复杂操作的item使用。</p>
+<p><code>CardView</code>继承于<code>Framelayout</code>，比<code>FrameLayout</code>多了3个重要的属性，<code>card_view:cardElevation</code>，<code>card_view:cardCornerRadius</code>，<code>card_view:cardBackgroundColor</code>。</p>
+<p><code>card_view:cardElevation</code>，可以设置卡片的阴影，可以使<code>CardView</code>在z轴方向上有一种抬升的视觉效果，能给用户一种这里是重要信息的视觉感受。对应代码里的方法<code>public
+ void setCardElevation (float radius)</code>。</p>
+<p><code>card_view:cardCornerRadius</code>，显然就是设置<code>CardView</code>的圆角了。对应代码里的方法<code>public
+ void setRadius (float radius)</code>。</p>
+<p><code>card_view:cardBackgroundColor</code>，设置<code>CardView</code>的背景颜色，这个属性是不会影响阴影<code>card_view:cardElevation</code>的效果的。对应代码里的方法<code>public
+ void setCardBackgroundColor (int color)</code>。</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.CardView</span><br><span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/cardview&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;fill_parent&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardElevation=</span><span class="s" style="color:rgb(204,147,147)">&quot;100dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardBackgroundColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@color/grey&quot;</span><br><span class="na" style="color:rgb(154,195,159)">card_view:cardCornerRadius=</span><span class="s" style="color:rgb(204,147,147)">&quot;8dp&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="na" style="color:rgb(154,195,159)">android:layout_marginRight=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br>                <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;wrap_content&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:layout_margin=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/margin&quot;</span><br>                <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;这里是CardView&quot;</span><br>                <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/android.support.v7.widget.CardView&gt;</span><br></pre><br></div>
+
+<p>这里贴一个Android官方给的<a href="https://github.com/googlesamples/android-CardView" target="_blank" rel="external">sample</a>吧!</p>
+<p>—————————————</p>
+<p>从11月19日开始一直在加班，把大把的时间都用于了我们岁末版本的开发上，这期间规划了好几篇想要写的博文，慢慢会发出来的，主要还是偏于介绍新控件的使用，以及如何兼容lollipop以下版本进行material风&#26684;的设计，material风&#26684;设计也将会是我所在项目组15年第一季度android的全新设计方案。</p>
+<p><span style="color:rgb(221,17,68); font-family:Inconsolata,monospace,sans-serif; line-height:30px; white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://kennethyo.farbox.com/post/android/2014-12-28）" target="_blank" rel="external">http://kennethyo.farbox.com/post/android/2014-12-28）</a></span></p>
+<pre><code>&lt;div&gt;
+    作者：zh08070005 发表于2014/12/28 14:08:54 [原文链接](http://blog.csdn.net/kennethyo/article/details/42213525)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：2090 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/42213525#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/11/10/2014-11-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2510,7 +2664,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2521,7 +2675,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2532,7 +2686,7 @@ return &apos;\ufeff&apos; &amp;#43; content; // byte order mark             | Go
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

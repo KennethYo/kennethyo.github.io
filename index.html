@@ -288,6 +288,312 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/08/20/untitled-1503165543552/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鸿雁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/20/untitled-1503165543552/" itemprop="url">正则表达式学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:59:03+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Regex/" itemprop="url" rel="index">
+                    <span itemprop="name">Regex</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>基于<a href="#toc_24">学习资料</a>的笔记。</p>
+</blockquote>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>一组字母和符号组成的文本，用来在文本中找出满足需要得文本。<br><code>regex</code>是<code>regular expression</code>的缩写。</p>
+<h1 id="基本匹配"><a href="#基本匹配" class="headerlink" title="基本匹配"></a>基本匹配</h1><p>直接配具体文本，大小写敏感。<br>匹配<code>kenneth</code>:<br><code>kenneth</code> =&gt; <strong>kenneth</strong> yo</p>
+<h1 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td>句号匹配任意单个字符除了换行符.</td>
+</tr>
+<tr>
+<td style="text-align:center">[ ]</td>
+<td>字符种类. 匹配方括号内的任意字符.</td>
+</tr>
+<tr>
+<td style="text-align:center">[^ ]</td>
+<td>否定的字符种类. 匹配除了方括号里的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td>匹配&gt;=0个重复的在*号之前的字符.</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td>匹配&gt;=1个重复的+号前的字符.</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td>标记?之前的字符为可选.</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}</td>
+<td>匹配num个中括号之前的字符 (n &lt;= num &lt;= m).</td>
+</tr>
+<tr>
+<td style="text-align:center">(xyz)</td>
+<td>字符集, 匹配与 xyz 完全相等的字符串.</td>
+</tr>
+<tr>
+<td style="text-align:center">&#124;</td>
+<td>或运算符,匹配符号前或后的字符.</td>
+</tr>
+<tr>
+<td style="text-align:center">&#92;</td>
+<td>转义字符,用于匹配一些保留的字符 <code>[ ] ( ) { } . * + ? ^ $ \ &#124;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td>从开始行开始匹配.</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td>从末端开始匹配.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="点运算符"><a href="#点运算符" class="headerlink" title="点运算符."></a>点运算符<code>.</code></h2><p>匹配任意字符，但不匹配换行符。<br><code>.ar</code> =&gt; The <strong>car</strong> <strong>par</strong>ked in the <strong>gar</strong>age.</p>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集[]"></a>字符集<code>[]</code></h2><p>连字符<code>-</code>指定范围，括号里面<code>.</code>就是表示<code>.</code>。<br><code>[Tt]he</code> =&gt; <strong>The</strong> car parked in <strong>the</strong> garage.</p>
+<h2 id="否定字符集"><a href="#否定字符集" class="headerlink" title="否定字符集[^]"></a>否定字符集<code>[^]</code></h2><p>和字符集相反，匹配不为括号内的字符。<br><code>[^c]ar</code> =&gt; The car <strong>par</strong>ked in the <strong>gar</strong>age.</p>
+<h2 id="重复次数-号"><a href="#重复次数-号" class="headerlink" title="重复次数*号"></a>重复次数<code>*</code>号</h2><p>匹配<code>*</code>之前的字符出现大于等于0次。<br><code>[a-z]*</code> =&gt; T<strong>he car parked in the garage</strong>.<br><code>\s*cat\s*</code> =&gt; The fat <strong>cat</strong> sat on the con<strong>cat</strong>enation.</p>
+<h2 id="重复次数-号-1"><a href="#重复次数-号-1" class="headerlink" title="重复次数+号"></a>重复次数<code>+</code>号</h2><p>匹配<code>*</code>之前的字符出现大于等于1次。<br><code>c.+t</code> =&gt; The fat <strong>cat sat on the mat</strong>.</p>
+<h2 id="重复次数-号-2"><a href="#重复次数-号-2" class="headerlink" title="重复次数?号"></a>重复次数<code>?</code>号</h2><p>匹配<code>*</code>之前的字符出现0次或1次。<br><code>[T]?he</code> =&gt; <strong>The</strong> car is parked in t<strong>he</strong> garage.</p>
+<h2 id="号"><a href="#号" class="headerlink" title="{}号"></a><code>{}</code>号</h2><p>匹配之前的字符或字符组出现的次数。<br><code>{2,3}</code>，表示2到3位，逗号后没有数字，表示至少2位。<br>一个数字代表固定次数，例如<code>{3}</code>。<br><code>[0-9]{2,}</code> =&gt; The number was 9.<strong>9997</strong> but we rounded it off to <strong>10</strong>.0.</p>
+<h2 id="特征标群"><a href="#特征标群" class="headerlink" title="(...)特征标群"></a><code>(...)</code>特征标群</h2><p><code>(ab)*</code> 匹配连续出现 0 或更多个 <code>ab</code>。<br> <code>()</code>中用或字符<code>|</code> 表示或. 例如,<code>(c|g|p)ar</code> 匹配 car 或 gar 或 par.</p>
+<h2 id="或运算符"><a href="#或运算符" class="headerlink" title="|或运算符"></a><code>|</code>或运算符</h2><p>或运算。如上例。</p>
+<h2 id="转码特殊字符"><a href="#转码特殊字符" class="headerlink" title="转码特殊字符"></a>转码特殊字符</h2><p>反斜线 <code>\</code>， 用于指定 { } [ ] / \ + * . $ ^ | ? 这些特殊字符。<br>例如要匹配<code>.</code>，需要写成<code>\.</code>。</p>
+<h2 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h2><p>匹配指定开头或结尾的字符串就要使用到锚点。 <code>^</code> 指定开头，<code>$</code> 指定结尾。</p>
+<h1 id="简写字符集"><a href="#简写字符集" class="headerlink" title="简写字符集"></a>简写字符集</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">简写</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td>除换行符外的所有字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td>匹配所有字母数字, 等同于 <code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">\W</td>
+<td>匹配所有非字母数字, 即符号, 等同于: <code>[^\w]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td>匹配数字: <code>[0-9]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td>匹配非数字: <code>[^\d]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td>匹配所有空格字符, 等同于: <code>[\t\n\f\r\p{Z}]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td>匹配所有非空格字符: <code>[^\s]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td>匹配一个换页符</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td>匹配一个换行符</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td>匹配一个回车符</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td>匹配一个制表符</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td>匹配一个垂直制表符</td>
+</tr>
+<tr>
+<td style="text-align:center">\p</td>
+<td>匹配 CR/LF (等同于 <code>\r\n</code>)，用来匹配 DOS 行终止符</td>
+</tr>
+</tbody>
+</table>
+<h1 id="前后关联约束（前后预查）"><a href="#前后关联约束（前后预查）" class="headerlink" title="前后关联约束（前后预查）"></a>前后关联约束（前后预查）</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">?=</td>
+<td>前置约束-存在</td>
+</tr>
+<tr>
+<td style="text-align:center">?!</td>
+<td>前置约束-排除</td>
+</tr>
+<tr>
+<td style="text-align:center">?&lt;=</td>
+<td>后置约束-存在</td>
+</tr>
+<tr>
+<td style="text-align:center">?&lt;!</td>
+<td>后置约束-排除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="前置约束-存在"><a href="#前置约束-存在" class="headerlink" title="?=前置约束-存在"></a><code>?=</code>前置约束-存在</h2><p><code>?=...</code> 前置约束(存在)，表示第一部分表达式必须跟在 <code>?=...</code>定义的表达式之后。<br>前置约束的内容写在括号中的等号后面、。 例如， 表达式<code>[T|t]he(?=\sfat)</code>匹配<code>The</code>和<code>the</code>, 在括号中我们又定义了前置约束(存在) <code>(?=\sfat)</code> ,即<code>The</code>和<code>the</code>后面紧跟着 <code>(空格)fat``。</code>[T|t]he(?=\sfat)` =&gt; <strong>The</strong> fat cat sat on the mat.</p>
+<h2 id="前置约束-排除"><a href="#前置约束-排除" class="headerlink" title="?!...前置约束-排除"></a><code>?!...</code>前置约束-排除</h2><p><code>[T|t]he(?!\sfat)</code> =&gt; The fat cat sat on <strong>the</strong> mat.</p>
+<h2 id="lt-后置约束-存在"><a href="#lt-后置约束-存在" class="headerlink" title="?&lt;=...后置约束-存在"></a><code>?&lt;=...</code>后置约束-存在</h2><p><code>(?&lt;=[T|t]he\s)(fat|mat)</code> =&gt; The <strong>fat</strong> cat sat on the <strong>mat</strong>.</p>
+<h2 id="lt-后置约束-排除"><a href="#lt-后置约束-排除" class="headerlink" title="?&lt;!...后置约束-排除"></a><code>?&lt;!...</code>后置约束-排除</h2><p><code>(?&lt;![T|t]he\s)(cat)</code> =&gt; The cat sat on <strong>cat</strong>.</p>
+<h1 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h1><p>修改表达式的搜索结果。可以任意组合。<br>|标志|描述|<br>|:—-:|—-|<br>|i|忽略大小写.|<br>|g|全局搜索.|<br>|m|多行的: 锚点元字符 <code>^</code> <code>$</code> 工作范围在每行的起始.|</p>
+<h2 id="忽略大小写"><a href="#忽略大小写" class="headerlink" title="忽略大小写"></a>忽略大小写</h2><p><code>/The/gi</code>全局忽略大小写<code>the</code>。<br><code>/The/gi</code> =&gt; <strong>The</strong> fat cat sat on <strong>the</strong> mat.</p>
+<h2 id="全局搜索"><a href="#全局搜索" class="headerlink" title="全局搜索"></a>全局搜索</h2><p><code>/.(at)/g</code> =&gt; The <strong>fat</strong> <strong>cat</strong> <strong>sat</strong> on the <strong>mat</strong>.</p>
+<h2 id="多行修饰符"><a href="#多行修饰符" class="headerlink" title="多行修饰符"></a>多行修饰符</h2><p>像之前介绍的 <code>(^,$)</code> 用于检查格式是否是在待检测字符串的开头或结尾。 但我们如果想要它在每行的开头和结尾生效，我们需要用到多行修饰符 <code>m</code>。<br><code>/.at(.)?$/</code> =&gt; The fat<br>                cat sat<br>                on the <strong>mat.</strong><br><code>/.at(.)?$/gm</code> =&gt; The <strong>fat</strong><br>                  cat <strong>sat</strong><br>                  on the <strong>mat.</strong></p>
+<h1 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h1><ul>
+<li><a href="https://github.com/zeeshanu/learn-regex/blob/master/README-cn.md" target="_blank" rel="external">Learn Regex The Easy Way</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/08/02/untitled-1501674058670/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1846,160 +2152,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/03/23/2016-03-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="敲键盘的呼伦贝尔人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/23/2016-03-23/" itemprop="url">[原]React-Native Android 学习笔记——2，自定义 logger</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-23T16:35:48+08:00">
-                2016-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="external">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：<br><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"><br>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
-<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Sample React Native App</span></div><div class="line"><span class="comment"> * https://github.com/facebook/react-native</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
-<p>可以看到我在 welcome 的 style 中设置了<code>color:&#39;red&#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">welcome: &#123;</div><div class="line">  fontSize: <span class="number">20</span>,</div><div class="line">  textAlign: <span class="string">'center'</span>,</div><div class="line">  margin: <span class="number">10</span>,</div><div class="line">  color:<span class="string">'red'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
-<p>下面我们来熟悉一下<code>index.android.js</code>这个文件里面的 js 代码都是干什么的。</p>
-<p><code>&#39;use strict&#39;</code>是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="external">《Javascript 严格模式详解》</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
-<p>这段代码类似 java 的 import，把需要引用的 module 引入。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这段代码是渲染当前注册界面的布局，<code>render</code>方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>标签的具体规范可以看这里<a href="http://facebook.github.io/react-native/docs/text.html#content" target="_blank" rel="external">Text</a>，<a href="http://facebook.github.io/react-native/docs/view.html#content" target="_blank" rel="external">View</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
-<p>上面这段代码把我们 js 文件中的 class <code>AwesomeProject</code>和我们 Android 项目中 <code>Activity</code>中<code>getMainComponentName() { return &quot;AwesomeProject&quot;; }</code>的 Activity关联起来。</p>
-<h2 id="二，显示一个-Toast"><a href="#二，显示一个-Toast" class="headerlink" title="二，显示一个 Toast"></a>二，显示一个 Toast</h2><p>React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在<code>../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js</code>中。<br>我们来看 ToastAndroid 的源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Copyright (c) 2015-present, Facebook, Inc.</span></div><div class="line"><span class="comment"> * All rights reserved.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * This source code is licensed under the BSD-style license found in the</span></div><div class="line"><span class="comment"> * LICENSE file in the root directory of this source tree. An additional grant</span></div><div class="line"><span class="comment"> * of patent rights can be found in the PATENTS file in the same directory.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * @providesModule ToastAndroid</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * This exposes the native ToastAndroid module as a JS module. This has a function 'show'</span></div><div class="line"><span class="comment"> * which takes the following parameters:</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 1. String message: A string with the text to toast</span></div><div class="line"><span class="comment"> * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> ToastAndroid = &#123;</div><div class="line"></div><div class="line">  SHORT: RCTToastAndroid.SHORT,</div><div class="line">  LONG: RCTToastAndroid.LONG,</div><div class="line"></div><div class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">    message: string,</span></span></div><div class="line"><span class="function"><span class="params">    duration: number</span></span></div><div class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</div><div class="line">    RCTToastAndroid.show(message, duration);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = ToastAndroid;</div></pre></td></tr></table></figure></p>
-<p>我们可以直接在引包当中加入ToastAndroid。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ToastAndroid,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
-<p>下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码<code>ToastAndroid.show(&#39;Awesome&#39;, ToastAndroid.SHORT);</code>，下面来摇摆手机调出开发菜单，点击<code>Reload JS</code>。就会弹出Toast。<br>我们来分析一下<code>ToastAndroid.android.js</code>这个 module。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</div></pre></td></tr></table></figure></p>
-<p>这里是<code>require</code>是加载<code>NativeModules</code>模块，并把 <code>ToastAndroid</code> 赋值给 <code>RCTToastAndroid</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ToastAndroid = &#123;</div><div class="line"></div><div class="line">  SHORT: RCTToastAndroid.SHORT,</div><div class="line">  LONG: RCTToastAndroid.LONG,</div><div class="line"></div><div class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">    message: string,</span></span></div><div class="line"><span class="function"><span class="params">    duration: number</span></span></div><div class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</div><div class="line">    RCTToastAndroid.show(message, duration);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>这段代码，创建一个对象赋值给<code>ToastAndroid</code>，对象内分别设置了<code>Toast</code>的 <code>SHORT</code>，<code>LONG</code>和<code>show</code>方法。<br><code>module.exports = ToastAndroid;</code>这里把<code>ToastAndroid</code>作为当前这个 Module 导出，提供给外部使用。<br>那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 <code>ToastModule</code>，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_SHORT_KEY = <span class="string">"SHORT"</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_LONG_KEY = <span class="string">"LONG"</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ToastModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(reactContext);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"ToastAndroid"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</div><div class="line">    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);</div><div class="line">    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);</div><div class="line">    <span class="keyword">return</span> constants;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@ReactMethod</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String message, <span class="keyword">int</span> duration)</span> </span>&#123;</div><div class="line">    Toast.makeText(getReactApplicationContext(), message, duration).show();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里<code>getName()</code>方法的返回值对应 JS 中的<code>var RCTToastAndroid = require(&#39;NativeModules&#39;).ToastAndroid;</code>结尾处的<code>ToastAndroid</code>，正如 js 里的请求手机本地的 modules ，对应到类里的<code>getName()</code>返回值。<br><code>getConstants()</code>方法负责把类中的常量映射到 JS 中去。<br><code>show(String message, int duration)</code>方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。</p>
-<h2 id="三，自定义-Logger"><a href="#三，自定义-Logger" class="headerlink" title="三，自定义 Logger"></a>三，自定义 Logger</h2><p>这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODULE_NAME = <span class="string">"Logger"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_KEY = <span class="string">"TAG"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_VALUE = <span class="string">"LoggerModule"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoggerModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(reactContext);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</div><div class="line">        constants.put(TAG_KEY, TAG_VALUE);</div><div class="line">        <span class="keyword">return</span> constants;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> MODULE_NAME;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.i(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.d(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.w(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">        Log.e(tag, msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里我把常量<code>TAG</code>返回给 JS 调用，Module 命名为<code>Logger</code>，并且把 info，debug，warn，error 等 Log 方法加上<code>@ReactMethod</code>注释，提供给 JS调用。<br>这里还没有结束，我们还需要实现一个类，去注册我们自己写的 <code>LoggerModule</code>。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppReactPackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        modules.add(<span class="keyword">new</span> LoggerModule(reactContext));</div><div class="line">        <span class="keyword">return</span> modules;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后，把这个 AppReactPackage 注册到 Activity。如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns the name of the main component registered from JavaScript.</span></div><div class="line"><span class="comment">     * This is used to schedule rendering of the component.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getMainComponentName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"AwesomeProject"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns whether dev mode should be enabled.</span></div><div class="line"><span class="comment">     * This enables e.g. the dev menu.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * A list of packages used by the app. If the app uses additional views</span></div><div class="line"><span class="comment">     * or modules besides the default ones, add more packages here.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">                <span class="keyword">new</span> MainReactPackage(),</div><div class="line">                <span class="keyword">new</span> AppReactPackage()</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>java 代码到这里就结束了。<br>下面，我们在<code>index.android.js</code>的同级目录创建一个 js 文件<code>log.js</code>。里面内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> RCTLogger = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).Logger;<span class="comment">//加载本地 modules，Module#getName()</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> LogAndroid = &#123;</div><div class="line">  <span class="comment">//添加定义的常量 Module#getConstants()</span></div><div class="line">  TAG: RCTLogger.TAG,</div><div class="line">  <span class="comment">//添加的方法 Module#d()</span></div><div class="line">  d: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.d(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  i: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.i(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  w: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.w(tag,msg);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  e: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</div><div class="line">    RCTLogger.e(tag,msg);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = LogAndroid;<span class="comment">//module 导出</span></div></pre></td></tr></table></figure></p>
-<p>这里不用多说了，无非就是创建一个 LogAndroid 对象获取 <code>LoggerModule</code>java 类中的常量，方法等，并且导出。<br>下面我贴出完整的<code>index.android.js</code>，里面显示如何引用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Sample React Native App</span></div><div class="line"><span class="comment"> * https://github.com/facebook/react-native</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ToastAndroid,</div><div class="line">  View,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">var</span> LogAndroid = <span class="built_in">require</span>(<span class="string">'./log'</span>);</div><div class="line"></div><div class="line">LogAndroid.i(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.d(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.w(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line">LogAndroid.e(LogAndroid.TAG,<span class="string">"Awesome"</span>);</div><div class="line"></div><div class="line">ToastAndroid.show(<span class="string">'Awesome'</span>, ToastAndroid.SHORT);</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></div><div class="line"><span class="regexp">          To get started, edit index.android.js</span></div><div class="line"><span class="regexp">        &lt;/</span>Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: <span class="number">1</span>,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: <span class="number">20</span>,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: <span class="number">10</span>,</div><div class="line">    color:<span class="string">'red'</span></div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure></p>
-<p>重新编译并运行你的 app，看看 logcat 打印出了日志吗？</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2050,7 +2202,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2061,7 +2213,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2072,7 +2224,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
