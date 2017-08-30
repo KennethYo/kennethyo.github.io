@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kennethyo.me/"/>
-  <updated>2017-08-19T18:01:40.000Z</updated>
+  <updated>2017-08-30T07:43:26.000Z</updated>
   <id>http://www.kennethyo.me/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac Android Studio 使用离线文档</title>
+    <link href="http://www.kennethyo.me/2017/08/30/untitled-1504078195930/"/>
+    <id>http://www.kennethyo.me/2017/08/30/untitled-1504078195930/</id>
+    <published>2017-08-30T07:29:55.000Z</published>
+    <updated>2017-08-30T07:43:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><p>打开<code>~/Library/Preferences/AndroidStudio2.3/options</code>目录;</p>
+</li>
+<li><p>打开<code>jdk.table.xml</code>文件;</p>
+</li>
+<li><p>搜索<code>http://developer.android.com/reference/</code>;</p>
+</li>
+<li><p>替换国服地址<code>https://developer.android.google.cn/reference</code>, 或者替换为本地地址<code>file://$USER_HOME$/Library/Android/sdk/docs/reference</code>,这里我用的是 Studio 自带的 Android SDK, 当然也可以指向其他的SDK, 如果没有<code>docs</code>请在如下图片所在设置页面下载.</p>
+</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1fj1s76ht1lj31kw0nnqfc.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;打开&lt;code&gt;~/Library/Preferences/AndroidStudio2.3/options&lt;/code&gt;目录;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开&lt;code&gt;jdk.table.xml&lt;/code&gt;文件;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
+    
+      <category term="Studio" scheme="http://www.kennethyo.me/tags/Studio/"/>
+    
+      <category term="Android Studio" scheme="http://www.kennethyo.me/tags/Android-Studio/"/>
+    
+  </entry>
   
   <entry>
     <title>正则表达式学习笔记</title>
@@ -1364,58 +1406,6 @@
     
       &lt;p&gt;这两天负责修改了几个关于在webview中打开公司移动站的bug。本身不是很难解，网上查查都有，但是也有必要记录下来作为备忘。&lt;/p&gt;
 &lt;h3 id=&quot;Webview中上传文件&quot;&gt;&lt;a href=&quot;#Webview中上传文件&quot; class=&quot;headerlink&quot; titl
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.kennethyo.me/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://www.kennethyo.me/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[原]Android程序猿如何泡设计妹之快速掌握dp和px才可以</title>
-    <link href="http://www.kennethyo.me/2015/01/25/2015-01-25/"/>
-    <id>http://www.kennethyo.me/2015/01/25/2015-01-25/</id>
-    <published>2015-01-25T14:44:22.000Z</published>
-    <updated>2016-09-01T06:35:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>相信很多Android程序猿已经对身边的设计妹垂涎三尺了，那么如何博得设计妹的好感呢，学好这篇文章就可以了。</p>
-<p>程序猿与UI设计妹讨论设计稿和切图的时候，经常会因为dp和px的问题搞的不愉快，这里可以分析出两个原因：</p>
-<p>1，程序猿原因，不懂dp和px的换算关系。包括我，以及我见到的大多数开发，更多的时候其实不是很关心dp和px是如何来的，以及如何转换的，只知道掌握一般情况用dp，字体大小用sp，画线用px。</p>
-<p>2，设计妹原因，设计不出dp标注，或者甚至就不懂dp是什么东东。大多数公司并不会为Android专门做一套设计稿，只会出一版iOS设计稿，而iOS的设计稿都是用px去标注的，又因为上面的第一个原因，Android程序猿也搞不明白标注的px应该用多少dp。</p>
-<p>下面我们就用简单的方式去增进程序猿和设计妹感情吧！</p>
-<p>首先，我们要了解这张图：</p>
-<p><img src="http://img.blog.csdn.net/20150125224509843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>这里面列举了目前Android开发常见的5种dpi，dpi是指每英寸的像素（例如：一个宽是1.5英寸240像素，高是2英寸320像素的手机的dpi是：240px/1.5in=320px/2in=160dpi，既对角线上的每英寸的像素），上面这张表里还少一种，就是LDPI，是MDPI的0.75倍，也就是120DPI。</p>
-<p>下面这张图是各种dpi对应的主流手机屏幕：</p>
-<p><img src="http://img.blog.csdn.net/20150125224550469?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>请按照图中下方的公式，分别计算一下屏幕dpi。在mdpi中，dp/pixel = DPI/160，即1dip等价于DPI为160的设备中的1个像素点。那么在xhdpi 320dpi中，就是1dp等价于2像素（再次强调，一定用计算器算一算啊，还有dpi是对角线上的像素密度）。</p>
-<p>一般情况设计妹出的图会是xhdpi，既能照顾iOS，又会照顾到Android。既然是xhdpi，我们就可以用1dp=2px来应对设计妹的标注。如果不是xhdpi的图，你也可以按照这个0.75:1:1.5:2:3:4这个比例去换算一下。</p>
-<p>帮到这里了，剩下的还得看你的修为了。</p>
-<p>下面我再给出几个常用的&#20540;：</p>
-<p>Launcher icon：48dp*48dp</p>
-<p>Action bar icons：32dp*32dp</p>
-<p>Small icons：16dp*16dp</p>
-<p>Notification icons：24dp*24dp</p>
-<p>如果这些你还不满意，再给你来张图，包你满意：</p>
-<p><img src="http://img.blog.csdn.net/20150125224602388?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>内容参考与网络和<a href="http://developer.android.com/guide/practices/screens_support.html#range" target="_blank" rel="external">Android.com</a></p>
-<p>如果打不开的话请看这里<a href="http://www.kennethyo.me/post/category/cheng-xu-yuan-de-wu-qi-zhi-vpn">《程序员的武器之一VPN》</a></p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2015/1/25 22:44:22 [原文链接](http://blog.csdn.net/kennethyo/article/details/43123731)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：1117 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/43123731#comments)
-&lt;/div&gt;
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;相信很多Android程序猿已经对身边的设计妹垂涎三尺了，那么如何博得设计妹的好感呢，学好这篇文章就可以了。&lt;/p&gt;
-&lt;p&gt;程序猿与UI设计妹讨论设计稿和切图的时候，经常会因为dp和px的问题搞的不愉快，这里可以分析出两个原因：&lt;/p&gt;
-&lt;p&gt;1，程序猿原因，不懂dp和px
     
     </summary>
     
