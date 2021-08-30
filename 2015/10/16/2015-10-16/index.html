@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -38,7 +38,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -72,23 +72,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android,Animation," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml" />
+  <meta name="keywords" content="Android,Animation,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2015/10/16/2015-10-16/"/>
+  <link rel="canonical" href="http://www.kennethyo.me/2015/10/16/2015-10-16/">
 
 
 
@@ -185,7 +185,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">敲键盘的呼伦贝尔人</span>
         <span class="logo-line-after"><i></i></span>
@@ -215,7 +215,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -225,7 +225,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -235,7 +235,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -245,7 +245,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -255,7 +255,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -294,7 +294,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -330,7 +330,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -382,10 +382,10 @@
 <p><img src="http://img.blog.csdn.net/20151016162517318" alt="这里写图片描述"></p>
 <p>这其中包含了3个动画，分别是移动动画、放大动画、旋转动画。</p>
 <p>前两个动画比较好完成，可以用 TranslateAnimation 和 ScaleAnimation来完成，但是第三个就比较麻烦了，因为这个旋转动画是根据 Y 轴来旋转的，而 RotateAnimation 是根据垂直屏幕的 Z 轴旋转的，所以 RotateAnimation 并不能够完成我们需要的效果，这里就需要我们去继承 Animation 去自定义动画了。</p>
-<p>但是！！！<br>但是 APIdemo 里面已经实现了这个动画，so，我们拿来用就好了，下面是我贴出来的Rotate3dAnimation，其中我添加了一个构造，添加了相对自己位置的 type。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cn.kenneth.rotate3danimation;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.graphics.Camera;</div><div class="line"><span class="keyword">import</span> android.graphics.Matrix;</div><div class="line"><span class="keyword">import</span> android.view.animation.Animation;</div><div class="line"><span class="keyword">import</span> android.view.animation.Transformation;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rotate3dAnimation</span> <span class="keyword">extends</span> <span class="title">Animation</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterXType = ABSOLUTE;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterYType = ABSOLUTE;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mFromDegrees;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mToDegrees;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterX;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterY;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mDepthZ;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> mReverse;</div><div class="line">    <span class="keyword">private</span> Camera mCamera;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Creates a new 3D rotation on the Y axis. The rotation is defined by its</span></div><div class="line"><span class="comment">     * start angle and its end angle. Both angles are in degrees. The rotation</span></div><div class="line"><span class="comment">     * is performed around a center point on the 2D space, definied by a pair</span></div><div class="line"><span class="comment">     * of X and Y coordinates, called centerX and centerY. When the animation</span></div><div class="line"><span class="comment">     * starts, a translation on the Z axis (depth) is performed. The length</span></div><div class="line"><span class="comment">     * of the translation can be specified, as well as whether the translation</span></div><div class="line"><span class="comment">     * should be reversed in time.</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> fromDegrees the start angle of the 3D rotation</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> toDegrees   the end angle of the 3D rotation</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> centerX     the X center of the 3D rotation</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> centerY     the Y center of the 3D rotation</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> reverse     true if the translation should be reversed, false otherwise</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></div><div class="line"><span class="function"><span class="params">                             <span class="keyword">float</span> centerX, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</div><div class="line">        mFromDegrees = fromDegrees;</div><div class="line">        mToDegrees = toDegrees;</div><div class="line">        mCenterX = centerX;</div><div class="line">        mCenterY = centerY;</div><div class="line">        mDepthZ = depthZ;</div><div class="line">        mReverse = reverse;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></div><div class="line"><span class="function"><span class="params">                             <span class="keyword">int</span> centerXType, <span class="keyword">float</span> centerX, <span class="keyword">int</span> centerYType, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</div><div class="line">        mFromDegrees = fromDegrees;</div><div class="line">        mToDegrees = toDegrees;</div><div class="line">        mCenterXType = centerXType;</div><div class="line">        mCenterX = centerX;</div><div class="line">        mCenterYType = centerYType;</div><div class="line">        mCenterY = centerY;</div><div class="line">        mDepthZ = depthZ;</div><div class="line">        mReverse = reverse;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> parentWidth, <span class="keyword">int</span> parentHeight)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.initialize(width, height, parentWidth, parentHeight);</div><div class="line">        mCamera = <span class="keyword">new</span> Camera();</div><div class="line">        mCenterX = resolveSize(mCenterXType, mCenterX, width, parentWidth);</div><div class="line">        mCenterY = resolveSize(mCenterYType, mCenterY, height, parentHeight);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyTransformation</span><span class="params">(<span class="keyword">float</span> interpolatedTime, Transformation t)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> <span class="keyword">float</span> fromDegrees = mFromDegrees;</div><div class="line">        <span class="keyword">float</span> degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);</div><div class="line"></div><div class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerX = mCenterX;</div><div class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerY = mCenterY;</div><div class="line">        <span class="keyword">final</span> Camera camera = mCamera;</div><div class="line"></div><div class="line">        <span class="keyword">final</span> Matrix matrix = t.getMatrix();</div><div class="line"></div><div class="line">        camera.save();</div><div class="line">        <span class="keyword">if</span> (mReverse) &#123;</div><div class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * interpolatedTime);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * (<span class="number">1.0f</span> - interpolatedTime));</div><div class="line">        &#125;</div><div class="line">        camera.rotateY(degrees);</div><div class="line">        camera.getMatrix(matrix);</div><div class="line">        camera.restore();</div><div class="line"></div><div class="line">        matrix.preTranslate(-centerX, -centerY);</div><div class="line">        matrix.postTranslate(centerX, centerY);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是！！！<br>但是 APIdemo 里面已经实现了这个动画，so，我们拿来用就好了，下面是我贴出来的Rotate3dAnimation，其中我添加了一个构造，添加了相对自己位置的 type。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.kenneth.rotate3danimation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Camera;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Matrix;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Animation;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Transformation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rotate3dAnimation</span> <span class="keyword">extends</span> <span class="title">Animation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterXType = ABSOLUTE;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterYType = ABSOLUTE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mFromDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mToDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterX;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterY;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mDepthZ;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> mReverse;</span><br><span class="line">    <span class="keyword">private</span> Camera mCamera;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates a new 3D rotation on the Y axis. The rotation is defined by its</span></span><br><span class="line"><span class="comment">     * start angle and its end angle. Both angles are in degrees. The rotation</span></span><br><span class="line"><span class="comment">     * is performed around a center point on the 2D space, definied by a pair</span></span><br><span class="line"><span class="comment">     * of X and Y coordinates, called centerX and centerY. When the animation</span></span><br><span class="line"><span class="comment">     * starts, a translation on the Z axis (depth) is performed. The length</span></span><br><span class="line"><span class="comment">     * of the translation can be specified, as well as whether the translation</span></span><br><span class="line"><span class="comment">     * should be reversed in time.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fromDegrees the start angle of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> toDegrees   the end angle of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> centerX     the X center of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> centerY     the Y center of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> reverse     true if the translation should be reversed, false otherwise</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="keyword">float</span> centerX, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="keyword">int</span> centerXType, <span class="keyword">float</span> centerX, <span class="keyword">int</span> centerYType, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterXType = centerXType;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterYType = centerYType;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> parentWidth, <span class="keyword">int</span> parentHeight)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.initialize(width, height, parentWidth, parentHeight);</span><br><span class="line">        mCamera = <span class="keyword">new</span> Camera();</span><br><span class="line">        mCenterX = resolveSize(mCenterXType, mCenterX, width, parentWidth);</span><br><span class="line">        mCenterY = resolveSize(mCenterYType, mCenterY, height, parentHeight);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyTransformation</span><span class="params">(<span class="keyword">float</span> interpolatedTime, Transformation t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> fromDegrees = mFromDegrees;</span><br><span class="line">        <span class="keyword">float</span> degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerX = mCenterX;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerY = mCenterY;</span><br><span class="line">        <span class="keyword">final</span> Camera camera = mCamera;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> Matrix matrix = t.getMatrix();</span><br><span class="line"></span><br><span class="line">        camera.save();</span><br><span class="line">        <span class="keyword">if</span> (mReverse) &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * interpolatedTime);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * (<span class="number">1.0f</span> - interpolatedTime));</span><br><span class="line">        &#125;</span><br><span class="line">        camera.rotateY(degrees);</span><br><span class="line">        camera.getMatrix(matrix);</span><br><span class="line">        camera.restore();</span><br><span class="line"></span><br><span class="line">        matrix.preTranslate(-centerX, -centerY);</span><br><span class="line">        matrix.postTranslate(centerX, centerY);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>移动动画也比较好做，点击的时候记录点击 icon 在 window 上的位置，然后传到下一个界面，计算一下偏移量。</p>
-<p>这里面要注意，里面的 weibo 等 icon，我用的并不是图片，用的是FontAwesome，具体用法看下面博客：<br>中文地址：<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208795106&amp;idx=1&amp;sn=7745289b193dc8ff20ba81ff9bb23b21&amp;scene=1&amp;srcid=1016s8Satc5ZO0gDrVLqVIBM&amp;key=b410d3164f5f798e7ec8a5a17847eeddc1247303cf5fe40ac8a564295602dd6161bb83fa346de7cd9878b60274b20e77&amp;ascene=0&amp;uin=MTAxNzk0OTM1&amp;devicetype=iMac+MacBookPro11%2C1+OSX+OSX+10.11+build(15A284" target="_blank" rel="external">传送门</a>&amp;version=11020201&amp;pass_ticket=WHgV251%2BEh%2Bkh7UMBqQp034b8MGYzxeoJ7l9Ncwz3iE%3D)<br>项目网站：<a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="external">传送门</a></p>
-<p>demo 代码地址：<a href="https://github.com/KennethYo/Rotate3dAnimation" target="_blank" rel="external">传送门</a></p>
+<p>这里面要注意，里面的 weibo 等 icon，我用的并不是图片，用的是FontAwesome，具体用法看下面博客：<br>中文地址：<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208795106&amp;idx=1&amp;sn=7745289b193dc8ff20ba81ff9bb23b21&amp;scene=1&amp;srcid=1016s8Satc5ZO0gDrVLqVIBM&amp;key=b410d3164f5f798e7ec8a5a17847eeddc1247303cf5fe40ac8a564295602dd6161bb83fa346de7cd9878b60274b20e77&amp;ascene=0&amp;uin=MTAxNzk0OTM1&amp;devicetype=iMac+MacBookPro11%2C1+OSX+OSX+10.11+build(15A284" target="_blank" rel="noopener">传送门</a>&amp;version=11020201&amp;pass_ticket=WHgV251%2BEh%2Bkh7UMBqQp034b8MGYzxeoJ7l9Ncwz3iE%3D)<br>项目网站：<a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="noopener">传送门</a></p>
+<p>demo 代码地址：<a href="https://github.com/KennethYo/Rotate3dAnimation" target="_blank" rel="noopener">传送门</a></p>
 
       
     </div>
@@ -495,9 +495,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="鸿雁" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
           <p class="site-author-name" itemprop="name">鸿雁</p>
            
               <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
@@ -576,10 +574,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

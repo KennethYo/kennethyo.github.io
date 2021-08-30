@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -38,7 +38,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -72,23 +72,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Nexus,maven,jcenter,Docker," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml" />
+  <meta name="keywords" content="Nexus,maven,jcenter,Docker,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -144,7 +144,7 @@
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2016/09/01/untitled-1472722428873/"/>
+  <link rel="canonical" href="http://www.kennethyo.me/2016/09/01/untitled-1472722428873/">
 
 
 
@@ -193,7 +193,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">敲键盘的呼伦贝尔人</span>
         <span class="logo-line-after"><i></i></span>
@@ -223,7 +223,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -233,7 +233,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -243,7 +243,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -253,7 +253,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -263,7 +263,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -302,7 +302,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -338,7 +338,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -390,16 +390,16 @@
 <p>如果能够像 compile 第三方 Library 那样引用我们的 Library ，岂不是又降低 Module 的耦合，又单独对 Library 增加了版本控制。第三方 Library  基本都是把 aar 发布到中央 Maven 对外提供引用，而我们的 Library 作为公司的商业项目，是不可能发布到中央 Maven 对外提供引用的，这就要求我们需要有自己的 Maven 服务。</p>
 <p>私有 Maven 还会产生另一个好处，就是代理中央 Maven 仓库。例如，我们新加入了一个第三方库，导致每个人的 IDE 都需要从中央 Maven pull 库，而中国 GFW 的存在，导致中央 Maven 极其不稳定，经常 time out ，有了代理 Maven，只要代理 maven pull 一次库，每个人就不必从中央 Maven pull库了。</p>
 <p>这里我们是用 Docker 作为容器，在里面搭建的 Sonatype Nexus 私有 Maven 仓库。使用 Docker 的好处是可以把环境独立出来不会和服务器其他服务产生冲突，卸载也简单。</p>
-<h1 id="安装-Docker-并运行-Nexus"><a href="#安装-Docker-并运行-Nexus" class="headerlink" title="安装 Docker 并运行 Nexus"></a>安装 Docker 并运行 Nexus</h1><p>1，下载 并安装 Docker，<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="external">传送门</a></p>
+<h1 id="安装-Docker-并运行-Nexus"><a href="#安装-Docker-并运行-Nexus" class="headerlink" title="安装 Docker 并运行 Nexus"></a>安装 Docker 并运行 Nexus</h1><p>1，下载 并安装 Docker，<a href="https://www.docker.com/products/docker#/mac" target="_blank" rel="noopener">传送门</a></p>
 <p>2，在 Terminal 中输入<code>docker -v</code>，如果显示版本号，说明安装后环境是没有问题的，如下是我显示的版本号：<br><code>Docker version 1.12.0, build 8eab29e</code></p>
 <p>3，在 Terminal 输入<code>docker pull sonatype/nexus</code>进行下载 nexus 镜像。<br>下载过程中，会显示下载进度。如果比较慢或者超时，请在 Docker 里设置 mirror。如下图，我配置了灵雀加速和阿里云加速。</p>
-<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e4dnn8xcj20l40u60w6.jpg" alt="这里写图片描述"><br>灵雀加速：<a href="http://houchaohann.m.alauda.cn" target="_blank" rel="external">http://houchaohann.m.alauda.cn</a><br>阿里云加速：<a href="https://3wky8dz8.mirror.aliyuncs.com" target="_blank" rel="external">https://3wky8dz8.mirror.aliyuncs.com</a> </p>
-<p>下载成功后显示如下图：<br><img src="http://ww4.sinaimg.cn/large/72f96cbajw1f7e4gjbjvbj20g306kjs1.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e4dnn8xcj20l40u60w6.jpg" alt="这里写图片描述"><br>灵雀加速：<a href="http://houchaohann.m.alauda.cn" target="_blank" rel="noopener">http://houchaohann.m.alauda.cn</a><br>阿里云加速：<a href="https://3wky8dz8.mirror.aliyuncs.com" target="_blank" rel="noopener">https://3wky8dz8.mirror.aliyuncs.com</a> </p>
+<p>下载成功后显示如下图：<br><img src="http://ww4.sinaimg.cn/large/72f96cbajw1f7e4gjbjvbj20g306kjs1.jpg" alt></p>
 <p>4，在 Terminal 中输入<code>docker run -d -p 8081:8081 --name  yiche sonatype/nexus:oss</code>来创建一个名叫 yiche 的容器，占用端口8081。</p>
 <p><img src="http://ww3.sinaimg.cn/large/72f96cbajw1f7e4kafrkcj20lw01bdg3.jpg" alt="这里写图片描述"></p>
 <p>5，在 Terminal 中输入<code>docker ps -a</code>查看容器</p>
 <p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f7e4quvlv0j20q401sglu.jpg" alt="这里写图片描述"></p>
-<p>6，浏览器里输入<a href="http://localhost:8081/" target="_blank" rel="external">http://localhost:8081/</a>，如果显示如下界面，证明 Nexus 搭建成功。</p>
+<p>6，浏览器里输入<a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a>，如果显示如下界面，证明 Nexus 搭建成功。</p>
 <p><img src="http://ww4.sinaimg.cn/large/72f96cbajw1f7e4x3tmhej21kw0zkk21.jpg" alt="这里写图片描述"></p>
 <p>7，一些常用指令：<br><code>docker start yiche</code>开始运行yiche 容器<br><code>docker restart yiche</code>c运 重新行yiche容器<br><code>docker stop yiche</code>停止运行yiche容器<br><code>docker rm yiche</code>删除yiche容器</p>
 <h1 id="Nexus-使用"><a href="#Nexus-使用" class="headerlink" title="Nexus 使用"></a>Nexus 使用</h1><p>点击右上角<code>login</code>登录，默认账户<code>admin</code>，默认密码<code>admin123</code> 。</p>
@@ -419,13 +419,13 @@
 <p>如下图：<br><img src="http://ww3.sinaimg.cn/large/72f96cbajw1f7e6iqpczrj21kw0zktlr.jpg" alt="这里写图片描述"></p>
 <p>其实在我们项目里并没有新创建一个仓库，而是直接用的默认<code>Release</code>和<code>Snapshot</code>。</p>
 <p><img src="http://ww2.sinaimg.cn/large/72f96cbajw1f7e6n006u5j21ji02sgn0.jpg" alt="这里写图片描述"></p>
-<h1 id="Android-Studio-中上传-Library-Module-到私有-maven"><a href="#Android-Studio-中上传-Library-Module-到私有-maven" class="headerlink" title="Android Studio 中上传 Library Module 到私有 maven"></a>Android Studio 中上传 Library Module 到私有 maven</h1><h2 id="上传到-Maven"><a href="#上传到-Maven" class="headerlink" title="上传到 Maven"></a>上传到 Maven</h2><p>因为，Module比较多，我在项目根目录里写了一个 gradle 文件<code>gradle_mvn_push.gradle</code>来上传。代码如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></div><div class="line"><span class="comment">//release 地址</span></div><div class="line"><span class="keyword">def</span> RELEASE_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></div><div class="line"><span class="comment">//snapshots 地址</span></div><div class="line"><span class="keyword">def</span> SNAPSHOT_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></div><div class="line"><span class="comment">//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址</span></div><div class="line"><span class="keyword">def</span> REPOSITORY_URL = VERSION_NAME.endsWith(<span class="string">"-SNAPSHOT"</span>) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;</div><div class="line"></div><div class="line">logger.info(<span class="string">"groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n"</span>, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)</div><div class="line"></div><div class="line">afterEvaluate &#123; project -&gt;</div><div class="line">    uploadArchives &#123;</div><div class="line">        repositories.mavenDeployer &#123;</div><div class="line">            pom.groupId = GROUP</div><div class="line">            pom.artifactId = POM_ARTIFACT_ID</div><div class="line">            pom.version = VERSION_NAME</div><div class="line">            repository(<span class="string">url:</span> REPOSITORY_URL) &#123;</div><div class="line">                authentication(<span class="string">userName:</span> NEXUS_USERNAME, <span class="string">password:</span> NEXUS_PASSWORD)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    task androidSourcesJar(<span class="string">type:</span> Jar) &#123;</div><div class="line">        classifier = <span class="string">'sources'</span></div><div class="line">        from android.sourceSets.main.java.sourceFiles</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    artifacts &#123;</div><div class="line">        archives androidSourcesJar</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后在你要上传 module 的<code>build.gradle</code> 文件引入。<br>如下图是我们换肤 Module 的 <code>build.gradle</code>：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.library'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion Integer.valueOf(COMPILE_SDK_VERSION)</div><div class="line">    buildToolsVersion BUILD_TOOLS_VERSION</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        minSdkVersion MIN_SDK_VERSION</div><div class="line">        targetSdkVersion TARGET_SDK_VERSION</div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled <span class="literal">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>])</div><div class="line">    compile SUPPORT_APPCOMPAT_V7</div><div class="line">    compile SUPPORT_CARDVIEW_V7</div><div class="line">&#125;</div><div class="line"></div><div class="line">ext.GROUP=<span class="string">"com.yiche"</span></div><div class="line">ext.VERSION_NAME=<span class="string">"1.1.0-SNAPSHOT"</span></div><div class="line">ext.POM_ARTIFACT_ID=<span class="string">"changeskin"</span></div><div class="line"></div><div class="line">apply <span class="string">from:</span> <span class="string">"$&#123;project.rootDir&#125;/gradle_mvn_push.gradle"</span></div></pre></td></tr></table></figure></p>
+<h1 id="Android-Studio-中上传-Library-Module-到私有-maven"><a href="#Android-Studio-中上传-Library-Module-到私有-maven" class="headerlink" title="Android Studio 中上传 Library Module 到私有 maven"></a>Android Studio 中上传 Library Module 到私有 maven</h1><h2 id="上传到-Maven"><a href="#上传到-Maven" class="headerlink" title="上传到 Maven"></a>上传到 Maven</h2><p>因为，Module比较多，我在项目根目录里写了一个 gradle 文件<code>gradle_mvn_push.gradle</code>来上传。代码如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line"><span class="comment">//release 地址</span></span><br><span class="line"><span class="keyword">def</span> RELEASE_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line"><span class="comment">//snapshots 地址</span></span><br><span class="line"><span class="keyword">def</span> SNAPSHOT_REPOSITORY_URL = <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line"><span class="comment">//判断 VERSION_NAME 如果以`-SHAPSHOT`结尾,则上传地址为 snapshot 地址</span></span><br><span class="line"><span class="keyword">def</span> REPOSITORY_URL = VERSION_NAME.endsWith(<span class="string">"-SNAPSHOT"</span>) ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL;</span><br><span class="line"></span><br><span class="line">logger.info(<span class="string">"groupId = %s\t\nartifactId = %s\t\nversion = %s\t\nrepository = %s\t\n"</span>, GROUP, POM_ARTIFACT_ID, VERSION_NAME, REPOSITORY_URL)</span><br><span class="line"></span><br><span class="line">afterEvaluate &#123; project -&gt;</span><br><span class="line">    uploadArchives &#123;</span><br><span class="line">        repositories.mavenDeployer &#123;</span><br><span class="line">            pom.groupId = GROUP</span><br><span class="line">            pom.artifactId = POM_ARTIFACT_ID</span><br><span class="line">            pom.version = VERSION_NAME</span><br><span class="line">            repository(<span class="string">url:</span> REPOSITORY_URL) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> NEXUS_USERNAME, <span class="string">password:</span> NEXUS_PASSWORD)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task androidSourcesJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">        classifier = <span class="string">'sources'</span></span><br><span class="line">        from android.sourceSets.main.java.sourceFiles</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    artifacts &#123;</span><br><span class="line">        archives androidSourcesJar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在你要上传 module 的<code>build.gradle</code> 文件引入。<br>如下图是我们换肤 Module 的 <code>build.gradle</code>：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.library'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion Integer.valueOf(COMPILE_SDK_VERSION)</span><br><span class="line">    buildToolsVersion BUILD_TOOLS_VERSION</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        minSdkVersion MIN_SDK_VERSION</span><br><span class="line">        targetSdkVersion TARGET_SDK_VERSION</span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>])</span><br><span class="line">    compile SUPPORT_APPCOMPAT_V7</span><br><span class="line">    compile SUPPORT_CARDVIEW_V7</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ext.GROUP=<span class="string">"com.yiche"</span></span><br><span class="line">ext.VERSION_NAME=<span class="string">"1.1.0-SNAPSHOT"</span></span><br><span class="line">ext.POM_ARTIFACT_ID=<span class="string">"changeskin"</span></span><br><span class="line"></span><br><span class="line">apply <span class="string">from:</span> <span class="string">"$&#123;project.rootDir&#125;/gradle_mvn_push.gradle"</span></span><br></pre></td></tr></table></figure></p>
 <p>这里请关注下面的代码，<code>GROUP</code>，<code>VERSION_NAME</code>，<code>POM_ARTIFACT_ID</code>和最后一行引入我们前面写的<code>gradle_mvn_push.gradle</code>。</p>
 <p><code>GROUP</code>一般代表了你的组织名称，例如我的<code>com.yiche</code><br><code>POM_ARTIFACT_ID</code>Library 的简称。<br><code>VERSION_NAME</code>版本号，如果有<code>-SNAPSHOT</code>表示是快照版。</p>
 <p>上面这三个也就组成了我们平常看见的引依赖 <code>com.yiche:changeskin:1.1.0-SNAPSHOT</code></p>
 <h2 id="引用私有-Maven"><a href="#引用私有-Maven" class="headerlink" title="引用私有 Maven"></a>引用私有 Maven</h2><p>下面就直接上一段代码吧，这是项目根目录的<code>build.gradle</code>里面修改了 maven 仓库的地址。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></div><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.1.3'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line"></div><div class="line">    repositories &#123;</div><div class="line"><span class="comment">//        jcenter()</span></div><div class="line">        <span class="comment">// 私有 release 地址</span></div><div class="line">        maven&#123;</div><div class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 私有 snapshot 地址</span></div><div class="line">        maven&#123;</div><div class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//jcenter 代理</span></div><div class="line">        maven&#123;</div><div class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/jcenter/"</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">// maven 代理</span></div><div class="line">        maven&#123;</div><div class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/central/"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task clean(<span class="string">type:</span> Delete) &#123;</div><div class="line">    delete rootProject.buildDir</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.1.3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line"><span class="comment">//        jcenter()</span></span><br><span class="line">        <span class="comment">// 私有 release 地址</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/releases/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 私有 snapshot 地址</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/snapshots/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//jcenter 代理</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/jcenter/"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// maven 代理</span></span><br><span class="line">        maven&#123;</span><br><span class="line">            url <span class="string">"http://192.168.4.53:32770/content/repositories/central/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(<span class="string">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>好的，到这里就算结束了，后面这部分写的比较少，有问题留言啦。</p>
 
       
@@ -538,7 +538,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -549,9 +549,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="鸿雁" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
           <p class="site-author-name" itemprop="name">鸿雁</p>
            
               <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
@@ -646,10 +644,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
