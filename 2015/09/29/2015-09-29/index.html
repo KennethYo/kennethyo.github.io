@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -19,14 +19,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Gemini","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Gemini","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。 拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客http:&#x2F;&#x2F;blog.csdn.net&#x2F;xiaanming&#x2F;article&#x2F;details&#x2F;17718579。 我的需求当中，多了一个拖动到底">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除">
 <meta property="og:url" content="http://www.kennethyo.me/2015/09/29/2015-09-29/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
 <meta property="og:description" content="最近在公司做了一个这样的需求，拖动GridView 中的 item 到指定区域删除，具体效果，请看下面的动图。 拖动效果是通过隐藏 GridView中被选中的 item，并且同时在 Window 上注册一个 View 来实现，具体逻辑和代码，请参照这篇博客http:&#x2F;&#x2F;blog.csdn.net&#x2F;xiaanming&#x2F;article&#x2F;details&#x2F;17718579。 我的需求当中，多了一个拖动到底">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://img.blog.csdn.net/20150929150020321">
 <meta property="article:published_time" content="2015-09-29T07:22:08.000Z">
 <meta property="article:modified_time" content="2016-09-01T06:39:45.000Z">
@@ -41,7 +41,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2015/09/29/2015-09-29/","path":"2015/09/29/2015-09-29/","title":"[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.kennethyo.me/2015/09/29/2015-09-29/","path":"2015/09/29/2015-09-29/","title":"[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除 | 敲键盘的呼伦贝尔人</title>
@@ -62,7 +62,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -88,10 +88,10 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives</a></li>
-        <li class="menu-item menu-item-commonweal"><a href="/404.html" rel="section">Commonweal 404</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404.html" rel="section">公益 404</a></li>
   </ul>
 </nav>
 
@@ -112,10 +112,10 @@
     <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -138,18 +138,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">31</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">33</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -167,7 +167,7 @@
     </header>
 
     
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -187,7 +187,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2015/09/29/2015-09-29/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -210,22 +210,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2015-09-29 15:22:08" itemprop="dateCreated datePublished" datetime="2015-09-29T15:22:08+08:00">2015-09-29</time>
+      <time title="创建时间：2015-09-29 15:22:08" itemprop="dateCreated datePublished" datetime="2015-09-29T15:22:08+08:00">2015-09-29</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2016-09-01 14:39:45" itemprop="dateModified" datetime="2016-09-01T14:39:45+08:00">2016-09-01</time>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2016-09-01 14:39:45" itemprop="dateModified" datetime="2016-09-01T14:39:45+08:00">2016-09-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
         </span>
@@ -302,7 +302,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
