@@ -1,386 +1,238 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Android,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
-<meta name="description" content="介绍常见inflate方法在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种： //1,通过系统服务获取布局加载器 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  View view = inflater">
-<meta name="keywords" content="Android">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="介绍常见inflate方法在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种： &#x2F;&#x2F;1,通过系统服务获取布局加载器 LayoutInflater inflater &#x3D; (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  View view &#x3D; inflater">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]LayoutInflater.inflate详解">
 <meta property="og:url" content="http://www.kennethyo.me/2014/10/24/2014-10-24/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="介绍常见inflate方法在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种： //1,通过系统服务获取布局加载器 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  View view = inflater">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:description" content="介绍常见inflate方法在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种： &#x2F;&#x2F;1,通过系统服务获取布局加载器 LayoutInflater inflater &#x3D; (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  View view &#x3D; inflater">
+<meta property="og:locale">
 <meta property="og:image" content="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20141024160851796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20141024160912700?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20141024160942932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2016-09-01T06:34:26.000Z">
+<meta property="article:published_time" content="2014-10-24T08:27:08.000Z">
+<meta property="article:modified_time" content="2016-09-01T06:34:26.000Z">
+<meta property="article:author" content="鸿雁">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[原]LayoutInflater.inflate详解">
-<meta name="twitter:description" content="介绍常见inflate方法在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种： //1,通过系统服务获取布局加载器 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  View view = inflater">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<link rel="canonical" href="http://www.kennethyo.me/2014/10/24/2014-10-24/">
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2014/10/24/2014-10-24/">
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2014/10/24/2014-10-24/","path":"2014/10/24/2014-10-24/","title":"[原]LayoutInflater.inflate详解"}</script>
 
-
-
-
-
-  <title>[原]LayoutInflater.inflate详解 | 敲键盘的呼伦贝尔人</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[原]LayoutInflater.inflate详解 | 敲键盘的呼伦贝尔人</title>
   
 
 
 
 
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=56699390";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">敲键盘的呼伦贝尔人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">敲键盘的呼伦贝尔人</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
+
+
+
+
+
+
+</div>
+        
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+      </ul>
 
-      
-    </ul>
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E5%B8%B8%E8%A7%81inflate%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">介绍常见inflate方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E4%BC%A0%E5%85%A5%E7%9A%84%E5%8F%82%E6%95%B0%E4%B8%8D%E5%90%8C%E8%BF%9B%E8%A1%8C%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">针对传入的参数不同进行分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BC%A0-20540-%E8%BF%9B%E8%A1%8C%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">根据不同的传值进行实现</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">鸿雁</p>
+  <div class="site-description" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
 
 
 
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/10/24/2014-10-24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="敲键盘的呼伦贝尔人">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [原]LayoutInflater.inflate详解
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">[原]LayoutInflater.inflate详解</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-24T16:27:08+08:00">
-                2014-10-24
-              </time>
-            
+      <time title="Created: 2014-10-24 16:27:08" itemprop="dateCreated datePublished" datetime="2014-10-24T16:27:08+08:00">2014-10-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2016-09-01 14:34:26" itemprop="dateModified" datetime="2016-09-01T14:34:26+08:00">2016-09-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
+
     
-
+    
+    
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         <h2 id="介绍常见inflate方法"><a href="#介绍常见inflate方法" class="headerlink" title="介绍常见inflate方法"></a>介绍常见inflate方法</h2><p>在日常开发中经常会用到通过资源id去获取view的场景，我们通常有四种方式去获取view，分别是以下四种：</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_1_2164263" name="code" class="java">//1,通过系统服务获取布局加载器
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_1_2164263"  name="code" class="java">//1,通过系统服务获取布局加载器
 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 View view = inflater.inflate(resource,root,attachToRoot);
@@ -397,7 +249,7 @@ View view = LayoutInflater.from(this).inflate(resource,root,attachToRoot);
 
 <p>通过对上述方法的源码的分析，很容易看出来这些方法都是最终调用了方式1，获取系统布局加载器的方式，来进行获取<code>View</code>。</p>
 <p>这里我列举的并没有<code>inflate(int resource, ViewGroup root)</code>这个重载方法，是因为他们最终都会到调用为<code>inflate(int resource, ViewGroup root, boolean attachToRoot)</code>方法，如下：</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_2_263903" name="code" class="java"> public View inflate(int resource, ViewGroup root) {
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_2_263903"  name="code" class="java"> public View inflate(int resource, ViewGroup root) {
         return inflate(resource, root, root != null);
  }
 
@@ -414,7 +266,7 @@ View view = LayoutInflater.from(this).inflate(resource,root,attachToRoot);
 <p>这里要说明一下，其实最终要调用的是<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法，只不过这里把布局资源解析为了XmlPull解析器，这里就不针对<code>XmlPullParser</code>进行研究了。</p>
 <h2 id="针对传入的参数不同进行分析"><a href="#针对传入的参数不同进行分析" class="headerlink" title="针对传入的参数不同进行分析"></a>针对传入的参数不同进行分析</h2><p>通过对<code>inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)</code>方法的源码进行解读，<code>XmlPullParser parser</code>是对传入<code>int resource</code>的xml解析器，不用去主要考虑，那就需要考虑传入<code>ViewGroup root, boolean attachToRoot</code>的&#20540;不同，会出现什么结果呢？</p>
 <p>源码中有几个重要的代码块：</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_3_3719874" name="code" class="java">if (root != null) {
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_3_3719874"  name="code" class="java">if (root != null) {
 if (DEBUG) {
 System.out.println(&quot;Creating params from root: &quot; +
                                     root);
@@ -428,7 +280,7 @@ temp.setLayoutParams(params);
 }
 </pre>
 
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_4_4700610" name="code" class="java">//attachToRoot等于true，将temp加入到root这个viewGroup中
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_4_4700610"  name="code" class="java">//attachToRoot等于true，将temp加入到root这个viewGroup中
 if (root != null &amp;&amp; attachToRoot) {
 root.addView(temp, params);
 }
@@ -440,7 +292,7 @@ if (root == null || !attachToRoot) {
 
 <h2 id="根据不同的传-20540-进行实现"><a href="#根据不同的传-20540-进行实现" class="headerlink" title="根据不同的传&#20540;进行实现"></a>根据不同的传&#20540;进行实现</h2><p>两个布局文件，一个作为root，一个作为我们的要获取的view</p>
 <p>activity_my.xml</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_5_9900685" name="code" class="html">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_5_9900685"  name="code" class="html">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;
     android:layout_width=&quot;match_parent&quot;
     android:layout_height=&quot;match_parent&quot;
@@ -454,7 +306,7 @@ if (root == null || !attachToRoot) {
 &lt;/RelativeLayout&gt;</pre>
 
 <p>view.xml</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_6_881422" name="code" class="html">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_6_881422"  name="code" class="html">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     android:layout_width=&quot;120dp&quot;
     android:layout_height=&quot;120dp&quot;
     android:background=&quot;@color/blue&quot;&gt;
@@ -468,27 +320,27 @@ if (root == null || !attachToRoot) {
 &lt;/LinearLayout&gt;</pre>
 
 <p>1,rootView等于null，attachToRoot等于false</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_7_1272731" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_7_1272731"  name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
     view = getLayoutInflater().inflate(R.layout.view, null, false);
     setContentView(view);
 }</pre>
 
 <p>本身root为null，就不会去获取view的LayoutParams，直接走<code>result = temp;</code>返回result，此时result等于view</p>
-<p><img src="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
+<p><img src="http://img.blog.csdn.net/20141024160656796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
 <p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
 <p>2,rootView等于null，attachToRoot等于true</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_8_9504448" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_8_9504448"  name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
     view = getLayoutInflater().inflate(R.layout.view, null, true);
     setContentView(view);
 }</pre>
 
 <p>root等于null，依然走<code>result = temp;</code>，此时result等于view</p>
-<p><img src="http://img.blog.csdn.net/20141024160851796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
+<p><img src="http://img.blog.csdn.net/20141024160851796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
 <p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
 <p>3,rootView不等于null，attachToRoot等于false</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_9_1880625" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_9_1880625"  name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,false);
@@ -496,10 +348,10 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
 }</pre>
 
 <p>root不等于null，attachToRoot等于false，会走取view的LayoutParams并且赋&#20540;给temp，再走<code>result = temp;</code>，此时result等于view</p>
-<p><img src="http://img.blog.csdn.net/20141024160912700?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
+<p><img src="http://img.blog.csdn.net/20141024160912700?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
 <p>为什么会充满屏幕呢，因为当把view设置到activity的视图时，系统会取当前window的LayoutParm作为view的LayoutParm</p>
 <p>4,rootView不等于null，attachToRoot等于true</p>
-<pre code_snippet_id="495633" snippet_file_name="blog_20141024_10_3941156" name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
+<pre code_snippet_id="495633" snippet_file_name="blog_20141024_10_3941156"  name="code" class="java">protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
     view = getLayoutInflater().inflate(R.layout.view,(ViewGroup)rootView,true);
@@ -507,228 +359,59 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
 }</pre>
 
 <p>rootView不等于null，attachToRoot等于true，会首先获取view的Params，再走<code>root.addView(temp, params)</code>，也就是，把view先放入的root这个ViewGroup中，再返回result，因为初始化的时候result就等于root，此时返回的就是包含有子View的root。</p>
-<p><img src="http://img.blog.csdn.net/20141024160942932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
+<p><img src="http://img.blog.csdn.net/20141024160942932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
 <p>这里因为root的布局为RelativeLayout，我们把view加入到root中，view本身保留了自有的LayoutParm</p>
 <p>最后我要吐槽，为什么csdn不支持markdown，我都是先用Mou写好的，贴过来竟然要自己重新排版。。。</p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2014/10/24 16:27:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/40429031)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：1061 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40429031#comments)
-&lt;/div&gt;
+<pre><code>        &lt;div&gt;
+            作者：zh08070005 发表于2014/10/24 16:27:08 [原文链接](http://blog.csdn.net/kennethyo/article/details/40429031)
+        &lt;/div&gt;
+        &lt;div&gt;
+        阅读：1061 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40429031#comments)
+        &lt;/div&gt;
 </code></pre>
-      
+
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2014/08/22/2014-08-22/" rel="next" title="[原]Android API，版本对照">
-                <i class="fa fa-chevron-left"></i> [原]Android API，版本对照
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/11/04/2014-11-04/" rel="prev" title="[原]Palette的使用">
-                [原]Palette的使用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014/08/22/2014-08-22/" rel="prev" title="[原]Android API，版本对照">
+                  <i class="fa fa-chevron-left"></i> [原]Android API，版本对照
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014/11/04/2014-11-04/" rel="next" title="[原]Palette的使用">
+                  [原]Palette的使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
   </article>
+</div>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
-          </div>
-          
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
-          <p class="site-author-name" itemprop="name">鸿雁</p>
-           
-              <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍常见inflate方法"><span class="nav-number">1.</span> <span class="nav-text">介绍常见inflate方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对传入的参数不同进行分析"><span class="nav-number">2.</span> <span class="nav-text">针对传入的参数不同进行分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据不同的传-20540-进行实现"><span class="nav-number">3.</span> <span class="nav-text">根据不同的传值进行实现</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
+<div class="copyright">
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -736,47 +419,17 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
+  
 
 
 
@@ -786,120 +439,6 @@ rootView = getLayoutInflater().inflate(R.layout.activity_my, null);
 
 
 
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

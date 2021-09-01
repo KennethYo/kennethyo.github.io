@@ -1,614 +1,435 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Android,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
-<meta name="description" content="（转载请注明出处：http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong） RecyclerView是Android在v7包中包含了一个新的widget，RecyclerView是一个ListView进阶版，但不继承与AdapterView，相比ListView，RecyclerView更加灵活和先进。 ##1，导入Recy">
-<meta name="keywords" content="Android">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="（转载请注明出处：http:&#x2F;&#x2F;www.kennethyo.me&#x2F;post&#x2F;android&#x2F;recyclerviewchu-ji-shi-yong） RecyclerView是Android在v7包中包含了一个新的widget，RecyclerView是一个ListView进阶版，但不继承与AdapterView，相比ListView，RecyclerView更加灵活和先进。 1，导入Recycl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]RecyclerView初级使用">
 <meta property="og:url" content="http://www.kennethyo.me/2014/11/10/2014-11-10/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="（转载请注明出处：http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong） RecyclerView是Android在v7包中包含了一个新的widget，RecyclerView是一个ListView进阶版，但不继承与AdapterView，相比ListView，RecyclerView更加灵活和先进。 ##1，导入Recy">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:description" content="（转载请注明出处：http:&#x2F;&#x2F;www.kennethyo.me&#x2F;post&#x2F;android&#x2F;recyclerviewchu-ji-shi-yong） RecyclerView是Android在v7包中包含了一个新的widget，RecyclerView是一个ListView进阶版，但不继承与AdapterView，相比ListView，RecyclerView更加灵活和先进。 1，导入Recycl">
+<meta property="og:locale">
 <meta property="og:image" content="http://img.blog.csdn.net/20141110151947150?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="http://img.blog.csdn.net/20141110152010581?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="http://img.blog.csdn.net/20141110152138031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="http://img.blog.csdn.net/20141110152155781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="http://img.blog.csdn.net/20141110152225296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2016-09-01T06:35:08.000Z">
+<meta property="article:published_time" content="2014-11-10T07:18:15.000Z">
+<meta property="article:modified_time" content="2016-09-01T06:35:08.000Z">
+<meta property="article:author" content="鸿雁">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[原]RecyclerView初级使用">
-<meta name="twitter:description" content="（转载请注明出处：http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong） RecyclerView是Android在v7包中包含了一个新的widget，RecyclerView是一个ListView进阶版，但不继承与AdapterView，相比ListView，RecyclerView更加灵活和先进。 ##1，导入Recy">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20141110151947150?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<link rel="canonical" href="http://www.kennethyo.me/2014/11/10/2014-11-10/">
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2014/11/10/2014-11-10/">
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2014/11/10/2014-11-10/","path":"2014/11/10/2014-11-10/","title":"[原]RecyclerView初级使用"}</script>
 
-
-
-
-
-  <title>[原]RecyclerView初级使用 | 敲键盘的呼伦贝尔人</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[原]RecyclerView初级使用 | 敲键盘的呼伦贝尔人</title>
   
 
 
 
 
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=56699390";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">敲键盘的呼伦贝尔人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">敲键盘的呼伦贝尔人</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
+
+
+
+
+
+
+</div>
+        
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+      </ul>
 
-      
-    </ul>
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">鸿雁</p>
+  <div class="site-description" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
 
 
 
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2014/11/10/2014-11-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="敲键盘的呼伦贝尔人">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [原]RecyclerView初级使用
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">[原]RecyclerView初级使用</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-10T15:18:15+08:00">
-                2014-11-10
-              </time>
-            
+      <time title="Created: 2014-11-10 15:18:15" itemprop="dateCreated datePublished" datetime="2014-11-10T15:18:15+08:00">2014-11-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2016-09-01 14:35:08" itemprop="dateModified" datetime="2016-09-01T14:35:08+08:00">2016-09-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
+
     
-
+    
+    
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><span style="font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144"><span style="white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）">http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）</a></span></span></p>
+        <p><span style="font-family:Inconsolata,monospace,sans-serif; font-size:12px; color:#dd1144"><span style="white-space:pre-wrap; background-color:rgb(247,247,249)">（转载请注明出处：<a href="http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong%EF%BC%89">http://www.kennethyo.me/post/android/recyclerviewchu-ji-shi-yong）</a></span></span></p>
 <p><code>RecyclerView</code>是Android在v7包中包含了一个新的widget，<code>RecyclerView</code>是一个<code>ListView</code>进阶版，但不继承与<code>AdapterView</code>，相比<code>ListView</code>，<code>RecyclerView</code>更加灵活和先进。</p>
-<p>##<br>1，导入RecyclerView</p>
-<p>首先要保证<code>SDK Tools</code>和<code>Android
- Support Repository</code>为最新版。如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141110151947150?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
-<p><img src="http://img.blog.csdn.net/20141110152010581?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>1，导入RecyclerView</p>
+<p>首先要保证<code>SDK Tools</code>和<code>Android  Support Repository</code>为最新版。如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141110151947150?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p><img src="http://img.blog.csdn.net/20141110152010581?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
 <p>其次，在你的demo工程里选中Project Structure按钮，并且选择app —— Dependencies —— “&#43;” —— Library dependency，去添加支持包，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141110152138031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<p><img src="http://img.blog.csdn.net/20141110152138031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
 <p>最后，在新的对话框里选中<code>com.android.support:recyclerview-v7:21.0.0</code>，点击OK。如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141110152155781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<p><img src="http://img.blog.csdn.net/20141110152155781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
 <p>这里就顺利的导入了<code>RecyclerView</code>。</p>
-<p>##<br>2，使用<code>RecyclerView</code></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><p>2，使用<code>RecyclerView</code></p>
 <p>在布局文件中使用<code>RecyclerView</code>，跟其他自定义控件一样，如下：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;RelativeLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android</a>&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">xmlns:tools=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/tools" target="_blank" rel="noopener">http://schemas.android.com/tools</a>&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">tools:context=</span><span class="s" style="color:rgb(204,147,147)">&quot;.MainActivity&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br><br>    <span class="nt" style="color:rgb(154,195,159)">&lt;android.support.v7.widget.RecyclerView</span><br>        <span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/recyclerView&quot;</span><br>        <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>        <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span> <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;/RelativeLayout&gt;</span><br></pre><br></div>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)">
+<pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nt" style="color:rgb(154,195,159)">&lt;RelativeLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na" style="color:rgb(154,195,159)">xmlns:tools=</span><span class="s" style="color:rgb(204,147,147)">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span>
+    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span>
+    <span class="na" style="color:rgb(154,195,159)">tools:context=</span><span class="s" style="color:rgb(204,147,147)">&quot;.MainActivity&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span>
+
+<pre><code>&lt;span class=&quot;nt&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;&amp;lt;android.support.v7.widget.RecyclerView&lt;/span&gt;
+    &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;@&amp;#43;id/recyclerView&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;/&amp;gt;&lt;/span&gt;
+</code></pre>
+<p><span class="nt" style="color:rgb(154,195,159)">&lt;/RelativeLayout&gt;</span><br></pre></p>
+</div>
 
 <p>因为日常开发中，我们大多数都是按照UI去布局每个item，所以这里我没与图省事用Android自带的布局。如下：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="cp" style="color:rgb(127,159,127)">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="nt" style="color:rgb(154,195,159)">&lt;LinearLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android</a>&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span><br><br>        <span class="nt" style="color:rgb(154,195,159)">&lt;TextView</span><br>            <span class="na" style="color:rgb(154,195,159)">android:id=</span><span class="s" style="color:rgb(204,147,147)">&quot;@&#43;id/textView&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;48dp&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:textStyle=</span><span class="s" style="color:rgb(204,147,147)">&quot;bold&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:background=</span><span class="s" style="color:rgb(204,147,147)">&quot;@android:color/holo_blue_light&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:textColor=</span><span class="s" style="color:rgb(204,147,147)">&quot;@android:color/holo_red_light&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:gravity=</span><span class="s" style="color:rgb(204,147,147)">&quot;center_vertical&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:paddingLeft=</span><span class="s" style="color:rgb(204,147,147)">&quot;@dimen/activity_horizontal_margin&quot;</span><br>            <span class="na" style="color:rgb(154,195,159)">android:text=</span><span class="s" style="color:rgb(204,147,147)">&quot;New Text&quot;</span> <span class="nt" style="color:rgb(154,195,159)">/&gt;</span><br><br><span class="nt" style="color:rgb(154,195,159)">&lt;/LinearLayout&gt;</span><br></pre><br></div>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)">
+<pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="cp" style="color:rgb(127,159,127)">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt" style="color:rgb(154,195,159)">&lt;LinearLayout</span> <span class="na" style="color:rgb(154,195,159)">xmlns:android=</span><span class="s" style="color:rgb(204,147,147)">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na" style="color:rgb(154,195,159)">android:layout_width=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span>
+    <span class="na" style="color:rgb(154,195,159)">android:layout_height=</span><span class="s" style="color:rgb(204,147,147)">&quot;match_parent&quot;</span><span class="nt" style="color:rgb(154,195,159)">&gt;</span>
+
+<pre><code>    &lt;span class=&quot;nt&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;@&amp;#43;id/textView&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;48dp&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:textStyle=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;bold&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;@android:color/holo_blue_light&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;@android:color/holo_red_light&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:gravity=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;center_vertical&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:paddingLeft=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot; style=&quot;color:rgb(204,147,147)&quot;&gt;&amp;quot;New Text&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;/&amp;gt;&lt;/span&gt;
+</code></pre>
+<p><span class="nt" style="color:rgb(154,195,159)">&lt;/LinearLayout&gt;</span><br></pre></p>
+</div>
 
 <p>下面就是代码了：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">protected</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">Bundle</span> <span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">setContentView</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">activity_main</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="c1" style="color:rgb(127,159,127)">//LinearLayoutManager可以自定义实现不同的动画效果和布局效果</span><br>        <span class="c1" style="color:rgb(127,159,127)">//这里设置为LinearLayoutManager.HORIZONTAL变成为了一个可以横向滑动的ListView，赞不赞？</span><br>        <span class="n" style="color:rgb(220,220,204)">LinearLayoutManager</span> <span class="n" style="color:rgb(220,220,204)">layoutManager</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">LinearLayoutManager</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="n" style="color:rgb(220,220,204)">LinearLayoutManager</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">VERTICAL</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="kc" style="color:rgb(220,163,163)">false</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setLayoutManager</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">layoutManager</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setHasFixedSize</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kc" style="color:rgb(220,163,163)">false</span><span class="o" style="color:rgb(240,239,208)">);</span><span class="c1" style="color:rgb(127,159,127)">//adapter的改变不会改变RecyclerView的大小</span><br><br>        <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="mi" style="color:rgb(140,208,211)">50</span><span class="o" style="color:rgb(240,239,208)">];</span><br>        <span class="k" style="color:rgb(240,223,175)">for</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">;</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="mi" style="color:rgb(140,208,211)">50</span><span class="o" style="color:rgb(240,239,208)">;</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">&#43;&#43;){</span><br>            <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">]</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">valueOf</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br><br>        <span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span> <span class="n" style="color:rgb(220,220,204)">adapter</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="n" style="color:rgb(220,220,204)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">adapter</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br></pre><br></div>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)">
+<pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="nd" style="color:rgb(204,204,204)">@Override</span>
+    <span class="kd" style="color:rgb(255,255,134)">protected</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">Bundle</span> <span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span>
+        <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">onCreate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">savedInstanceState</span><span class="o" style="color:rgb(240,239,208)">);</span>
+        <span class="n" style="color:rgb(220,220,204)">setContentView</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">activity_main</span><span class="o" style="color:rgb(240,239,208)">);</span>
+        <span class="n" style="color:rgb(220,220,204)">recyclerView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">recyclerView</span><span class="o" style="color:rgb(240,239,208)">);</span>
 
-<p>可以明确看到的是，<code>RecyclerView</code>通过<code>(RecyclerView)
- findViewById(R.id.recyclerView)</code>初始化之后，不仅要像<code>ListView</code>一样要放入<code>Adapter</code>进行数据和布局的适配，而且还要额外添加一个<code>LinearLayoutManager</code>。</p>
+<pre><code>    &lt;span class=&quot;c1&quot; style=&quot;color:rgb(127,159,127)&quot;&gt;//LinearLayoutManager可以自定义实现不同的动画效果和布局效果&lt;/span&gt;
+    &lt;span class=&quot;c1&quot; style=&quot;color:rgb(127,159,127)&quot;&gt;//这里设置为LinearLayoutManager.HORIZONTAL变成为了一个可以横向滑动的ListView，赞不赞？&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;LinearLayoutManager&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;layoutManager&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;LinearLayoutManager&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;LinearLayoutManager&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;VERTICAL&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kc&quot; style=&quot;color:rgb(220,163,163)&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setLayoutManager&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;layoutManager&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setHasFixedSize&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot; style=&quot;color:rgb(220,163,163)&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot; style=&quot;color:rgb(127,159,127)&quot;&gt;//adapter的改变不会改变RecyclerView的大小&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&amp;#43;&amp;#43;)&#123;&lt;/span&gt;
+        &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;StringRecyclerAdapter&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;adapter&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;StringRecyclerAdapter&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setAdapter&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+</code></pre>
+<p></pre></p>
+</div>
+
+<p>可以明确看到的是，<code>RecyclerView</code>通过<code>(RecyclerView)  findViewById(R.id.recyclerView)</code>初始化之后，不仅要像<code>ListView</code>一样要放入<code>Adapter</code>进行数据和布局的适配，而且还要额外添加一个<code>LinearLayoutManager</code>。</p>
 <p>这个Manager就是我们的布局管理工具类，这里不仅可以用常规的竖直方向布局，还有横向的滑动的布局，以后再也不会因为没有横向滑动的<code>ListView</code>去头疼自定义了。</p>
 <p>通过自定义<code>LinearLayoutManager</code>也可以实现不同的动画效果，和移动效果。</p>
-<p><code>RecyclerView</code>的Adapter和<code>ListView</code>的Adapter也是不同的，<code>RecyclerView</code>的Adapter要继承<code>RecyclerView.Adapter&amp;lt;VH
- extends ViewHolder&amp;gt;</code>,并且<code>ViewHolder</code>要继承与<code>ViewHolder.RecyclerView</code>，具体代码如下：</p>
-<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)"><br><pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">StringRecyclerAdapter</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">Adapter</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">&gt;</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>    <span class="kd" style="color:rgb(255,255,134)">private</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="nf" style="color:rgb(239,239,143)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">strings</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="nf" style="color:rgb(239,239,143)">onCreateViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">ViewGroup</span> <span class="n" style="color:rgb(220,220,204)">viewGroup</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">view</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="n" style="color:rgb(220,220,204)">View</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">inflate</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">viewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getContext</span><span class="o" style="color:rgb(240,239,208)">(),</span> <span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">layout</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">adapter_string_recylcer</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kc" style="color:rgb(220,163,163)">null</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>       <span class="c1" style="color:rgb(127,159,127)">//这里发现不给item布局添加LayoutParams，会直接默认为WRAP_CONTENT，WRAP_CONTENT布局。</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setPadding</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="mi" style="color:rgb(140,208,211)">20</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">,</span><span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="mi" style="color:rgb(140,208,211)">0</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setFocusable</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kc" style="color:rgb(220,163,163)">true</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span> <span class="n" style="color:rgb(220,220,204)">lp</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">(</span><br>                <span class="n" style="color:rgb(220,220,204)">ViewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">MATCH_PARENT</span><span class="o" style="color:rgb(240,239,208)">,</span><br>                <span class="n" style="color:rgb(220,220,204)">ViewGroup</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LayoutParams</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">WRAP_CONTENT</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">leftMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">10</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">rightMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">5</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">topMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">20</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">bottomMargin</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="mi" style="color:rgb(140,208,211)">15</span><span class="o" style="color:rgb(240,239,208)">;</span><br>        <span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setLayoutParams</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">lp</span><span class="o" style="color:rgb(240,239,208)">);</span><br><br>        <span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="k" style="color:rgb(240,223,175)">new</span> <span class="nf" style="color:rgb(239,239,143)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">view</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onBindViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">ViewHolder</span> <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">,</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="n" style="color:rgb(220,220,204)">viewHolder</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">textView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setText</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">class</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getSimpleName</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">&#43;</span> <span class="n" style="color:rgb(220,220,204)">getValueAt</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">));</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">String</span> <span class="nf" style="color:rgb(239,239,143)">getValueAt</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="kt" style="color:rgb(0,205,0)">int</span> <span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">[</span><span class="n" style="color:rgb(220,220,204)">i</span><span class="o" style="color:rgb(240,239,208)">];</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">int</span> <span class="nf" style="color:rgb(239,239,143)">getItemCount</span><span class="o" style="color:rgb(240,239,208)">()</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="k" style="color:rgb(240,223,175)">return</span> <span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">strings</span> <span class="o" style="color:rgb(240,239,208)">==</span> <span class="kc" style="color:rgb(220,163,163)">null</span> <span class="o" style="color:rgb(240,239,208)">?</span> <span class="mi" style="color:rgb(140,208,211)">0</span> <span class="o" style="color:rgb(240,239,208)">:</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">length</span><span class="o" style="color:rgb(240,239,208)">;</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><br>    <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">static</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">ViewHolder</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span> <span class="kd" style="color:rgb(255,255,134)">implements</span> <span class="n" style="color:rgb(220,220,204)">View</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">OnClickListener</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="n" style="color:rgb(220,220,204)">TextView</span> <span class="n" style="color:rgb(220,220,204)">textView</span><span class="o" style="color:rgb(240,239,208)">;</span><br><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="nf" style="color:rgb(239,239,143)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="kd" style="color:rgb(255,255,134)">super</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">);</span><br>            <span class="n" style="color:rgb(220,220,204)">textView</span> <span class="o" style="color:rgb(240,239,208)">=</span> <span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="n" style="color:rgb(220,220,204)">itemView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">findViewById</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">R</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">id</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">textView</span><span class="o" style="color:rgb(240,239,208)">);</span><br>            <span class="c1" style="color:rgb(127,159,127)">//因为RecyclerView没用setOnItemClickListener，所以在这里实现了点击事件</span><br>            <span class="c1" style="color:rgb(127,159,127)">//况且，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应</span><br>            <span class="n" style="color:rgb(220,220,204)">textView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">setOnClickListener</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="k" style="color:rgb(240,223,175)">this</span><span class="o" style="color:rgb(240,239,208)">);</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br><br>        <span class="nd" style="color:rgb(204,204,204)">@Override</span><br>        <span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kt" style="color:rgb(0,205,0)">void</span> <span class="nf" style="color:rgb(239,239,143)">onClick</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">View</span> <span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">)</span> <span class="o" style="color:rgb(240,239,208)">{</span><br>            <span class="n" style="color:rgb(220,220,204)">Toast</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">makeText</span><span class="o" style="color:rgb(240,239,208)">(</span><span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">getContext</span><span class="o" style="color:rgb(240,239,208)">(),((</span><span class="n" style="color:rgb(220,220,204)">TextView</span><span class="o" style="color:rgb(240,239,208)">)</span><span class="n" style="color:rgb(220,220,204)">v</span><span class="o" style="color:rgb(240,239,208)">).</span><span class="na" style="color:rgb(154,195,159)">getText</span><span class="o" style="color:rgb(240,239,208)">(),</span><span class="n" style="color:rgb(220,220,204)">Toast</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">LENGTH_SHORT</span><span class="o" style="color:rgb(240,239,208)">).</span><span class="na" style="color:rgb(154,195,159)">show</span><span class="o" style="color:rgb(240,239,208)">();</span><br>        <span class="o" style="color:rgb(240,239,208)">}</span><br>    <span class="o" style="color:rgb(240,239,208)">}</span><br><span class="o" style="color:rgb(240,239,208)">}</span><br></pre><br></div>
+<p><code>RecyclerView</code>的Adapter和<code>ListView</code>的Adapter也是不同的，<code>RecyclerView</code>的Adapter要继承<code>RecyclerView.Adapter&amp;lt;VH  extends ViewHolder&amp;gt;</code>,并且<code>ViewHolder</code>要继承与<code>ViewHolder.RecyclerView</code>，具体代码如下：</p>
+<div class="codehilite" style="color:rgb(102,102,102); font-family:Helvetica,arial,'Hiragino Sans GB','Microsoft Yahei',Verdana,Arial,sans-serif; font-size:15px; line-height:30px; background-color:rgb(253,253,253)">
+<pre style="margin-top:1.6em; margin-bottom:1.6em; border:1px solid rgb(227,237,243); width:910px; padding:10px; font-family:Inconsolata,monospace,sans-serif; font-size:0.9em; overflow:auto; word-break:break-word; color:rgb(253,206,147); background:rgb(63,63,63)"><span class="kd" style="color:rgb(255,255,134)">public</span> <span class="kd" style="color:rgb(255,255,134)">class</span> <span class="nc" style="color:rgb(239,239,143)">StringRecyclerAdapter</span> <span class="kd" style="color:rgb(255,255,134)">extends</span> <span class="n" style="color:rgb(220,220,204)">RecyclerView</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">Adapter</span><span class="o" style="color:rgb(240,239,208)">&lt;</span><span class="n" style="color:rgb(220,220,204)">StringRecyclerAdapter</span><span class="o" style="color:rgb(240,239,208)">.</span><span class="na" style="color:rgb(154,195,159)">ViewHolder</span><span class="o" style="color:rgb(240,239,208)">&gt;</span> <span class="o" style="color:rgb(240,239,208)">{</span>
+    <span class="kd" style="color:rgb(255,255,134)">private</span> <span class="n" style="color:rgb(220,220,204)">String</span><span class="o" style="color:rgb(240,239,208)">[]</span> <span class="n" style="color:rgb(220,220,204)">strings</span><span class="o" style="color:rgb(240,239,208)">;</span>
+
+<pre><code>&lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;StringRecyclerAdapter&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+    &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;strings&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot; style=&quot;color:rgb(204,204,204)&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;onCreateViewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;ViewGroup&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;viewGroup&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;inflate&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;viewGroup&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;getContext&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;adapter_string_recylcer&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot; style=&quot;color:rgb(220,163,163)&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot; style=&quot;color:rgb(127,159,127)&quot;&gt;//这里发现不给item布局添加LayoutParams，会直接默认为WRAP_CONTENT，WRAP_CONTENT布局。&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setPadding&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setFocusable&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot; style=&quot;color:rgb(220,163,163)&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;RecyclerView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;LayoutParams&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;lp&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;RecyclerView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;LayoutParams&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;ViewGroup&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;LayoutParams&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;MATCH_PARENT&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;ViewGroup&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;LayoutParams&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;WRAP_CONTENT&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;lp&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;leftMargin&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;lp&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;rightMargin&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;lp&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;topMargin&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;lp&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;bottomMargin&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setLayoutParams&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;lp&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;viewHolder&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;ViewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;viewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot; style=&quot;color:rgb(204,204,204)&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;onBindViewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;viewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+    &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;viewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;textView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;StringRecyclerAdapter&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;getSimpleName&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&amp;#43;&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;getValueAt&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;getValueAt&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+    &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot; style=&quot;color:rgb(204,204,204)&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;getItemCount&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+    &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;strings&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot; style=&quot;color:rgb(220,163,163)&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;mi&quot; style=&quot;color:rgb(140,208,211)&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;RecyclerView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;OnClickListener&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;TextView&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;textView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;ViewHolder&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;itemView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;itemView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;textView&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;TextView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;itemView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;textView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;c1&quot; style=&quot;color:rgb(127,159,127)&quot;&gt;//因为RecyclerView没用setOnItemClickListener，所以在这里实现了点击事件&lt;/span&gt;
+        &lt;span class=&quot;c1&quot; style=&quot;color:rgb(127,159,127)&quot;&gt;//况且，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应&lt;/span&gt;
+        &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;textView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;setOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot; style=&quot;color:rgb(240,223,175)&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot; style=&quot;color:rgb(204,204,204)&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot; style=&quot;color:rgb(255,255,134)&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot; style=&quot;color:rgb(0,205,0)&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot; style=&quot;color:rgb(239,239,143)&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#123;&lt;/span&gt;
+        &lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;Toast&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;makeText&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;getContext&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(),((&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;TextView&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;getText&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;n&quot; style=&quot;color:rgb(220,220,204)&quot;&gt;Toast&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;LENGTH_SHORT&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot; style=&quot;color:rgb(154,195,159)&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+&lt;span class=&quot;o&quot; style=&quot;color:rgb(240,239,208)&quot;&gt;&#125;&lt;/span&gt;
+</code></pre>
+<p><span class="o" style="color:rgb(240,239,208)">}</span><br></pre></p>
+</div>
 
 <p>在<code>onCreateViewHolder</code>方法中，我们需要把加载布局和<code>ViewHolder</code>绑定起来，这里有个问题，不知道是Android的bug，还是故意这么设计的，需要我们主动写代码给item设置<code>LayoutParams</code>。</p>
 <p>在<code>onBindViewHolder</code>中负责数据绑定。</p>
 <p>这里有一个问题，<code>RecyclerView</code>没有<code>setOnItemClickListener</code>方法，所以我在里面对<code>TextView</code>添加了点击事件，现在有越来越多的设计，会在每个item点击不同位置，有不同的响应。</p>
-<p><img src="http://img.blog.csdn.net/20141110152225296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
-<p><a href="https://github.com/KennethYo/RecyclerViewDemo" target="_blank" rel="noopener">Demo链接</a></p>
-<pre><code>&lt;div&gt;
-    作者：zh08070005 发表于2014/11/10 15:18:15 [原文链接](http://blog.csdn.net/kennethyo/article/details/40981263)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：1221 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40981263#comments)
-&lt;/div&gt;
+<p><img src="http://img.blog.csdn.net/20141110152225296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VubmV0aHlv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/KennethYo/RecyclerViewDemo">Demo链接</a></p>
+<pre><code>        &lt;div&gt;
+            作者：zh08070005 发表于2014/11/10 15:18:15 [原文链接](http://blog.csdn.net/kennethyo/article/details/40981263)
+        &lt;/div&gt;
+        &lt;div&gt;
+        阅读：1221 评论：0 [查看评论](http://blog.csdn.net/kennethyo/article/details/40981263#comments)
+        &lt;/div&gt;
 </code></pre>
-      
+
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2014/11/04/2014-11-04/" rel="next" title="[原]Palette的使用">
-                <i class="fa fa-chevron-left"></i> [原]Palette的使用
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/12/28/2014-12-28/" rel="prev" title="[原]CardView初级使用">
-                [原]CardView初级使用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014/11/04/2014-11-04/" rel="prev" title="[原]Palette的使用">
+                  <i class="fa fa-chevron-left"></i> [原]Palette的使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014/12/28/2014-12-28/" rel="next" title="[原]CardView初级使用">
+                  [原]CardView初级使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
   </article>
+</div>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
-          </div>
-          
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
-          <p class="site-author-name" itemprop="name">鸿雁</p>
-           
-              <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
+<div class="copyright">
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -616,47 +437,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
+  
 
 
 
@@ -666,120 +457,6 @@
 
 
 
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

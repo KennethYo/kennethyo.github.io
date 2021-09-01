@@ -1,708 +1,440 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Android,Utils,TextView,EditText,TextUtils,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
-<meta name="description" content="把一个List&amp;lt;String&amp;gt;输出成a,b,c这种形式，我们项目里面提供了一个这样的工具类： 1234567891011121314public static String getString(List&amp;lt;String&amp;gt; list) &amp;#123;        if (CollectionsWrapper.isEmpty(list)) return null;">
-<meta name="keywords" content="Android,Utils,TextView,EditText,TextUtils">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="把一个List&lt;String&gt;输出成a,b,c这种形式，我们项目里面提供了一个这样的工具类： 1234567891011121314public static String getString(List&lt;String&gt; list) &amp;#123;        if (CollectionsWrapper.isEmpty(list)) return null;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TextUtils方法介绍">
 <meta property="og:url" content="http://www.kennethyo.me/2016/07/06/2016-07-06/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
-<meta property="og:description" content="把一个List&amp;lt;String&amp;gt;输出成a,b,c这种形式，我们项目里面提供了一个这样的工具类： 1234567891011121314public static String getString(List&amp;lt;String&amp;gt; list) &amp;#123;        if (CollectionsWrapper.isEmpty(list)) return null;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-09-01T06:36:36.000Z">
+<meta property="og:description" content="把一个List&lt;String&gt;输出成a,b,c这种形式，我们项目里面提供了一个这样的工具类： 1234567891011121314public static String getString(List&lt;String&gt; list) &amp;#123;        if (CollectionsWrapper.isEmpty(list)) return null;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-07-06T07:50:37.000Z">
+<meta property="article:modified_time" content="2016-09-01T06:36:36.000Z">
+<meta property="article:author" content="鸿雁">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Utils">
+<meta property="article:tag" content="TextView">
+<meta property="article:tag" content="EditText">
+<meta property="article:tag" content="TextUtils">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TextUtils方法介绍">
-<meta name="twitter:description" content="把一个List&amp;lt;String&amp;gt;输出成a,b,c这种形式，我们项目里面提供了一个这样的工具类： 1234567891011121314public static String getString(List&amp;lt;String&amp;gt; list) &amp;#123;        if (CollectionsWrapper.isEmpty(list)) return null;">
+
+
+<link rel="canonical" href="http://www.kennethyo.me/2016/07/06/2016-07-06/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2016/07/06/2016-07-06/","path":"2016/07/06/2016-07-06/","title":"TextUtils方法介绍"}</script>
 
-
-
-  <link rel="canonical" href="http://www.kennethyo.me/2016/07/06/2016-07-06/">
-
-
-
-
-
-  <title>TextUtils方法介绍 | 敲键盘的呼伦贝尔人</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TextUtils方法介绍 | 敲键盘的呼伦贝尔人</title>
   
 
 
 
 
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=56699390";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">敲键盘的呼伦贝尔人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">敲键盘的呼伦贝尔人</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
+
+
+
+
+
+
+</div>
+        
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+      </ul>
 
-      
-    </ul>
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#commaEllipsize"><span class="nav-number">2.</span> <span class="nav-text">commaEllipsize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat"><span class="nav-number">3.</span> <span class="nav-text">concat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#copySpansFrom"><span class="nav-number">4.</span> <span class="nav-text">copySpansFrom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dumpSpans"><span class="nav-number">5.</span> <span class="nav-text">dumpSpans</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ellipsize"><span class="nav-number">6.</span> <span class="nav-text">ellipsize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals"><span class="nav-number">7.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expandTemplate"><span class="nav-number">8.</span> <span class="nav-text">expandTemplate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getCapsMode"><span class="nav-number">9.</span> <span class="nav-text">getCapsMode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getChars"><span class="nav-number">10.</span> <span class="nav-text">getChars</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getLayoutDirectionFromLocale"><span class="nav-number">11.</span> <span class="nav-text">getLayoutDirectionFromLocale</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getOffsetAfter"><span class="nav-number">12.</span> <span class="nav-text">getOffsetAfter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getOffsetBefore"><span class="nav-number">13.</span> <span class="nav-text">getOffsetBefore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getReverse"><span class="nav-number">14.</span> <span class="nav-text">getReverse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getTrimmedLength"><span class="nav-number">15.</span> <span class="nav-text">getTrimmedLength</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#htmlEncode"><span class="nav-number">16.</span> <span class="nav-text">htmlEncode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexOf"><span class="nav-number">17.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isDigitsOnly"><span class="nav-number">18.</span> <span class="nav-text">isDigitsOnly</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isEmpty"><span class="nav-number">19.</span> <span class="nav-text">isEmpty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isGraphic"><span class="nav-number">20.</span> <span class="nav-text">isGraphic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">21.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lastIndexOf"><span class="nav-number">22.</span> <span class="nav-text">lastIndexOf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regionMatches"><span class="nav-number">23.</span> <span class="nav-text">regionMatches</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#replace"><span class="nav-number">24.</span> <span class="nav-text">replace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#split"><span class="nav-number">25.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stringOrSpannedString"><span class="nav-number">26.</span> <span class="nav-text">stringOrSpannedString</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#substring"><span class="nav-number">27.</span> <span class="nav-text">substring</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#writeToParcel"><span class="nav-number">28.</span> <span class="nav-text">writeToParcel</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">鸿雁</p>
+  <div class="site-description" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
 
 
 
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/07/06/2016-07-06/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="敲键盘的呼伦贝尔人">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TextUtils方法介绍
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">TextUtils方法介绍</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T15:50:37+08:00">
-                2016-07-06
-              </time>
-            
+      <time title="Created: 2016-07-06 15:50:37" itemprop="dateCreated datePublished" datetime="2016-07-06T15:50:37+08:00">2016-07-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2016-09-01 14:36:36" itemprop="dateModified" datetime="2016-09-01T14:36:36+08:00">2016-09-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
+
     
-
+    
+    
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         <p>把一个<code>List&lt;String&gt;</code>输出成<code>a,b,c</code>这种形式，我们项目里面提供了一个这样的工具类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static String getString(List&lt;String&gt; list) &#123;</span><br><span class="line">        if (CollectionsWrapper.isEmpty(list)) return null;</span><br><span class="line"></span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        int size = list.size();</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            sb.append(list.get(i));</span><br><span class="line"></span><br><span class="line">            if (i != size - 1) &#123;</span><br><span class="line">                sb.append(&quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static String getString(List&lt;String&gt; list) &#123;</span><br><span class="line">        if (CollectionsWrapper.isEmpty(list)) return null;</span><br><span class="line"></span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        int size = list.size();</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            sb.append(list.get(i));</span><br><span class="line"></span><br><span class="line">            if (i != size - 1) &#123;</span><br><span class="line">                sb.append(&quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>方法肯定是多种多样的，但是<code>Android SDK</code>在<code>TextUtils</code>里面就有提供了一个方法<code>join</code>，可以达到效果。</p>
 <p>平常我开发用<code>TextUtils</code>中最多的方法分别是<code>isEmpty</code>和<code>equals</code>。其他方法了解并不多，或者不了解，下面我们开始介绍一下<code>TextUtils</code>中的方法（注：方法重载只介绍一种，隐藏和私有方法没有介绍）：</p>
-<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>Demo 地址：<a href="https://github.com/KennethYo/TextUtilsDemo" target="_blank" rel="noopener">传送门</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">private String mWords1 = &quot;这句话很长很长，真的很长很长，长的不得了，长的不要不要的，长...长长...chang...chang................&quot;;</span><br><span class="line">private String mWords2 = &quot;Andy, Bob, Charles, David, Andy, Bob, Charles, David, Andy, Bob, Charles, David, Andy, Bob, Charles, David, Andy, Bob, Charles, David&quot;;</span><br><span class="line">//把“很长”设置为红色背景</span><br><span class="line">mSpanny1 = new Spanny(mWords1).findAndSpan(&quot;很长&quot;, new Spanny.GetSpan() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object getSpan() &#123;</span><br><span class="line">                return new BackgroundColorSpan(Color.RED);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">//把“Bob”设置为红色背景</span><br><span class="line">mSpanny2 = new Spanny(mWords2).findAndSpan(&quot;Bob&quot;, new Spanny.GetSpan() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object getSpan() &#123;</span><br><span class="line">                return new BackgroundColorSpan(Color.GREEN);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="commaEllipsize"><a href="#commaEllipsize" class="headerlink" title="commaEllipsize"></a>commaEllipsize</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence commaEllipsize(CharSequence text,</span><br><span class="line">                                              TextPaint p, float avail,</span><br><span class="line">                                              String oneMore,</span><br><span class="line">                                              String more)</span><br></pre></td></tr></table></figure>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>Demo 地址：<a target="_blank" rel="noopener" href="https://github.com/KennethYo/TextUtilsDemo">传送门</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private String mWords1 = &quot;这句话很长很长，真的很长很长，长的不得了，长的不要不要的，长...长长...chang...chang................&quot;;</span><br><span class="line">private String mWords2 = &quot;Andy, Bob, Charles, David, Andy, Bob, Charles, David, Andy, Bob, Charles, David, Andy, Bob, Charles, David, Andy, Bob, Charles, David&quot;;</span><br><span class="line">//把“很长”设置为红色背景</span><br><span class="line">mSpanny1 = new Spanny(mWords1).findAndSpan(&quot;很长&quot;, new Spanny.GetSpan() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object getSpan() &#123;</span><br><span class="line">                return new BackgroundColorSpan(Color.RED);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">//把“Bob”设置为红色背景</span><br><span class="line">mSpanny2 = new Spanny(mWords2).findAndSpan(&quot;Bob&quot;, new Spanny.GetSpan() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object getSpan() &#123;</span><br><span class="line">                return new BackgroundColorSpan(Color.GREEN);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="commaEllipsize"><a href="#commaEllipsize" class="headerlink" title="commaEllipsize"></a>commaEllipsize</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence commaEllipsize(CharSequence text,</span><br><span class="line">                                              TextPaint p, float avail,</span><br><span class="line">                                              String oneMore,</span><br><span class="line">                                              String more)</span><br></pre></td></tr></table></figure>
+
 <p>例如<code>Andy, Bob, Charles, David</code>这样的句子，修改为能够在一行<code>avail</code>宽度显示。发回结果例如<br><code>Andy, Bob, 1 more</code>或<code>Andy, Bob, 2 more</code>。<br>注意：more 中的数字要有<code>%d</code>来format，来显示不同的数字。<code>text</code>中必须用英文逗号分隔。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CharSequence output = TextUtils.commaEllipsize(mWords2, mTextView.getPaint(), mScreenWidth, &quot;1 more&quot;, &quot;%d more&quot;);</span><br></pre></td></tr></table></figure>
-<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence concat(CharSequence... text)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CharSequence output = TextUtils.commaEllipsize(mWords2, mTextView.getPaint(), mScreenWidth, &quot;1 more&quot;, &quot;%d more&quot;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence concat(CharSequence... text)</span><br></pre></td></tr></table></figure>
+
 <p>text 为可变参数，可以将传入的<code>CharSequence</code>组成一个<code>CharSequence</code>，并保留原有的<code>Span</code>。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CharSequence charSequence = TextUtils.concat(mSpanny1, mSpanny2);</span><br><span class="line">                mOutputView.setText(charSequence);</span><br></pre></td></tr></table></figure>
-<h1 id="copySpansFrom"><a href="#copySpansFrom" class="headerlink" title="copySpansFrom"></a>copySpansFrom</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static void copySpansFrom(Spanned source, int start, int end,</span><br><span class="line">                                     Class kind,</span><br><span class="line">                                     Spannable dest, int destoff)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CharSequence charSequence = TextUtils.concat(mSpanny1, mSpanny2);</span><br><span class="line">                mOutputView.setText(charSequence);</span><br></pre></td></tr></table></figure>
+
+<h1 id="copySpansFrom"><a href="#copySpansFrom" class="headerlink" title="copySpansFrom"></a>copySpansFrom</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static void copySpansFrom(Spanned source, int start, int end,</span><br><span class="line">                                     Class kind,</span><br><span class="line">                                     Spannable dest, int destoff)</span><br></pre></td></tr></table></figure>
+
 <p>从<code>source</code>中<code>start</code>到<code>end</code> 中的<code>span</code>复制到<code>dest</code>中，<code>destoff</code>是偏移量。这个方法在<code>concat</code>中有用到。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String words = mWords1 + mWords2;</span><br><span class="line">mTextView.setText(words);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mTextView.append(mSpanny2);</span><br><span class="line"></span><br><span class="line">SpannableString ss = new SpannableString(words);</span><br><span class="line">TextUtils.copySpansFrom(mSpanny2, 0, mSpanny2.length(), Object.class, ss, mWords1.length());</span><br><span class="line"></span><br><span class="line">mOutputView.setText(ss);</span><br></pre></td></tr></table></figure>
-<h1 id="dumpSpans"><a href="#dumpSpans" class="headerlink" title="dumpSpans"></a>dumpSpans</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void dumpSpans(CharSequence cs, Printer printer, String prefix)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String words = mWords1 + mWords2;</span><br><span class="line">mTextView.setText(words);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mTextView.append(mSpanny2);</span><br><span class="line"></span><br><span class="line">SpannableString ss = new SpannableString(words);</span><br><span class="line">TextUtils.copySpansFrom(mSpanny2, 0, mSpanny2.length(), Object.class, ss, mWords1.length());</span><br><span class="line"></span><br><span class="line">mOutputView.setText(ss);</span><br></pre></td></tr></table></figure>
+
+<h1 id="dumpSpans"><a href="#dumpSpans" class="headerlink" title="dumpSpans"></a>dumpSpans</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void dumpSpans(CharSequence cs, Printer printer, String prefix)</span><br></pre></td></tr></table></figure>
+
 <p>打印<code>cs</code>中的<code>Span</code>，<code>prefix</code>会在打印每个<code>Span</code>开始出现。<code>printer</code>，可以用<code>LogPrinter</code>，这样就可以打印在 log 里。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextUtils.dumpSpans(mSpanny1, new LogPrinter(Log.INFO, &quot;kenneth&quot;), &quot;yo&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextUtils.dumpSpans(mSpanny1, new LogPrinter(Log.INFO, &quot;kenneth&quot;), &quot;yo&quot;);</span><br></pre></td></tr></table></figure>
+
 <p>Log日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">07-01 14:53:20.229 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d0d0 android.text.style.BackgroundColorSpan (3-5) fl=#33</span><br><span class="line">07-01 14:53:20.229 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d3a8 android.text.style.BackgroundColorSpan (5-7) fl=#33</span><br><span class="line">07-01 14:53:20.229 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d5b8 android.text.style.BackgroundColorSpan (10-12) fl=#33</span><br><span class="line">07-01 14:53:20.230 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d728 android.text.style.BackgroundColorSpan (12-14) fl=#33</span><br></pre></td></tr></table></figure>
-<h1 id="ellipsize"><a href="#ellipsize" class="headerlink" title="ellipsize"></a>ellipsize</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence ellipsize(CharSequence text,</span><br><span class="line">                                         TextPaint paint,</span><br><span class="line">                                         float avail, TruncateAt where,</span><br><span class="line">                                         boolean preserveLength,</span><br><span class="line">                                         EllipsizeCallback callback)</span><br></pre></td></tr></table></figure>
-<p>相当于 <code>TextView</code> 的 xml 中<code>ellipsize</code>，这里可以回调省略范围的 <code>index</code>，同时也可用通过<code>preserveLength</code>，设置返回的 <code>CharSequence</code> 的长度为原始长度还是省略后的长度，这里利用的”零宽不换行空格符”来占位，<code>where</code>参数可以用<code>TextUtils.TruncateAt.START</code>，<code>TextUtils.TruncateAt.END</code>，<code>TextUtils.TruncateAt.MIDDLE</code>和<code>TextUtils.TruncateAt.MARQUEE</code>，分别是开始，结尾，中间和跑马灯。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">07-01 14:53:20.229 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d0d0 android.text.style.BackgroundColorSpan (3-5) fl=#33</span><br><span class="line">07-01 14:53:20.229 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d3a8 android.text.style.BackgroundColorSpan (5-7) fl=#33</span><br><span class="line">07-01 14:53:20.229 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d5b8 android.text.style.BackgroundColorSpan (10-12) fl=#33</span><br><span class="line">07-01 14:53:20.230 9835-9835/me.kenneth.textutildemo I/kenneth: yo很长: 4189d728 android.text.style.BackgroundColorSpan (12-14) fl=#33</span><br></pre></td></tr></table></figure>
+
+<h1 id="ellipsize"><a href="#ellipsize" class="headerlink" title="ellipsize"></a>ellipsize</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence ellipsize(CharSequence text,</span><br><span class="line">                                         TextPaint paint,</span><br><span class="line">                                         float avail, TruncateAt where,</span><br><span class="line">                                         boolean preserveLength,</span><br><span class="line">                                         EllipsizeCallback callback)</span><br></pre></td></tr></table></figure>
+
+<p>相当于 <code>TextView</code> 的 xml 中<code>ellipsize</code>，这里可以回调省略范围的 <code>index</code>，同时也可用通过<code> preserveLength</code>，设置返回的 <code>CharSequence</code> 的长度为原始长度还是省略后的长度，这里利用的”零宽不换行空格符”来占位，<code>where</code>参数可以用<code>TextUtils.TruncateAt.START</code>，<code>TextUtils.TruncateAt.END</code>，<code>TextUtils.TruncateAt.MIDDLE</code>和<code>TextUtils.TruncateAt.MARQUEE</code>，分别是开始，结尾，中间和跑马灯。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CharSequence ellipsize = TextUtils.ellipsize(mWords2, mTextView.getPaint(), mScreenWidth, TextUtils.TruncateAt.START, true, new TextUtils.EllipsizeCallback() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void ellipsized(int i, int i1) &#123;</span><br><span class="line">                        Log.i(TAG, &quot;被省略范围 &quot; + i + &quot; &quot; + i1);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean equals(CharSequence a, CharSequence b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CharSequence ellipsize = TextUtils.ellipsize(mWords2, mTextView.getPaint(), mScreenWidth, TextUtils.TruncateAt.START, true, new TextUtils.EllipsizeCallback() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void ellipsized(int i, int i1) &#123;</span><br><span class="line">                        Log.i(TAG, &quot;被省略范围 &quot; + i + &quot; &quot; + i1);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean equals(CharSequence a, CharSequence b)</span><br></pre></td></tr></table></figure>
+
 <p>比较字符串是否相等，可以看一下源码，如果是相同文本内容，但是<code>span</code>不同，也可以比较为相同。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextUtils.equals(mWords1, mSpanny1)</span><br></pre></td></tr></table></figure>
-<h1 id="expandTemplate"><a href="#expandTemplate" class="headerlink" title="expandTemplate"></a>expandTemplate</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence expandTemplate(CharSequence template,</span><br><span class="line">                                              CharSequence... values)</span><br></pre></td></tr></table></figure>
-<p>替换<code>template</code>当中的<code>^1`</code> ^2<code>等为</code>values`中相应的值，注意：不能超过9个，9个以上会抛出异常。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextUtils.equals(mWords1, mSpanny1)</span><br></pre></td></tr></table></figure>
+
+<h1 id="expandTemplate"><a href="#expandTemplate" class="headerlink" title="expandTemplate"></a>expandTemplate</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence expandTemplate(CharSequence template,</span><br><span class="line">                                              CharSequence... values) </span><br></pre></td></tr></table></figure>
+
+<p>替换<code>template</code>当中的<code> ^1`` ^2</code> 等为<code>values</code>中相应的值，注意：不能超过9个，9个以上会抛出异常。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String template = &quot;This is a ^1 of the ^2 broadcast ^3.&quot;;</span><br><span class="line">                mTextView.setText(template);</span><br><span class="line"></span><br><span class="line">                CharSequence expandTemplate = TextUtils.expandTemplate(template, &quot;test&quot;, &quot;emergency&quot;, &quot;system&quot;);</span><br></pre></td></tr></table></figure>
-<h1 id="getCapsMode"><a href="#getCapsMode" class="headerlink" title="getCapsMode"></a>getCapsMode</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getCapsMode(CharSequence cs, int off, int reqModes)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String template = &quot;This is a ^1 of the ^2 broadcast ^3.&quot;;</span><br><span class="line">                mTextView.setText(template);</span><br><span class="line"></span><br><span class="line">                CharSequence expandTemplate = TextUtils.expandTemplate(template, &quot;test&quot;, &quot;emergency&quot;, &quot;system&quot;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="getCapsMode"><a href="#getCapsMode" class="headerlink" title="getCapsMode"></a>getCapsMode</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getCapsMode(CharSequence cs, int off, int reqModes)</span><br></pre></td></tr></table></figure>
+
 <p>这个方法不知道怎么用，求留言赐教。</p>
-<h1 id="getChars"><a href="#getChars" class="headerlink" title="getChars"></a>getChars</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static void getChars(CharSequence s, int start, int end,</span><br><span class="line">                                char[] dest, int destoff)</span><br></pre></td></tr></table></figure>
-<p>分别各自调用 <code>CharSequence</code>的 <code>getChars</code>实现。</p>
+<h1 id="getChars"><a href="#getChars" class="headerlink" title="getChars"></a>getChars</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static void getChars(CharSequence s, int start, int end,</span><br><span class="line">                                char[] dest, int destoff)</span><br></pre></td></tr></table></figure>
+
+<p>分别各自调用 <code>CharSequence </code>的 <code>getChars </code>实现。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char[] buffer = new char[5];</span><br><span class="line">                TextUtils.getChars(mWords1, 2, 4, buffer, 0);</span><br></pre></td></tr></table></figure>
-<h1 id="getLayoutDirectionFromLocale"><a href="#getLayoutDirectionFromLocale" class="headerlink" title="getLayoutDirectionFromLocale"></a>getLayoutDirectionFromLocale</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getLayoutDirectionFromLocale(Locale locale)</span><br></pre></td></tr></table></figure>
-<p>根据传入的 <code>local</code>获取当前的阅读习惯（例如，汉语习惯是左到右，希伯来语是右到左），具体可以看这篇文章，<a href="http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html" target="_blank" rel="noopener">http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html</a></p>
-<h1 id="getOffsetAfter"><a href="#getOffsetAfter" class="headerlink" title="getOffsetAfter"></a>getOffsetAfter</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getOffsetAfter(CharSequence text, int offset)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char[] buffer = new char[5];</span><br><span class="line">                TextUtils.getChars(mWords1, 2, 4, buffer, 0);</span><br></pre></td></tr></table></figure>
+
+<h1 id="getLayoutDirectionFromLocale"><a href="#getLayoutDirectionFromLocale" class="headerlink" title="getLayoutDirectionFromLocale"></a>getLayoutDirectionFromLocale</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getLayoutDirectionFromLocale(Locale locale)</span><br></pre></td></tr></table></figure>
+
+<p>根据传入的 <code>local </code>获取当前的阅读习惯（例如，汉语习惯是左到右，希伯来语是右到左），具体可以看这篇文章，<a target="_blank" rel="noopener" href="http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html">http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html</a></p>
+<h1 id="getOffsetAfter"><a href="#getOffsetAfter" class="headerlink" title="getOffsetAfter"></a>getOffsetAfter</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getOffsetAfter(CharSequence text, int offset)</span><br></pre></td></tr></table></figure>
+
 <p>获取文本之后的偏移量 结合方法里的内容看比较容易,方法里面的<code>Unicode</code>都是我们所谓的非法字符。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;很&quot;, &quot;\uD800&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;长&quot;, &quot;\uDFFF&quot;);</span><br><span class="line">mTextView.append(mWords1);</span><br><span class="line">int offsetAfter = TextUtils.getOffsetAfter(mWords1, 5);</span><br><span class="line">                mOutputView.setText(String.valueOf(offsetAfter));</span><br><span class="line">                mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(mWords1.substring(offsetAfter));</span><br></pre></td></tr></table></figure>
-<h1 id="getOffsetBefore"><a href="#getOffsetBefore" class="headerlink" title="getOffsetBefore"></a>getOffsetBefore</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getOffsetBefore(CharSequence text, int offset)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;很&quot;, &quot;\uD800&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;长&quot;, &quot;\uDFFF&quot;);</span><br><span class="line">mTextView.append(mWords1);</span><br><span class="line">int offsetAfter = TextUtils.getOffsetAfter(mWords1, 5);</span><br><span class="line">                mOutputView.setText(String.valueOf(offsetAfter));</span><br><span class="line">                mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(mWords1.substring(offsetAfter));</span><br></pre></td></tr></table></figure>
+
+<h1 id="getOffsetBefore"><a href="#getOffsetBefore" class="headerlink" title="getOffsetBefore"></a>getOffsetBefore</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getOffsetBefore(CharSequence text, int offset)</span><br></pre></td></tr></table></figure>
+
 <p>获取文本之前的偏移量 结合方法里的内容看比较容易,方法里面的<code>Unicode</code>都是我们所谓的非法字符。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;句&quot;, &quot;\uD800&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;话&quot;, &quot;\uDFFF&quot;);</span><br><span class="line">mTextView.setText(mWords1);</span><br><span class="line">int offsetBefore = TextUtils.getOffsetBefore(mWords1, 5);</span><br><span class="line">                mOutputView.setText(String.valueOf(offsetBefore));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(mWords1.substring(offsetBefore));</span><br></pre></td></tr></table></figure>
-<h1 id="getReverse"><a href="#getReverse" class="headerlink" title="getReverse"></a>getReverse</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence getReverse(CharSequence source,</span><br><span class="line">                                          int start, int end)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;句&quot;, &quot;\uD800&quot;);</span><br><span class="line">mWords1 = mWords1.replace(&quot;话&quot;, &quot;\uDFFF&quot;);</span><br><span class="line">mTextView.setText(mWords1);</span><br><span class="line">int offsetBefore = TextUtils.getOffsetBefore(mWords1, 5);</span><br><span class="line">                mOutputView.setText(String.valueOf(offsetBefore));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(mWords1.substring(offsetBefore));</span><br></pre></td></tr></table></figure>
+
+<h1 id="getReverse"><a href="#getReverse" class="headerlink" title="getReverse"></a>getReverse</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence getReverse(CharSequence source,</span><br><span class="line">                                          int start, int end)</span><br></pre></td></tr></table></figure>
+
 <p>翻转<code>start</code>到<code>end</code>的字符串。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CharSequence reverse = TextUtils.getReverse(mWords1, 0, mWords1.length());</span><br></pre></td></tr></table></figure>
-<h1 id="getTrimmedLength"><a href="#getTrimmedLength" class="headerlink" title="getTrimmedLength"></a>getTrimmedLength</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getTrimmedLength(CharSequence s)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CharSequence reverse = TextUtils.getReverse(mWords1, 0, mWords1.length());</span><br></pre></td></tr></table></figure>
+
+<h1 id="getTrimmedLength"><a href="#getTrimmedLength" class="headerlink" title="getTrimmedLength"></a>getTrimmedLength</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int getTrimmedLength(CharSequence s)</span><br></pre></td></tr></table></figure>
+
 <p>trim 后的字符串长度。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mWords1 = &quot; &quot; + mWords1 + &quot; &quot;;</span><br><span class="line">mTextView.setText(mWords1);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">                mTextView.append(String.valueOf(mWords1.length()));</span><br><span class="line">int trimmedLength = TextUtils.getTrimmedLength(mWords1);</span><br><span class="line">                mOutputView.setText(String.valueOf(trimmedLength));</span><br></pre></td></tr></table></figure>
-<h1 id="htmlEncode"><a href="#htmlEncode" class="headerlink" title="htmlEncode"></a>htmlEncode</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String htmlEncode(String s)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mWords1 = &quot; &quot; + mWords1 + &quot; &quot;;</span><br><span class="line">mTextView.setText(mWords1);</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">                mTextView.append(String.valueOf(mWords1.length()));</span><br><span class="line">int trimmedLength = TextUtils.getTrimmedLength(mWords1);</span><br><span class="line">                mOutputView.setText(String.valueOf(trimmedLength));</span><br></pre></td></tr></table></figure>
+
+<h1 id="htmlEncode"><a href="#htmlEncode" class="headerlink" title="htmlEncode"></a>htmlEncode</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String htmlEncode(String s)</span><br></pre></td></tr></table></figure>
+
 <p>encode html ，注意是 html 。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String code = &quot;&lt;h1&gt;html&lt;/h1&gt; &quot; + mWords1;</span><br><span class="line">                mTextView.setText(code);</span><br><span class="line">                mOutputView.setText(TextUtils.htmlEncode(code));</span><br></pre></td></tr></table></figure>
-<h1 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static int indexOf(CharSequence s, CharSequence needle,</span><br><span class="line">                              int start, int end)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String code = &quot;&lt;h1&gt;html&lt;/h1&gt; &quot; + mWords1;</span><br><span class="line">                mTextView.setText(code);</span><br><span class="line">                mOutputView.setText(TextUtils.htmlEncode(code));</span><br></pre></td></tr></table></figure>
+
+<h1 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static int indexOf(CharSequence s, CharSequence needle,</span><br><span class="line">                              int start, int end)</span><br></pre></td></tr></table></figure>
+
 <p>获取<code>needle</code>字符的 index。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int indexOf = TextUtils.indexOf(mWords1, &quot;不要的&quot;, 0, mWords1.length());</span><br><span class="line">                mOutputView.setText(String.valueOf(indexOf));</span><br><span class="line">                mOutputView.append(mWords1.substring(indexOf));</span><br></pre></td></tr></table></figure>
-<h1 id="isDigitsOnly"><a href="#isDigitsOnly" class="headerlink" title="isDigitsOnly"></a>isDigitsOnly</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isDigitsOnly(CharSequence str)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int indexOf = TextUtils.indexOf(mWords1, &quot;不要的&quot;, 0, mWords1.length());</span><br><span class="line">                mOutputView.setText(String.valueOf(indexOf));</span><br><span class="line">                mOutputView.append(mWords1.substring(indexOf));</span><br></pre></td></tr></table></figure>
+
+<h1 id="isDigitsOnly"><a href="#isDigitsOnly" class="headerlink" title="isDigitsOnly"></a>isDigitsOnly</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isDigitsOnly(CharSequence str)</span><br></pre></td></tr></table></figure>
+
 <p>判断是否仅有数字。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">String digits = &quot;1234&quot;;</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mTextView.append(digits);</span><br><span class="line">String digits1 = &quot;123w123&quot;;</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mTextView.append(digits1);</span><br><span class="line">boolean digitsOnly = TextUtils.isDigitsOnly(mWords1);</span><br><span class="line">boolean digitsOnly1 = TextUtils.isDigitsOnly(digits);</span><br><span class="line">boolean digitsOnly2 = TextUtils.isDigitsOnly(digits1);</span><br><span class="line">                mOutputView.setText(String.valueOf(digitsOnly));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(String.valueOf(digitsOnly1));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(String.valueOf(digitsOnly2));</span><br></pre></td></tr></table></figure>
-<h1 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty"></a>isEmpty</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isEmpty(CharSequence str)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">String digits = &quot;1234&quot;;</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mTextView.append(digits);</span><br><span class="line">String digits1 = &quot;123w123&quot;;</span><br><span class="line">mTextView.append(&quot;\n\n&quot;);</span><br><span class="line">mTextView.append(digits1);</span><br><span class="line">boolean digitsOnly = TextUtils.isDigitsOnly(mWords1);</span><br><span class="line">boolean digitsOnly1 = TextUtils.isDigitsOnly(digits);</span><br><span class="line">boolean digitsOnly2 = TextUtils.isDigitsOnly(digits1);</span><br><span class="line">                mOutputView.setText(String.valueOf(digitsOnly));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(String.valueOf(digitsOnly1));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);</span><br><span class="line">                mOutputView.append(String.valueOf(digitsOnly2));</span><br></pre></td></tr></table></figure>
+
+<h1 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty"></a>isEmpty</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isEmpty(CharSequence str)</span><br></pre></td></tr></table></figure>
+
 <p>判空，这个太常用了。</p>
-<h1 id="isGraphic"><a href="#isGraphic" class="headerlink" title="isGraphic"></a>isGraphic</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isGraphic(CharSequence str)</span><br></pre></td></tr></table></figure>
+<h1 id="isGraphic"><a href="#isGraphic" class="headerlink" title="isGraphic"></a>isGraphic</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isGraphic(CharSequence str) </span><br></pre></td></tr></table></figure>
+
 <p>判断是否有可以显示出来的字符。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String graphic = &quot;\n \t \b&quot;;</span><br><span class="line">mTextView.setText(graphic);</span><br><span class="line">            mOutputView.setText(String.valueOf(TextUtils.isGraphic(graphic)));</span><br></pre></td></tr></table></figure>
-<h1 id="join"><a href="#join" class="headerlink" title="join"></a>join</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String join(CharSequence delimiter, Iterable tokens)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String graphic = &quot;\n \t \b&quot;;</span><br><span class="line">mTextView.setText(graphic);</span><br><span class="line">            mOutputView.setText(String.valueOf(TextUtils.isGraphic(graphic)));</span><br></pre></td></tr></table></figure>
+
+<h1 id="join"><a href="#join" class="headerlink" title="join"></a>join</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String join(CharSequence delimiter, Iterable tokens)</span><br></pre></td></tr></table></figure>
+
 <p>连接数组，例如：a b c d 输出 a-b-c-d，这个方法的重载支持了很多类型。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(&quot;a&quot;);</span><br><span class="line">list.add(&quot;b&quot;);</span><br><span class="line">list.add(&quot;c&quot;);</span><br><span class="line">list.add(&quot;d&quot;);</span><br><span class="line">mTextView.setText(list.toString());</span><br><span class="line">mOutputView.setText(TextUtils.join(&quot;-&quot;, list));</span><br></pre></td></tr></table></figure>
-<h1 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int lastIndexOf(CharSequence s, char ch)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(&quot;a&quot;);</span><br><span class="line">list.add(&quot;b&quot;);</span><br><span class="line">list.add(&quot;c&quot;);</span><br><span class="line">list.add(&quot;d&quot;);</span><br><span class="line">mTextView.setText(list.toString());</span><br><span class="line">mOutputView.setText(TextUtils.join(&quot;-&quot;, list));</span><br></pre></td></tr></table></figure>
+
+<h1 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int lastIndexOf(CharSequence s, char ch)</span><br></pre></td></tr></table></figure>
+
 <p>字符<code>ch</code>最后一次出现的<code>index</code>。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">int c = TextUtils.lastIndexOf(mWords1, &apos;c&apos;);               mOutputView.setText(String.valueOf(c));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);                mOutputView.append(mWords1.substring(c));</span><br></pre></td></tr></table></figure>
-<h1 id="regionMatches"><a href="#regionMatches" class="headerlink" title="regionMatches"></a>regionMatches</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static boolean regionMatches(CharSequence one, int toffset,</span><br><span class="line">                                        CharSequence two, int ooffset,</span><br><span class="line">                                        int len) &#123;</span><br></pre></td></tr></table></figure>
-<p>比对两个字符串 <code>offset</code>到 <code>len</code> 的长度的字符串是否相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(mWords1);</span><br><span class="line">int c = TextUtils.lastIndexOf(mWords1, &#x27;c&#x27;);               mOutputView.setText(String.valueOf(c));</span><br><span class="line">mOutputView.append(&quot;\n\n&quot;);                mOutputView.append(mWords1.substring(c));</span><br></pre></td></tr></table></figure>
+
+<h1 id="regionMatches"><a href="#regionMatches" class="headerlink" title="regionMatches"></a>regionMatches</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static boolean regionMatches(CharSequence one, int toffset,</span><br><span class="line">                                        CharSequence two, int ooffset,</span><br><span class="line">                                        int len) &#123;</span><br></pre></td></tr></table></figure>
+
+<p>比对两个字符串 <code>offset </code>到 <code>len</code> 的长度的字符串是否相同。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.replace(mWords1,new String[]&#123;&quot;很长&quot;,&quot;的&quot;,&quot;.&quot;&#125;,new String[]&#123;&quot;very long&quot;,&quot;of&quot;,&quot;。&quot;&#125;));</span><br></pre></td></tr></table></figure>
-<h1 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence replace(CharSequence template,</span><br><span class="line">                                       String[] sources,</span><br><span class="line">                                       CharSequence[] destinations)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.replace(mWords1,new String[]&#123;&quot;很长&quot;,&quot;的&quot;,&quot;.&quot;&#125;,new String[]&#123;&quot;very long&quot;,&quot;of&quot;,&quot;。&quot;&#125;));</span><br></pre></td></tr></table></figure>
+
+<h1 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence replace(CharSequence template,</span><br><span class="line">                                       String[] sources,</span><br><span class="line">                                       CharSequence[] destinations)</span><br></pre></td></tr></table></figure>
+
 <p>替换功能，注意：只会替换第一个出现的。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.replace(mWords1,new String[]&#123;&quot;很长&quot;,&quot;的&quot;,&quot;.&quot;&#125;,new String[]&#123;&quot;very long&quot;,&quot;of&quot;,&quot;。&quot;&#125;));</span><br></pre></td></tr></table></figure>
-<h1 id="split"><a href="#split" class="headerlink" title="split"></a>split</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String[] split(String text, String expression)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.replace(mWords1,new String[]&#123;&quot;很长&quot;,&quot;的&quot;,&quot;.&quot;&#125;,new String[]&#123;&quot;very long&quot;,&quot;of&quot;,&quot;。&quot;&#125;));   </span><br></pre></td></tr></table></figure>
+
+<h1 id="split"><a href="#split" class="headerlink" title="split"></a>split</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String[] split(String text, String expression)</span><br></pre></td></tr></table></figure>
 <p>分割字符串。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.join(&quot;--&quot;,TextUtils.split(mWords2,&quot;,&quot;)));</span><br></pre></td></tr></table></figure>
-<h1 id="stringOrSpannedString"><a href="#stringOrSpannedString" class="headerlink" title="stringOrSpannedString"></a>stringOrSpannedString</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence stringOrSpannedString(CharSequence source)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.join(&quot;--&quot;,TextUtils.split(mWords2,&quot;,&quot;)));</span><br></pre></td></tr></table></figure>
+
+<h1 id="stringOrSpannedString"><a href="#stringOrSpannedString" class="headerlink" title="stringOrSpannedString"></a>stringOrSpannedString</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static CharSequence stringOrSpannedString(CharSequence source)</span><br></pre></td></tr></table></figure>
+
 <p>如果是 <code>String</code> 返回 <code>String</code> ，<code>spannedString</code> 或 <code>spanned</code> 返回 <code>spannedString</code>。</p>
 <p>例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.stringOrSpannedString(mSpanny1));</span><br></pre></td></tr></table></figure>
-<h1 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String substring(CharSequence source, int start, int end)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.stringOrSpannedString(mSpanny1));    </span><br></pre></td></tr></table></figure>
+<h1 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static String substring(CharSequence source, int start, int end)</span><br></pre></td></tr></table></figure>
+
 <p>分割字符串。</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.substring(mSpanny1,2,16));</span><br></pre></td></tr></table></figure>
-<h1 id="writeToParcel"><a href="#writeToParcel" class="headerlink" title="writeToParcel"></a>writeToParcel</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static void writeToParcel(CharSequence cs, Parcel p,</span><br><span class="line">            int parcelableFlags)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mOutputView.setText(TextUtils.substring(mSpanny1,2,16));</span><br></pre></td></tr></table></figure>
+
+<h1 id="writeToParcel"><a href="#writeToParcel" class="headerlink" title="writeToParcel"></a>writeToParcel</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public static void writeToParcel(CharSequence cs, Parcel p,</span><br><span class="line">            int parcelableFlags)</span><br></pre></td></tr></table></figure>
+
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(&quot;一般用作序列化 CharSequence 子类&quot;);</span><br></pre></td></tr></table></figure>
-      
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(&quot;一般用作序列化 CharSequence 子类&quot;);</span><br></pre></td></tr></table></figure>
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/Utils/" rel="tag"># Utils</a>
-          
-            <a href="/tags/TextView/" rel="tag"># TextView</a>
-          
-            <a href="/tags/EditText/" rel="tag"># EditText</a>
-          
-            <a href="/tags/TextUtils/" rel="tag"># TextUtils</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/06/21/2016-06-21/" rel="next" title="Mac 下反编译 apk">
-                <i class="fa fa-chevron-left"></i> Mac 下反编译 apk
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Utils/" rel="tag"># Utils</a>
+              <a href="/tags/TextView/" rel="tag"># TextView</a>
+              <a href="/tags/EditText/" rel="tag"># EditText</a>
+              <a href="/tags/TextUtils/" rel="tag"># TextUtils</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/01/untitled-1472722428873/" rel="prev" title="自建私有 Maven 仓库">
-                自建私有 Maven 仓库 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/06/21/2016-06-21/" rel="prev" title="Mac 下反编译 apk">
+                  <i class="fa fa-chevron-left"></i> Mac 下反编译 apk
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/09/01/untitled-1472722428873/" rel="next" title="自建私有 Maven 仓库">
+                  自建私有 Maven 仓库 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
   </article>
+</div>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
-          </div>
-          
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
-          <p class="site-author-name" itemprop="name">鸿雁</p>
-           
-              <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#commaEllipsize"><span class="nav-number">2.</span> <span class="nav-text">commaEllipsize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat"><span class="nav-number">3.</span> <span class="nav-text">concat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#copySpansFrom"><span class="nav-number">4.</span> <span class="nav-text">copySpansFrom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dumpSpans"><span class="nav-number">5.</span> <span class="nav-text">dumpSpans</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ellipsize"><span class="nav-number">6.</span> <span class="nav-text">ellipsize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals"><span class="nav-number">7.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expandTemplate"><span class="nav-number">8.</span> <span class="nav-text">expandTemplate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getCapsMode"><span class="nav-number">9.</span> <span class="nav-text">getCapsMode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getChars"><span class="nav-number">10.</span> <span class="nav-text">getChars</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getLayoutDirectionFromLocale"><span class="nav-number">11.</span> <span class="nav-text">getLayoutDirectionFromLocale</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getOffsetAfter"><span class="nav-number">12.</span> <span class="nav-text">getOffsetAfter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getOffsetBefore"><span class="nav-number">13.</span> <span class="nav-text">getOffsetBefore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getReverse"><span class="nav-number">14.</span> <span class="nav-text">getReverse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getTrimmedLength"><span class="nav-number">15.</span> <span class="nav-text">getTrimmedLength</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#htmlEncode"><span class="nav-number">16.</span> <span class="nav-text">htmlEncode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexOf"><span class="nav-number">17.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isDigitsOnly"><span class="nav-number">18.</span> <span class="nav-text">isDigitsOnly</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isEmpty"><span class="nav-number">19.</span> <span class="nav-text">isEmpty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isGraphic"><span class="nav-number">20.</span> <span class="nav-text">isGraphic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">21.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lastIndexOf"><span class="nav-number">22.</span> <span class="nav-text">lastIndexOf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regionMatches"><span class="nav-number">23.</span> <span class="nav-text">regionMatches</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#replace"><span class="nav-number">24.</span> <span class="nav-text">replace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#split"><span class="nav-number">25.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stringOrSpannedString"><span class="nav-number">26.</span> <span class="nav-text">stringOrSpannedString</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#substring"><span class="nav-number">27.</span> <span class="nav-text">substring</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#writeToParcel"><span class="nav-number">28.</span> <span class="nav-text">writeToParcel</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
+<div class="copyright">
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -710,47 +442,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
+  
 
 
 
@@ -760,120 +462,6 @@
 
 
 
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

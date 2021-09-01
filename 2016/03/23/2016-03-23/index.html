@@ -1,617 +1,315 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Android,React-Native,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="通过上一篇《 React-Native Android 学习笔记——1，配置环境》下载了AwesomeProject项目并运行了 demo。如下图：应该和你运行起来的相同，但是除了Welcome to React Native的颜色。 一，index.android.js 文件demo 默认展示在我们面前的这个页面其实是我们下载AwesomeProject项目下的index.android.js，">
-<meta name="keywords" content="Android,React-Native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]React-Native Android 学习笔记——2，自定义 logger">
 <meta property="og:url" content="http://www.kennethyo.me/2016/03/23/2016-03-23/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
 <meta property="og:description" content="通过上一篇《 React-Native Android 学习笔记——1，配置环境》下载了AwesomeProject项目并运行了 demo。如下图：应该和你运行起来的相同，但是除了Welcome to React Native的颜色。 一，index.android.js 文件demo 默认展示在我们面前的这个页面其实是我们下载AwesomeProject项目下的index.android.js，">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale">
 <meta property="og:image" content="http://img.blog.csdn.net/20160322185844293">
-<meta property="og:updated_time" content="2016-09-01T06:37:33.000Z">
+<meta property="article:published_time" content="2016-03-23T08:35:48.000Z">
+<meta property="article:modified_time" content="2016-09-01T06:37:33.000Z">
+<meta property="article:author" content="鸿雁">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="React-Native">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[原]React-Native Android 学习笔记——2，自定义 logger">
-<meta name="twitter:description" content="通过上一篇《 React-Native Android 学习笔记——1，配置环境》下载了AwesomeProject项目并运行了 demo。如下图：应该和你运行起来的相同，但是除了Welcome to React Native的颜色。 一，index.android.js 文件demo 默认展示在我们面前的这个页面其实是我们下载AwesomeProject项目下的index.android.js，">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160322185844293">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<link rel="canonical" href="http://www.kennethyo.me/2016/03/23/2016-03-23/">
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2016/03/23/2016-03-23/">
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2016/03/23/2016-03-23/","path":"2016/03/23/2016-03-23/","title":"[原]React-Native Android 学习笔记——2，自定义 logger"}</script>
 
-
-
-
-
-  <title>[原]React-Native Android 学习笔记——2，自定义 logger | 敲键盘的呼伦贝尔人</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[原]React-Native Android 学习笔记——2，自定义 logger | 敲键盘的呼伦贝尔人</title>
   
 
 
 
 
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=56699390";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">敲键盘的呼伦贝尔人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">敲键盘的呼伦贝尔人</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
+
+
+
+
+
+
+</div>
+        
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+      </ul>
 
-      
-    </ul>
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%EF%BC%8Cindex-android-js-%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">一，index.android.js 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%EF%BC%8C%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AA-Toast"><span class="nav-number">2.</span> <span class="nav-text">二，显示一个 Toast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89-Logger"><span class="nav-number">3.</span> <span class="nav-text">三，自定义 Logger</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">鸿雁</p>
+  <div class="site-description" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
 
 
 
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2016/03/23/2016-03-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="敲键盘的呼伦贝尔人">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [原]React-Native Android 学习笔记——2，自定义 logger
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">[原]React-Native Android 学习笔记——2，自定义 logger</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-23T16:35:48+08:00">
-                2016-03-23
-              </time>
-            
+      <time title="Created: 2016-03-23 16:35:48" itemprop="dateCreated datePublished" datetime="2016-03-23T16:35:48+08:00">2016-03-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2016-09-01 14:37:33" itemprop="dateModified" datetime="2016-09-01T14:37:33+08:00">2016-09-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
+
     
-
+    
+    
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>通过上一篇<a href="http://blog.csdn.net/kennethyo/article/details/50923909" target="_blank" rel="noopener">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：<br><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"><br>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
-<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sample React Native App</span></span><br><span class="line"><span class="comment"> * https://github.com/facebook/react-native</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          Welcome to React Native!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          To get started, edit index.android.js</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    justifyContent: <span class="string">'center'</span>,</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    margin: <span class="number">10</span>,</span><br><span class="line">    color:<span class="string">'red'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  instructions: &#123;</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    color: <span class="string">'#333333'</span>,</span><br><span class="line">    marginBottom: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</span><br></pre></td></tr></table></figure></p>
-<p>可以看到我在 welcome 的 style 中设置了<code>color:&#39;red&#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">welcome: &#123;</span><br><span class="line">  fontSize: <span class="number">20</span>,</span><br><span class="line">  textAlign: <span class="string">'center'</span>,</span><br><span class="line">  margin: <span class="number">10</span>,</span><br><span class="line">  color:<span class="string">'red'</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+        <p>通过上一篇<a target="_blank" rel="noopener" href="http://blog.csdn.net/kennethyo/article/details/50923909">《 React-Native Android 学习笔记——1，配置环境》</a>下载了AwesomeProject项目并运行了 demo。如下图：<br><img src="http://img.blog.csdn.net/20160322185844293" alt="这里写图片描述"><br>应该和你运行起来的相同，但是除了<code>Welcome to React Native</code>的颜色。</p>
+<h2 id="一，index-android-js-文件"><a href="#一，index-android-js-文件" class="headerlink" title="一，index.android.js 文件"></a>一，index.android.js 文件</h2><p>demo 默认展示在我们面前的这个页面其实是我们下载<code>AwesomeProject</code>项目下的<code>index.android.js</code>，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sample React Native App</span></span><br><span class="line"><span class="comment"> * https://github.com/facebook/react-native</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.container&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.welcome&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Welcome to React Native!</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          To get started, edit index.android.js</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Shake or press menu button for dev menu</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  <span class="attr">container</span>: &#123;</span><br><span class="line">    <span class="attr">flex</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">backgroundColor</span>: <span class="string">&#x27;#F5FCFF&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">welcome</span>: &#123;</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">margin</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">instructions</span>: &#123;</span><br><span class="line">    <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;#333333&#x27;</span>,</span><br><span class="line">    <span class="attr">marginBottom</span>: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">AppRegistry.registerComponent(<span class="string">&#x27;AwesomeProject&#x27;</span>, <span class="function">() =&gt;</span> AwesomeProject);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以看到我在 welcome 的 style 中设置了<code>color:&#39;red&#39;</code>，让我的<code>Welcome to React Native</code>变成红色字体的。如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">welcome: &#123;</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">  <span class="attr">margin</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>下面我们来熟悉一下<code>index.android.js</code>这个文件里面的 js 代码都是干什么的。</p>
-<p><code>&#39;use strict&#39;</code>是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="noopener">《Javascript 严格模式详解》</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码类似 java 的 import，把需要引用的 module 引入。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          Welcome to React Native!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          To get started, edit index.android.js</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码是渲染当前注册界面的布局，<code>render</code>方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    justifyContent: <span class="string">'center'</span>,</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    margin: <span class="number">10</span>,</span><br><span class="line">    color:<span class="string">'red'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  instructions: &#123;</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    color: <span class="string">'#333333'</span>,</span><br><span class="line">    marginBottom: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>标签的具体规范可以看这里<a href="http://facebook.github.io/react-native/docs/text.html#content" target="_blank" rel="noopener">Text</a>，<a href="http://facebook.github.io/react-native/docs/view.html#content" target="_blank" rel="noopener">View</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</span><br></pre></td></tr></table></figure></p>
-<p>上面这段代码把我们 js 文件中的 class <code>AwesomeProject</code>和我们 Android 项目中 <code>Activity</code>中<code>getMainComponentName() { return &quot;AwesomeProject&quot;; }</code>的 Activity关联起来。</p>
-<h2 id="二，显示一个-Toast"><a href="#二，显示一个-Toast" class="headerlink" title="二，显示一个 Toast"></a>二，显示一个 Toast</h2><p>React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在<code>../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js</code>中。<br>我们来看 ToastAndroid 的源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2015-present, Facebook, Inc.</span></span><br><span class="line"><span class="comment"> * All rights reserved.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This source code is licensed under the BSD-style license found in the</span></span><br><span class="line"><span class="comment"> * LICENSE file in the root directory of this source tree. An additional grant</span></span><br><span class="line"><span class="comment"> * of patent rights can be found in the PATENTS file in the same directory.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@providesModule <span class="variable">ToastAndroid</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This exposes the native ToastAndroid module as a JS module. This has a function 'show'</span></span><br><span class="line"><span class="comment"> * which takes the following parameters:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 1. String message: A string with the text to toast</span></span><br><span class="line"><span class="comment"> * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ToastAndroid = &#123;</span><br><span class="line"></span><br><span class="line">  SHORT: RCTToastAndroid.SHORT,</span><br><span class="line">  LONG: RCTToastAndroid.LONG,</span><br><span class="line"></span><br><span class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    message: string,</span></span></span><br><span class="line"><span class="function"><span class="params">    duration: number</span></span></span><br><span class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    RCTToastAndroid.show(message, duration);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = ToastAndroid;</span><br></pre></td></tr></table></figure></p>
-<p>我们可以直接在引包当中加入ToastAndroid。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  ToastAndroid,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码<code>ToastAndroid.show(&#39;Awesome&#39;, ToastAndroid.SHORT);</code>，下面来摇摆手机调出开发菜单，点击<code>Reload JS</code>。就会弹出Toast。<br>我们来分析一下<code>ToastAndroid.android.js</code>这个 module。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).ToastAndroid;</span><br></pre></td></tr></table></figure></p>
-<p>这里是<code>require</code>是加载<code>NativeModules</code>模块，并把 <code>ToastAndroid</code> 赋值给 <code>RCTToastAndroid</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ToastAndroid = &#123;</span><br><span class="line"></span><br><span class="line">  SHORT: RCTToastAndroid.SHORT,</span><br><span class="line">  LONG: RCTToastAndroid.LONG,</span><br><span class="line"></span><br><span class="line">  show: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    message: string,</span></span></span><br><span class="line"><span class="function"><span class="params">    duration: number</span></span></span><br><span class="line"><span class="function"><span class="params">  </span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    RCTToastAndroid.show(message, duration);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码，创建一个对象赋值给<code>ToastAndroid</code>，对象内分别设置了<code>Toast</code>的 <code>SHORT</code>，<code>LONG</code>和<code>show</code>方法。<br><code>module.exports = ToastAndroid;</code>这里把<code>ToastAndroid</code>作为当前这个 Module 导出，提供给外部使用。<br>那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 <code>ToastModule</code>，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_SHORT_KEY = <span class="string">"SHORT"</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_LONG_KEY = <span class="string">"LONG"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ToastModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(reactContext);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"ToastAndroid"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</span><br><span class="line">    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);</span><br><span class="line">    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);</span><br><span class="line">    <span class="keyword">return</span> constants;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ReactMethod</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String message, <span class="keyword">int</span> duration)</span> </span>&#123;</span><br><span class="line">    Toast.makeText(getReactApplicationContext(), message, duration).show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里<code>getName()</code>方法的返回值对应 JS 中的<code>var RCTToastAndroid = require(&#39;NativeModules&#39;).ToastAndroid;</code>结尾处的<code>ToastAndroid</code>，正如 js 里的请求手机本地的 modules ，对应到类里的<code>getName()</code>返回值。<br><code>getConstants()</code>方法负责把类中的常量映射到 JS 中去。<br><code>show(String message, int duration)</code>方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。</p>
-<h2 id="三，自定义-Logger"><a href="#三，自定义-Logger" class="headerlink" title="三，自定义 Logger"></a>三，自定义 Logger</h2><p>这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODULE_NAME = <span class="string">"Logger"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_KEY = <span class="string">"TAG"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_VALUE = <span class="string">"LoggerModule"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoggerModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(reactContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</span><br><span class="line">        constants.put(TAG_KEY, TAG_VALUE);</span><br><span class="line">        <span class="keyword">return</span> constants;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> MODULE_NAME;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.i(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.w(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.e(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里我把常量<code>TAG</code>返回给 JS 调用，Module 命名为<code>Logger</code>，并且把 info，debug，warn，error 等 Log 方法加上<code>@ReactMethod</code>注释，提供给 JS调用。<br>这里还没有结束，我们还需要实现一个类，去注册我们自己写的 <code>LoggerModule</code>。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppReactPackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        modules.add(<span class="keyword">new</span> LoggerModule(reactContext));</span><br><span class="line">        <span class="keyword">return</span> modules;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后，把这个 AppReactPackage 注册到 Activity。如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the name of the main component registered from JavaScript.</span></span><br><span class="line"><span class="comment">     * This is used to schedule rendering of the component.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getMainComponentName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"AwesomeProject"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns whether dev mode should be enabled.</span></span><br><span class="line"><span class="comment">     * This enables e.g. the dev menu.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A list of packages used by the app. If the app uses additional views</span></span><br><span class="line"><span class="comment">     * or modules besides the default ones, add more packages here.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">                <span class="keyword">new</span> MainReactPackage(),</span><br><span class="line">                <span class="keyword">new</span> AppReactPackage()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>java 代码到这里就结束了。<br>下面，我们在<code>index.android.js</code>的同级目录创建一个 js 文件<code>log.js</code>。里面内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> RCTLogger = <span class="built_in">require</span>(<span class="string">'NativeModules'</span>).Logger;<span class="comment">//加载本地 modules，Module#getName()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> LogAndroid = &#123;</span><br><span class="line">  <span class="comment">//添加定义的常量 Module#getConstants()</span></span><br><span class="line">  TAG: RCTLogger.TAG,</span><br><span class="line">  <span class="comment">//添加的方法 Module#d()</span></span><br><span class="line">  d: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.d(tag,msg);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  i: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.i(tag,msg);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  w: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.w(tag,msg);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  e: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.e(tag,msg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = LogAndroid;<span class="comment">//module 导出</span></span><br></pre></td></tr></table></figure></p>
-<p>这里不用多说了，无非就是创建一个 LogAndroid 对象获取 <code>LoggerModule</code>java 类中的常量，方法等，并且导出。<br>下面我贴出完整的<code>index.android.js</code>，里面显示如何引用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sample React Native App</span></span><br><span class="line"><span class="comment"> * https://github.com/facebook/react-native</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  ToastAndroid,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"><span class="keyword">var</span> LogAndroid = <span class="built_in">require</span>(<span class="string">'./log'</span>);</span><br><span class="line"></span><br><span class="line">LogAndroid.i(LogAndroid.TAG,<span class="string">"Awesome"</span>);</span><br><span class="line">LogAndroid.d(LogAndroid.TAG,<span class="string">"Awesome"</span>);</span><br><span class="line">LogAndroid.w(LogAndroid.TAG,<span class="string">"Awesome"</span>);</span><br><span class="line">LogAndroid.e(LogAndroid.TAG,<span class="string">"Awesome"</span>);</span><br><span class="line"></span><br><span class="line">ToastAndroid.show(<span class="string">'Awesome'</span>, ToastAndroid.SHORT);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          Welcome to React Native!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          To get started, edit index.android.js</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    justifyContent: <span class="string">'center'</span>,</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    margin: <span class="number">10</span>,</span><br><span class="line">    color:<span class="string">'red'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  instructions: &#123;</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    color: <span class="string">'#333333'</span>,</span><br><span class="line">    marginBottom: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</span><br></pre></td></tr></table></figure></p>
+<p><code>&#39;use strict&#39;</code>是启动当前文件的 js 代码的严格模式，可以使当前的 js 更严格的条件下运行。想了解的可以学习这篇文章<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html">《Javascript 严格模式详解》</a>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这段代码类似 java 的 import，把需要引用的 module 引入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.container&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.welcome&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Welcome to React Native!</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          To get started, edit index.android.js</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Shake or press menu button for dev menu</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码是渲染当前注册界面的布局，<code>render</code>方法下的return 就是返回的当前布局。标签内的 style 对应下面这段代码，和 css 很像，等于 Android layout 文件下 view 的标签设置属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  <span class="attr">container</span>: &#123;</span><br><span class="line">    <span class="attr">flex</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">backgroundColor</span>: <span class="string">&#x27;#F5FCFF&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">welcome</span>: &#123;</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">margin</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">instructions</span>: &#123;</span><br><span class="line">    <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;#333333&#x27;</span>,</span><br><span class="line">    <span class="attr">marginBottom</span>: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>标签的具体规范可以看这里<a target="_blank" rel="noopener" href="http://facebook.github.io/react-native/docs/text.html#content">Text</a>，<a target="_blank" rel="noopener" href="http://facebook.github.io/react-native/docs/view.html#content">View</a>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AppRegistry.registerComponent(<span class="string">&#x27;AwesomeProject&#x27;</span>, <span class="function">() =&gt;</span> AwesomeProject);</span><br></pre></td></tr></table></figure>
+<p>上面这段代码把我们 js 文件中的 class <code>AwesomeProject</code>和我们 Android 项目中 <code>Activity</code>中<code>getMainComponentName() &#123; return &quot;AwesomeProject&quot;; &#125;</code>的 Activity关联起来。</p>
+<h2 id="二，显示一个-Toast"><a href="#二，显示一个-Toast" class="headerlink" title="二，显示一个 Toast"></a>二，显示一个 Toast</h2><p>React-Native 已经把我们常用的模块都已经封装好了，例如 Toast 在<code>../AwesomeProject/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroid.android.js</code>中。<br>我们来看 ToastAndroid 的源码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2015-present, Facebook, Inc.</span></span><br><span class="line"><span class="comment"> * All rights reserved.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This source code is licensed under the BSD-style license found in the</span></span><br><span class="line"><span class="comment"> * LICENSE file in the root directory of this source tree. An additional grant</span></span><br><span class="line"><span class="comment"> * of patent rights can be found in the PATENTS file in the same directory.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@providesModule <span class="variable">ToastAndroid</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">&#x27;NativeModules&#x27;</span>).ToastAndroid;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This exposes the native ToastAndroid module as a JS module. This has a function &#x27;show&#x27;</span></span><br><span class="line"><span class="comment"> * which takes the following parameters:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 1. String message: A string with the text to toast</span></span><br><span class="line"><span class="comment"> * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ToastAndroid = &#123;</span><br><span class="line"></span><br><span class="line">  <span class="attr">SHORT</span>: RCTToastAndroid.SHORT,</span><br><span class="line">  <span class="attr">LONG</span>: RCTToastAndroid.LONG,</span><br><span class="line"></span><br><span class="line">  <span class="attr">show</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">    message: string,</span></span></span><br><span class="line"><span class="params"><span class="function">    duration: number</span></span></span><br><span class="line"><span class="params"><span class="function">  </span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    RCTToastAndroid.show(message, duration);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = ToastAndroid;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我们可以直接在引包当中加入ToastAndroid。如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  ToastAndroid,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>下面我们来用 ToastAndroid 弹出一个 Toast。在引包后加入代码<code>ToastAndroid.show(&#39;Awesome&#39;, ToastAndroid.SHORT);</code>，下面来摇摆手机调出开发菜单，点击<code>Reload JS</code>。就会弹出Toast。<br>我们来分析一下<code>ToastAndroid.android.js</code>这个 module。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> RCTToastAndroid = <span class="built_in">require</span>(<span class="string">&#x27;NativeModules&#x27;</span>).ToastAndroid;</span><br></pre></td></tr></table></figure>
+<p>这里是<code>require</code>是加载<code>NativeModules</code>模块，并把 <code>ToastAndroid</code> 赋值给 <code>RCTToastAndroid</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ToastAndroid = &#123;</span><br><span class="line"></span><br><span class="line">  <span class="attr">SHORT</span>: RCTToastAndroid.SHORT,</span><br><span class="line">  <span class="attr">LONG</span>: RCTToastAndroid.LONG,</span><br><span class="line"></span><br><span class="line">  <span class="attr">show</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">    message: string,</span></span></span><br><span class="line"><span class="params"><span class="function">    duration: number</span></span></span><br><span class="line"><span class="params"><span class="function">  </span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    RCTToastAndroid.show(message, duration);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这段代码，创建一个对象赋值给<code>ToastAndroid</code>，对象内分别设置了<code>Toast</code>的 <code>SHORT</code>，<code>LONG</code>和<code>show</code>方法。<br><code>module.exports = ToastAndroid;</code>这里把<code>ToastAndroid</code>作为当前这个 Module 导出，提供给外部使用。<br>那么 JS 是如何 Android 代码关联起来的呢？下面我们来看一下Native 的代码。在 Android Studio 中搜索类 <code>ToastModule</code>，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_SHORT_KEY = <span class="string">&quot;SHORT&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DURATION_LONG_KEY = <span class="string">&quot;LONG&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ToastModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(reactContext);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;ToastAndroid&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</span><br><span class="line">    constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);</span><br><span class="line">    constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);</span><br><span class="line">    <span class="keyword">return</span> constants;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ReactMethod</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String message, <span class="keyword">int</span> duration)</span> </span>&#123;</span><br><span class="line">    Toast.makeText(getReactApplicationContext(), message, duration).show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里<code>getName()</code>方法的返回值对应 JS 中的<code>var RCTToastAndroid = require(&#39;NativeModules&#39;).ToastAndroid;</code>结尾处的<code>ToastAndroid</code>，正如 js 里的请求手机本地的 modules ，对应到类里的<code>getName()</code>返回值。<br><code>getConstants()</code>方法负责把类中的常量映射到 JS 中去。<br><code>show(String message, int duration) </code>方法正是我们要提供给 JS 的方法，方法的注释代表这个方法提供给 JS 调用。</p>
+<h2 id="三，自定义-Logger"><a href="#三，自定义-Logger" class="headerlink" title="三，自定义 Logger"></a>三，自定义 Logger</h2><p>这里我们来自定义一个 LoggerModule 来练练手。这里我先把代码贴出来了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODULE_NAME = <span class="string">&quot;Logger&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_KEY = <span class="string">&quot;TAG&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_VALUE = <span class="string">&quot;LoggerModule&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoggerModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(reactContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Map&lt;String, Object&gt; constants = MapBuilder.newHashMap();</span><br><span class="line">        constants.put(TAG_KEY, TAG_VALUE);</span><br><span class="line">        <span class="keyword">return</span> constants;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> MODULE_NAME;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.i(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.w(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</span><br><span class="line">        Log.e(tag, msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我把常量<code>TAG</code>返回给 JS 调用，Module 命名为<code>Logger</code>，并且把 info，debug，warn，error 等 Log 方法加上<code>@ReactMethod</code>注释，提供给 JS调用。<br>这里还没有结束，我们还需要实现一个类，去注册我们自己写的 <code>LoggerModule</code>。具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppReactPackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        modules.add(<span class="keyword">new</span> LoggerModule(reactContext));</span><br><span class="line">        <span class="keyword">return</span> modules;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，把这个 AppReactPackage 注册到 Activity。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the name of the main component registered from JavaScript.</span></span><br><span class="line"><span class="comment">     * This is used to schedule rendering of the component.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getMainComponentName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;AwesomeProject&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns whether dev mode should be enabled.</span></span><br><span class="line"><span class="comment">     * This enables e.g. the dev menu.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A list of packages used by the app. If the app uses additional views</span></span><br><span class="line"><span class="comment">     * or modules besides the default ones, add more packages here.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">                <span class="keyword">new</span> MainReactPackage(),</span><br><span class="line">                <span class="keyword">new</span> AppReactPackage()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>java 代码到这里就结束了。<br>下面，我们在<code>index.android.js</code>的同级目录创建一个 js 文件<code>log.js</code>。里面内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> RCTLogger = <span class="built_in">require</span>(<span class="string">&#x27;NativeModules&#x27;</span>).Logger;<span class="comment">//加载本地 modules，Module#getName()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> LogAndroid = &#123;</span><br><span class="line">  <span class="comment">//添加定义的常量 Module#getConstants()</span></span><br><span class="line">  <span class="attr">TAG</span>: RCTLogger.TAG,</span><br><span class="line">  <span class="comment">//添加的方法 Module#d()</span></span><br><span class="line">  <span class="attr">d</span>: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.d(tag,msg);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="attr">i</span>: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.i(tag,msg);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="attr">w</span>: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.w(tag,msg);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="attr">e</span>: <span class="function"><span class="keyword">function</span>(<span class="params">tag: string,msg: string</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">    RCTLogger.e(tag,msg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = LogAndroid;<span class="comment">//module 导出</span></span><br></pre></td></tr></table></figure>
+<p>这里不用多说了，无非就是创建一个 LogAndroid 对象获取 <code>LoggerModule</code>java 类中的常量，方法等，并且导出。<br>下面我贴出完整的<code>index.android.js</code>，里面显示如何引用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sample React Native App</span></span><br><span class="line"><span class="comment"> * https://github.com/facebook/react-native</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  ToastAndroid,</span><br><span class="line">  View,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> LogAndroid = <span class="built_in">require</span>(<span class="string">&#x27;./log&#x27;</span>);</span><br><span class="line"></span><br><span class="line">LogAndroid.i(LogAndroid.TAG,<span class="string">&quot;Awesome&quot;</span>);</span><br><span class="line">LogAndroid.d(LogAndroid.TAG,<span class="string">&quot;Awesome&quot;</span>);</span><br><span class="line">LogAndroid.w(LogAndroid.TAG,<span class="string">&quot;Awesome&quot;</span>);</span><br><span class="line">LogAndroid.e(LogAndroid.TAG,<span class="string">&quot;Awesome&quot;</span>);</span><br><span class="line"></span><br><span class="line">ToastAndroid.show(<span class="string">&#x27;Awesome&#x27;</span>, ToastAndroid.SHORT);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomeProject</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.container&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.welcome&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Welcome to React Native!</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          To get started, edit index.android.js</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.instructions&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Shake or press menu button for dev menu</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  <span class="attr">container</span>: &#123;</span><br><span class="line">    <span class="attr">flex</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">justifyContent</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">backgroundColor</span>: <span class="string">&#x27;#F5FCFF&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">welcome</span>: &#123;</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">margin</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">instructions</span>: &#123;</span><br><span class="line">    <span class="attr">textAlign</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;#333333&#x27;</span>,</span><br><span class="line">    <span class="attr">marginBottom</span>: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">AppRegistry.registerComponent(<span class="string">&#x27;AwesomeProject&#x27;</span>, <span class="function">() =&gt;</span> AwesomeProject);</span><br></pre></td></tr></table></figure>
 <p>重新编译并运行你的 app，看看 logcat 打印出了日志吗？</p>
 
-      
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/React-Native/" rel="tag"># React-Native</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/03/18/2016-03-18/" rel="next" title="[原]React-Native Android 学习笔记——1，配置环境">
-                <i class="fa fa-chevron-left"></i> [原]React-Native Android 学习笔记——1，配置环境
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/React-Native/" rel="tag"># React-Native</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/17/2016-06-17/" rel="prev" title="CURL常用指令">
-                CURL常用指令 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/03/18/2016-03-18/" rel="prev" title="[原]React-Native Android 学习笔记——1，配置环境">
+                  <i class="fa fa-chevron-left"></i> [原]React-Native Android 学习笔记——1，配置环境
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/06/17/2016-06-17/" rel="next" title="CURL常用指令">
+                  CURL常用指令 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
   </article>
+</div>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
-          </div>
-          
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
-          <p class="site-author-name" itemprop="name">鸿雁</p>
-           
-              <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，index-android-js-文件"><span class="nav-number">1.</span> <span class="nav-text">一，index.android.js 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，显示一个-Toast"><span class="nav-number">2.</span> <span class="nav-text">二，显示一个 Toast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，自定义-Logger"><span class="nav-number">3.</span> <span class="nav-text">三，自定义 Logger</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
+<div class="copyright">
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -619,47 +317,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
+  
 
 
 
@@ -669,120 +337,6 @@
 
 
 
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

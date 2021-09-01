@@ -1,383 +1,230 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="git,git-flow,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。 作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
-<meta name="keywords" content="git,git-flow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git-flow 学习总结">
 <meta property="og:url" content="http://www.kennethyo.me/2017/03/06/untitled-1488794629968/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
 <meta property="og:description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。 作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdd9shg2uoj30yg1cpn9p.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdcxolq5hvj30dw0gu759.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdcxrpvc6lj306y0k63yz.jpg">
-<meta property="og:updated_time" content="2017-03-06T10:37:13.000Z">
+<meta property="article:published_time" content="2017-03-06T10:03:49.000Z">
+<meta property="article:modified_time" content="2017-03-06T10:37:13.000Z">
+<meta property="article:author" content="鸿雁">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="git-flow">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git-flow 学习总结">
-<meta name="twitter:description" content="git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。 作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 master 和 develop ，日常开发和测试都是针对 develop进行，这造成一个问题就是，每当上线版本发现bug的时候，develop 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到master 后，难以合并">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdd9shg2uoj30yg1cpn9p.jpg">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<link rel="canonical" href="http://www.kennethyo.me/2017/03/06/untitled-1488794629968/">
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2017/03/06/untitled-1488794629968/">
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2017/03/06/untitled-1488794629968/","path":"2017/03/06/untitled-1488794629968/","title":"Git-flow 学习总结"}</script>
 
-
-
-
-
-  <title>Git-flow 学习总结 | 敲键盘的呼伦贝尔人</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Git-flow 学习总结 | 敲键盘的呼伦贝尔人</title>
   
 
 
 
 
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=56699390";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">敲键盘的呼伦贝尔人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">敲键盘的呼伦贝尔人</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
+
+
+
+
+
+
+</div>
+        
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+      </ul>
 
-      
-    </ul>
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E5%9B%BE%E9%95%87%E6%A5%BC"><span class="nav-number">1.</span> <span class="nav-text">发图镇楼</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Branch"><span class="nav-number">2.</span> <span class="nav-text">Branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tag"><span class="nav-number">3.</span> <span class="nav-text">Tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">操作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-develop-%E5%88%86%E6%94%AF"><span class="nav-number">4.1.</span> <span class="nav-text">创建 develop 分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v0-1-0-%E5%BC%80%E5%A7%8B%E5%BC%80%E5%8F%91"><span class="nav-number">4.2.</span> <span class="nav-text">v0.1.0 开始开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v0-1-0-%E5%AE%8C%E6%88%90%E5%BC%80%E5%8F%91"><span class="nav-number">4.3.</span> <span class="nav-text">v0.1.0 完成开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%8F%91%E5%B8%83"><span class="nav-number">4.4.</span> <span class="nav-text">预发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E7%89%88%E6%9C%AC"><span class="nav-number">4.5.</span> <span class="nav-text">发布版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BA-bug-%E4%BA%86"><span class="nav-number">4.6.</span> <span class="nav-text">出 bug 了</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A9%E4%B8%8E%E5%BC%8A"><span class="nav-number">5.</span> <span class="nav-text">利与弊</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-flow-%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">Git-flow 工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">6.1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Homebrew"><span class="nav-number">6.1.1.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacPorts"><span class="nav-number">6.1.2.</span> <span class="nav-text">MacPorts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wget"><span class="nav-number">6.1.3.</span> <span class="nav-text">wget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cURL"><span class="nav-number">6.1.4.</span> <span class="nav-text">cURL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81-1"><span class="nav-number">6.2.</span> <span class="nav-text">操作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#v0-1-0-%E5%BC%80%E5%A7%8B%E5%BC%80%E5%8F%91-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">v0.1.0 开始开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v0-1-0-%E5%AE%8C%E6%88%90%E5%BC%80%E5%8F%91-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">v0.1.0 完成开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E5%8F%91%E5%B8%83-1"><span class="nav-number">6.2.3.</span> <span class="nav-text">预发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E7%89%88%E6%9C%AC-1"><span class="nav-number">6.2.4.</span> <span class="nav-text">发布版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA-bug-%E4%BA%86-1"><span class="nav-number">6.2.5.</span> <span class="nav-text">出 bug 了</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%84%E8%A2%AD%E6%96%87%E7%8C%AE"><span class="nav-number">7.</span> <span class="nav-text">抄袭文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">鸿雁</p>
+  <div class="site-description" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
 
 
 
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2017/03/06/untitled-1488794629968/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="敲键盘的呼伦贝尔人">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git-flow 学习总结
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Git-flow 学习总结</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-06T18:03:49+08:00">
-                2017-03-06
-              </time>
-            
+      <time title="Created: 2017-03-06 18:03:49 / Modified: 18:37:13" itemprop="dateCreated datePublished" datetime="2017-03-06T18:03:49+08:00">2017-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
+
     
-
+    
+    
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         <p>git 作为现在最为主流的版本管理工具，优点有很多，其中最为显著的一点就是分支管理。</p>
 <p>作为一款优秀的版本管理工具，我在日常开发中也在使用，固定分支有两个，分别是 <code>master</code> 和 <code>develop</code> ，日常开发和测试都是针对 <code>develop</code>进行，这造成一个问题就是，每当上线版本发现bug的时候，<code>develop</code> 分支已经有下个版本正在开发的代码，从 tag 创建出来的分支合并到<br><code>master</code> 后，难以合并到 <code>develop</code> 。</p>
 <p>基于上面的问题，上网搜索了 git 的工作流，其中讲的最多的就是 <code>git flow</code> ，下面就将 <code>git flow</code> 的学习结果总结如下。</p>
@@ -387,252 +234,103 @@
 <h1 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h1><p>tag 永远只在 <code>master</code> 分支创建。</p>
 <p><code>release/*</code> 分支合并到 <code>master</code> 之后，推送 <code>master</code> 到远端，然后创建 <code>tag</code> , 推送 <code>tag</code>到远端。<br><code>hotfix/*</code> 分支合并到 <code>master</code> 之后，推送 <code>master</code> 到远端，然后创建 <code>tag</code> , 推送 <code>tag</code>到远端。</p>
 <h1 id="操作流"><a href="#操作流" class="headerlink" title="操作流"></a>操作流</h1><p>我们根据上面的理论，进行一次完整操作。</p>
-<h2 id="创建-develop-分支"><a href="#创建-develop-分支" class="headerlink" title="创建 develop 分支"></a>创建 develop 分支</h2><p>新仓库默认是 <code>master</code> 分支，<code>master</code> 分支只作为发布版本，日常开发都要基于开发分支 <code>develop</code>。从 <code>master</code> 分支创建 <code>develop</code> 分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop master</span><br></pre></td></tr></table></figure></p>
-<p>推送 <code>develop</code>分支，到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure></p>
-<h2 id="v0-1-0-开始开发"><a href="#v0-1-0-开始开发" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h2><p>现在来开发第一个版本 <code>v0.1.0</code>，首先从 <code>develop</code> 创建分支 <code>feature/v0.1.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature/v0.1.0 develop</span><br></pre></td></tr></table></figure></p>
-<p>推送到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature/v0.1.0</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建-develop-分支"><a href="#创建-develop-分支" class="headerlink" title="创建 develop 分支"></a>创建 develop 分支</h2><p>新仓库默认是 <code>master</code> 分支，<code>master</code> 分支只作为发布版本，日常开发都要基于开发分支 <code>develop</code>。从 <code>master</code> 分支创建 <code>develop</code> 分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop master</span><br></pre></td></tr></table></figure>
+<p>推送 <code>develop</code>分支，到远端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure>
+<h2 id="v0-1-0-开始开发"><a href="#v0-1-0-开始开发" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h2><p>现在来开发第一个版本 <code>v0.1.0</code>，首先从 <code>develop</code> 创建分支 <code>feature/v0.1.0</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature/v0.1.0 develop</span><br></pre></td></tr></table></figure>
+<p>推送到远端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature/v0.1.0</span><br></pre></td></tr></table></figure>
 <p>各种 <code>v0.1.0</code>版本功能代码的提交…<br>…….</p>
-<h2 id="v0-1-0-完成开发"><a href="#v0-1-0-完成开发" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h2><p>开发完成后，将 <code>feature/v0.1.0</code> 合并到 <code>develop</code>  分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line">git merge --no-ff feature/v0.1.0</span><br></pre></td></tr></table></figure></p>
-<p><code>--no-ff</code> 参数的意思是不进行快速合并，<code>merge</code>命令默认会进行“快进式合并（fast-farward merge）”，直接将 <code>develop</code> 指向 <code>feature/v0.1.0</code>，这里使用<a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener">阮一峰</a>在<a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">Git分支管理策略</a>中的图片。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdcxolq5hvj30dw0gu759.jpg" alt="Alt text|center|300x0"><br>加上<code>--no-ff</code> 参数后，合并的时候会生成一个新节点。可以保证版本演进的清晰。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdcxrpvc6lj306y0k63yz.jpg" alt="enter image description here|center|0x300"><br>推送到远端：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure></p>
-<p>删除 <code>feature/v0.1.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -b feature/v0.1.0</span><br></pre></td></tr></table></figure></p>
-<h2 id="预发布"><a href="#预发布" class="headerlink" title="预发布"></a>预发布</h2><p>开发完成之后，要进行测试，fix bugs。创建预发布分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b release/v0.1.0 develop</span><br><span class="line">git push origin release/v0.1.0</span><br></pre></td></tr></table></figure></p>
+<h2 id="v0-1-0-完成开发"><a href="#v0-1-0-完成开发" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h2><p>开发完成后，将 <code>feature/v0.1.0</code> 合并到 <code>develop</code>  分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line">git merge --no-ff feature/v0.1.0</span><br></pre></td></tr></table></figure>
+<p><code>--no-ff</code> 参数的意思是不进行快速合并，<code>merge</code>命令默认会进行“快进式合并（fast-farward merge）”，直接将 <code>develop</code> 指向 <code>feature/v0.1.0</code>，这里使用<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/">阮一峰</a>在<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/07/git.html">Git分支管理策略</a>中的图片。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdcxolq5hvj30dw0gu759.jpg" alt="Alt text|center|300x0"><br>加上<code>--no-ff</code> 参数后，合并的时候会生成一个新节点。可以保证版本演进的清晰。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdcxrpvc6lj306y0k63yz.jpg" alt="enter image description here|center|0x300"><br>推送到远端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure>
+<p>删除 <code>feature/v0.1.0</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -b feature/v0.1.0</span><br></pre></td></tr></table></figure>
+<h2 id="预发布"><a href="#预发布" class="headerlink" title="预发布"></a>预发布</h2><p>开发完成之后，要进行测试，fix bugs。创建预发布分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b release/v0.1.0 develop</span><br><span class="line">git push origin release/v0.1.0 </span><br></pre></td></tr></table></figure>
 <p>各种测试，各种蹂躏，各种 fix bugs ……</p>
-<h2 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h2><p>经过测试和修复，终于要上线了，合并 <code>release/v0.1.0</code> 到 <code>master</code> 和 <code>develop</code>：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并到master</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> release/v0.<span class="number">1.0</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#打上tag</span></span><br><span class="line">git tag <span class="literal">-a</span> v0.<span class="number">1.0</span> <span class="literal">-m</span> <span class="string">"publish v0.1.0"</span></span><br><span class="line">git push origin v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#合并到develop</span></span><br><span class="line">git checkout develop</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> release/v0.<span class="number">1.0</span></span><br><span class="line">git push origin develop</span><br><span class="line"><span class="comment">#删除 release/v0.1.0</span></span><br><span class="line">git branch <span class="literal">-d</span> release/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="出-bug-了"><a href="#出-bug-了" class="headerlink" title="出 bug 了"></a>出 bug 了</h2><p>代码上线之后，出 bug 是谁都不愿意看到的，但是难免会出的嘛。下面我们进行修复，下面我们从 <code>master</code> 创建 <code>hotfix/v0.1.0</code> 分支，进行修复工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hotfix/v0.1.0 master</span><br><span class="line">git push origin hotfix/v0.1.0</span><br></pre></td></tr></table></figure></p>
-<p>修复完成之后合并到 <code>master</code> 和 <code>develop</code> 分支：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并到master</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> hotfix/v0.<span class="number">1.0</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#打上tag</span></span><br><span class="line">git tag <span class="literal">-a</span> v0.<span class="number">1.1</span> <span class="literal">-m</span> <span class="string">"publish v0.1.1"</span></span><br><span class="line">git push origin v0.<span class="number">1.1</span></span><br><span class="line"><span class="comment">#合并到develop</span></span><br><span class="line">git checkout develop</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> hotfix/v0.<span class="number">1.0</span></span><br><span class="line">git push origin develop</span><br><span class="line"><span class="comment">#删除 hotfix/v0.1.0</span></span><br><span class="line">git branch <span class="literal">-d</span> hotfix/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h2><p>经过测试和修复，终于要上线了，合并 <code>release/v0.1.0</code> 到 <code>master</code> 和 <code>develop</code>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并到master</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> release/v0.<span class="number">1.0</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#打上tag</span></span><br><span class="line">git tag <span class="literal">-a</span> v0.<span class="number">1.0</span> <span class="literal">-m</span> <span class="string">&quot;publish v0.1.0&quot;</span></span><br><span class="line">git push origin v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#合并到develop</span></span><br><span class="line">git checkout develop</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> release/v0.<span class="number">1.0</span></span><br><span class="line">git push origin develop</span><br><span class="line"><span class="comment">#删除 release/v0.1.0</span></span><br><span class="line">git branch <span class="literal">-d</span> release/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<h2 id="出-bug-了"><a href="#出-bug-了" class="headerlink" title="出 bug 了"></a>出 bug 了</h2><p>代码上线之后，出 bug 是谁都不愿意看到的，但是难免会出的嘛。下面我们进行修复，下面我们从 <code>master</code> 创建 <code>hotfix/v0.1.0</code> 分支，进行修复工作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hotfix/v0.1.0 master</span><br><span class="line">git push origin hotfix/v0.1.0</span><br></pre></td></tr></table></figure>
+<p>修复完成之后合并到 <code>master</code> 和 <code>develop</code> 分支：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并到master</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> hotfix/v0.<span class="number">1.0</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#打上tag</span></span><br><span class="line">git tag <span class="literal">-a</span> v0.<span class="number">1.1</span> <span class="literal">-m</span> <span class="string">&quot;publish v0.1.1&quot;</span></span><br><span class="line">git push origin v0.<span class="number">1.1</span></span><br><span class="line"><span class="comment">#合并到develop</span></span><br><span class="line">git checkout develop</span><br><span class="line">git merge -<span class="literal">-no</span><span class="literal">-ff</span> hotfix/v0.<span class="number">1.0</span></span><br><span class="line">git push origin develop</span><br><span class="line"><span class="comment">#删除 hotfix/v0.1.0</span></span><br><span class="line">git branch <span class="literal">-d</span> hotfix/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="利与弊"><a href="#利与弊" class="headerlink" title="利与弊"></a>利与弊</h1><p>各个分支，各司其职，清晰可控。</p>
 <p>经常切换分支，容易进行误操作（在不对应的分支上进行提交，细心能够解决）。</p>
-<h1 id="Git-flow-工具"><a href="#Git-flow-工具" class="headerlink" title="Git-flow 工具"></a>Git-flow 工具</h1><p>由 <code>git flow</code> 提出者 <a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">Vincent Driessen</a>开发的 <code>git flow</code>工具。</p>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://github.com/mxcl/homebrew" target="_blank" rel="noopener">Homebrew</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git-flow</span><br></pre></td></tr></table></figure>
-<h3 id="MacPorts"><a href="#MacPorts" class="headerlink" title="MacPorts"></a><a href="https://www.macports.org/" target="_blank" rel="noopener">MacPorts</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port install git-flow</span><br></pre></td></tr></table></figure>
-<h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a><a href="https://zh.wikipedia.org/wiki/Wget" target="_blank" rel="noopener">wget</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash</span><br></pre></td></tr></table></figure>
-<h3 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a><a href="https://zh.wikipedia.org/zh-cn/CURL" target="_blank" rel="noopener">cURL</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L -O https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh</span><br><span class="line">sudo bash gitflow-installer.sh</span><br></pre></td></tr></table></figure>
-<h2 id="操作流-1"><a href="#操作流-1" class="headerlink" title="操作流"></a>操作流</h2><p>在项目根目录初始化 <code>git flow</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow init</span><br></pre></td></tr></table></figure></p>
-<p>会出现如下的一系列问题，都是设置各个分支前缀，直接回车默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Which branch should be used for bringing forth production releases?</span><br><span class="line">   - master</span><br><span class="line">Branch name for production releases: [master]</span><br><span class="line">Branch name for &quot;next release&quot; development: [develop]</span><br><span class="line"></span><br><span class="line">How to name your supporting branch prefixes?</span><br><span class="line">Feature branches? [feature/]</span><br><span class="line">Release branches? [release/]</span><br><span class="line">Hotfix branches? [hotfix/]</span><br><span class="line">Support branches? [support/]</span><br><span class="line">Version tag prefix? []</span><br></pre></td></tr></table></figure></p>
+<h1 id="Git-flow-工具"><a href="#Git-flow-工具" class="headerlink" title="Git-flow 工具"></a>Git-flow 工具</h1><p>由 <code>git flow</code> 提出者 <a target="_blank" rel="noopener" href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen</a>开发的 <code>git flow</code>工具。</p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a target="_blank" rel="noopener" href="http://github.com/mxcl/homebrew">Homebrew</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git-flow</span><br></pre></td></tr></table></figure>
+<h3 id="MacPorts"><a href="#MacPorts" class="headerlink" title="MacPorts"></a><a target="_blank" rel="noopener" href="https://www.macports.org/">MacPorts</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port install git-flow</span><br></pre></td></tr></table></figure>
+<h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Wget">wget</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash</span><br></pre></td></tr></table></figure>
+<h3 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/CURL">cURL</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L -O https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh</span><br><span class="line">sudo bash gitflow-installer.sh</span><br></pre></td></tr></table></figure>
+<h2 id="操作流-1"><a href="#操作流-1" class="headerlink" title="操作流"></a>操作流</h2><p>在项目根目录初始化 <code>git flow</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow init</span><br></pre></td></tr></table></figure>
+<p>会出现如下的一系列问题，都是设置各个分支前缀，直接回车默认值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Which branch should be used for bringing forth production releases?</span><br><span class="line">   - master</span><br><span class="line">Branch name for production releases: [master]</span><br><span class="line">Branch name for &quot;next release&quot; development: [develop]</span><br><span class="line"></span><br><span class="line">How to name your supporting branch prefixes?</span><br><span class="line">Feature branches? [feature/]</span><br><span class="line">Release branches? [release/]</span><br><span class="line">Hotfix branches? [hotfix/]</span><br><span class="line">Support branches? [support/]</span><br><span class="line">Version tag prefix? []</span><br></pre></td></tr></table></figure>
 <p>初始化完成之后，当前分支会变成 <code>develop</code> 分支。</p>
-<h3 id="v0-1-0-开始开发-1"><a href="#v0-1-0-开始开发-1" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>feature/v0.1.0</code> 分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature start v0.1.0</span><br></pre></td></tr></table></figure></p>
-<p>推送分支到远端：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git flow feature publish v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">git push origin feature/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="v0-1-0-完成开发-1"><a href="#v0-1-0-完成开发-1" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h3><p>输入如下命令，会把 <code>feature/v0.1.0</code> 分支合并到 <code>develop</code> 分支，并删除 <code>feature/v0.1.0</code>分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature finish v0.1.0</span><br></pre></td></tr></table></figure></p>
-<h3 id="预发布-1"><a href="#预发布-1" class="headerlink" title="预发布"></a>预发布</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>release/v0.1.0</code> 分支：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git flow release start v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#推送到远端</span></span><br><span class="line">git flow release publish v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">git push origin release/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="发布版本-1"><a href="#发布版本-1" class="headerlink" title="发布版本"></a>发布版本</h3><p>输入如下命令，会把 <code>release/v0.1.0</code> 分支合并到 <code>develop</code> 分支和 <code>master</code> 分支，并删除 <code>release/v0.1.0</code>分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow release finish v0.1.0</span><br></pre></td></tr></table></figure></p>
-<h3 id="出-bug-了-1"><a href="#出-bug-了-1" class="headerlink" title="出 bug 了"></a>出 bug 了</h3><p>输入如下命令，会从 <code>master</code> 创建 <code>hotfix/v0.1.1</code> 分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow hotfix start v0.1.1</span><br></pre></td></tr></table></figure></p>
-<p>修复完成，输入如下命令，会合分别合并到 <code>master</code> 和 <code>develop</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow hotfix finish v0.1.1</span><br></pre></td></tr></table></figure></p>
-<h1 id="抄袭文献"><a href="#抄袭文献" class="headerlink" title="抄袭文献"></a>抄袭文献</h1><p>1，<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">Git 工作流程</a><br>2，<a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">Git分支管理策略</a><br>3，<a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model</a><br>4，<a href="https://github.com/nvie/gitflow" target="_blank" rel="noopener">gitflow</a><br>5，<a href="http://stormzhang.com/git/2014/01/29/git-flow/" target="_blank" rel="noopener">使用GIT FLOW管理开发流程</a><br>6，<a href="https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow" target="_blank" rel="noopener">git-flow 的工作流程</a></p>
+<h3 id="v0-1-0-开始开发-1"><a href="#v0-1-0-开始开发-1" class="headerlink" title="v0.1.0 开始开发"></a>v0.1.0 开始开发</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>feature/v0.1.0</code> 分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature start v0.1.0</span><br></pre></td></tr></table></figure>
+<p>推送分支到远端：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git flow feature publish v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">git push origin feature/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="v0-1-0-完成开发-1"><a href="#v0-1-0-完成开发-1" class="headerlink" title="v0.1.0 完成开发"></a>v0.1.0 完成开发</h3><p>输入如下命令，会把 <code>feature/v0.1.0</code> 分支合并到 <code>develop</code> 分支，并删除 <code>feature/v0.1.0</code>分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature finish v0.1.0</span><br></pre></td></tr></table></figure>
+<h3 id="预发布-1"><a href="#预发布-1" class="headerlink" title="预发布"></a>预发布</h3><p>输入如下命令，会从 <code>develop</code> 分支创建出 <code>release/v0.1.0</code> 分支：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git flow release <span class="built_in">start</span> v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#推送到远端</span></span><br><span class="line">git flow release publish v0.<span class="number">1.0</span></span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">git push origin release/v0.<span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="发布版本-1"><a href="#发布版本-1" class="headerlink" title="发布版本"></a>发布版本</h3><p>输入如下命令，会把 <code>release/v0.1.0</code> 分支合并到 <code>develop</code> 分支和 <code>master</code> 分支，并删除 <code>release/v0.1.0</code>分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow release finish v0.1.0</span><br></pre></td></tr></table></figure>
+<h3 id="出-bug-了-1"><a href="#出-bug-了-1" class="headerlink" title="出 bug 了"></a>出 bug 了</h3><p>输入如下命令，会从 <code>master</code> 创建 <code>hotfix/v0.1.1</code> 分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow hotfix start v0.1.1</span><br></pre></td></tr></table></figure>
+<p>修复完成，输入如下命令，会合分别合并到 <code>master</code> 和 <code>develop</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow hotfix finish v0.1.1</span><br></pre></td></tr></table></figure>
 
-      
+<h1 id="抄袭文献"><a href="#抄袭文献" class="headerlink" title="抄袭文献"></a>抄袭文献</h1><p>1，<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">Git 工作流程</a><br>2，<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/07/git.html">Git分支管理策略</a><br>3，<a target="_blank" rel="noopener" href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a><br>4，<a target="_blank" rel="noopener" href="https://github.com/nvie/gitflow">gitflow</a><br>5，<a target="_blank" rel="noopener" href="http://stormzhang.com/git/2014/01/29/git-flow/">使用GIT FLOW管理开发流程</a><br>6，<a target="_blank" rel="noopener" href="https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow">git-flow 的工作流程</a></p>
+
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/git/" rel="tag"># git</a>
-          
-            <a href="/tags/git-flow/" rel="tag"># git-flow</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/08/untitled-1478588050831/" rel="next" title="Travis 和 CircleCI 配置文件">
-                <i class="fa fa-chevron-left"></i> Travis 和 CircleCI 配置文件
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/git-flow/" rel="tag"># git-flow</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/untitled-1491391624769/" rel="prev" title="把编译信息放在 Launch Icon 上">
-                把编译信息放在 Launch Icon 上 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/11/08/untitled-1478588050831/" rel="prev" title="Travis 和 CircleCI 配置文件">
+                  <i class="fa fa-chevron-left"></i> Travis 和 CircleCI 配置文件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/04/05/untitled-1491391624769/" rel="next" title="把编译信息放在 Launch Icon 上">
+                  把编译信息放在 Launch Icon 上 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
   </article>
+</div>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
-          </div>
-          
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
-          <p class="site-author-name" itemprop="name">鸿雁</p>
-           
-              <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#发图镇楼"><span class="nav-number">1.</span> <span class="nav-text">发图镇楼</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Branch"><span class="nav-number">2.</span> <span class="nav-text">Branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tag"><span class="nav-number">3.</span> <span class="nav-text">Tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作流"><span class="nav-number">4.</span> <span class="nav-text">操作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-develop-分支"><span class="nav-number">4.1.</span> <span class="nav-text">创建 develop 分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v0-1-0-开始开发"><span class="nav-number">4.2.</span> <span class="nav-text">v0.1.0 开始开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v0-1-0-完成开发"><span class="nav-number">4.3.</span> <span class="nav-text">v0.1.0 完成开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预发布"><span class="nav-number">4.4.</span> <span class="nav-text">预发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布版本"><span class="nav-number">4.5.</span> <span class="nav-text">发布版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出-bug-了"><span class="nav-number">4.6.</span> <span class="nav-text">出 bug 了</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利与弊"><span class="nav-number">5.</span> <span class="nav-text">利与弊</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-flow-工具"><span class="nav-number">6.</span> <span class="nav-text">Git-flow 工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">6.1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Homebrew"><span class="nav-number">6.1.1.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacPorts"><span class="nav-number">6.1.2.</span> <span class="nav-text">MacPorts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wget"><span class="nav-number">6.1.3.</span> <span class="nav-text">wget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cURL"><span class="nav-number">6.1.4.</span> <span class="nav-text">cURL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作流-1"><span class="nav-number">6.2.</span> <span class="nav-text">操作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#v0-1-0-开始开发-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">v0.1.0 开始开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v0-1-0-完成开发-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">v0.1.0 完成开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预发布-1"><span class="nav-number">6.2.3.</span> <span class="nav-text">预发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布版本-1"><span class="nav-number">6.2.4.</span> <span class="nav-text">发布版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出-bug-了-1"><span class="nav-number">6.2.5.</span> <span class="nav-text">出 bug 了</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抄袭文献"><span class="nav-number">7.</span> <span class="nav-text">抄袭文献</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
+<div class="copyright">
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -640,47 +338,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
+  
 
 
 
@@ -690,120 +358,6 @@
 
 
 
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

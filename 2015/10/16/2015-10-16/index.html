@@ -1,581 +1,289 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Android,Animation,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="敲键盘的呼伦贝尔人" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.kennethyo.me","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~  上班回来，按照产品的需求做了这样一个效果，如下图：  这其中包含了3个动画，分别是移动动画、放大动画、旋转动画。 前两个动画比较好完成，可以用 Tran">
-<meta name="keywords" content="Android,Animation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[原]Android 翻转动画 Rotate3dAnimation 效果">
 <meta property="og:url" content="http://www.kennethyo.me/2015/10/16/2015-10-16/index.html">
 <meta property="og:site_name" content="敲键盘的呼伦贝尔人">
 <meta property="og:description" content="十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~  上班回来，按照产品的需求做了这样一个效果，如下图：  这其中包含了3个动画，分别是移动动画、放大动画、旋转动画。 前两个动画比较好完成，可以用 Tran">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale">
 <meta property="og:image" content="http://img.blog.csdn.net/20151016162517318">
-<meta property="og:updated_time" content="2016-09-01T06:38:25.000Z">
+<meta property="article:published_time" content="2015-10-16T09:05:57.000Z">
+<meta property="article:modified_time" content="2016-09-01T06:38:25.000Z">
+<meta property="article:author" content="鸿雁">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Animation">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[原]Android 翻转动画 Rotate3dAnimation 效果">
-<meta name="twitter:description" content="十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~  上班回来，按照产品的需求做了这样一个效果，如下图：  这其中包含了3个动画，分别是移动动画、放大动画、旋转动画。 前两个动画比较好完成，可以用 Tran">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20151016162517318">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<link rel="canonical" href="http://www.kennethyo.me/2015/10/16/2015-10-16/">
 
 
 
-  <link rel="canonical" href="http://www.kennethyo.me/2015/10/16/2015-10-16/">
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://www.kennethyo.me/2015/10/16/2015-10-16/","path":"2015/10/16/2015-10-16/","title":"[原]Android 翻转动画 Rotate3dAnimation 效果"}</script>
 
-
-
-
-
-  <title>[原]Android 翻转动画 Rotate3dAnimation 效果 | 敲键盘的呼伦贝尔人</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[原]Android 翻转动画 Rotate3dAnimation 效果 | 敲键盘的呼伦贝尔人</title>
   
 
 
 
 
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//tajs.qq.com/stats?sId=56699390";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">敲键盘的呼伦贝尔人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">敲键盘的呼伦贝尔人</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
+
+
+
+
+
+
+</div>
+        
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
+      </ul>
 
-      
-    </ul>
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">鸿雁</p>
+  <div class="site-description" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
 
 
 
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://www.kennethyo.me/2015/10/16/2015-10-16/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="鸿雁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="骑马敲代码，我为我自己带盐，有时还撒点儿孜然。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="敲键盘的呼伦贝尔人">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [原]Android 翻转动画 Rotate3dAnimation 效果
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">[原]Android 翻转动画 Rotate3dAnimation 效果</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-16T17:05:57+08:00">
-                2015-10-16
-              </time>
-            
+      <time title="Created: 2015-10-16 17:05:57" itemprop="dateCreated datePublished" datetime="2015-10-16T17:05:57+08:00">2015-10-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2016-09-01 14:38:25" itemprop="dateModified" datetime="2016-09-01T14:38:25+08:00">2016-09-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
+
     
-
+    
+    
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         <p>十一前请了一天假，后面请了三天假，串起来一共休息了十二天，这期间见了女朋友的家长，也领女朋友见了我家长，好消息是各方家长反馈不错，坏消息是涨了五斤肉，毕竟是吃了12天的呼伦贝儿牛羊肉哈。玩了这么多天，回来要收收心好好工作了，毕竟要攒钱娶媳妇哈~</p>
 <hr>
 <p>上班回来，按照产品的需求做了这样一个效果，如下图：</p>
 <p><img src="http://img.blog.csdn.net/20151016162517318" alt="这里写图片描述"></p>
 <p>这其中包含了3个动画，分别是移动动画、放大动画、旋转动画。</p>
 <p>前两个动画比较好完成，可以用 TranslateAnimation 和 ScaleAnimation来完成，但是第三个就比较麻烦了，因为这个旋转动画是根据 Y 轴来旋转的，而 RotateAnimation 是根据垂直屏幕的 Z 轴旋转的，所以 RotateAnimation 并不能够完成我们需要的效果，这里就需要我们去继承 Animation 去自定义动画了。</p>
-<p>但是！！！<br>但是 APIdemo 里面已经实现了这个动画，so，我们拿来用就好了，下面是我贴出来的Rotate3dAnimation，其中我添加了一个构造，添加了相对自己位置的 type。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.kenneth.rotate3danimation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Camera;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Matrix;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Animation;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Transformation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rotate3dAnimation</span> <span class="keyword">extends</span> <span class="title">Animation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterXType = ABSOLUTE;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterYType = ABSOLUTE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mFromDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mToDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterX;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterY;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mDepthZ;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> mReverse;</span><br><span class="line">    <span class="keyword">private</span> Camera mCamera;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates a new 3D rotation on the Y axis. The rotation is defined by its</span></span><br><span class="line"><span class="comment">     * start angle and its end angle. Both angles are in degrees. The rotation</span></span><br><span class="line"><span class="comment">     * is performed around a center point on the 2D space, definied by a pair</span></span><br><span class="line"><span class="comment">     * of X and Y coordinates, called centerX and centerY. When the animation</span></span><br><span class="line"><span class="comment">     * starts, a translation on the Z axis (depth) is performed. The length</span></span><br><span class="line"><span class="comment">     * of the translation can be specified, as well as whether the translation</span></span><br><span class="line"><span class="comment">     * should be reversed in time.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fromDegrees the start angle of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> toDegrees   the end angle of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> centerX     the X center of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> centerY     the Y center of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> reverse     true if the translation should be reversed, false otherwise</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="keyword">float</span> centerX, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="keyword">int</span> centerXType, <span class="keyword">float</span> centerX, <span class="keyword">int</span> centerYType, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterXType = centerXType;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterYType = centerYType;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> parentWidth, <span class="keyword">int</span> parentHeight)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.initialize(width, height, parentWidth, parentHeight);</span><br><span class="line">        mCamera = <span class="keyword">new</span> Camera();</span><br><span class="line">        mCenterX = resolveSize(mCenterXType, mCenterX, width, parentWidth);</span><br><span class="line">        mCenterY = resolveSize(mCenterYType, mCenterY, height, parentHeight);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyTransformation</span><span class="params">(<span class="keyword">float</span> interpolatedTime, Transformation t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> fromDegrees = mFromDegrees;</span><br><span class="line">        <span class="keyword">float</span> degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerX = mCenterX;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerY = mCenterY;</span><br><span class="line">        <span class="keyword">final</span> Camera camera = mCamera;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> Matrix matrix = t.getMatrix();</span><br><span class="line"></span><br><span class="line">        camera.save();</span><br><span class="line">        <span class="keyword">if</span> (mReverse) &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * interpolatedTime);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * (<span class="number">1.0f</span> - interpolatedTime));</span><br><span class="line">        &#125;</span><br><span class="line">        camera.rotateY(degrees);</span><br><span class="line">        camera.getMatrix(matrix);</span><br><span class="line">        camera.restore();</span><br><span class="line"></span><br><span class="line">        matrix.preTranslate(-centerX, -centerY);</span><br><span class="line">        matrix.postTranslate(centerX, centerY);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是！！！<br>但是 APIdemo 里面已经实现了这个动画，so，我们拿来用就好了，下面是我贴出来的Rotate3dAnimation，其中我添加了一个构造，添加了相对自己位置的 type。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.kenneth.rotate3danimation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Camera;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Matrix;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Animation;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Transformation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rotate3dAnimation</span> <span class="keyword">extends</span> <span class="title">Animation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterXType = ABSOLUTE;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCenterYType = ABSOLUTE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mFromDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mToDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterX;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCenterY;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mDepthZ;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> mReverse;</span><br><span class="line">    <span class="keyword">private</span> Camera mCamera;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates a new 3D rotation on the Y axis. The rotation is defined by its</span></span><br><span class="line"><span class="comment">     * start angle and its end angle. Both angles are in degrees. The rotation</span></span><br><span class="line"><span class="comment">     * is performed around a center point on the 2D space, definied by a pair</span></span><br><span class="line"><span class="comment">     * of X and Y coordinates, called centerX and centerY. When the animation</span></span><br><span class="line"><span class="comment">     * starts, a translation on the Z axis (depth) is performed. The length</span></span><br><span class="line"><span class="comment">     * of the translation can be specified, as well as whether the translation</span></span><br><span class="line"><span class="comment">     * should be reversed in time.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fromDegrees the start angle of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> toDegrees   the end angle of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> centerX     the X center of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> centerY     the Y center of the 3D rotation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> reverse     true if the translation should be reversed, false otherwise</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></span><br><span class="line"><span class="params"><span class="function">                             <span class="keyword">float</span> centerX, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rotate3dAnimation</span><span class="params">(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees,</span></span></span><br><span class="line"><span class="params"><span class="function">                             <span class="keyword">int</span> centerXType, <span class="keyword">float</span> centerX, <span class="keyword">int</span> centerYType, <span class="keyword">float</span> centerY, <span class="keyword">float</span> depthZ, <span class="keyword">boolean</span> reverse)</span> </span>&#123;</span><br><span class="line">        mFromDegrees = fromDegrees;</span><br><span class="line">        mToDegrees = toDegrees;</span><br><span class="line">        mCenterXType = centerXType;</span><br><span class="line">        mCenterX = centerX;</span><br><span class="line">        mCenterYType = centerYType;</span><br><span class="line">        mCenterY = centerY;</span><br><span class="line">        mDepthZ = depthZ;</span><br><span class="line">        mReverse = reverse;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> parentWidth, <span class="keyword">int</span> parentHeight)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.initialize(width, height, parentWidth, parentHeight);</span><br><span class="line">        mCamera = <span class="keyword">new</span> Camera();</span><br><span class="line">        mCenterX = resolveSize(mCenterXType, mCenterX, width, parentWidth);</span><br><span class="line">        mCenterY = resolveSize(mCenterYType, mCenterY, height, parentHeight);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyTransformation</span><span class="params">(<span class="keyword">float</span> interpolatedTime, Transformation t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> fromDegrees = mFromDegrees;</span><br><span class="line">        <span class="keyword">float</span> degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerX = mCenterX;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> centerY = mCenterY;</span><br><span class="line">        <span class="keyword">final</span> Camera camera = mCamera;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> Matrix matrix = t.getMatrix();</span><br><span class="line"></span><br><span class="line">        camera.save();</span><br><span class="line">        <span class="keyword">if</span> (mReverse) &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * interpolatedTime);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            camera.translate(<span class="number">0.0f</span>, <span class="number">0.0f</span>, mDepthZ * (<span class="number">1.0f</span> - interpolatedTime));</span><br><span class="line">        &#125;</span><br><span class="line">        camera.rotateY(degrees);</span><br><span class="line">        camera.getMatrix(matrix);</span><br><span class="line">        camera.restore();</span><br><span class="line"></span><br><span class="line">        matrix.preTranslate(-centerX, -centerY);</span><br><span class="line">        matrix.postTranslate(centerX, centerY);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>移动动画也比较好做，点击的时候记录点击 icon 在 window 上的位置，然后传到下一个界面，计算一下偏移量。</p>
-<p>这里面要注意，里面的 weibo 等 icon，我用的并不是图片，用的是FontAwesome，具体用法看下面博客：<br>中文地址：<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208795106&amp;idx=1&amp;sn=7745289b193dc8ff20ba81ff9bb23b21&amp;scene=1&amp;srcid=1016s8Satc5ZO0gDrVLqVIBM&amp;key=b410d3164f5f798e7ec8a5a17847eeddc1247303cf5fe40ac8a564295602dd6161bb83fa346de7cd9878b60274b20e77&amp;ascene=0&amp;uin=MTAxNzk0OTM1&amp;devicetype=iMac+MacBookPro11%2C1+OSX+OSX+10.11+build(15A284" target="_blank" rel="noopener">传送门</a>&amp;version=11020201&amp;pass_ticket=WHgV251%2BEh%2Bkh7UMBqQp034b8MGYzxeoJ7l9Ncwz3iE%3D)<br>项目网站：<a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="noopener">传送门</a></p>
-<p>demo 代码地址：<a href="https://github.com/KennethYo/Rotate3dAnimation" target="_blank" rel="noopener">传送门</a></p>
+<p>这里面要注意，里面的 weibo 等 icon，我用的并不是图片，用的是FontAwesome，具体用法看下面博客：<br>中文地址：<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&mid=208795106&idx=1&sn=7745289b193dc8ff20ba81ff9bb23b21&scene=1&srcid=1016s8Satc5ZO0gDrVLqVIBM&key=b410d3164f5f798e7ec8a5a17847eeddc1247303cf5fe40ac8a564295602dd6161bb83fa346de7cd9878b60274b20e77&ascene=0&uin=MTAxNzk0OTM1&devicetype=iMac+MacBookPro11,1+OSX+OSX+10.11+build(15A284)&version=11020201&pass_ticket=WHgV251+Eh+kh7UMBqQp034b8MGYzxeoJ7l9Ncwz3iE=">传送门</a><br>项目网站：<a target="_blank" rel="noopener" href="http://fortawesome.github.io/Font-Awesome/">传送门</a></p>
+<p>demo 代码地址：<a target="_blank" rel="noopener" href="https://github.com/KennethYo/Rotate3dAnimation">传送门</a></p>
 
-      
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/Animation/" rel="tag"># Animation</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/09/29/2015-09-29/" rel="next" title="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除">
-                <i class="fa fa-chevron-left"></i> [原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Animation/" rel="tag"># Animation</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/03/2015-12-03/" rel="prev" title="[原]Android 自定义字体，字替换为图片">
-                [原]Android 自定义字体，字替换为图片 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/09/29/2015-09-29/" rel="prev" title="[原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除">
+                  <i class="fa fa-chevron-left"></i> [原]Android 可拖拽 GridView 并且实时切换和拖动到下部删除
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015/12/03/2015-12-03/" rel="next" title="[原]Android 自定义字体，字替换为图片">
+                  [原]Android 自定义字体，字替换为图片 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
   </article>
+</div>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
-          </div>
-          
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg0OS82NDE1"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="鸿雁">
-          <p class="site-author-name" itemprop="name">鸿雁</p>
-           
-              <p class="site-description motion-element" itemprop="description">骑马敲代码，我为我自己带盐，有时还撒点儿孜然。</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
+<div class="copyright">
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -583,47 +291,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">鸿雁</span>
 </div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
+  
 
 
 
@@ -633,120 +311,6 @@
 
 
 
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
